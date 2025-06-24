@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1750178471
+Basement.tscn::PackedScene::5987904391478973705::1750064373::0::1::::<><><>0<>0<><>::uid://7448v3p2st5d::::res://player1.tscn
+bullet.gd::GDScript::6117543275364718268::1750062763::0::1::::<>Area3D<><>0<>0<><>::
+bullet.tscn::PackedScene::1637241395316561442::1750062763::0::1::::<><><>0<>0<><>::uid://cxlpaurmbnwd6::::res://scenes/projectile.tscn<>uid://ctfnbq23wu4tc::::res://scenes/bullet.gd<>uid://c6k87i3feemc6::::res://player/gun_shoot.wav<>uid://bgdgy567r4cyp::::res://hit_particle.tscn
+icon.svg::CompressedTexture2D/CompressedTexture2D::1983479726814997994::1750062067::1750062077::1::::<><><>0<>0<>67a754a19c960563ed59f6e5dec50dc2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+player1.gd::GDScript::8400366574717991272::1750064196::0::1::::<>CharacterBody3D<><>0<>0<><>::
+player1.tscn::PackedScene::2307730822237078379::1750064360::0::1::::<><><>0<>0<><>::uid://drxg2stgjm4pg::::res://player1.gd
+player.gd::GDScript::7411364962561543820::1748688042::0::1::::<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene::3296848977517757241::1750062693::0::1::::<><><>0<>0<><>::uid://cgpuve566bsuj::::res://player/simple_gun/gun_model.glb<>uid://dduedloqrjnwu::::res://scenes/player.gd<>uid://duiuqxk1dvnlv::::res://player/reticle.png
+projectile.tscn::PackedScene::6410804758522877333::1750062780::0::1::::<><><>0<>0<><>::uid://bp2gqurepwl0f::::res://player/projectile/projectile_model.glb<>uid://b4wc5wsyakc0a::::res://player/projectile/projectile.gdshader
