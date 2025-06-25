@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://ccb1x31rk1xrh"]
-
-[node name="level" type="Node3D"]
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]

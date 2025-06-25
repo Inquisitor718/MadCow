@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bumv6bik85j7x"]
+
+[ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://bepvssds3fs57" path="res://scripts/Movement.gd" id="3_sugp2"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
+panorama = ExtResource("1_sugp2")
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_o6xl0"]
+sky_material = SubResource("PanoramaSkyMaterial_sugp2")
+
+[sub_resource type="Environment" id="Environment_tipki"]
+background_mode = 2
+sky = SubResource("Sky_o6xl0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0wfyh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sugp2"]
+height = 1.2
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.737012, 0.248238, -0.628642, -0.673885, -0.341298, 0.655282, -0.0518887, 0.906583, 0.418825, 0, 8.17773, 0)
+light_color = Color(0.999831, 0.965693, 0.922176, 1)
+light_energy = 0.8
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tipki")
+
+[node name="level" parent="." instance=ExtResource("2_jyhfs")]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, 0)
+script = ExtResource("3_sugp2")
+
+[node name="StandingCollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_0wfyh")
+
+[node name="CrouchingCollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+shape = SubResource("CapsuleShape3D_sugp2")
+disabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -2, 1.50996e-07, 0, -3.01992e-07, -1, 0, -1, 0)
+debug_shape_custom_color = Color(0, 0, 0.756863, 1)
+debug_shape_thickness = 3
+
+[node name="neck" type="Node3D" parent="Player"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.8, 0)
+
+[node name="head" type="Node3D" parent="Player/neck"]
+
+[node name="eyes" type="Node3D" parent="Player/neck/head"]
+
+[node name="Camera3D" type="Camera3D" parent="Player/neck/head/eyes"]
