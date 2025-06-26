@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
-[ext_resource type="Script" uid="uid://bepvssds3fs57" path="res://scripts/Movement.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://bepvssds3fs57" path="res://scripts/Sarvesh/Movement.gd" id="3_sugp2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")

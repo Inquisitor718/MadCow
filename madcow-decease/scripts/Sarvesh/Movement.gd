@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@onready var head: Node3D = $Head
+@onready var neck: Node3D = $neck
+
 
 var direction = Vector3.ZERO
 
@@ -37,15 +38,15 @@ const JUMP_VELOCITY = 4.5
 #mouse movement
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	default_pos = head.position
+	default_pos = neck.position
 
 
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad((event.relative.x) * mouse_sens * -1))
-		head.rotate_x(deg_to_rad((event.relative.y) * mouse_sens *-1))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+		neck.rotate_x(deg_to_rad((event.relative.y) * mouse_sens *-1))
+		neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 
 
@@ -100,11 +101,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			bob_timer += delta * wbob_freq
 		#does actual bobbing
-		head.position.y = default_pos.y + (sin(bob_timer) * bob_amplitude )
-		head.position.x = default_pos.x + (sin(bob_timer / 2.0) * bob_amplitude)
+		neck.position.y = default_pos.y + (sin(bob_timer) * bob_amplitude )
+		neck.position.x = default_pos.x + (sin(bob_timer / 2.0) * bob_amplitude)
 	else:#resets default position of the head when not moving
-		head.position.y = lerp(head.position.y, default_pos.y, delta * lerp_speed)
-		head.position.x = lerp(head.position.x, default_pos.x, delta * lerp_speed)
+		neck.position.y = lerp(neck.position.y, default_pos.y, delta * lerp_speed)
+		neck.position.x = lerp(neck.position.x, default_pos.x, delta * lerp_speed)
 	
 
 	move_and_slide()
@@ -119,6 +120,6 @@ func _physics_process(delta: float) -> void:
 		lbob_offset = -imp
 		
 	lbob_offset = lerp(lbob_offset, 0.0, delta * lerp_speed)
-	head.position.y += lbob_offset
+	neck.position.y += lbob_offset
 	
 	on_floor = is_on_floor()
