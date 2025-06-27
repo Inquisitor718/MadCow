@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=5 format=3 uid="uid://c6qqhoiccfc6n"]
 
-[ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Movement_S.gd" id="1_gkn25"]
+[ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj78o"]
+bg_color = Color(0.229933, 0.712038, 0.249773, 1)
+
+[node name="Player" type="CharacterBody3D" groups=["player_S"]]
 script = ExtResource("1_gkn25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -14,3 +19,13 @@ shape = SubResource("CapsuleShape3D_cvnsp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Head/Camera3D"]
+offset_left = 10.0
+offset_top = 52.0
+offset_right = 338.0
+offset_bottom = 107.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gkn25")
+theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
+value = 100.0
+show_percentage = false

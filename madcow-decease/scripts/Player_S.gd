@@ -6,6 +6,10 @@ var direction = Vector3.ZERO
 
 var on_floor := true
 
+#health system
+@export var health =  100
+
+
 var speed_now = 5.0
 @export var speed_walk = 5.0
 @export var speed_sprint = 10.0
@@ -33,6 +37,19 @@ const JUMP_VELOCITY = 4.5
 @export var lbob_offset = 0.0
 @export var land_v_min = -3.0
 @export var lbob_ampscl = 0.025
+
+#health system function for damage 
+func dmg(HP):
+	if HP < health:
+		health -= HP
+	else:
+		health = 0
+	$Head/Camera3D/ProgressBar.value = health
+	if health < 0:
+		die()
+		
+func die():
+	pass
 
 #mouse movement
 func _ready():
@@ -62,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		pcap.shape.height += ucrouch_speed * delta
 		pcap.shape.height = clamp(pcap.shape.height, 0.72, 2)
 		if abs(pcap.shape.height - 2.0) < 0.01:
-			if Input.is_action_pressed("sprint"):
+			if Input.is_action_pressed("sprint") && is_on_floor():
 				speed_now = speed_sprint
 			else:
 				speed_now = speed_walk
