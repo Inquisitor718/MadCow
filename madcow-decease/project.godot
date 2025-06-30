@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="MadCow-Decease"
+run/main_scene="uid://ccb1x31rk1xrh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
