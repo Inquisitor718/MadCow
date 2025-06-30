@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=6 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
+[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
@@ -29,3 +30,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_gkn25")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
 value = 100.0
 show_percentage = false
+
+[node name="Revolver" parent="Head/Camera3D" instance=ExtResource("2_aj78o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.473028, -0.334849, -0.467442)
