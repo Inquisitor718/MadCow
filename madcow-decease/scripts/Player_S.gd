@@ -1,6 +1,5 @@
 extends CharacterBody3D
-
-@onready var head: Node3D = $Head
+@onready var head: Node3D = $neck/head
 
 var direction = Vector3.ZERO
 
@@ -44,7 +43,7 @@ func dmg(HP):
 		health -= HP
 	else:
 		health = 0
-	$Head/Camera3D/ProgressBar.value = health
+	$neck/head/eyes/Camera3D/ProgressBar.value = health
 	if health < 0:
 		die()
 		
@@ -122,11 +121,8 @@ func _physics_process(delta: float) -> void:
 	else:#resets default position of the head when not moving
 		head.position.y = lerp(head.position.y, default_pos.y, delta * lerp_speed)
 		head.position.x = lerp(head.position.x, default_pos.x, delta * lerp_speed)
-	
 
 	move_and_slide()
-	
-	
 
 	
 	# Landing detection and land offset {need to fix}

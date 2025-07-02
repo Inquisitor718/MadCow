@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=6 format=3 uid="uid://dp4pqolg4d6ry"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
@@ -16,12 +16,16 @@ script = ExtResource("1_gkn25")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cvnsp")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="neck" type="Node3D" parent="."]
+
+[node name="head" type="Node3D" parent="neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="eyes" type="Node3D" parent="neck/head"]
 
-[node name="ProgressBar" type="ProgressBar" parent="Head/Camera3D"]
+[node name="Camera3D" type="Camera3D" parent="neck/head/eyes"]
+
+[node name="ProgressBar" type="ProgressBar" parent="neck/head/eyes/Camera3D"]
 offset_left = 10.0
 offset_top = 52.0
 offset_right = 338.0
@@ -31,5 +35,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
 value = 100.0
 show_percentage = false
 
-[node name="Revolver" parent="Head/Camera3D" instance=ExtResource("2_aj78o")]
+[node name="Revolver" parent="neck/head/eyes/Camera3D" instance=ExtResource("2_aj78o")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.473028, -0.334849, -0.467442)

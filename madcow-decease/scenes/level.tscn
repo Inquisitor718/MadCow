@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddvi8x568u7vh" path="res://assets/textures/dev/grids/Dark/texture_07.png" id="1_2q6dc"]
 [ext_resource type="Texture2D" uid="uid://cumosmcfe46rx" path="res://assets/textures/dev/grids/Orange/texture_05.png" id="2_w7c3h"]
-[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="3_w8frs"]
+[ext_resource type="PackedScene" uid="uid://dp4pqolg4d6ry" path="res://scenes/player_S_.tscn" id="3_w8frs"]
 [ext_resource type="PackedScene" uid="uid://mx076i2bgxwe" path="res://scenes/test_enemy.tscn" id="4_mx8sn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1pjq"]
