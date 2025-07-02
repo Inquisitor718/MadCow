@@ -20,8 +20,14 @@ shape = SubResource("CapsuleShape3D_cvnsp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+cull_mask = 1048573
 
-[node name="ProgressBar" type="ProgressBar" parent="Head/Camera3D"]
+[node name="Revolver" parent="Head/Camera3D" instance=ExtResource("2_aj78o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.473028, -0.334849, -0.467442)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 10.0
 offset_top = 52.0
 offset_right = 338.0
@@ -31,5 +37,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
 value = 100.0
 show_percentage = false
 
-[node name="Revolver" parent="Head/Camera3D" instance=ExtResource("2_aj78o")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.473028, -0.334849, -0.467442)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="GunCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.845099, 0)
+cull_mask = 2

@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @onready var head: Node3D = $Head
+@onready var main_cam: Camera3D = $Head/Camera3D
+@onready var gun_cam: Camera3D = $CanvasLayer/SubViewportContainer/SubViewport/GunCam
 
 var direction = Vector3.ZERO
 
@@ -44,7 +46,7 @@ func dmg(HP):
 		health -= HP
 	else:
 		health = 0
-	$Head/Camera3D/ProgressBar.value = health
+	$CanvasLayer/HealthBar.value = health
 	if health < 0:
 		die()
 		
@@ -55,7 +57,9 @@ func die():
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	default_pos = head.position
-
+	
+	var mainenv = main_cam.get_environment()
+	gun_cam.set_environment(mainenv)
 
 
 func _input(event):
@@ -64,6 +68,9 @@ func _input(event):
 		head.rotate_x(deg_to_rad((event.relative.y) * mouse_sens *-1))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
+
+func _process(delta):
+	gun_cam.global_transform = main_cam.global_transform
 
 
 func _physics_process(delta: float) -> void:
