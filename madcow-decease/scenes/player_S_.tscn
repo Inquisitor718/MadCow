@@ -11,6 +11,7 @@
 bg_color = Color(0.229933, 0.712038, 0.249773, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player_S"]]
+collision_layer = 17
 script = ExtResource("1_gkn25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

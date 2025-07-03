@@ -4,6 +4,9 @@ extends CharacterBody3D
 var direction = Vector3.ZERO
 
 var on_floor := true
+var walking = false
+var sprinting = false
+var crouching = false
 
 #health system
 @export var health =  100
@@ -55,8 +58,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	default_pos = head.position
 
-
-
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad((event.relative.x) * mouse_sens * -1))
@@ -74,14 +75,23 @@ func _physics_process(delta: float) -> void:
 		pcap.shape.height -= dcrouch_speed * delta
 		pcap.shape.height = clamp(pcap.shape.height, 0.72 , 2)
 		speed_now = speed_crouch
+		crouching = true
+		walking = false
+		sprinting = false
 	else:
 		pcap.shape.height += ucrouch_speed * delta
 		pcap.shape.height = clamp(pcap.shape.height, 0.72, 2)
 		if abs(pcap.shape.height - 2.0) < 0.01:
 			if Input.is_action_pressed("sprint") && is_on_floor():
 				speed_now = speed_sprint
+				crouching = false
+				walking = false
+				sprinting = true
 			else:
 				speed_now = speed_walk
+				crouching = false
+				walking = true
+				sprinting = false
 
 
 	# Add the gravity.
