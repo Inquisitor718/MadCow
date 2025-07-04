@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://mx076i2bgxwe"]
+[gd_scene load_steps=6 format=3 uid="uid://mx076i2bgxwe"]
 
 [ext_resource type="Script" uid="uid://bcgkgd6b61xqb" path="res://scripts/enemy.gd" id="1_h17bh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h17bh"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p1mj"]
+albedo_color = Color(0.935128, 0, 0.241573, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mkyue"]
+material = SubResource("StandardMaterial3D_7p1mj")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h17bh"]
 radius = 8.0

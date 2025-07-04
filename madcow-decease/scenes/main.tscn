@@ -21,6 +21,8 @@ glow_enabled = true
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(4.5, 1, 9.5, 4.5, 1, 4.75, 3.5, 1, 4.5, -49.5, 1, 9.5, 3.5, 1, -4.25, 4.75, 1, -4.5, 4.75, 1, -9.5, -49.5, 1, -9.5, 5.75, 1, -4.25, 49.5, 1, -9.5, 5.75, 1, 4.25, 49.5, 1, 9.5)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(5, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(1, 10, 0), PackedInt32Array(0, 10, 11), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11)]
+agent_height = 2.0
+agent_max_slope = 60.0
 
 [node name="Main" type="Node3D"]
 
@@ -33,11 +35,11 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tipki")
 
-[node name="Player" parent="." instance=ExtResource("3_jyhfs")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 1)
 
 [node name="enemy" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 0.5)
 navigation_region = NodePath("../NavigationRegion3D")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
