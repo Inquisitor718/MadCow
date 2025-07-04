@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://mx076i2bgxwe"]
+
+[ext_resource type="Script" uid="uid://bcgkgd6b61xqb" path="res://scripts/enemy.gd" id="1_h17bh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h17bh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mkyue"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h17bh"]
+radius = 8.0
+
+[node name="enemy" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_h17bh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_h17bh")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_mkyue")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.2
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_h17bh")
+collision_mask = 16
