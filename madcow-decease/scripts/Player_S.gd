@@ -107,8 +107,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			bob_timer += delta * wbob_freq
 		#does actual bobbing
-		head.position.y = default_pos.y + (sin(bob_timer) * bob_amplitude )
-		head.position.x = default_pos.x + (sin(bob_timer / 2.0) * bob_amplitude)
+		head.position.y = lerp(head.position.y, default_pos.y + sin(bob_timer) * bob_amplitude, delta * lerp_speed)
+		head.position.x = lerp(head.position.x, default_pos.x + (sin(bob_timer / 2.0) * bob_amplitude), delta * lerp_speed)
 	else:#resets default position of the head when not moving
 		head.position.y = lerp(head.position.y, default_pos.y, delta * lerp_speed)
 		head.position.x = lerp(head.position.x, default_pos.x, delta * lerp_speed)
