@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://mx076i2bgxwe" path="res://scenes/enemy.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy.tscn" id="4_tbgi4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")

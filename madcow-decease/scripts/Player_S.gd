@@ -36,9 +36,9 @@ const JUMP_VELOCITY = 4.5
 # Bobbing Vars
 @export var bob_timer := 0.0
 @export var bob_amplitude := 0.1
-@export var wbob_freq := 5.0
-@export var sbob_freq := 8.0
-@export var cbob_freq := 2.0
+@export var wbob_freq := 8.0
+@export var sbob_freq := 14.0
+@export var cbob_freq := 5.0
 @export var default_pos := Vector3.ZERO
 
 # Jumping Bob Vars
