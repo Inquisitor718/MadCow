@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj223mhxnkgjl"
-path.s3tc="res://.godot/imported/T_VFX_basic1.PNG-c364dd52b47141faf527898144cb67ac.s3tc.ctex"
+uid="uid://d148s78i1es83"
+path.s3tc="res://.godot/imported/T_VFX_Noi55.png-6bbfd1624c4c4a418f5b61de68ae574c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/T_VFX_basic1.PNG"
-dest_files=["res://.godot/imported/T_VFX_basic1.PNG-c364dd52b47141faf527898144cb67ac.s3tc.ctex"]
+source_file="res://assets/FireBall/T_VFX_Noi55.png"
+dest_files=["res://.godot/imported/T_VFX_Noi55.png-6bbfd1624c4c4a418f5b61de68ae574c.s3tc.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://mx076i2bgxwe"]
+[gd_scene load_steps=12 format=3 uid="uid://mx076i2bgxwe"]
 
 [ext_resource type="Script" uid="uid://bcgkgd6b61xqb" path="res://scripts/enemy.gd" id="1_h17bh"]
+[ext_resource type="PackedScene" uid="uid://dllliskcnq7hf" path="res://scenes/fireball.tscn" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h17bh"]
 
@@ -10,12 +11,32 @@ albedo_color = Color(0.935128, 0, 0.241573, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mkyue"]
 material = SubResource("StandardMaterial3D_7p1mj")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md0e3"]
+albedo_color = Color(0.87451, 0.662745, 0.560784, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ra3w"]
+material = SubResource("StandardMaterial3D_md0e3")
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uy6h"]
+albedo_color = Color(0.839216, 0.615686, 0.439216, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c4w8v"]
+material = SubResource("StandardMaterial3D_5uy6h")
+radius = 0.005
+height = 0.1
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_h17bh"]
 radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xwavj"]
+radius = 15.0
 
 [node name="enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_h17bh")
+fireball_scene = ExtResource("2_md0e3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_h17bh")
@@ -24,9 +45,45 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mkyue")
 
+[node name="Udder" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0536166, -0.41084, -0.5)
+mesh = SubResource("SphereMesh_4ra3w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Udder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.130631, -0.00508547, 0.0126579)
+mesh = SubResource("CapsuleMesh_c4w8v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D/Udder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.109229, 0.0451548, -0.0355048)
+mesh = SubResource("CapsuleMesh_c4w8v")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MeshInstance3D/Udder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.109229, -0.0464595, -0.0763629)
+mesh = SubResource("CapsuleMesh_c4w8v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D/Udder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.109229, -0.0713033, 0.00672448)
+mesh = SubResource("CapsuleMesh_c4w8v")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D/Udder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.109229, -0.036419, 0.0792916)
+mesh = SubResource("CapsuleMesh_c4w8v")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D/Udder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.109229, 0.053232, 0.0646459)
+mesh = SubResource("CapsuleMesh_c4w8v")
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.2
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+[node name="InnerCast" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_h17bh")
 collision_mask = 16
+
+[node name="OutterCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_xwavj")
+collision_mask = 16
+
+[node name="FirePoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.414854, -0.761255)

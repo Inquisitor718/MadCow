@@ -35,7 +35,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tipki")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_jyhfs")]
+[node name="Player" parent="." instance=ExtResource("3_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 1)
 
 [node name="enemy" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("4_tbgi4")]
