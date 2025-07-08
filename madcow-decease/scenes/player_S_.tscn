@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
-[ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scenes/w_manager.gd" id="2_v7hu7"]
-[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="3_jdn2x"]
+[ext_resource type="Script" path="res://scenes/w_manager.gd" id="2_v7hu7"]
+[ext_resource type="Script" path="res://scripts/Weapon_resource.gd" id="3_jdn2x"]
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]

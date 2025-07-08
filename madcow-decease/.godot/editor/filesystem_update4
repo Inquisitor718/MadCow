@@ -1,0 +1,7 @@
+res://scenes/main.tscn
+res://assets/FireBall/fireball_shader.tres
+res://assets/FireBall/FireBallCoreShader.tres
+res://scenes/enemy.tscn
+res://scenes/player_S_.tscn
+res://scripts/Player_S.gd
+res://scenes/fireball.tscn

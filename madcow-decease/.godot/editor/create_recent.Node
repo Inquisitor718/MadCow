@@ -1,0 +1,14 @@
+CollisionShape3D
+Area3D
+Marker3D
+MeshInstance3D
+ShapeCast3D
+GPUParticles3D
+NavigationRegion3D
+NavigationAgent3D
+CharacterBody3D
+AnimationPlayer
+Node3D
+RayCast3D
+Camera3D
+CSGBox3D
