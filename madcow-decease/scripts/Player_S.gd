@@ -15,7 +15,9 @@ var speed_now = 5.0
 @export var speed_walk = 5.0
 @export var speed_sprint = 10.0
 @export var speed_crouch = 2.5
-const JUMP_VELOCITY = 4.5
+@export var air_control = 2 
+@export var JUMP_VELOCITY = 10
+
 
 @export var mouse_sens = 0.4
 
@@ -100,19 +102,37 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = JUMP_VELOCITY
 	else:
-		if Input.is_action_just_released("jump"):
+		if Input.is_action_just_released("jump") and velocity.y > 0 and not is_on_floor():
 			velocity.y *= 0.5
+			print("hop")
+			
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	direction = lerp(direction , (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() , delta * lerp_speed)
-	if direction:
-		velocity.x = direction.x * speed_now
-		velocity.z = direction.z * speed_now
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed_now)
-		velocity.z = move_toward(velocity.z, 0, speed_now)
 	
+	if is_on_floor():
+		if direction.length() > 0.01:
+			velocity.x = direction.x * speed_now
+			velocity.z = direction.z * speed_now
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed_now)
+			velocity.z = move_toward(velocity.z, 0, speed_now)
+	else:
+		var air_max = speed_walk 
+	
+	# apply air acceleration
+		var accel = direction * speed_now * air_control * delta
+		velocity.x += accel.x
+		velocity.z += accel.z
+
+	# limit horizontal air speed
+		var horiz_vel = Vector2(velocity.x, velocity.z)
+		var max_horiz = min(horiz_vel.length(), air_max)
+		horiz_vel = horiz_vel.normalized() * max_horiz
+
+		velocity.x = horiz_vel.x
+		velocity.z = horiz_vel.y
 #head bobbing
 	var is_mov = input_dir.length() > 0.01 and is_on_floor()
 	#keeps bob movement smooth for long runtimes by limiting value of bob_timer to principle values

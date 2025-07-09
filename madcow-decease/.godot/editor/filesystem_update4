@@ -1,0 +1,7 @@
+res://scenes/player_S_.tscn
+res://scripts/Player_S.gd
+res://scenes/main.tscn
+res://scenes/level.tscn
+res://scenes/revolver.tscn
+res://scenes/shotgun.tscn
+res://scenes/test_enemy.tscn
