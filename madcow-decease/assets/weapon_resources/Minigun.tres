@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://d0rj6ma6qyhe0"]
+
+[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="1_g265i"]
+
+[resource]
+script = ExtResource("1_g265i")
+W_name = "minigun"
+Activate_anim = "MinigunActivate"
+Shoot_anim = "MinigunShoot"
+Reload_anim = ""
+DActivate_anim = ""
+No_ammo_anim = ""
+Active_ammo = 30
+Stored_ammo = 90
+Magazine = 30
+Max_ammo = 300
+Auto_fire = false
+Type = 2
+range = 5000
+dmg = 10
+Projectile_Velocity = 300
+metadata/_custom_type_script = "uid://c2imv21vq2msg"

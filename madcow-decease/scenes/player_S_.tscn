@@ -1,12 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=20 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
 [ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scenes/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="3_jdn2x"]
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
+[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
+[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/minigun.tscn" id="6_w0gdg"]
+[ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scenes/Gun_Counter.gd" id="8_flsqn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj78o"]
+bg_color = Color(0.229933, 0.712038, 0.249773, 1)
 
 [sub_resource type="Animation" id="Animation_v7hu7"]
 length = 0.001
@@ -45,6 +53,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, -3.14159, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("minigun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.32037, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("minigun:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_aj78o"]
@@ -143,18 +175,100 @@ tracks/1/keys = {
 "values": [Vector3(0, 3.14159, 0), Vector3(-0.174533, 3.14159, 0), Vector3(0, 3.14159, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_w0gdg"]
+resource_name = "MinigunActivate"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.32037, 0), Vector3(0.33, -0.17133, -0.474436)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("minigun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_qde3d"]
+resource_name = "MinigunShoot"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.33, -0.17133, -0.474436), Vector3(0.33, -0.17133, -0.386454)]
+}
+
+[sub_resource type="Animation" id="Animation_flsqn"]
+resource_name = "RevolverDeactivate"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.329511, -0.280136, -0.370283), Vector3(0.0178347, -1.33485, 0.000116378)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Revolver:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk2ay"]
 _data = {
+&"MinigunActivate": SubResource("Animation_w0gdg"),
+&"MinigunShoot": SubResource("Animation_qde3d"),
 &"RESET": SubResource("Animation_v7hu7"),
 &"RevolverActivate": SubResource("Animation_aj78o"),
+&"RevolverDeactivate": SubResource("Animation_flsqn"),
 &"RevolverReload": SubResource("Animation_jdn2x"),
 &"RevolverShoot": SubResource("Animation_lk2ay")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj78o"]
-bg_color = Color(0.229933, 0.712038, 0.249773, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player_S"]]
 script = ExtResource("1_gkn25")
@@ -162,33 +276,8 @@ script = ExtResource("1_gkn25")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cvnsp")
 
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Head"]
-cull_mask = 1048573
-
-[node name="W_Manager" type="Node3D" parent="Head/Camera3D"]
-script = ExtResource("2_v7hu7")
-_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg")])
-Start_Weapons = Array[String](["Revolver"])
-
-[node name="rig" type="Node3D" parent="Head/Camera3D/W_Manager"]
-
-[node name="Revolver" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("2_aj78o")]
-transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.0178347, -1.33485, 0.000116378)
-visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/W_Manager/rig"]
-libraries = {
-&"": SubResource("AnimationLibrary_lk2ay")
-}
-
-[node name="BulletPoint" type="Marker3D" parent="Head/Camera3D/W_Manager/rig"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.826832)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_flsqn")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 offset_right = 40.0
@@ -214,7 +303,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/GunCounter/WeaponInfo"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="CanvasLayer/GunCounter/WeaponInfo"]
+[node name="CurrentWeapon" type="Label" parent="CanvasLayer/GunCounter/WeaponInfo"]
 layout_mode = 2
 
 [node name="AmmoInfo" type="HBoxContainer" parent="CanvasLayer/GunCounter"]
@@ -223,7 +312,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/GunCounter/AmmoInfo"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="CanvasLayer/GunCounter/AmmoInfo"]
+[node name="CurrentAmmo" type="Label" parent="CanvasLayer/GunCounter/AmmoInfo"]
 layout_mode = 2
 
 [node name="StackInfo" type="HBoxContainer" parent="CanvasLayer/GunCounter"]
@@ -232,17 +321,50 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/GunCounter/StackInfo"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="CanvasLayer/GunCounter/StackInfo"]
+[node name="WeaponStack" type="Label" parent="CanvasLayer/GunCounter/StackInfo"]
 layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 10.0
-offset_top = 52.0
-offset_right = 338.0
-offset_bottom = 107.0
+offset_left = 801.0
+offset_top = 16.0
+offset_right = 1129.0
+offset_bottom = 71.0
 theme_override_styles/background = SubResource("StyleBoxFlat_gkn25")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
 value = 100.0
 show_percentage = false
 
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+cull_mask = 1048573
+
+[node name="W_Manager" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("2_v7hu7")
+_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d")])
+Start_Weapons = Array[String](["Revolver", "minigun"])
+
+[node name="rig" type="Node3D" parent="Head/Camera3D/W_Manager"]
+
+[node name="Revolver" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("2_aj78o")]
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.0178347, -1.33485, 0.000116378)
+visible = false
+
+[node name="minigun" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("6_w0gdg")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -1.32037, 0)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/W_Manager/rig"]
+libraries = {
+&"": SubResource("AnimationLibrary_lk2ay")
+}
+
+[node name="BulletPoint" type="Marker3D" parent="Head/Camera3D/W_Manager/rig"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.826832)
+
+[connection signal="Update_Ammo" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_ammo"]
+[connection signal="Update_Weapon_Stack" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_weapon_stack"]
+[connection signal="Weapon_Change" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_weapon_change"]
 [connection signal="animation_finished" from="Head/Camera3D/W_Manager/rig/AnimationPlayer" to="Head/Camera3D/W_Manager" method="_on_animation_player_animation_finished"]

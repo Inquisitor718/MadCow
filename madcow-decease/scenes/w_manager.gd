@@ -44,10 +44,13 @@ func Initialize(_start_weapons: Array):
 		Weapon_Stack.push_back(i)
 	
 	Current_Weapon  = Weapon_List[Weapon_Stack[0]]
+	emit_signal("Update_Weapon_Stack", Weapon_Stack)
 	enter()
 
 func enter():
 	animation_player.queue(Current_Weapon.Activate_anim)
+	emit_signal("Weapon_Change", Current_Weapon.W_name)
+	emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
 
 func exit(_next_weapon: String):
 	if _next_weapon  != Current_Weapon.W_name:
@@ -64,21 +67,44 @@ func Change_Weapon(weapon_name: String):
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == Current_Weapon.DActivate_anim:
 		Change_Weapon(Next_Weapon)
+	if anim_name == Current_Weapon.Shoot_anim && Current_Weapon.Auto_fire == true:
+		if Input.is_action_pressed("Shoot"):
+			shoot()
 
 func shoot():
-	animation_player.play(Current_Weapon.Shoot_anim)
-	var Cam_Collision = Get_Cam_Collision()
-	match Current_Weapon.Type:
-		NULL:
-			print("Invalid")
-		HITSCAN:
-			Hit_Scan_Collision(Cam_Collision)
-		PROJECTILE:
-			pass
-
+	if Current_Weapon.Active_ammo != 0:
+		#print("ammo available")
+		if !animation_player.is_playing():
+			#print("animation check pass")
+			animation_player.play(Current_Weapon.Shoot_anim)
+			var Cam_Collision = Get_Cam_Collision()
+			Current_Weapon.Active_ammo -= 1
+			emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
+			match Current_Weapon.Type:
+				NULL:
+					print("Invalid")
+				HITSCAN:
+					Hit_Scan_Collision(Cam_Collision)
+				PROJECTILE:
+					pass
+	else:
+		reload()
 func reload():
-	animation_player.play(Current_Weapon.Reload_anim)
-	
+	if Current_Weapon.Active_ammo == Current_Weapon.Magazine:
+		return
+	elif !animation_player.is_playing():
+		if Current_Weapon.Stored_ammo != 0:
+			animation_player.play(Current_Weapon.Reload_anim)
+			print("reloadd")
+			var Reload_Amount = min(Current_Weapon.Magazine-Current_Weapon.Active_ammo, Current_Weapon.Magazine,Current_Weapon.Stored_ammo)
+			
+			Current_Weapon.Active_ammo = Current_Weapon.Active_ammo + Reload_Amount
+			Current_Weapon.Stored_ammo = Current_Weapon.Stored_ammo - Reload_Amount
+			
+			emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
+			
+		else:
+			animation_player.play(Current_Weapon.No_ammo_anim)
 func Get_Cam_Collision():
 	var camera = get_viewport().get_camera_3d()
 	var viewport = get_viewport().get_size()

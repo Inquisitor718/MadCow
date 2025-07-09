@@ -1,7 +1,12 @@
-res://scenes/player_S_.tscn
-res://scripts/Player_S.gd
 res://scenes/main.tscn
 res://scenes/level.tscn
 res://scenes/revolver.tscn
+res://scenes/player_S_.tscn
 res://scenes/shotgun.tscn
 res://scenes/test_enemy.tscn
+res://scenes/minigun.tscn
+res://assets/weapon_resources/Minigun.tres
+res://scripts/Weapon_resource.gd
+res://scenes/w_manager.gd
+res://assets/weapon_resources/revolver.tres
+res://scenes/Gun_Counter.gd
