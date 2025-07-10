@@ -3,3 +3,4 @@ res://scenes/main.tscn
 res://scenes/level.tscn
 res://scenes/revolver.tscn
 res://scenes/shotgun.tscn
+res://assets/weapon_resources/revolver.tres
