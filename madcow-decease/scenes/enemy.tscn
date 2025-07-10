@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dht304yaux74y"]
+[gd_scene load_steps=10 format=3 uid="uid://d4ngn0yl2kq33"]
 
 [ext_resource type="Script" uid="uid://dg5usppean0mn" path="res://scripts/enemy.gd" id="1_7p1mj"]
 
@@ -85,7 +85,9 @@ mesh = SubResource("CapsuleMesh_5uy6h")
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.124811, -0.0577605, 0.0625288)
 mesh = SubResource("CapsuleMesh_5uy6h")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="Eyes" type="Node3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Eyes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, -10)
 debug_shape_thickness = 5
