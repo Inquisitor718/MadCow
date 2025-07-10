@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
-[ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scenes/w_manager.gd" id="2_v7hu7"]
+[ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scripts/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="3_jdn2x"]
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
 [ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
 [ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/minigun.tscn" id="6_w0gdg"]
-[ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scenes/Gun_Counter.gd" id="8_flsqn"]
+[ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/Gun_Counter.gd" id="8_flsqn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
@@ -283,8 +283,10 @@ shape = SubResource("CapsuleShape3D_cvnsp")
 script = ExtResource("8_flsqn")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -15.0
+offset_top = -5.0
+offset_right = 1137.0
+offset_bottom = 643.0
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 transparent_bg = true
