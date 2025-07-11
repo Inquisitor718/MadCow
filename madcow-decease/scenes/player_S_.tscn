@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=21 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
@@ -273,12 +273,6 @@ _data = {
 &"RevolverShoot": SubResource("Animation_lk2ay")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flsqn"]
-albedo_color = Color(0, 0.717647, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4j2pt"]
-material = SubResource("StandardMaterial3D_flsqn")
-
 [node name="Player" type="CharacterBody3D" groups=["player_S"]]
 script = ExtResource("1_gkn25")
 
@@ -386,9 +380,6 @@ libraries = {
 [node name="BulletPoint" type="Marker3D" parent="Head/Camera3D/W_Manager/rig"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.826832)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_4j2pt")
 
 [connection signal="Update_Ammo" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_ammo"]
 [connection signal="Update_Weapon_Stack" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_weapon_stack"]
