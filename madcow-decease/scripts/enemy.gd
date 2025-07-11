@@ -9,42 +9,57 @@ enum {
 var state = IDLE
 var target
 
-const TURN_SPEED = 3
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+@export var TURN_SPEED = 3
+@export var enemy_health = 500
 
+@onready var eyes: Node3D = $Eyes
+@onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@export var navigation_region: NavigationRegion3D
+@onready var shoot_timer: Timer = $ShootTimer
 
 func _on_sight_range_body_entered(body: Node3D) -> void:
-	pass
+	if body.is_in_group("Player") || body.is_in_group("player_S"):
+		state = TRACKING
+		target = body
+		shoot_timer.start()
 
 
 func _on_sight_range_body_exited(body: Node3D) -> void:
-	pass
-
+	state = IDLE
+	shoot_timer.stop()
 
 func _on_shoot_timer_timeout() -> void:
-	pass
+	if ray_cast_3d.is_colliding():
+		var hit = ray_cast_3d.get_collider()
+		if hit == target:
+			hit.dmg(20)
+			print("Hit!")
+			
+		
+		
+func set_movement_target(target: Vector3):
+	navigation_agent_3d.set_target_position(target)
+	
+func patroll():
+	var vertices = navigation_region.navigation_mesh.get_vertices()
+	if vertices.size() > 0:
+		set_movement_target(vertices[randi_range(0, vertices.size() - 1)])
 
+func Hit(dmg):
+	enemy_health -= dmg
+	print("Enemy Health:", enemy_health)
+	if enemy_health <= 0:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	move_and_slide()
+	match state:
+		IDLE:
+			patroll()
+		TRACKING:
+			eyes.look_at(target.global_transform.origin, Vector3.UP)
+			rotate_y(deg_to_rad(eyes.rotation.y * TURN_SPEED))
+			
 
 
 
