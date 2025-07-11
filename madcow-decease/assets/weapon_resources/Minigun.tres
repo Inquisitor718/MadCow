@@ -8,7 +8,11 @@ W_name = "minigun"
 Activate_anim = "MinigunActivate"
 Shoot_anim = "MinigunShoot"
 Reload_anim = "MinigunReload"
+<<<<<<< Updated upstream
 DActivate_anim = ""
+=======
+DActivate_anim = "MinigunDeactivate"
+>>>>>>> Stashed changes
 No_ammo_anim = ""
 Active_ammo = 30
 Stored_ammo = 90
