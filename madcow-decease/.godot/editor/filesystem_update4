@@ -1,14 +1,6 @@
-<<<<<<< Updated upstream
-=======
-res://scenes/player_S_.tscn
-res://assets/weapon_resources/Minigun.tres
->>>>>>> Stashed changes
 res://scenes/main.tscn
 res://scenes/level.tscn
 res://scenes/revolver.tscn
 res://scenes/player_S_.tscn
 res://scenes/shotgun.tscn
-<<<<<<< Updated upstream
 res://assets/weapon_resources/Minigun.tres
-=======
->>>>>>> Stashed changes
