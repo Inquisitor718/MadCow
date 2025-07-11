@@ -1,65 +1,87 @@
 extends CharacterBody3D
 
-enum {
-	IDLE,
-	TRACKING,
-	SHOOTING
-}
-
+enum { IDLE, TRACKING, SHOOTING }
 var state = IDLE
-var target
+var target: Node3D = null
 
-@export var TURN_SPEED = 3
-@export var enemy_health = 500
+@export var TURN_SPEED := 3.0
+@export var enemy_health := 500
+@export var SPEED := 3.0
+
+# Define patrol points (can be set from editor or dynamically via script)
+@export var patrol_points: Array[Node3D]
+var patrol_index := 0
 
 @onready var eyes: Node3D = $Eyes
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@export var navigation_region: NavigationRegion3D
 @onready var shoot_timer: Timer = $ShootTimer
 
-func _on_sight_range_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player") || body.is_in_group("player_S"):
-		state = TRACKING
-		target = body
-		shoot_timer.start()
 
-
-func _on_sight_range_body_exited(body: Node3D) -> void:
-	state = IDLE
-	shoot_timer.stop()
-
-func _on_shoot_timer_timeout() -> void:
-	if ray_cast_3d.is_colliding():
-		var hit = ray_cast_3d.get_collider()
-		if hit == target:
-			hit.dmg(20)
-			print("Hit!")
-			
-		
-		
-func set_movement_target(target: Vector3):
-	navigation_agent_3d.set_target_position(target)
-	
-func patroll():
-	var vertices = navigation_region.navigation_mesh.get_vertices()
-	if vertices.size() > 0:
-		set_movement_target(vertices[randi_range(0, vertices.size() - 1)])
-
-func Hit(dmg):
-	enemy_health -= dmg
-	print("Enemy Health:", enemy_health)
-	if enemy_health <= 0:
-		queue_free()
+func _ready() -> void:
+	randomize()
+	navigation_agent_3d.velocity_computed.connect(_on_velocity_computed)
+	if patrol_points.size() > 0:
+		navigation_agent_3d.set_target_position(patrol_points[patrol_index].global_transform.origin)
 
 func _physics_process(delta: float) -> void:
 	match state:
 		IDLE:
-			patroll()
+			# Patrol between points
+			if patrol_points.size() > 0:
+				if navigation_agent_3d.is_navigation_finished():
+					# Go to next point
+					patrol_index = (patrol_index + 1) % patrol_points.size()
+					navigation_agent_3d.set_target_position(patrol_points[patrol_index].global_transform.origin)
+
+				# Rotate toward direction
+				var direction = navigation_agent_3d.get_next_path_position() - global_transform.origin
+				if direction.length() > 0.1:
+					direction = direction.normalized()
+					look_at(global_transform.origin + direction, Vector3.UP)
+
 		TRACKING:
 			eyes.look_at(target.global_transform.origin, Vector3.UP)
 			rotate_y(deg_to_rad(eyes.rotation.y * TURN_SPEED))
-			
+			var dir = (target.global_transform.origin - global_transform.origin).normalized()
+			velocity = dir * SPEED
+			move_and_slide()
+
+		SHOOTING:
+			pass
+
+
+func _on_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity = safe_velocity
+	move_and_slide()
+
+
+func _on_sight_range_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player") or body.is_in_group("player_S"):
+		state = TRACKING
+		target = body
+		shoot_timer.start()
+
+func _on_sight_range_body_exited(body: Node3D) -> void:
+	if target == body:
+		state = IDLE
+		target = null
+		shoot_timer.stop()
+		if patrol_points.size() > 0:
+			navigation_agent_3d.set_target_position(patrol_points[patrol_index].global_transform.origin)
+
+func _on_shoot_timer_timeout() -> void:
+	if ray_cast_3d.is_colliding():
+		var hit = ray_cast_3d.get_collider()
+		if hit == target and hit.has_method("dmg"):
+			hit.dmg(20)
+			print("Hit!")
+
+func Hit(dmg: int) -> void:
+	enemy_health -= dmg
+	print("Enemy Health:", enemy_health)
+	if enemy_health <= 0:
+		queue_free()
 
 
 
@@ -82,7 +104,7 @@ func _physics_process(delta: float) -> void:
 #var attack_timer := 0.0
 #
 #func _ready():
-	#navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
+	#navigation_agent_3d.velocity_computed.connect(Callable(_on_velocity_computed))
 	#patroll()
 #
 #func _physics_process(delta):
@@ -113,15 +135,15 @@ func _physics_process(delta: float) -> void:
 		## Else, chase the player
 		#set_movement_target(player.global_position)
 #
-	#if navigation_agent.is_navigation_finished():
+	#if navigation_agent_3d.is_navigation_finished():
 		#patroll()
 		#return
 #
-	#var next_path_position = navigation_agent.get_next_path_position()
+	#var next_path_position = navigation_agent_3d.get_next_path_position()
 	#var new_velocity = global_position.direction_to(next_path_position) * movement_speed
 #
-	#if navigation_agent.avoidance_enabled:
-		#navigation_agent.velocity = new_velocity
+	#if navigation_agent_3d.avoidance_enabled:
+		#navigation_agent_3d.velocity = new_velocity
 	#else:
 		#_on_velocity_computed(new_velocity)
 #
@@ -130,7 +152,7 @@ func _physics_process(delta: float) -> void:
 	#move_and_slide()
 #
 #func set_movement_target(target: Vector3):
-	#navigation_agent.set_target_position(target)
+	#navigation_agent_3d.set_target_position(target)
 #
 #func stop_and_attack(_delta):
 	#velocity = Vector3.ZERO

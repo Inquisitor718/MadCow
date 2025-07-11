@@ -1,8 +1,7 @@
 res://scenes/main.tscn
-res://scenes/level.tscn
+res://scripts/enemy.gd
 res://scenes/enemy.tscn
+res://scenes/level.tscn
 res://scenes/player_S_.tscn
 res://scenes/collectible.tscn
 res://scenes/minigun.tscn
-res://scenes/collectible.gd
-res://collectible.gd
