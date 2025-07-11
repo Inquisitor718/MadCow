@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bumv6bik85j7x"]
+[gd_scene load_steps=10 format=3 uid="uid://bumv6bik85j7x"]
 
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="5_tbgi4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")
@@ -46,3 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43, 1.5, 0)
 collision_layer = 17
 navigation_region = NodePath("../NavigationRegion3D")
+
+[node name="Collectible" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -2)

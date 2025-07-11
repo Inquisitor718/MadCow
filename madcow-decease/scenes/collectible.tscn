@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt4nmvssar0vx"]
+
+[ext_resource type="Script" uid="uid://cjglxg6culrr0" path="res://collectible.gd" id="1_bkg8t"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k2x07"]
+height = 0.1
+radius = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1pg6c"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.1
+
+[node name="Collectible" type="Area3D"]
+script = ExtResource("1_bkg8t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_k2x07")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.47035e-08, 1, 0, -1, -4.47035e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1pg6c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
