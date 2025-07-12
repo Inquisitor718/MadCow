@@ -52,7 +52,7 @@ func dmg(HP):
 		die()
 		
 func die():
-	pass
+	print("Player_Sarvesh Died! You NOOB!")
 
 #mouse movement
 func _ready():

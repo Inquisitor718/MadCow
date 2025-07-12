@@ -16,6 +16,7 @@ var patrol_index := 0
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var shoot_timer: Timer = $ShootTimer
+@export var coin_scene: PackedScene
 
 
 func _ready() -> void:
@@ -82,6 +83,9 @@ func Hit(dmg: int) -> void:
 	print("Enemy Health:", enemy_health)
 	if enemy_health <= 0:
 		queue_free()
+		var coin_instance = coin_scene.instantiate()
+		coin_instance.global_position = global_position + Vector3(0, 0, 0)
+		get_tree().current_scene.add_child(coin_instance)
 
 
 

@@ -280,6 +280,7 @@ albedo_color = Color(0, 0.717647, 0, 1)
 material = SubResource("StandardMaterial3D_flsqn")
 
 [node name="Player" type="CharacterBody3D" groups=["player_S"]]
+collision_mask = 7
 script = ExtResource("1_gkn25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

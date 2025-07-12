@@ -5,3 +5,5 @@ res://scenes/level.tscn
 res://scenes/player_S_.tscn
 res://scenes/collectible.tscn
 res://scenes/minigun.tscn
+res://collectible.gd
+res://scripts/Player_S.gd
