@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwn8r2hcqk5nx"]
+
+[ext_resource type="Script" uid="uid://cx7e1pkk33cfs" path="res://EnemyBullet.gd" id="1_m4xpq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1n5jk"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_vhm7m"]
+radius = 0.1
+height = 0.2
+
+[node name="EnemyBullet" type="RigidBody3D"]
+script = ExtResource("1_m4xpq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1n5jk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_vhm7m")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true

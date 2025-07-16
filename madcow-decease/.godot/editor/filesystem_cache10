@@ -1,6 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1751487253
-Basement.tscn::PackedScene/PackedScene::4916904659093600821::1751477537::0::1::::<><><>0<>0<><>::uid://c6qqhoiccfc6n::::res://player.tscn
+::res://::1752679987
+Barn.tscn::PackedScene::2347051796342793993::1752646045::0::1::::<><><>0<>0<><>::uid://c6qqhoiccfc6n::::res://player.tscn<>uid://cfw8gbcpxtjfg::::res://Movement.gd
+Basement.tscn::PackedScene::8731461264771369863::1752646045::0::1::::<><><>0<>0<><>::uid://c6qqhoiccfc6n::::res://player.tscn<>uid://cfw8gbcpxtjfg::::res://Movement.gd
+Enemy.gd::GDScript/GDScript::1805117579954783549::1752060910::0::1::::<>CharacterBody3D<><>0<>0<><>::
+Enemy.tscn::PackedScene::7663737124958572481::1752646045::0::1::::<><><>0<>0<><>::uid://0yoa1ms83m4d::::res://Enemy.gd
+EnemyBullet.gd::GDScript/GDScript::6453534961594623908::1752060269::0::1::::<>RigidBody3D<><>0<>0<><>::
+EnemyBullet.tscn::PackedScene::3959447602847032345::1752646046::0::1::::<><><>0<>0<><>::uid://cx7e1pkk33cfs::::res://EnemyBullet.gd
 icon.svg::CompressedTexture2D/CompressedTexture2D::1359092022835301208::1750790133::1750790140::1::::<><><>0<>0<>8730e16e5bc102f48401b94640e16aa4<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-Movement.gd::GDScript/GDScript::2699449876604700364::1751435510::0::1::::<>CharacterBody3D<><>0<>0<><>::
-player.tscn::PackedScene/PackedScene::6982710284450840891::1751476513::0::1::::<><><>0<>0<><>::uid://bepvssds3fs57::::res://Movement.gd
+Movement.gd::GDScript/GDScript::5171216328016385212::1751568518::0::1::::<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene/PackedScene::6982710284450840891::1751613382::0::1::::<><><>0<>0<><>::
+::res://testing assets/::1752001301
