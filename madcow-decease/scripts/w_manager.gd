@@ -139,6 +139,9 @@ func Launch_Proj(Point: Vector3):
 	var Direction = (Point - Bullet_Point.get_global_transform().origin).normalized()
 	var Projectile = Current_Weapon.Projectile_To_Load.instantiate()
 	
+	
+	Projectile.position = Bullet_Point.global_position
 	Bullet_Point.add_child(Projectile)
+	Projectile.look_at(Point)
 	Projectile.dmg = Current_Weapon.dmg
 	Projectile.set_linear_velocity(Direction*Current_Weapon.Projectile_Velocity)
