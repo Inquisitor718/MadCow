@@ -11,6 +11,7 @@ var target
 
 @export var TURN_SPEED = 3
 @export var enemy_health = 500
+@export var ENEMY_DAMAGE = 20
 
 @onready var eyes: Node3D = $Eyes
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
@@ -33,7 +34,7 @@ func _on_shoot_timer_timeout() -> void:
 	if ray_cast_3d.is_colliding():
 		var hit = ray_cast_3d.get_collider()
 		if hit == target:
-			hit.dmg(20)
+			hit.dmg(ENEMY_DAMAGE)
 			print("Hit!")
 			
 		
