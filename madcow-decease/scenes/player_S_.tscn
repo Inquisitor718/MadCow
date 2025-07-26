@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=25 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
@@ -45,6 +45,62 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_4j2pt"]
+resource_name = "MinigunDeac"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.33, -0.17133, -0.474436), Vector3(0, -1.32037, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("minigun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_0wot1"]
+resource_name = "MinigunReload"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 2, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("minigun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 2, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.33, -0.17133, -0.474436), Vector3(0.33, -0.17133, -0.378698), Vector3(0.33, -0.050642, -0.378698), Vector3(0.33, -0.17133, -0.474436)]
 }
 
 [sub_resource type="Animation" id="Animation_qde3d"]
@@ -111,7 +167,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1.32037, 0)]
+"values": [Vector3(0.33, -0.17133, -0.378698)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -124,6 +180,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("minigun:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_aj78o"]
@@ -265,6 +333,8 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk2ay"]
 _data = {
 &"MinigunActivate": SubResource("Animation_w0gdg"),
+&"MinigunDeac": SubResource("Animation_4j2pt"),
+&"MinigunReload": SubResource("Animation_0wot1"),
 &"MinigunShoot": SubResource("Animation_qde3d"),
 &"RESET": SubResource("Animation_v7hu7"),
 &"RevolverActivate": SubResource("Animation_aj78o"),
@@ -279,7 +349,7 @@ albedo_color = Color(0, 0.717647, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4j2pt"]
 material = SubResource("StandardMaterial3D_flsqn")
 
-[node name="Player" type="CharacterBody3D" groups=["player_S"]]
+[node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
 script = ExtResource("1_gkn25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -375,7 +445,7 @@ transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.0178
 visible = false
 
 [node name="minigun" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("6_w0gdg")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -1.32037, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.33, -0.17133, -0.378698)
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/W_Manager/rig"]

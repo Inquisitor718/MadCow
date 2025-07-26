@@ -1,6 +1,8 @@
-res://scenes/player_S_.tscn
+res://scenes/minigun.tscn
+res://scripts/bullet.gd
 res://scenes/main.tscn
-res://scenes/level.tscn
 res://scenes/revolver.tscn
+res://scenes/player_S_.tscn
 res://scenes/shotgun.tscn
-res://assets/weapon_resources/revolver.tres
+res://scenes/bullet.tscn
+res://assets/weapon_resources/Minigun.tres

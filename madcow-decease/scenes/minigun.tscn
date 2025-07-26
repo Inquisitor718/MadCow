@@ -2,7 +2,7 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_haywc"]
 
-[node name="minigun" type="Node3D"]
+[node name="minigun" type="Node3D" groups=["Proj"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.000331565, 1, 0, -1, -0.000331565, 0, 0, 0)
