@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://d0rj6ma6qyhe0"]
 
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="1_g265i"]
-[ext_resource type="PackedScene" uid="uid://dmm3mbp265gwn" path="res://scenes/bullet.tscn" id="1_pkjo4"]
+[ext_resource type="PackedScene" uid="uid://b6l6rkwnn1qmn" path="res://scenes/Projectiles_to_be_loaded/RBprojectile.tscn" id="1_pkjo4"]
 
 [resource]
 script = ExtResource("1_g265i")
@@ -16,9 +16,8 @@ Stored_ammo = 90
 Magazine = 30
 Max_ammo = 300
 Auto_fire = true
-Type = 2
 range = 5000
 dmg = 10
 Projectile_To_Load = ExtResource("1_pkjo4")
-Projectile_Velocity = 100
+Spread_Amount = 0
 metadata/_custom_type_script = "uid://c2imv21vq2msg"

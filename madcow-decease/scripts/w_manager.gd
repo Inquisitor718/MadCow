@@ -6,7 +6,7 @@ extends Node3D
 signal Weapon_Change
 signal Update_Ammo
 signal Update_Weapon_Stack
-
+signal Add_Signal_To_HUD
 
 var Current_Weapon = null
 var Weapon_Stack = []
@@ -77,18 +77,27 @@ func shoot():
 		if !animation_player.is_playing():
 			#print("animation check pass")
 			animation_player.play(Current_Weapon.Shoot_anim)
-			var Cam_Collision = Get_Cam_Collision()
+			#var Cam_Collision = Get_Cam_Collision()
 			Current_Weapon.Active_ammo -= 1
 			emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
-			match Current_Weapon.Type:
-				NULL:
-					print("Invalid")
-				HITSCAN:
-					Hit_Scan_Collision(Cam_Collision)
-				PROJECTILE:
-					Launch_Proj(Get_Cam_Collision())
+			var Spread = Vector2.ZERO
+			Load_Projectile(Spread)
+			#match Current_Weapon.Type:
+				#NULL:
+					#print("Invalid")
+				#HITSCAN:
+					#Hit_Scan_Collision(Cam_Collision)
+				#PROJECTILE:
+					#Launch_Proj(Get_Cam_Collision())
 	else:
 		reload()
+
+func Load_Projectile(_spread):
+	var _projectile:Projectile = Current_Weapon.Projectile_To_Load.instantiate()
+	Bullet_Point.add_child(_projectile)
+	Add_Signal_To_HUD.emit(_projectile)
+	_projectile._Set_Projectile(Current_Weapon.dmg, _spread, Current_Weapon.range)
+
 func reload():
 	if Current_Weapon.Active_ammo == Current_Weapon.Magazine:
 		return
@@ -105,43 +114,43 @@ func reload():
 			
 		else:
 			animation_player.play(Current_Weapon.No_ammo_anim)
-func Get_Cam_Collision():
-	var camera = get_viewport().get_camera_3d()
-	var viewport = get_viewport().get_size()
-	
-	var Ray_Origin = camera.project_ray_origin(viewport/2)
-	var Ray_End = Ray_Origin + camera.project_ray_normal(viewport/2)*Current_Weapon.range
-	
-	var New_Intersection = PhysicsRayQueryParameters3D.create(Ray_Origin,Ray_End)
-	var Intersection = get_world_3d().direct_space_state.intersect_ray(New_Intersection)
-	
-	if not Intersection.is_empty():
-		var Col_Point = Intersection.position
-		return Col_Point
-	else:
-		return Ray_End
-		
-func Hit_Scan_Collision(Collision_Point):
-	var Bullet_Direction = (Collision_Point - Bullet_Point.get_global_transform().origin).normalized()
-	var New_Interection = PhysicsRayQueryParameters3D.create(Bullet_Point.get_global_transform().origin,Collision_Point+Bullet_Direction*2)
-	
-	var Bullet_Collision = get_world_3d().direct_space_state.intersect_ray(New_Interection)
-	
-	if Bullet_Collision:
-		Hit_Scan_Damage(Bullet_Collision.collider)
-func Hit_Scan_Damage(Collider):
-	if Collider.is_in_group("Enemy") and Collider.has_method("Hit"):
-		Collider.Hit(Current_Weapon.dmg )
-		print("Hit")
-		
-		
-func Launch_Proj(Point: Vector3):
-	var Direction = (Point - Bullet_Point.get_global_transform().origin).normalized()
-	var Projectile = Current_Weapon.Projectile_To_Load.instantiate()
-	
-	
-	Projectile.position = Bullet_Point.global_position
-	Bullet_Point.add_child(Projectile)
-	Projectile.look_at(Point)
-	Projectile.dmg = Current_Weapon.dmg
-	Projectile.set_linear_velocity(Direction*Current_Weapon.Projectile_Velocity)
+#func Get_Cam_Collision():
+	#var camera = get_viewport().get_camera_3d()
+	#var viewport = get_viewport().get_size()
+	#
+	#var Ray_Origin = camera.project_ray_origin(viewport/2)
+	#var Ray_End = Ray_Origin + camera.project_ray_normal(viewport/2)*Current_Weapon.range
+	#
+	#var New_Intersection = PhysicsRayQueryParameters3D.create(Ray_Origin,Ray_End)
+	#var Intersection = get_world_3d().direct_space_state.intersect_ray(New_Intersection)
+	#
+	#if not Intersection.is_empty():
+		#var Col_Point = Intersection.position
+		#return Col_Point
+	#else:
+		#return Ray_End
+		#
+#func Hit_Scan_Collision(Collision_Point):
+	#var Bullet_Direction = (Collision_Point - Bullet_Point.get_global_transform().origin).normalized()
+	#var New_Interection = PhysicsRayQueryParameters3D.create(Bullet_Point.get_global_transform().origin,Collision_Point+Bullet_Direction*2)
+	#
+	#var Bullet_Collision = get_world_3d().direct_space_state.intersect_ray(New_Interection)
+	#
+	#if Bullet_Collision:
+		#Hit_Scan_Damage(Bullet_Collision.collider, Bullet_Direction, Bullet_Collision.position)
+#func Hit_Scan_Damage(Collider, Direction, Position):
+	#if Collider.is_in_group("Enemy") and Collider.has_method("Hit"):
+		#Collider.Hit(Current_Weapon.dmg, Direction, Position)
+		#print("Hit")
+		#
+		#
+#func Launch_Proj(Point: Vector3):
+	#var Direction = (Point - Bullet_Point.get_global_transform().origin).normalized()
+	#var Projectile = Current_Weapon.Projectile_To_Load.instantiate()
+	#
+	#
+	#Projectile.position = Bullet_Point.global_position
+	#Bullet_Point.add_child(Projectile)
+	#Projectile.look_at(Point)
+	#Projectile.dmg = Current_Weapon.dmg
+	#Projectile.set_linear_velocity(Direction*Current_Weapon.Projectile_Velocity)

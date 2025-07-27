@@ -14,7 +14,7 @@ func _on_body_entered(body: Node) -> void:
 		pass
 	else:
 		if body.is_in_group("Enemy") && body.has_method("Hit"):
-			body.Hit(dmg)
+			body.Hit(dmg,0,0)
 			queue_free()
 		else:
 			queue_free()

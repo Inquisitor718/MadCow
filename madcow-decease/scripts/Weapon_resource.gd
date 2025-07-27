@@ -15,8 +15,9 @@ class_name Weapon_Resource
 @export var Max_ammo: int
 
 @export var Auto_fire: bool
-@export_flags("Hitscan","Projectile") var Type
+#@export_flags("Hitscan","Projectile") var Type
 @export var range: int 
 @export var dmg: int
 @export var Projectile_To_Load: PackedScene
-@export var Projectile_Velocity: int
+#@export var Projectile_Velocity: int
+@export var Spread_Amount: int

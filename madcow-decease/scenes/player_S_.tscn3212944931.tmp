@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=25 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
@@ -7,8 +7,6 @@
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
 [ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
 [ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/minigun.tscn" id="6_w0gdg"]
-[ext_resource type="PackedScene" uid="uid://diewpys8vfkqy" path="res://scenes/Projectiles_to_be_loaded/shotgun_proj.tscn" id="7_0wot1"]
-[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://scenes/shotgun.tscn" id="7_4j2pt"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/Gun_Counter.gd" id="8_flsqn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
@@ -20,25 +18,6 @@ bg_color = Color(0.229933, 0.712038, 0.249773, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_flsqn"]
 specular_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Resource" id="Resource_4j2pt"]
-script = ExtResource("3_jdn2x")
-W_name = "Shotgun"
-Activate_anim = "ShotgunAct"
-Shoot_anim = "ShotgunShoot"
-Reload_anim = ""
-DActivate_anim = "ShotgunDeac"
-No_ammo_anim = ""
-Active_ammo = 2
-Stored_ammo = 100
-Magazine = 2
-Max_ammo = 1000000
-Auto_fire = false
-range = 50000
-dmg = 200
-Projectile_To_Load = ExtResource("7_0wot1")
-Spread_Amount = 0
-metadata/_custom_type_script = "uid://c2imv21vq2msg"
 
 [sub_resource type="Animation" id="Animation_w0gdg"]
 resource_name = "MinigunActivate"
@@ -214,42 +193,6 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("shotgun:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("shotgun:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.018, -1.335, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("shotgun:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_aj78o"]
 resource_name = "RevolverActivate"
@@ -387,114 +330,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 3.14159, 0), Vector3(-0.174533, 3.14159, 0), Vector3(0, 3.14159, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_x5t1h"]
-resource_name = "ShotgunAct"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.018, -1.335, 0), Vector3(0.319317, -0.169917, -0.272749)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shotgun:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_d62hb"]
-resource_name = "ShotgunDeac"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.319317, -0.169917, -0.272749), Vector3(0.018, -1.335, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shotgun:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_fg22j"]
-resource_name = "ShotgunShoot"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.319317, -0.169917, -0.272749), Vector3(0.319317, -0.169917, -0.0800252), Vector3(0.319317, -0.169917, -0.272749)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0999201, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(-3.05538e-08, 1.5708, 0.773984), Vector3(0, 1.5708, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk2ay"]
 _data = {
 &"MinigunActivate": SubResource("Animation_w0gdg"),
@@ -505,10 +340,7 @@ _data = {
 &"RevolverActivate": SubResource("Animation_aj78o"),
 &"RevolverDeactivate": SubResource("Animation_flsqn"),
 &"RevolverReload": SubResource("Animation_jdn2x"),
-&"RevolverShoot": SubResource("Animation_lk2ay"),
-&"ShotgunAct": SubResource("Animation_x5t1h"),
-&"ShotgunDeac": SubResource("Animation_d62hb"),
-&"ShotgunShoot": SubResource("Animation_fg22j")
+&"RevolverShoot": SubResource("Animation_lk2ay")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flsqn"]
@@ -518,7 +350,6 @@ albedo_color = Color(0, 0.717647, 0, 1)
 material = SubResource("StandardMaterial3D_flsqn")
 
 [node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
-collision_layer = 16
 script = ExtResource("1_gkn25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -604,14 +435,10 @@ cull_mask = 1048573
 
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D"]
 script = ExtResource("2_v7hu7")
-_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), SubResource("Resource_4j2pt")])
-Start_Weapons = Array[String](["Revolver", "minigun", "Shotgun"])
+_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d")])
+Start_Weapons = Array[String](["Revolver", "minigun"])
 
 [node name="rig" type="Node3D" parent="Head/Camera3D/W_Manager"]
-
-[node name="shotgun" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("7_4j2pt")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.018, -1.335, 0)
-visible = false
 
 [node name="Revolver" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("2_aj78o")]
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.0178347, -1.33485, 0.000116378)

@@ -47,7 +47,7 @@ func patroll():
 	if vertices.size() > 0:
 		set_movement_target(vertices[randi_range(0, vertices.size() - 1)])
 
-func Hit(dmg):
+func Hit(dmg, dir, pos):
 	enemy_health -= dmg
 	print("Enemy Health:", enemy_health)
 	if enemy_health <= 0:
