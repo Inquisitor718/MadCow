@@ -84,7 +84,7 @@ func Hit(dmg: int) -> void:
 	if enemy_health <= 0:
 		queue_free()
 		var coin_instance = coin_scene.instantiate()
-		coin_instance.global_position = global_position + Vector3(0, 0, 0)
+		coin_instance.global_position = global_position + Vector3(0, -0.5, 0)
 		get_tree().current_scene.add_child(coin_instance)
 
 

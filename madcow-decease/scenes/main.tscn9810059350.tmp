@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bumv6bik85j7x"]
+[gd_scene load_steps=13 format=3 uid="uid://bumv6bik85j7x"]
 
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/patched_cow.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://cpc183dxqatgu" path="res://scenes/spwaner.tscn" id="7_o6xl0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")
@@ -22,7 +21,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sugp2"]
-vertices = PackedVector3Array(3.5, 1, -14.2163, 4.75, 1, -14.4663, 4.75, 1, -17.4663, -49.5, 1, -17.4663, 4.75, 1, 17.5337, 4.75, 1, 14.2837, 3.5, 1, 14.0337, -49.5, 1, 17.5337, 3.5, 1, 5.2837, 4.75, 1, 5.0337, 4.75, 1, -5.2163, 3.5, 1, -5.4663, 5.75, 1, -14.2163, 49.5, 1, -17.4663, 5.75, 1, 14.0337, 49.5, 1, 17.5337, 5.75, 1, -5.4663, 5.75, 1, 5.2837)
+vertices = PackedVector3Array(3.5, 1, -14.2163, 4.75, 1, -14.4663, 4.75, 1, -17.4663, -49.5, 1, -17.4663, 4.75, 1, 17.5337, 4.75, 1, 14.2837, 3.5, 1, 14.0337, -49.5, 1, 17.5337, 3.5, 1, 5.28369, 4.75, 1, 5.03369, 4.75, 1, -5.21631, 3.5, 1, -5.46631, 5.75, 1, -14.2163, 49.5, 1, -17.4663, 5.75, 1, 14.0337, 49.5, 1, 17.5337, 5.75, 1, -5.46631, 5.75, 1, 5.28369)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 3), PackedInt32Array(3, 8, 7), PackedInt32Array(3, 0, 11), PackedInt32Array(8, 6, 7), PackedInt32Array(1, 2, 12), PackedInt32Array(12, 2, 13), PackedInt32Array(5, 14, 4), PackedInt32Array(4, 14, 15), PackedInt32Array(10, 16, 9), PackedInt32Array(9, 16, 17), PackedInt32Array(16, 13, 17), PackedInt32Array(17, 13, 15), PackedInt32Array(16, 12, 13), PackedInt32Array(15, 14, 17)]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5n0y8"]
@@ -79,10 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10723, 0)
 mesh = SubResource("QuadMesh_85g3d")
 
 [node name="Collectible" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -2)
 
 [node name="PatchedCow" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 1, -1)
-
-[node name="Spwaner" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 4, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 0.5, -1)

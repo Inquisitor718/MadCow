@@ -1,9 +1,11 @@
+res://scenes/patched_cow.tscn
 res://scenes/main.tscn
-res://scripts/enemy.gd
 res://scenes/enemy.tscn
-res://scenes/level.tscn
 res://scenes/player_S_.tscn
+res://scenes/level.tscn
+res://scenes/bullet.tscn
 res://scenes/collectible.tscn
-res://scenes/minigun.tscn
-res://collectible.gd
-res://scripts/Player_S.gd
+res://scenes/revolver.tscn
+res://scenes/spwaner.tscn
+res://scripts/patched_cow.gd
+res://scripts/bullet.gd

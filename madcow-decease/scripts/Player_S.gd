@@ -9,7 +9,7 @@ var direction = Vector3.ZERO
 var on_floor := true
 
 #health system
-@export var health =  100
+@export var health =  500
 
 var speed_now = 5.0
 @export var speed_walk = 5.0

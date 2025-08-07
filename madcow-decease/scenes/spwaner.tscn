@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpc183dxqatgu"]
+
+[ext_resource type="Script" uid="uid://keiy2e35l0ss" path="res://scripts/spwaner.gd" id="1_nsps8"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_rxm2f"]
+rings = 164
+
+[node name="Spwaner" type="Node3D"]
+script = ExtResource("1_nsps8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_rxm2f")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
