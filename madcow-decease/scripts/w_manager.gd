@@ -2,7 +2,8 @@ extends Node3D
 
 @onready var animation_player: AnimationPlayer = $rig/AnimationPlayer
 @onready var Bullet_Point = get_node("%BulletPoint")
-@onready var collision_shape_3d: CollisionShape3D = $"../../../Weapon_Pickup/CollisionShape3D"
+
+@onready var player: CharacterBody3D = $"../../.."
 
 signal Weapon_Change
 signal Update_Ammo
@@ -12,7 +13,8 @@ signal Add_Signal_To_HUD
 @export var Melee_Hitbox : ShapeCast3D
 
 var weapon_locked = false  
-
+var original_speed
+var original_hitbox_scale
 var Shotgun_Store: Weapon_Resource
 @export var Powerup_Duration: int
 var Current_Weapon = null
@@ -233,6 +235,15 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 
 			# Lock weapon switching
 			weapon_locked = true
+			if body.weapon_name == "Horns":
+				 
+				original_speed = player.speed_walk
+				original_hitbox_scale = player.scale
+
+				var tween = create_tween()
+				tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
+				tween.tween_property(player, "scale", player.scale * 1.5, 0.5)
+
 			# Create the timer
 			var timer := Timer.new()
 			timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
@@ -247,6 +258,8 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 				Next_Weapon = "Shotgun"
 				weapon_locked = false  # switching will be allowed again after restore
 				exit("Shotgun")
+				player.speed_walk = original_speed
+				player.scale = original_hitbox_scale
 				timer.queue_free()
 				)
 			timer.start()
