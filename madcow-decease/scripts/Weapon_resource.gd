@@ -8,11 +8,13 @@ class_name Weapon_Resource
 @export var Reload_anim: String
 @export var DActivate_anim: String
 @export var No_ammo_anim: String
+@export var Melee_Anim: String
 
 @export var Active_ammo: int
 @export var Stored_ammo: int
 @export var Magazine: int
 @export var Max_ammo: int
+@export var Melee_Damage: float
 
 @export var Auto_fire: bool
 #@export_flags("Hitscan","Projectile") var Type

@@ -4,13 +4,12 @@ extends Node3D
 @onready var Bullet_Point = get_node("%BulletPoint")
 @onready var collision_shape_3d: CollisionShape3D = $"../../../Weapon_Pickup/CollisionShape3D"
 
-
 signal Weapon_Change
 signal Update_Ammo
 signal Update_Weapon_Stack
 signal Add_Signal_To_HUD
 
-
+@export var Melee_Hitbox : ShapeCast3D
 
 var weapon_locked = false  
 
@@ -42,7 +41,10 @@ func _input(event):
 		print("Down Accept")
 	
 	if event.is_action_pressed("Shoot"):
-		shoot()
+		if Current_Weapon.W_name == "Horns":
+			melee()
+		else:
+			shoot()
 	if event.is_action_pressed("Reload"):
 		reload()
 func Initialize(_start_weapons: Array):
@@ -113,6 +115,24 @@ func shoot():
 					#Launch_Proj(Get_Cam_Collision())
 	else:
 		reload()
+
+
+func melee():
+	var Current_Anim = animation_player.get_current_animation()
+	
+		
+	if Current_Anim != Current_Weapon.Melee_Anim:
+		animation_player.play(Current_Weapon.Melee_Anim)
+		if Melee_Hitbox.is_colliding():
+			var colliders = Melee_Hitbox.get_collision_count()
+			for c in colliders:
+				var Target = Melee_Hitbox.get_collider(c)
+				if Target.is_in_group("Enemy") and Target.has_method("Hit"):
+					print("melee hit")
+					var Direction = (Target.global_transform.origin - owner.global_transform.origin).normalized()
+					var Position =  Melee_Hitbox.get_collision_point(c)
+					Target.Hit(Current_Weapon.Melee_Damage, Direction, Position)
+
 
 func Load_Projectile(_spread):
 	var _projectile:Projectile = Current_Weapon.Projectile_To_Load.instantiate()

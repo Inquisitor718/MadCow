@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bumv6bik85j7x"]
+[gd_scene load_steps=13 format=3 uid="uid://bumv6bik85j7x"]
 
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/Revolver_Pickup.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://scenes/minigun_pickup.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://cor5pdhy876pc" path="res://scenes/Ammo_Box.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://scenes/horns_pickup.tscn" id="8_tipki"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")
@@ -60,3 +61,6 @@ transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.2
 
 [node name="Ammo_Box" parent="." instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 1, 0.5)
+
+[node name="Horns_Pickup" parent="." instance=ExtResource("8_tipki")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -37.5, 1, -0.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=37 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/revolver.tscn" id="2_aj78o"]
@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
 [ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://scenes/shotgun.tscn" id="7_4j2pt"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/Gun_Counter.gd" id="8_flsqn"]
+[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
+[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://scenes/horns.tscn" id="12_d62hb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
@@ -230,6 +232,54 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Horns:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0144253)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Horns:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../..:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../..:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_aj78o"]
@@ -476,8 +526,95 @@ tracks/1/keys = {
 "values": [Vector3(0, 1.5708, 0), Vector3(-3.05538e-08, 1.5708, 0.773984), Vector3(0, 1.5708, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_nmoqk"]
+resource_name = "Horns_Act"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Horns:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0144253), Vector3(0, 0, -0.298812)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Horns:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3dg02"]
+resource_name = "Horns_Deact"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Horns:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.298812), Vector3(0, 0, 0.0144253)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Horns:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rjom8"]
+resource_name = "Horns_Melee"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.362034, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.0670451), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk2ay"]
 _data = {
+&"Horns_Act": SubResource("Animation_nmoqk"),
+&"Horns_Deact": SubResource("Animation_3dg02"),
+&"Horns_Melee": SubResource("Animation_rjom8"),
 &"MinigunActivate": SubResource("Animation_w0gdg"),
 &"MinigunDeac": SubResource("Animation_4j2pt"),
 &"MinigunReload": SubResource("Animation_0wot1"),
@@ -491,6 +628,8 @@ _data = {
 &"ShotgunDeac": SubResource("Animation_d62hb"),
 &"ShotgunShoot": SubResource("Animation_fg22j")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5t1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flsqn"]
 albedo_color = Color(0, 0.717647, 0, 1)
@@ -585,10 +724,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 cull_mask = 1048573
 
-[node name="W_Manager" type="Node3D" parent="Head/Camera3D"]
+[node name="W_Manager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("Melee_Hitbox")]
 script = ExtResource("2_v7hu7")
+Melee_Hitbox = NodePath("rig/HitBoxMelee")
 Powerup_Duration = 30
-_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), ExtResource("7_0wot1")])
+_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), ExtResource("7_0wot1"), ExtResource("8_x5t1h")])
 Start_Weapons = Array[String](["Shotgun"])
 
 [node name="rig" type="Node3D" parent="Head/Camera3D/W_Manager"]
@@ -605,6 +745,9 @@ visible = false
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.33, -0.17133, -0.378698)
 visible = false
 
+[node name="Horns" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("12_d62hb")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0.0144253)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/W_Manager/rig"]
 libraries = {
 &"": SubResource("AnimationLibrary_lk2ay")
@@ -614,15 +757,22 @@ libraries = {
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.826832)
 
+[node name="HitBoxMelee" type="ShapeCast3D" parent="Head/Camera3D/W_Manager/rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908469, -0.601775)
+shape = SubResource("BoxShape3D_x5t1h")
+collision_mask = 31
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_4j2pt")
 
 [node name="Weapon_Pickup" type="Area3D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon_Pickup"]
 transform = Transform3D(1.25, 0, 0, 0, 0.75, 0, 0, 0, 1.25, 0, -0.51054, 0)
+visible = false
 shape = SubResource("BoxShape3D_0wot1")
 
 [connection signal="Update_Ammo" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_ammo"]
