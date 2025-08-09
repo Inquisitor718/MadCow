@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dp4rs15jtdxjj"]
 
-[ext_resource type="Script" uid="uid://dmogobeoy77d6" path="res://scenes/shotgun_pickup.gd" id="1_2m74c"]
+[ext_resource type="Script" uid="uid://dmogobeoy77d6" path="res://scripts/shotgun_pickup.gd" id="1_2m74c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2m74c"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6l6rkwnn1qmn"]
 
 [ext_resource type="Script" uid="uid://bh6m2ku5p5et5" path="res://scripts/Projectiles/Projectile.gd" id="1_rqmgt"]
-[ext_resource type="PackedScene" uid="uid://dmm3mbp265gwn" path="res://scenes/bullet.tscn" id="2_suvwr"]
+[ext_resource type="PackedScene" uid="uid://dmm3mbp265gwn" path="res://scenes/minigun_bullet.tscn" id="2_suvwr"]
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_rqmgt")

@@ -195,6 +195,7 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 		Temp_ammo += Ammo_Increase
 		Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
 		emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
+		$"../../../Weapon_Pickup".set_deferred("monitoring", true)
 		body.queue_free()
 	else:
 		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
@@ -227,8 +228,9 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 				weapon_locked = false  # switching will be allowed again after restore
 				exit("Shotgun")
 				timer.queue_free()
-			)
+				)
 			timer.start()
-
+				
+				
 			exit(body.weapon_name)
 			body.queue_free()
