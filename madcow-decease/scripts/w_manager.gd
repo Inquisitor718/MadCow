@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var animation_player: AnimationPlayer = $rig/AnimationPlayer
 @onready var Bullet_Point = get_node("%BulletPoint")
+@onready var collision_shape_3d: CollisionShape3D = $"../../../Weapon_Pickup/CollisionShape3D"
+
 
 signal Weapon_Change
 signal Update_Ammo
@@ -185,6 +187,8 @@ func _on_weapon_timer_timeout():
 
 func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 	print("object collided")
+	$"../../../Weapon_Pickup".set_deferred("monitoring", false)
+
 	if body.has_method("Add_Ammo"):
 		print("Ammo adding")
 		var Temp_ammo = Weapon_List[body.weapon_name].Stored_ammo
@@ -196,7 +200,7 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
 		if Weapon_In_Stack == -1:
 			print("weapon Picked up")
-	
+			
 			# Store the current weapon data (assumed to be Shotgun)
 			Shotgun_Store = Current_Weapon.duplicate(true)
 			
@@ -217,10 +221,11 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 			
 			timer.timeout.connect(func():
 				print("Timer end")
+				$"../../../Weapon_Pickup".set_deferred("monitoring", true)
 			# Lock to shotgun after animation finishes
 				Next_Weapon = "Shotgun"
 				weapon_locked = false  # switching will be allowed again after restore
-				exit("Shotgun")  # triggers the deactivation animation of temp weapon
+				exit("Shotgun")
 				timer.queue_free()
 			)
 			timer.start()

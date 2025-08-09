@@ -587,7 +587,7 @@ cull_mask = 1048573
 
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D"]
 script = ExtResource("2_v7hu7")
-Powerup_Duration = 2
+Powerup_Duration = 30
 _weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), ExtResource("7_0wot1")])
 Start_Weapons = Array[String](["Shotgun"])
 
