@@ -9,7 +9,7 @@ var direction = Vector3.ZERO
 var on_floor := true
 
 #health system
-@export var health =  500
+@export var health =  1000
 
 var speed_now = 5.0
 @export var speed_walk = 5.0
@@ -48,11 +48,11 @@ func dmg(HP):
 	else:
 		health = 0
 	$CanvasLayer/HealthBar.value = health
-	if health < 0:
+	if health <= 0:
 		die()
 		
 func die():
-	print("Player_Sarvesh Died! You NOOB!")
+	health = 500
 
 #mouse movement
 func _ready():
@@ -70,7 +70,7 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 
-func _process(delta):
+func _process(_delta):
 	gun_cam.global_transform = main_cam.global_transform
 
 

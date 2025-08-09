@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=3 uid="uid://cm6b48v2wj16p"]
 
-[ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/patched_cow.gd" id="1_6xpk3"]
-[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="1_7hsp1"]
-[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="2_6xpk3"]
-[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/bullet.tscn" id="2_hsi1t"]
-[ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="3_emkmn"]
+[ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/patched_cow.gd" id="1_2wi0g"]
+[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/enemy scenes/ammunation/bullet.tscn" id="2_ni8w7"]
+[ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="3_4xk6o"]
+[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="4_banjt"]
+[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="5_16xvs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
-albedo_texture = ExtResource("1_7hsp1")
+albedo_texture = ExtResource("4_banjt")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hsi1t"]
 points = PackedVector3Array(1.94933, 2.4526, -109.103, 0.705749, 0.213717, -109.85, 0.705749, 0.213717, -109.103, 1.94933, 0.213717, -109.601, 1.2033, 2.4526, -109.85, 1.70049, 0.213717, -108.855, 1.2033, 2.4526, -109.103, 1.70049, 2.4526, -109.85, 1.2033, 1.45742, -108.855, 1.70049, 0.213717, -109.85, 0.705749, 0.711418, -109.103, 1.94933, 0.213717, -109.103, 1.94933, 2.4526, -109.601, 0.954587, 0.213717, -108.855, 1.70049, 1.45742, -108.855, 0.705749, 0.711418, -109.601)
@@ -48,19 +48,17 @@ radius = 8.0
 [node name="PatchedCow" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 collision_mask = 2
-script = ExtResource("1_6xpk3")
-patched_cow_health = 100
-bullet = ExtResource("2_hsi1t")
-coin_scene = ExtResource("3_emkmn")
+script = ExtResource("1_2wi0g")
+bullet = ExtResource("2_ni8w7")
+coin_scene = ExtResource("3_4xk6o")
 
-[node name="Cow" type="MeshInstance3D" parent="."]
+[node name="PatchedCow" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 22.25, 0, -0.5)
 material_override = SubResource("StandardMaterial3D_hsi1t")
-mesh = ExtResource("2_6xpk3")
+mesh = ExtResource("5_16xvs")
 
-[node name="BulletSpawn" type="Marker3D" parent="Cow"]
-unique_name_in_owner = true
-transform = Transform3D(5, 0, 2.55795e-13, 0, 5, 0, -2.55795e-13, 0, 5, -14.4166, 6.26679, -111.774)
+[node name="BulletSpawn" type="Marker3D" parent="PatchedCow"]
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, -13.7351, 6.31224, -111.831)
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="."]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 22.25, 0, -0.5)
@@ -105,20 +103,16 @@ shape = SubResource("ConvexPolygonShape3D_nnat6")
 [node name="DetectionArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_hsi1t")
 
 [node name="ShootArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShootArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_emkmn")
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.115113, 1.25958, 2.25981)
-target_position = Vector3(0, -5.6, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
-[connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]

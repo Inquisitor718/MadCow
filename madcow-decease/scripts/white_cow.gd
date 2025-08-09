@@ -1,18 +1,17 @@
 extends CharacterBody3D
 
-@export var patched_cow_health := 400
-@export var move_speed: float = 2.0
-@export var rotation_speed: float = 4.0
-@export var fire_rate: float = 2.0
+@export var white_cow_health := 600
+@export var move_speed: float = 1.0
+@export var rotation_speed: float = 2.5
+@export var fire_rate: float = 0.1
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var bullet_spawn = $PatchedCow/BulletSpawn
+@onready var pellets_spawn = $PelletsSpawn
 
-@export var bullet: PackedScene
 @export var coin_scene: PackedScene
-
+@export var pellets: PackedScene
 
 var player: CharacterBody3D = null
 var can_shoot = true
@@ -77,6 +76,7 @@ func _player_in_shoot_area() -> bool:
 
 func _try_shoot():
 	if can_shoot:
+		randomize()
 		_shoot()
 		can_shoot = false
 		await get_tree().create_timer(fire_rate).timeout
@@ -86,18 +86,20 @@ func _shoot():
 	if not player:
 		return
 	
-	var new_bullet = bullet.instantiate()
-	get_tree().current_scene.add_child(new_bullet)
-	new_bullet.global_transform.origin = bullet_spawn.global_transform.origin
+	var new_pellet = pellets.instantiate()
+	get_tree().current_scene.add_child(new_pellet)
+	new_pellet.global_transform.origin = pellets_spawn.global_transform.origin
 	if player:
-		var shot_direction = (player.global_transform.origin - bullet_spawn.global_transform.origin).normalized()
-		new_bullet.direction = shot_direction
+		var shot_direction = (player.global_transform.origin - pellets_spawn.global_transform.origin).normalized()
+		new_pellet.direction.x = randfn(shot_direction.x, 0.025)
+		new_pellet.direction.y = randfn(shot_direction.y, 0.025)
+		new_pellet.direction.z = shot_direction.z
 
 
 func Hit(dmg: int) -> void:
-	patched_cow_health -= dmg
-	print("Enemy Health:", patched_cow_health)
-	if patched_cow_health <= 0:
+	white_cow_health -= dmg
+	print("Enemy Health:", white_cow_health)
+	if white_cow_health <= 0:
 		if randf() < 0.4:
 			var coin_instance = coin_scene.instantiate()
 			coin_instance.global_position = global_position + Vector3(0, 1, 0)

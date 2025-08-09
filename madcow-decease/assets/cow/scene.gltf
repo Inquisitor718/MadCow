@@ -1,0 +1,245 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2160,
+      "max": [
+        217.65904235839844,
+        1007.7225952148438,
+        903.1464233398438
+      ],
+      "min": [
+        -220.66058349609375,
+        -448.1478271484375,
+        0.34735846519470215
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 25920,
+      "componentType": 5126,
+      "count": 2160,
+      "max": [
+        0.9998562932014465,
+        0.999089777469635,
+        0.993789792060852
+      ],
+      "min": [
+        -0.999144434928894,
+        -0.9997285008430481,
+        -0.9993158578872681
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2160,
+      "max": [
+        0.9438480138778687,
+        0.9871900081634521
+      ],
+      "min": [
+        0.044707998633384705,
+        0.18554699420928955
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 2160,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "sinork123 (https://sketchfab.com/sinork123)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/cow-58d15c2d67b147d09bc5e46f0fbcb0b2",
+      "title": "Cow"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8640,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 17280,
+      "byteOffset": 8640,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 51840,
+      "byteOffset": 25920,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 77760,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "RootNode",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "grp1__0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "5d4f2ee3dfd3482d9fcfeb59a8a8fbea.fbx"
+    },
+    {
+      "children": [
+        3,
+        5
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        -0.547961732041752,
+        -0.23853332027407098,
+        -0.8017729075847041,
+        0.0,
+        -0.13459222837861334,
+        0.971134313634848,
+        -0.19693419444335133,
+        0.0,
+        0.8256045495743601,
+        -6.106226635438361e-16,
+        -0.564249171662766,
+        0.0,
+        1458.3370361328125,
+        938.0531005859375,
+        1846.230712890625,
+        1.0
+      ],
+      "name": "CINEMA_4D_Editor"
+    },
+    {
+      "name": "Object_4"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        -0.013962188771443618,
+        -2.7755575615628914e-16,
+        0.9999025238915593,
+        0.0,
+        0.9999025238915593,
+        7.993605777301127e-15,
+        0.013962188771443729,
+        0.0,
+        -8.049116928532385e-15,
+        0.9999999999999999,
+        2.220446049250313e-16,
+        0.0,
+        -22.181447982788086,
+        5.556556224822998,
+        -0.30973175168037415,
+        1.0
+      ],
+      "name": "grp1"
+    },
+    {
+      "mesh": 0,
+      "name": "grp1__0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

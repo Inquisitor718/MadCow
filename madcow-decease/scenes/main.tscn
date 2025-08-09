@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy scenes/enemy.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/patched_cow.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://cpc183dxqatgu" path="res://scenes/spwaner.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/enemy scenes/patched_cow.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cpc183dxqatgu" path="res://scenes/enemy scenes/spwaner.tscn" id="7_o6xl0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")
@@ -50,20 +50,7 @@ navigation_layers = 17
 
 [node name="level" parent="NavigationRegion3D" instance=ExtResource("2_jyhfs")]
 
-[node name="Marker3D" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, 6.5)
-
-[node name="Marker3D5" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 2, 0)
-
-[node name="Marker3D2" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, -5.5)
-
-[node name="Marker3D3" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 2, 6.5)
-
-[node name="Marker3D4" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 2, -7)
+[node name="Node3D" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Player" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
@@ -72,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43, 1.5, 0)
 collision_layer = 17
 SPEED = 5.0
-patrol_points = [NodePath("../NavigationRegion3D/Marker3D"), NodePath("../NavigationRegion3D/Marker3D2"), NodePath("../NavigationRegion3D/Marker3D3"), NodePath("../NavigationRegion3D/Marker3D4"), NodePath("../NavigationRegion3D/Marker3D5")]
+patrol_points = [NodePath("../NavigationRegion3D/Node3D")]
 
 [node name="ProgressBar3D" type="MeshInstance3D" parent="Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10723, 0)

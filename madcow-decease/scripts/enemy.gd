@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			# Patrol between points
 			if patrol_points.size() > 0:
 				if navigation_agent_3d.is_navigation_finished():
-					# Go to next point
+					 #Go to next point
 					patrol_index = (patrol_index + 1) % patrol_points.size()
 					navigation_agent_3d.set_target_position(patrol_points[patrol_index].global_transform.origin)
 

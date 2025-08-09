@@ -1,28 +1,32 @@
 extends CharacterBody3D
 
-@export var patched_cow_health := 400
-@export var move_speed: float = 2.0
-@export var rotation_speed: float = 4.0
-@export var fire_rate: float = 2.0
+@export var baby_cow_health := 100
+@export var move_speed: float = 5.0
+@export var rotation_speed: float = 3.0
+@export var fire_rate: float = 1
+@export var stagger_time: float = 0.15 
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var bullet_spawn = $PatchedCow/BulletSpawn
+@onready var magnum_spawn_1 = $MeshInstance3D/handgun1/Marker3D
+@onready var magnum_spawn_2 = $MeshInstance3D/handgun2/Marker3D
 
-@export var bullet: PackedScene
+@export var magnum: PackedScene
 @export var coin_scene: PackedScene
-
 
 var player: CharacterBody3D = null
 var can_shoot = true
+var use_first_gun = true
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _physics_process(delta):
 	_apply_gravity(delta)
+	
 	if player:
 		_face_player(delta)
+		
 		if not _player_in_shoot_area():
 			nav_agent.target_position = player.global_transform.origin
 			var next_pos = nav_agent.get_next_path_position()
@@ -39,7 +43,7 @@ func _physics_process(delta):
 	else:
 		_stop_moving()
 	move_and_slide()
-
+	
 func _has_line_of_sight() -> bool:
 	var from = global_transform.origin
 	var to = player.global_transform.origin
@@ -48,7 +52,6 @@ func _has_line_of_sight() -> bool:
 	params.exclude = [self]
 	var result = space.intersect_ray(params)
 	return result != null and result.has("collider") and result.collider == player
-
 
 func _apply_gravity(_delta):
 	if not is_on_floor():
@@ -86,18 +89,40 @@ func _shoot():
 	if not player:
 		return
 	
-	var new_bullet = bullet.instantiate()
-	get_tree().current_scene.add_child(new_bullet)
-	new_bullet.global_transform.origin = bullet_spawn.global_transform.origin
+	_fire_bullet_from_marker(magnum_spawn_1)
+	
+	await get_tree().create_timer(stagger_time).timeout
 	if player:
-		var shot_direction = (player.global_transform.origin - bullet_spawn.global_transform.origin).normalized()
-		new_bullet.direction = shot_direction
+		_fire_bullet_from_marker(magnum_spawn_2)
+	#var spawn_pos = use_first_gun if magnum_spawn_1 else magnum_spawn_2
+	#use_first_gun = !use_first_gun
+	#
+	#var new_magnum = magnum.instantiate()
+	#get_tree().current_scene.add_child(new_magnum)
+	#
+	#new_magnum.global_transform.origin = spawn_pos.global_transform.origin
+	#
+	#var shot_direction = (player.global_transform.origin - spawn_pos.global_transform.origin).normalized()
+	#new_magnum.direction.x = randfn(shot_direction.x, 0.02)
+	#new_magnum.direction.y = randfn(shot_direction.y, 0.02)
+	#new_magnum.direction.z = shot_direction.z
+	
 
+func _fire_bullet_from_marker(spawn_pos: Node3D) -> void:
+	var new_magnum = magnum.instantiate()
+	get_tree().current_scene.add_child(new_magnum)
+	
+	new_magnum.global_transform.origin = spawn_pos.global_transform.origin
+	
+	var shot_direction = (player.global_transform.origin - spawn_pos.global_transform.origin).normalized()
+	new_magnum.direction.x = randfn(shot_direction.x, 0.02)
+	new_magnum.direction.y = randfn(shot_direction.y, 0.02)
+	new_magnum.direction.z = shot_direction.z
 
 func Hit(dmg: int) -> void:
-	patched_cow_health -= dmg
-	print("Enemy Health:", patched_cow_health)
-	if patched_cow_health <= 0:
+	baby_cow_health -= dmg
+	print("Enemy Health:", baby_cow_health)
+	if baby_cow_health <= 0:
 		if randf() < 0.4:
 			var coin_instance = coin_scene.instantiate()
 			coin_instance.global_position = global_position + Vector3(0, 1, 0)

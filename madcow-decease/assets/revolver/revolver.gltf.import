@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://x1r73b66px0p"
-path="res://.godot/imported/revolver.gltf-49270ffe82db1dbec621badee7bbc668.scn"
+path="res://.godot/imported/revolver.gltf-8878b2dde5f9af0aefcfee6b7c64a27e.scn"
 
 [deps]
 
-source_file="res://assets/revolver_colt_single_action_army_lowpoly/revolver.gltf"
-dest_files=["res://.godot/imported/revolver.gltf-49270ffe82db1dbec621badee7bbc668.scn"]
+source_file="res://assets/revolver/revolver.gltf"
+dest_files=["res://.godot/imported/revolver.gltf-8878b2dde5f9af0aefcfee6b7c64a27e.scn"]
 
 [params]
 

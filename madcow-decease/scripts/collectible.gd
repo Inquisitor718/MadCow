@@ -3,9 +3,6 @@ extends Area3D
 const  ROT_SPEED = 2
 var vertical_velocity = 0.0
 
-func _ready() -> void:
-	pass # Replace with function body.
-
 func _process(delta: float) -> void:
 	vertical_velocity -= gravity * delta * 2
 	global_position.y += vertical_velocity * delta
@@ -22,5 +19,5 @@ func _on_body_entered(body: Node3D) -> void:
 		$AnimationPlayer.play("bounce")
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

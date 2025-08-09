@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://cerrexjmrwoos"]
+
+[ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/baby_cow.gd" id="1_ty27g"]
+[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://scenes/enemy scenes/ammunation/magnum.tscn" id="2_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="3_8hgw2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18obc"]
+albedo_color = Color(1, 0.375704, 0.62431, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ty27g"]
+material = SubResource("StandardMaterial3D_18obc")
+radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucynp"]
+albedo_color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ucynp"]
+material = SubResource("StandardMaterial3D_ucynp")
+radius = 0.05
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18obc"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ye5jj"]
+radius = 5.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8hgw2"]
+radius = 25.0
+
+[node name="baby_cow" type="CharacterBody3D" groups=["Enemy"]]
+collision_mask = 2
+script = ExtResource("1_ty27g")
+magnum = ExtResource("2_ye5jj")
+coin_scene = ExtResource("3_8hgw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_ty27g")
+
+[node name="handgun2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.156681, 0.204883, 0.233911)
+mesh = SubResource("CapsuleMesh_ucynp")
+
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D/handgun2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100377, 0)
+
+[node name="handgun1" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.129326, 0.204883, 0.233768)
+mesh = SubResource("CapsuleMesh_ucynp")
+
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D/handgun1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1003, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_18obc")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="ShootArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShootArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_ye5jj")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_8hgw2")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

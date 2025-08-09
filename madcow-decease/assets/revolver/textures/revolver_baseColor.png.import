@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3u0bnnd3i35c"
-path.s3tc="res://.godot/imported/revolver_baseColor.png-5dc3387ffe18b4ba407d5234157f5266.s3tc.ctex"
+path.s3tc="res://.godot/imported/revolver_baseColor.png-4706a57dbc278bfd5310bd5618831214.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/revolver_colt_single_action_army_lowpoly/textures/revolver_baseColor.png"
-dest_files=["res://.godot/imported/revolver_baseColor.png-5dc3387ffe18b4ba407d5234157f5266.s3tc.ctex"]
+source_file="res://assets/revolver/textures/revolver_baseColor.png"
+dest_files=["res://.godot/imported/revolver_baseColor.png-4706a57dbc278bfd5310bd5618831214.s3tc.ctex"]
 
 [params]
 
