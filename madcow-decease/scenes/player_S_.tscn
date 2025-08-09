@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
 [ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
 [ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/minigun.tscn" id="6_w0gdg"]
-[ext_resource type="PackedScene" uid="uid://diewpys8vfkqy" path="res://scenes/Projectiles_to_be_loaded/shotgun_proj.tscn" id="7_0wot1"]
+[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
 [ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://scenes/shotgun.tscn" id="7_4j2pt"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/Gun_Counter.gd" id="8_flsqn"]
 
@@ -20,25 +20,6 @@ bg_color = Color(0.229933, 0.712038, 0.249773, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_flsqn"]
 specular_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Resource" id="Resource_4j2pt"]
-script = ExtResource("3_jdn2x")
-W_name = "Shotgun"
-Activate_anim = "ShotgunAct"
-Shoot_anim = "ShotgunShoot"
-Reload_anim = ""
-DActivate_anim = "ShotgunDeac"
-No_ammo_anim = ""
-Active_ammo = 2
-Stored_ammo = 100
-Magazine = 2
-Max_ammo = 1000000
-Auto_fire = false
-range = 50000
-dmg = 200
-Projectile_To_Load = ExtResource("7_0wot1")
-Spread_Amount = 0
-metadata/_custom_type_script = "uid://c2imv21vq2msg"
 
 [sub_resource type="Animation" id="Animation_w0gdg"]
 resource_name = "MinigunActivate"
@@ -517,6 +498,8 @@ albedo_color = Color(0, 0.717647, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4j2pt"]
 material = SubResource("StandardMaterial3D_flsqn")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wot1"]
+
 [node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
 collision_layer = 16
 script = ExtResource("1_gkn25")
@@ -604,8 +587,9 @@ cull_mask = 1048573
 
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D"]
 script = ExtResource("2_v7hu7")
-_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), SubResource("Resource_4j2pt")])
-Start_Weapons = Array[String](["Revolver", "minigun", "Shotgun"])
+Powerup_Duration = 2
+_weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), ExtResource("7_0wot1")])
+Start_Weapons = Array[String](["Shotgun"])
 
 [node name="rig" type="Node3D" parent="Head/Camera3D/W_Manager"]
 
@@ -633,7 +617,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.82683
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_4j2pt")
 
+[node name="Weapon_Pickup" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon_Pickup"]
+transform = Transform3D(1.25, 0, 0, 0, 0.75, 0, 0, 0, 1.25, 0, -0.51054, 0)
+shape = SubResource("BoxShape3D_0wot1")
+
 [connection signal="Update_Ammo" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_ammo"]
 [connection signal="Update_Weapon_Stack" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_weapon_stack"]
 [connection signal="Weapon_Change" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_weapon_change"]
 [connection signal="animation_finished" from="Head/Camera3D/W_Manager/rig/AnimationPlayer" to="Head/Camera3D/W_Manager" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Weapon_Pickup" to="Head/Camera3D/W_Manager" method="_on_weapon_pickup_body_entered"]

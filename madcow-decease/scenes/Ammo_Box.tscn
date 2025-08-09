@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cor5pdhy876pc"]
+
+[ext_resource type="Script" uid="uid://h02t208jk4j2" path="res://scenes/ammo_box.gd" id="1_2h5hb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2n00s"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2h5hb"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Ammo_Box" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_2h5hb")
+weapon_name = "Shotgun"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.451, 0, 0, 0, 0.149, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_2n00s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.451, 0, 0, 0, 0.149, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_2h5hb")

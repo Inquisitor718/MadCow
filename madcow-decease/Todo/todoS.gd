@@ -1,4 +1,3 @@
-1. make a basic health system and UI for it{done}
-2. add guns
-3. make following changes to movement: add inertia somehow
-4. add stamina bar  
+#Add Horns and charge state
+#Make it so that guns are collectible and added to stack only when Collectibles are collided :: DONE
+#Make Horns a collectible

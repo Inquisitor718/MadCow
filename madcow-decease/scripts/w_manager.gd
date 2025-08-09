@@ -8,26 +8,33 @@ signal Update_Ammo
 signal Update_Weapon_Stack
 signal Add_Signal_To_HUD
 
+
+
+var weapon_locked = false  
+
+var Shotgun_Store: Weapon_Resource
+@export var Powerup_Duration: int
 var Current_Weapon = null
 var Weapon_Stack = []
+var Temp_Stack = []
 var Weapon_Indicator = 0
 var Next_Weapon: String
 var Weapon_List = {}
 @export var _weapon_resources: Array[Weapon_Resource]
 @export var Start_Weapons: Array[String]
-
+var Ammo_Increase: int = 20
 enum{NULL, HITSCAN, PROJECTILE}
 
 func _ready():
 	Initialize(Start_Weapons)
 
 func _input(event):
-	if event.is_action_pressed("Weapon_Up"): 
+	if event.is_action_pressed("Weapon_Up") and not weapon_locked: 
 		Weapon_Indicator = min(Weapon_Indicator+1, Weapon_Stack.size()-1)
 		exit(Weapon_Stack[Weapon_Indicator])
 		print("Up Accept")
 		
-	if event.is_action_pressed("Weapon_Down"):
+	if event.is_action_pressed("Weapon_Down") and not weapon_locked:
 		Weapon_Indicator = max(Weapon_Indicator-1, 0)
 		exit(Weapon_Stack[Weapon_Indicator])
 		print("Down Accept")
@@ -66,7 +73,20 @@ func Change_Weapon(weapon_name: String):
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == Current_Weapon.DActivate_anim:
-		Change_Weapon(Next_Weapon)
+		if Next_Weapon == "Shotgun":
+			Weapon_List["Shotgun"] = Shotgun_Store
+			Current_Weapon = Shotgun_Store
+			Weapon_Stack.clear()
+			Weapon_Stack.push_back("Shotgun")
+			Weapon_Indicator = 0
+			
+			emit_signal("Update_Weapon_Stack", Weapon_Stack)
+			emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
+			emit_signal("Weapon_Change", "Shotgun")
+			
+			enter()
+		else:
+			Change_Weapon(Next_Weapon)
 	if anim_name == Current_Weapon.Shoot_anim && Current_Weapon.Auto_fire == true:
 		if Input.is_action_pressed("Shoot"):
 			shoot()
@@ -154,3 +174,56 @@ func reload():
 	#Projectile.look_at(Point)
 	#Projectile.dmg = Current_Weapon.dmg
 	#Projectile.set_linear_velocity(Direction*Current_Weapon.Projectile_Velocity)
+	
+
+func _on_weapon_timer_timeout():
+	print("Timer end")
+	Weapon_Stack.clear()
+	Weapon_Stack.push_back("Shotgun")
+	
+
+
+func _on_weapon_pickup_body_entered(body: Node3D) -> void:
+	print("object collided")
+	if body.has_method("Add_Ammo"):
+		print("Ammo adding")
+		var Temp_ammo = Weapon_List[body.weapon_name].Stored_ammo
+		Temp_ammo += Ammo_Increase
+		Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
+		emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
+		body.queue_free()
+	else:
+		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
+		if Weapon_In_Stack == -1:
+			print("weapon Picked up")
+	
+			# Store the current weapon data (assumed to be Shotgun)
+			Shotgun_Store = Current_Weapon.duplicate(true)
+			
+			# Clear and add only the new weapon
+			Weapon_Stack.clear()
+			Weapon_Stack.push_back(body.weapon_name)
+			Weapon_Indicator = 0
+			emit_signal("Update_Weapon_Stack", Weapon_Stack)
+
+			# Lock weapon switching
+			weapon_locked = true
+			# Create the timer
+			var timer := Timer.new()
+			timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
+			timer.wait_time = Powerup_Duration  
+			timer.one_shot = true  
+			add_child(timer)
+			
+			timer.timeout.connect(func():
+				print("Timer end")
+			# Lock to shotgun after animation finishes
+				Next_Weapon = "Shotgun"
+				weapon_locked = false  # switching will be allowed again after restore
+				exit("Shotgun")  # triggers the deactivation animation of temp weapon
+				timer.queue_free()
+			)
+			timer.start()
+
+			exit(body.weapon_name)
+			body.queue_free()

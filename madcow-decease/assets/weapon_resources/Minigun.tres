@@ -19,5 +19,5 @@ Auto_fire = true
 range = 5000
 dmg = 10
 Projectile_To_Load = ExtResource("1_pkjo4")
-Spread_Amount = 0
+Spread_Amount = 100
 metadata/_custom_type_script = "uid://c2imv21vq2msg"
