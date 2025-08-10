@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://diewpys8vfkqy"]
+
+[ext_resource type="Script" uid="uid://ck84g4a7lbilx" path="res://scripts/Projectiles/Shotgun_proj.gd" id="1_cb6hf"]
+
+[sub_resource type="Curve2D" id="Curve2D_tvat3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -69, -4, 0, 0, 0, 0, -13, -8, 0, 0, 0, 0, 49, -61, 0, 0, 0, 0, 114, -41, 0, 0, 0, 0, 96, 3, 0, 0, 0, 0, 43, 57, 0, 0, 0, 0, -44, 41, 0, 0, 0, 0, -84, -55, 0, 0, 0, 0, -35, -48, 0, 0, 0, 0, 8, -21, 0, 0, 0, 0, 33, 11, 0, 0, 0, 0, 4, 19, 0, 0, 0, 0, -40, 4, 0, 0, 0, 0, -34, -25, 0, 0, 0, 0, 19, 29, 0, 0, 0, 0, -21, 30, 0, 0, 0, 0, 37, -31, 0, 0, 0, 0, 59, -28, 0, 0, 0, 0, 59, 2, 0, 0, 0, 0, 101, 41, 0, 0, 0, 0, 4, -48, 0, 0, 0, 0, -75, 44)
+}
+point_count = 22
+
+[node name="Shotgun_Proj" type="Node3D"]
+script = ExtResource("1_cb6hf")
+Split_Damage = true
+
+[node name="shotgun_pattern" type="Path2D" parent="."]
+visible = false
+scale = Vector2(1.22222, 1.63559)
+curve = SubResource("Curve2D_tvat3")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c83lc7sg4k1h2"]
 
-[ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/black_cow.gd" id="1_0xvba"]
+[ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
 [ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="2_adx45"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktv6b"]
@@ -19,7 +19,8 @@ radius = 4.5
 
 [node name="BlackCow" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 0, 0, 0)
-collision_mask = 2
+collision_layer = 2
+collision_mask = 39
 script = ExtResource("1_0xvba")
 coin_scene = ExtResource("2_adx45")
 

@@ -1,22 +1,25 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://d0rj6ma6qyhe0"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://d0rj6ma6qyhe0"]
 
-[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="1_g265i"]
+[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="1_g265i"]
+[ext_resource type="PackedScene" uid="uid://b6l6rkwnn1qmn" path="res://scenes/Projectiles_to_be_loaded/RBprojectile.tscn" id="1_pkjo4"]
 
 [resource]
 script = ExtResource("1_g265i")
 W_name = "minigun"
 Activate_anim = "MinigunActivate"
 Shoot_anim = "MinigunShoot"
-Reload_anim = ""
-DActivate_anim = ""
+Reload_anim = "MinigunReload"
+DActivate_anim = "MinigunDeac"
 No_ammo_anim = ""
+Melee_Anim = ""
 Active_ammo = 30
 Stored_ammo = 90
 Magazine = 30
-Max_ammo = 300
-Auto_fire = false
-Type = 2
+Max_ammo = 3000
+Melee_Damage = 0
+Auto_fire = true
 range = 5000
 dmg = 10
-Projectile_Velocity = 300
+Projectile_To_Load = ExtResource("1_pkjo4")
+Spread_Amount = 100
 metadata/_custom_type_script = "uid://c2imv21vq2msg"

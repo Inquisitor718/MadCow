@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://cx5gjyikfb4nk"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://cx5gjyikfb4nk"]
 
-[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/Weapon_resource.gd" id="1_bblnm"]
+[ext_resource type="PackedScene" uid="uid://bcpsyhjgx3f58" path="res://scenes/Projectiles_to_be_loaded/Hitscanprojectile.tscn" id="1_286hf"]
+[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="1_bblnm"]
 
 [resource]
 script = ExtResource("1_bblnm")
@@ -10,13 +11,13 @@ Shoot_anim = "RevolverShoot"
 Reload_anim = "RevolverReload"
 DActivate_anim = "RevolverDeactivate"
 No_ammo_anim = ""
-Active_ammo = 60
-Stored_ammo = 563
-Magazine = 80
-Max_ammo = 600
+Active_ammo = 6
+Stored_ammo = 18
+Magazine = 6
+Max_ammo = 60
 Auto_fire = false
-Type = 1
-range = 50000
-dmg = 50
-Projectile_Velocity = 0
+range = 500000
+dmg = 90
+Projectile_To_Load = ExtResource("1_286hf")
+Spread_Amount = 1
 metadata/_custom_type_script = "uid://c2imv21vq2msg"

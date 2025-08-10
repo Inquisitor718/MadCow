@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cerrexjmrwoos"]
+[gd_scene load_steps=10 format=3 uid="uid://cerrexjmrwoos"]
 
-[ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/baby_cow.gd" id="1_ty27g"]
-[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://scenes/enemy scenes/ammunation/magnum.tscn" id="2_ye5jj"]
-[ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="3_8hgw2"]
+[ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/Cows/baby_cow.gd" id="1_ty27g"]
+[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://scenes/ammunation/magnum.tscn" id="2_ye5jj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18obc"]
-albedo_color = Color(1, 0.375704, 0.62431, 1)
+albedo_color = Color(0.721569, 0.133333, 0.560784, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ty27g"]
 material = SubResource("StandardMaterial3D_18obc")
@@ -31,10 +30,10 @@ radius = 5.0
 radius = 25.0
 
 [node name="baby_cow" type="CharacterBody3D" groups=["Enemy"]]
-collision_mask = 2
+collision_layer = 2
+collision_mask = 39
 script = ExtResource("1_ty27g")
 magnum = ExtResource("2_ye5jj")
-coin_scene = ExtResource("3_8hgw2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

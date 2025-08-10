@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://ck0ypl6agnvqt"]
+
+[ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="1_gqov4"]
+
+[resource]
+script = ExtResource("1_gqov4")
+W_name = "Horns"
+Activate_anim = "Horns_Act"
+Shoot_anim = "Horns_ShootNA"
+Reload_anim = "Horns_ReloadNA"
+DActivate_anim = "Horns_Deact"
+No_ammo_anim = "Horns_NammoNA"
+Melee_Anim = "Horns_Melee"
+Active_ammo = 0
+Stored_ammo = 0
+Magazine = 0
+Max_ammo = 0
+Melee_Damage = 1000
+Auto_fire = false
+range = 0
+dmg = 0
+Spread_Amount = 0
+metadata/_custom_type_script = "uid://c2imv21vq2msg"

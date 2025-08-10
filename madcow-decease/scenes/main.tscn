@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://bumv6bik85j7x"]
+[gd_scene load_steps=18 format=3 uid="uid://bumv6bik85j7x"]
 
 [ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy scenes/enemy.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/enemy scenes/patched_cow.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/ammunation/Revolver_Pickup.tscn" id="7_85g3d"]
 [ext_resource type="PackedScene" uid="uid://cpc183dxqatgu" path="res://scenes/enemy scenes/spwaner.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://scenes/ammunation/minigun_pickup.tscn" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://cor5pdhy876pc" path="res://scenes/ammunation/Ammo_Box.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://scenes/enemy scenes/black_cow.tscn" id="11_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://scenes/enemy scenes/baby_cow.tscn" id="11_trceg"]
+[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://scenes/enemy scenes/white_cow.tscn" id="12_trceg"]
+[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://scenes/horns_pickup.tscn" id="13_trceg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
 panorama = ExtResource("1_sugp2")
@@ -24,14 +30,6 @@ glow_enabled = true
 [sub_resource type="NavigationMesh" id="NavigationMesh_sugp2"]
 vertices = PackedVector3Array(3.5, 1, -14.2163, 4.75, 1, -14.4663, 4.75, 1, -17.4663, -49.5, 1, -17.4663, 4.75, 1, 17.5337, 4.75, 1, 14.2837, 3.5, 1, 14.0337, -49.5, 1, 17.5337, 3.5, 1, 5.2837, 4.75, 1, 5.0337, 4.75, 1, -5.2163, 3.5, 1, -5.4663, 5.75, 1, -14.2163, 49.5, 1, -17.4663, 5.75, 1, 14.0337, 49.5, 1, 17.5337, 5.75, 1, -5.4663, 5.75, 1, 5.2837)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 3), PackedInt32Array(3, 8, 7), PackedInt32Array(3, 0, 11), PackedInt32Array(8, 6, 7), PackedInt32Array(1, 2, 12), PackedInt32Array(12, 2, 13), PackedInt32Array(5, 14, 4), PackedInt32Array(4, 14, 15), PackedInt32Array(10, 16, 9), PackedInt32Array(9, 16, 17), PackedInt32Array(16, 13, 17), PackedInt32Array(17, 13, 15), PackedInt32Array(16, 12, 13), PackedInt32Array(15, 14, 17)]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5n0y8"]
-resource_local_to_scene = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_85g3d"]
-resource_local_to_scene = true
-material = SubResource("ShaderMaterial_5n0y8")
-size = Vector2(1.5, 0.2)
 
 [node name="Main" type="Node3D"]
 
@@ -55,16 +53,6 @@ navigation_layers = 17
 [node name="Player" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("4_jyhfs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43, 1.5, 0)
-collision_layer = 17
-SPEED = 5.0
-patrol_points = [NodePath("../NavigationRegion3D/Node3D")]
-
-[node name="ProgressBar3D" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10723, 0)
-mesh = SubResource("QuadMesh_85g3d")
-
 [node name="Collectible" parent="." instance=ExtResource("5_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -2)
 
@@ -73,3 +61,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 1, -1)
 
 [node name="Spwaner" parent="." instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 4, -0.5)
+
+[node name="Revolver_Pickup" parent="." instance=ExtResource("7_85g3d")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -43, 1, 5.5)
+collision_layer = 9
+
+[node name="Minigun_Pickup" parent="." instance=ExtResource("8_choun")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -43.5, 1, 1.5)
+collision_layer = 9
+
+[node name="Ammo_Box" parent="." instance=ExtResource("9_ya4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 1, -6)
+collision_layer = 9
+
+[node name="baby_cow" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 4)
+
+[node name="BlackCow" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -13.5, 0.5, -13.5)
+
+[node name="WhiteCow" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0.5, 12.5)
+
+[node name="Horns_Pickup" parent="." instance=ExtResource("13_trceg")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -43.5, 1, -12)

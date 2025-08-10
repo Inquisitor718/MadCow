@@ -15,8 +15,8 @@ uv1_triplanar = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 119
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
