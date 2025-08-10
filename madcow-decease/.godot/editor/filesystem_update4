@@ -12,3 +12,13 @@ res://scenes/Projectiles_to_be_loaded/RBprojectile.tscn
 res://scenes/ammunation/minigun.tscn
 res://scenes/ammunation/minigun_bullet.tscn
 res://scenes/enemy scenes/baby_cow.tscn
+res://scenes/horns_pickup.tscn
+res://scripts/ammunation/shotgun_pickup.gd
+res://scenes/ammunation/Revolver_Pickup.tscn
+res://scenes/ammunation/Ammo_Box.tscn
+res://scripts/ammunation/ammo_box.gd
+res://scripts/ammunation/w_manager.gd
+res://scripts/ammunation/pickup.gd
+res://scripts/Cows/baby_cow.gd
+res://scripts/ammunation/magnum.gd
+res://scripts/ammunation/pellets.gd

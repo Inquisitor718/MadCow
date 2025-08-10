@@ -29,13 +29,27 @@ var Ammo_Increase: int = 20
 enum{NULL, HITSCAN, PROJECTILE}
 
 func _process(delta: float) -> void:
+	_check_revolver()
 	_check_minigun()
+	_check_horns()
 	
+func _check_horns():
+	if not Weapon_Stack.find("Horns", 0):
+		get_parent().get_parent().get_parent().add_to_group("Horns")
+	else:
+		get_parent().get_parent().get_parent().remove_from_group("Horns")
+
+func _check_revolver():
+	if not Weapon_Stack.find("Revolver", 0):
+		get_parent().get_parent().get_parent().add_to_group("Revolver")
+	else:
+		get_parent().get_parent().get_parent().remove_from_group("Revolver")
+
 func _check_minigun():
 	if not Weapon_Stack.find("minigun", 0):
-		get_parent().get_parent().get_parent().add_to_group("have_minigun")
+		get_parent().get_parent().get_parent().add_to_group("minigun")
 	else:
-		get_parent().get_parent().get_parent().remove_from_group("have_minigun")
+		get_parent().get_parent().get_parent().remove_from_group("minigun")
 
 func _ready():
 	Initialize(Start_Weapons)
@@ -216,7 +230,69 @@ func _on_weapon_timer_timeout():
 	
 
 
-func _on_weapon_pickup_body_entered(body: Node3D) -> void:
+#func _on_weapon_pickup_body_entered(body: Node3D) -> void:
+	#print("object collided")
+	#$"../../../Weapon_Pickup".set_deferred("monitoring", false)
+#
+	#if body.has_method("Add_Ammo"):
+		#print("Ammo adding")
+		#var Temp_ammo = Weapon_List[body.weapon_name].Stored_ammo
+		#Temp_ammo += Ammo_Increase
+		#Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
+		#emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
+		#$"../../../Weapon_Pickup".set_deferred("monitoring", true)
+		#body.queue_free()
+	#else:
+		#var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
+		#if Weapon_In_Stack == -1:
+			#print("weapon Picked up")
+			#
+			## Store the current weapon data (assumed to be Shotgun)
+			#Shotgun_Store = Current_Weapon.duplicate(true)
+			#
+			## Clear and add only the new weapon
+			#Weapon_Stack.clear()
+			#Weapon_Stack.push_back(body.weapon_name)
+			#Weapon_Indicator = 0
+			#emit_signal("Update_Weapon_Stack", Weapon_Stack)
+#
+			## Lock weapon switching
+			#weapon_locked = true
+			#if body.weapon_name == "Horns":
+				 #
+				#original_speed = player.speed_walk
+				#original_hitbox_scale = player.scale
+#
+				#var tween = create_tween()
+				#tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
+				#tween.tween_property(player, "scale", player.scale * 1.5, 0.5)
+#
+			## Create the timer
+			#var timer := Timer.new()
+			#timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
+			#timer.wait_time = Powerup_Duration  
+			#timer.one_shot = true  
+			#add_child(timer)
+			#
+			#timer.timeout.connect(func():
+				#print("Timer end")
+				#$"../../../Weapon_Pickup".set_deferred("monitoring", true)
+				## Lock to shotgun after animation finishes
+				#Next_Weapon = "Shotgun"
+				#weapon_locked = false  # switching will be allowed again after restore
+				#exit("Shotgun")
+				#player.speed_walk = original_speed
+				#player.scale = original_hitbox_scale
+				#timer.queue_free()
+				#)
+			#timer.start()
+				#
+				#
+			#exit(body.weapon_name)
+			#body.queue_free()
+
+
+func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 	print("object collided")
 	$"../../../Weapon_Pickup".set_deferred("monitoring", false)
 
@@ -267,12 +343,12 @@ func _on_weapon_pickup_body_entered(body: Node3D) -> void:
 				Next_Weapon = "Shotgun"
 				weapon_locked = false  # switching will be allowed again after restore
 				exit("Shotgun")
-				player.speed_walk = original_speed
-				player.scale = original_hitbox_scale
+				if Current_Weapon.W_name == "Horns":
+					player.speed_walk = original_speed
+					player.scale = original_hitbox_scale
 				timer.queue_free()
 				)
 			timer.start()
 				
 				
 			exit(body.weapon_name)
-			body.queue_free()

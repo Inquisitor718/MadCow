@@ -781,4 +781,4 @@ shape = SubResource("BoxShape3D_0wot1")
 [connection signal="Update_Weapon_Stack" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_weapon_stack"]
 [connection signal="Weapon_Change" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_weapon_change"]
 [connection signal="animation_finished" from="Head/Camera3D/W_Manager/rig/AnimationPlayer" to="Head/Camera3D/W_Manager" method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="Weapon_Pickup" to="Head/Camera3D/W_Manager" method="_on_weapon_pickup_body_entered"]
+[connection signal="area_entered" from="Weapon_Pickup" to="Head/Camera3D/W_Manager" method="_on_weapon_pickup_area_entered"]

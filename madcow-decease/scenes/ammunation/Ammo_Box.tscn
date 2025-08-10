@@ -7,7 +7,7 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2h5hb"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
-[node name="Ammo_Box" type="RigidBody3D"]
+[node name="Ammo_Box" type="Area3D"]
 collision_layer = 16
 collision_mask = 21
 script = ExtResource("1_2h5hb")

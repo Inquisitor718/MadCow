@@ -135,7 +135,7 @@ func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
 	if baby_cow_health <= 0:
-		if player.is_in_group("have_minigun"):
+		if player.is_in_group("minigun"):
 			_become_friendly()
 		else:
 			queue_free()
@@ -146,7 +146,7 @@ func Hit(dmg: int) -> void:
 			
 func _become_friendly():
 	is_friendly = true
-	baby_cow_health = 9999
+	baby_cow_health = 99999
 	friendly_timer = 0.0
 	if $MeshInstance3D.material_override:
 		mat = $MeshInstance3D.material_override.duplicate()
