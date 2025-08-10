@@ -135,7 +135,10 @@ func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
 	if baby_cow_health <= 0:
-		_become_friendly()
+		if player.is_in_group("have_minigun"):
+			_become_friendly()
+		else:
+			queue_free()
 		#if randf() < 0.4 and coin_scene:
 			#var coin_instance = coin_scene.instantiate()
 			#coin_instance.global_position = global_position + Vector3(0, 1, 0)
@@ -153,7 +156,7 @@ func _become_friendly():
 			mat = surf_mat.duplicate()
 		else:
 			mat = StandardMaterial3D.new()
-	mat.albedo_color = Color(70,153,0,255)
+	mat.albedo_color = lerp(mat.albedo_color, Color(0,128,0,255), 0.1)
 	$MeshInstance3D.material_override = mat
 	player = null
 	add_to_group("Friendlies")
@@ -172,8 +175,8 @@ func _friendly_ai_logic(delta):
 			nav_agent.target_position = current_target_enemy.global_transform.origin
 			var next_pos = nav_agent.get_next_path_position()
 			var direction = (next_pos - global_transform.origin).normalized()
-			velocity.x = direction.x * move_speed
-			velocity.z = direction.z * move_speed
+			velocity.x = lerp(velocity.x, direction.x * move_speed, delta)
+			velocity.z = lerp(velocity.z, direction.z * move_speed, delta)
 			move_and_slide()
 		else:
 			_stop_moving()
@@ -207,7 +210,9 @@ func _try_shoot_at_enemy(enemy):
 		can_shoot = true
 
 func _shoot_friendly(enemy):
-	if not enemy or not is_instance_valid(enemy):
+	if not enemy.is_in_group("Enemy"):
+		current_target_enemy = _find_nearest_enemy()
+	elif not enemy or not is_instance_valid(enemy):
 		return
 	# Use staggered fire like before
 	_fire_magnum_from_marker_at_target(magnum_spawn_1, enemy)
@@ -220,7 +225,7 @@ func _fire_magnum_from_marker_at_target(spawn_marker: Node3D, target_enemy):
 	get_tree().current_scene.add_child(magnum_instance)
 	magnum_instance.global_transform.origin = spawn_marker.global_transform.origin
 	var dir = (target_enemy.global_transform.origin - spawn_marker.global_transform.origin).normalized()
-	magnum_instance.direction.x = randfn(dir.x, 0.02)
+	magnum_instance.direction.x = randfn(dir.x, 0.01)
 	magnum_instance.direction.y = randfn(dir.y, 0.01)
 	magnum_instance.direction.z = dir.z
 

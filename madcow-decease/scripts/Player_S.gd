@@ -8,6 +8,7 @@ var direction = Vector3.ZERO
 
 var on_floor := true
 
+
 #health system
 @export var health =  1000
 

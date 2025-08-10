@@ -28,6 +28,15 @@ var Weapon_List = {}
 var Ammo_Increase: int = 20
 enum{NULL, HITSCAN, PROJECTILE}
 
+func _process(delta: float) -> void:
+	_check_minigun()
+	
+func _check_minigun():
+	if not Weapon_Stack.find("minigun", 0):
+		get_parent().get_parent().get_parent().add_to_group("have_minigun")
+	else:
+		get_parent().get_parent().get_parent().remove_from_group("have_minigun")
+
 func _ready():
 	Initialize(Start_Weapons)
 
