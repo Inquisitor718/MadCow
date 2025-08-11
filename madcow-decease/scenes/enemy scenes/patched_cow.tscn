@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm6b48v2wj16p"]
+[gd_scene load_steps=12 format=3 uid="uid://cm6b48v2wj16p"]
 
 [ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/Cows/patched_cow.gd" id="1_2wi0g"]
 [ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/ammunation/bullet.tscn" id="2_ni8w7"]
 [ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
 [ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="4_banjt"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
 [ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="5_16xvs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
@@ -29,6 +30,7 @@ collision_mask = 39
 script = ExtResource("1_2wi0g")
 bullet = ExtResource("2_ni8w7")
 revolver_scene = ExtResource("3_2wi0g")
+explosion = ExtResource("4_ni8w7")
 
 [node name="PatchedCow" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 22.25, 0, -0.5)

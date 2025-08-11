@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cerrexjmrwoos"]
+[gd_scene load_steps=12 format=3 uid="uid://cerrexjmrwoos"]
 
 [ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/Cows/baby_cow.gd" id="1_ty27g"]
 [ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://scenes/ammunation/magnum.tscn" id="2_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="3_ye5jj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18obc"]
 albedo_color = Color(0.721569, 0.133333, 0.560784, 1)
@@ -37,6 +38,7 @@ collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_ty27g")
 magnum = ExtResource("2_ye5jj")
+explosion = ExtResource("3_ye5jj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var magnum_spawn_2 = $MeshInstance3D/handgun2/Marker3D
 
 @export var magnum: PackedScene
+@export var explosion: PackedScene
 
 var player: CharacterBody3D = null
 var minigun_player: CharacterBody3D = null
@@ -132,9 +133,29 @@ func _fire_magnum_from_marker(spawn_pos: Node3D) -> void:
 	new_magnum.direction.y = randfn(shot_direction.y, 0.02)
 	new_magnum.direction.z = shot_direction.z
 
+func spawn_explode(position: Vector3):
+	if explosion:
+		print("boom")
+		var boom = explosion.instantiate()
+		get_parent().add_child(boom)
+		boom.global_transform.origin = position
+		
+		var anim_player = boom.get_node_or_null("AnimationPlayer")
+		if anim_player:
+			anim_player.play("Explosion")
+		if anim_player:
+			anim_player.connect("animation_finished", func(_anim_name):
+				boom.queue_free())
+		else:
+			# Fallback if no animation: free after 1 sec
+			boom.call_deferred("queue_free")
+
 func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
+	if baby_cow_health <= 0:
+		if player.is_in_group("Revolver"):
+			spawn_explode(global_transform.origin)
 	if baby_cow_health <= 0:
 		if minigun_player.is_in_group("minigun"):
 			_become_friendly()

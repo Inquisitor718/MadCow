@@ -12,7 +12,7 @@ extends CharacterBody3D
 
 @export var bullet: PackedScene
 @export var revolver_scene: PackedScene
-
+@export var explosion:PackedScene
 
 var player: CharacterBody3D = null
 var can_shoot = true
@@ -94,10 +94,29 @@ func _shoot():
 		new_bullet.direction = shot_direction
 
 
+func spawn_explode(position: Vector3):
+	if explosion:
+		print("boom")
+		var boom = explosion.instantiate()
+		get_parent().add_child(boom)
+		boom.global_transform.origin = position
+		
+		var anim_player = boom.get_node_or_null("AnimationPlayer")
+		if anim_player:
+			anim_player.play("Explosion")
+		if anim_player:
+			anim_player.connect("animation_finished", func(_anim_name):
+				boom.queue_free())
+		else:
+			# Fallback if no animation: free after 1 sec
+			boom.call_deferred("queue_free")
+
 func Hit(dmg: int) -> void:
 	patched_cow_health -= dmg
 	print("Enemy Health:", patched_cow_health)
 	if patched_cow_health <= 0:
+		if player.is_in_group("Revolver"):
+			spawn_explode(global_transform.origin)
 		if randf() < 0.4:
 			var revolver_instance = revolver_scene.instantiate()
 			revolver_instance.global_position = global_position + Vector3(0, 1, 0)
