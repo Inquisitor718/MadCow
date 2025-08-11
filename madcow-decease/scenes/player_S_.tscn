@@ -761,7 +761,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.826832)
 
 [node name="HitBoxMelee" type="ShapeCast3D" parent="Head/Camera3D/W_Manager/rig"]
-transform = Transform3D(1.44, 0, 0, 0, 2.16, 0, 0, 0, 2.4336, 0, 0.908469, -1.60177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908469, -0.601775)
 shape = SubResource("BoxShape3D_x5t1h")
 collision_mask = 2
 

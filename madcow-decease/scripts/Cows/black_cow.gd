@@ -12,13 +12,8 @@ extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var ray_container = $RayContainer
 
-<<<<<<< Updated upstream
 @export var horns_scene: PackedScene
 
-=======
-@export var coin_scene: PackedScene
-@export var explosion: PackedScene
->>>>>>> Stashed changes
 var player: CharacterBody3D = null
 var can_shoot = true
 
@@ -108,19 +103,12 @@ func Hit(dmg: int) -> void:
 	black_cow_health -= dmg
 	print("Enemy Health:", black_cow_health)
 	if black_cow_health <= 0:
-		if player.is_in_group("Revolver"):
-			
-		
 		if randf() < 0.4:
 			var horns_instance = horns_scene.instantiate()
 			horns_instance.global_position = global_position + Vector3(0, 1, 0)
 			get_tree().current_scene.add_child(horns_instance)
 		queue_free()
 
-func spawn_explosion(position: Vector3):
-	var boom = explosion.instantiate()
-	boom.global_transform.origin = position
-	get_tree().current_scene.add_child() 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.name == "Player":

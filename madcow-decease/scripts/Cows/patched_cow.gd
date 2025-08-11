@@ -98,8 +98,6 @@ func Hit(dmg: int) -> void:
 	patched_cow_health -= dmg
 	print("Enemy Health:", patched_cow_health)
 	if patched_cow_health <= 0:
-		
-		
 		if randf() < 0.4:
 			var revolver_instance = revolver_scene.instantiate()
 			revolver_instance.global_position = global_position + Vector3(0, 1, 0)
