@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var bullet_spawn = $PatchedCow/BulletSpawn
 
 @export var bullet: PackedScene
-@export var coin_scene: PackedScene
+@export var revolver_scene: PackedScene
 
 
 var player: CharacterBody3D = null
@@ -99,9 +99,9 @@ func Hit(dmg: int) -> void:
 	print("Enemy Health:", patched_cow_health)
 	if patched_cow_health <= 0:
 		if randf() < 0.4:
-			var coin_instance = coin_scene.instantiate()
-			coin_instance.global_position = global_position + Vector3(0, 1, 0)
-			get_tree().current_scene.add_child(coin_instance)
+			var revolver_instance = revolver_scene.instantiate()
+			revolver_instance.global_position = global_position + Vector3(0, 1, 0)
+			get_tree().current_scene.add_child(revolver_instance)
 		queue_free()
 
 

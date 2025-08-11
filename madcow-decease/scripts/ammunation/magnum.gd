@@ -26,3 +26,4 @@ func _on_area_3d_body_entered(body: PhysicsBody3D) -> void:
 	if body.is_in_group("Enemy"):
 		if body.has_method("Hit"):
 			body.Hit(30)
+		queue_free()

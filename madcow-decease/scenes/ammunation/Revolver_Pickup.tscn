@@ -3,11 +3,27 @@
 [ext_resource type="Script" uid="uid://dmogobeoy77d6" path="res://scripts/ammunation/pickup.gd" id="1_2m74c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2m74c"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jt48a"]
-size = Vector3(1, 1, 3.0235)
+size = Vector3(0.215, 0.45, 0.25)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vjqms"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt48a"]
+size = Vector3(0.216919, 0.453369, 0.848511)
+
+[sub_resource type="Animation" id="Animation_2cv6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.005, -0.00107825, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jt48a"]
 resource_name = "bounce"
@@ -16,93 +32,42 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Barrel:position")
+tracks/0/path = NodePath("Handle:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.005, 0.132544, 0.419029), Vector3(-1.2, 0.132544, 0.419029), Vector3(-0.8, 0.132544, 0.419029)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Handle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.005, -0.00107825, 0), Vector3(-1.2, -0.00107825, 0), Vector3(-0.8, -0.00107825, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2cv6q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Barrel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.005, 0.132544, 0.419029)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Handle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.005, -0.00107825, 0)]
+"values": [Vector3(0.005, -0.00107825, 0), Vector3(0, 1.2, 0), Vector3(0, 0.8, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e2mya"]
-resource_name = "vert_oscillate"
+resource_name = "vert_oscillation"
+length = 0.8
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Barrel:position")
+tracks/0/path = NodePath("Handle:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.005, 0.132544, 0.419029), Vector3(-0.3, 0.132544, 0.419029), Vector3(0.005, 0.132544, 0.419029)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Handle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.005, -0.00107825, 0), Vector3(-0.3, -0.00107825, 0), Vector3(0.005, -0.00107825, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2vmbl"]
 _data = {
 &"RESET": SubResource("Animation_2cv6q"),
 &"bounce": SubResource("Animation_jt48a"),
-&"vert_oscillate": SubResource("Animation_e2mya")
+&"vert_oscillation": SubResource("Animation_e2mya")
 }
 
 [node name="Revolver_Pickup" type="Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 disable_mode = 1
 collision_layer = 16
 collision_mask = 21
@@ -110,28 +75,28 @@ script = ExtResource("1_2m74c")
 weapon_name = "Revolver"
 
 [node name="Handle" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.213, 0, 0, 0, 0.442, 0, 0, 0, 0.286, 0.005, -0.00107825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.00107825, 0)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("BoxMesh_2m74c")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.213, 0, 0, 0, 0.442, 0, 0, 0, 0.286, 2.19027e-08, -0.00107825, 0.28936)
-shape = SubResource("BoxShape3D_jt48a")
-
-[node name="Barrel" type="MeshInstance3D" parent="."]
+[node name="Barrel" type="MeshInstance3D" parent="Handle"]
 transform = Transform3D(0.178, 0, 0, 0, -1.32446e-08, -0.179, 0, 0.303, -7.82434e-09, 0.005, 0.132544, 0.419029)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_vjqms")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494385, 0, 0.298913)
+shape = SubResource("BoxShape3D_jt48a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2vmbl")
 }
-autoplay = "vert_oscillate"
+autoplay = "vert_oscillation"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

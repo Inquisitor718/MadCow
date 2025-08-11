@@ -12,7 +12,7 @@ extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var ray_container = $RayContainer
 
-@export var coin_scene: PackedScene
+@export var horns_scene: PackedScene
 
 var player: CharacterBody3D = null
 var can_shoot = true
@@ -104,9 +104,9 @@ func Hit(dmg: int) -> void:
 	print("Enemy Health:", black_cow_health)
 	if black_cow_health <= 0:
 		if randf() < 0.4:
-			var coin_instance = coin_scene.instantiate()
-			coin_instance.global_position = global_position + Vector3(0, 1, 0)
-			get_tree().current_scene.add_child(coin_instance)
+			var horns_instance = horns_scene.instantiate()
+			horns_instance.global_position = global_position + Vector3(0, 1, 0)
+			get_tree().current_scene.add_child(horns_instance)
 		queue_free()
 
 

@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var pellets_spawn = $PelletsSpawn
 
-@export var coin_scene: PackedScene
+@export var minigun_scene: PackedScene
 @export var pellets: PackedScene
 
 var player: CharacterBody3D = null
@@ -101,9 +101,9 @@ func Hit(dmg: int) -> void:
 	print("Enemy Health:", white_cow_health)
 	if white_cow_health <= 0:
 		if randf() < 0.4:
-			var coin_instance = coin_scene.instantiate()
-			coin_instance.global_position = global_position + Vector3(0, 1, 0)
-			get_tree().current_scene.add_child(coin_instance)
+			var minigun_instance = minigun_scene.instantiate()
+			minigun_instance.global_position = global_position + Vector3(0, 1, 0)
+			get_tree().current_scene.add_child(minigun_instance)
 		queue_free()
 
 
