@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvkl23qbpllyf"]
+
+[ext_resource type="PackedScene" uid="uid://bhauejjmb0pgi" path="res://Assets/boulder3.glb" id="1_8gf6l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8gf6l"]
+points = PackedVector3Array(-0.15482, -0.36015, -0.94672, -0.359674, -0.945202, -0.0171556, -0.889448, -0.402529, -0.150926, -0.293476, 0.465233, -0.86203, 0.651506, 0.164726, -0.705196, 1.00374, -0.149356, 0.278984, 0.256973, -0.80137, 0.569035, 0.281632, -0.206228, 0.938241, -0.934022, 0.340114, 0.17492, -0.732962, 0.61145, -0.36994, 0.388421, 0.928834, 0.0225142, 0.82089, 0.608331, -0.0466773, -0.236382, 0.493485, 0.828088, -0.0531522, 0.929018, 0.371239)
+
+[node name="BoulderC" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.59012, 0, 0, 0, 1.39283, 0, 0, 0, 1.24903, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8gf6l")
+
+[node name="boulder3" parent="." instance=ExtResource("1_8gf6l")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Boulder_1" parent="boulder3" index="0"]
+transform = Transform3D(0.318024, 0, 0, 0, 0.278567, 0, 0, 0, 0.249806, 0, 0, 0)
+
+[editable path="boulder3"]

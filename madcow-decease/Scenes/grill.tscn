@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://0xhn1xnef4wx"]
+
+[ext_resource type="PackedScene" uid="uid://chx7735s4tnhi" path="res://Assets/Grill WALL.glb" id="1_2s3s1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s3s1"]
+size = Vector3(3.99673, 3.99707, 0.190491)
+
+[node name="Grill" type="StaticBody3D"]
+
+[node name="Grill WALL" parent="." instance=ExtResource("1_2s3s1")]
+
+[node name="Wood Wall _001" parent="Grill WALL" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0532074, 0.0749512, -0.00723267)
+shape = SubResource("BoxShape3D_2s3s1")
+
+[editable path="Grill WALL"]

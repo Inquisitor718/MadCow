@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://do38v4fxed4mo"]
+
+[ext_resource type="PackedScene" uid="uid://bpy40kpmkyuua" path="res://Assets/boulder2.glb" id="1_g5gd2"]
+[ext_resource type="PackedScene" uid="uid://cdfcy3mwlmqqm" path="res://Assets/boulder 1.glb" id="1_yjimx"]
+[ext_resource type="Shader" uid="uid://kf5diou68k0d" path="res://Scenes/boulder_b.gdshader" id="2_upw8m"]
+[ext_resource type="Texture2D" uid="uid://k5sn2r8i3x7f" path="res://Assets/boulder 1_Stone.png" id="3_8p671"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g5gd2"]
+points = PackedVector3Array(-0.95942, -0.0278071, 0.299811, -0.924221, 0.406454, 0.109621, -0.954974, -0.0851132, -0.352812, -0.4205, -0.724225, 0.573263, -0.503126, -0.348944, 0.799383, -0.660782, 0.764803, 0.090101, 0.0428337, -0.622451, -0.799352, -0.104818, -0.829348, -0.563731, -0.289337, 0.199743, -0.949984, -0.101298, -0.963682, 0.265781, 0.0978557, -0.917726, 0.400865, 0.755712, -0.0999979, 0.663607, 0.283115, 0.539114, 0.814757, 0.123792, 0.853367, 0.54977, -0.496457, 0.903044, 0.0643623, -0.0824017, 0.842203, -0.54162, 0.651226, 0.190254, -0.773959, 0.930782, -0.130139, -0.337092, 0.467819, -0.879398, -0.273005, 0.0111543, -0.997731, -0.158821, 0.210123, -0.987684, 0.049852, 0.93319, 0.0443836, 0.0636714, 0.510799, 0.784525, -0.388397)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p671"]
+render_priority = 0
+shader = ExtResource("2_upw8m")
+shader_parameter/my_texture = ExtResource("3_8p671")
+
+[node name="BoulderB" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.760659, 0, 0, 0, -0.596099, 0, 0, 0, -0.583172, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_g5gd2")
+
+[node name="boulder 1" parent="." instance=ExtResource("1_yjimx")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 2.3, 0, 0, 0)
+
+[node name="Boulder_2" parent="boulder 1" index="0"]
+transform = Transform3D(-0.253553, 0, 0, 0, -0.397399, 0, 0, 0, -0.253553, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_8p671")
+
+[node name="boulder2" parent="." instance=ExtResource("1_g5gd2")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 2.3, 0, 0, 0)
+visible = false
+
+[node name="Boulder_2" parent="boulder2" index="0"]
+transform = Transform3D(-0.253553, 0, 0, 0, -0.397399, 0, 0, 0, -0.253553, 0, 0, 0)
+visible = false
+
+[editable path="boulder 1"]
+[editable path="boulder2"]

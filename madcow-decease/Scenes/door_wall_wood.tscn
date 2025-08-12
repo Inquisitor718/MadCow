@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyywpuvvw4yh0"]
+
+[ext_resource type="PackedScene" uid="uid://cm1rm4etroxf" path="res://Assets/door_wall_wood.glb" id="1_erjbq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xy62h"]
+size = Vector3(0.999939, 0.340651, 0.0539246)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erjbq"]
+size = Vector3(1.33179, 2.64198, 0.21167)
+
+[node name="door_wall_wood" type="StaticBody3D"]
+
+[node name="door_wall_wood" parent="." instance=ExtResource("1_erjbq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.3349, -2.00655, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0137939, 1.3038, -2.23394)
+shape = SubResource("BoxShape3D_xy62h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32971, -0.70339, -2.23403)
+shape = SubResource("BoxShape3D_erjbq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33649, -0.70339, -2.23403)
+shape = SubResource("BoxShape3D_erjbq")

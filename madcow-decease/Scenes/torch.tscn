@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://caac403h5abfw"]
+
+[ext_resource type="PackedScene" uid="uid://38wgh5l3cx03" path="res://Assets/torch.glb" id="1_pa17o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wced7"]
+points = PackedVector3Array(-5.35193, 3.16546, -3.35488, 5.35193, 3.16546, -3.35488, -1.097, -3.47549, -0.957323, -5.35193, 3.60258, -2.14228, -5.35193, 6.35892, -4.50757, 1.09595, -3.47549, -0.957323, 5.35193, 6.35892, -4.50757, 5.35193, 3.60258, -2.14228, -1.097, -3.03837, 0.255276, -1.09176, 2.67555, 1.5009, -1.30655, 6.44964, 1.79656, -1.33903, 7.2711, 1.84187, -1.49619, 13.376, 2.05766, -2.42031, 13.376, 0.785932, -5.35193, 6.79769, -3.29498, -2.42031, 13.376, -0.786838, -1.49619, 13.376, -2.05857, -2.94524, 8.55937, -5.30164, 1.09595, -3.03837, 0.255276, 2.94419, 8.55937, -5.30164, 1.4941, 13.376, -2.05857, 2.41822, 13.376, -0.786838, 5.35193, 6.79769, -3.29498, 1.08966, 2.67555, 1.5009, 2.41822, 13.376, 0.785932, 1.4941, 13.376, 2.05766, 1.33798, 7.2711, 1.84187, 1.30445, 6.44964, 1.79656, -0.00104761, -1.00122, 0.999424, -0.00104761, 2.67555, 1.85569, -0.00104761, 6.44964, 2.22047, -0.00104761, 7.2711, 2.2773, -0.00104761, 13.376, 2.54378, -0.00104761, 13.376, -2.54392)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wced7"]
+emission_enabled = true
+emission = Color(1, 0.453648, 0.325442, 1)
+emission_energy_multiplier = 7.4
+
+[node name="Torch" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0374562, 0, 0, 0, 0.0352311, -0.0127173, 0, 0.0127173, 0.0352311, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wced7")
+
+[node name="torch" parent="." instance=ExtResource("1_pa17o")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Torch Holder" parent="torch" index="0"]
+transform = Transform3D(0.0124854, 0, 0, 0, 0.0117437, -0.0042391, 0, 0.0042391, 0.0117437, 0, 0, 0)
+
+[node name="Torch fire_001" parent="torch/Torch Holder" index="0"]
+transform = Transform3D(-2.45322, 0, 0, 0, -2.3075, -0.832932, 0, 0.832932, -2.3075, 0.256966, 14.8022, -0.152993)
+surface_material_override/0 = SubResource("StandardMaterial3D_wced7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00616822, 0.54449, 0.132742)
+light_color = Color(1, 0.552941, 0, 1)
+light_indirect_energy = 4.0
+omni_range = 8.0
+omni_attenuation = 1.155
+
+[editable path="torch"]
