@@ -262,11 +262,11 @@ func _on_weapon_timer_timeout():
 				 #
 				#original_speed = player.speed_walk
 				#original_hitbox_scale = player.scale
-#
+
 				#var tween = create_tween()
 				#tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
 				#tween.tween_property(player, "scale", player.scale * 1.5, 0.5)
-#
+
 			## Create the timer
 			#var timer := Timer.new()
 			#timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())

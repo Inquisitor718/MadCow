@@ -9,13 +9,7 @@ var vertical_velocity = 0.0
 @export var reserve_ammo: int
 
 func _process(delta: float) -> void:
-	vertical_velocity -= gravity * delta * 2
-	global_position.y += vertical_velocity * delta
-	if global_position.y <= 1:
-		global_position.y = 1
-		vertical_velocity = 0
 	rotate_y(deg_to_rad(ROT_SPEED))
-
 
 func _on_body_entered(body: CharacterBody3D) -> void:
 	if body.is_in_group("player_S") and body.is_in_group(weapon_name):

@@ -14,3 +14,11 @@ res://scripts/Cows/patched_cow.gd
 res://scenes/ammunation/Revolver_Pickup.tscn
 res://scenes/horns_pickup.tscn
 res://scripts/ammunation/w_manager.gd
+res://scripts/ammunation/pickup.gd
+res://scenes/ammunation/minigun_pickup.tscn
+res://scenes/Projectiles_to_be_loaded/Hitscanprojectile.tscn
+res://scripts/GLOBAL.gd
+res://scripts/Projectiles/Projectile.gd
+res://scripts/Projectiles/Shotgun_proj.gd
+res://scenes/Projectiles_to_be_loaded/shotgun_proj.tscn
+res://scenes/Projectiles_to_be_loaded/RBprojectile.tscn
