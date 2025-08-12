@@ -11,6 +11,33 @@ radial_segments = 32
 [sub_resource type="BoxShape3D" id="BoxShape3D_34xhx"]
 size = Vector3(0.252, 0.5, 0.741943)
 
+[sub_resource type="Animation" id="Animation_jm00o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.25)]
+}
+
 [sub_resource type="Animation" id="Animation_34xhx"]
 resource_name = "bounce"
 length = 0.3
@@ -37,33 +64,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0.25), Vector3(0, 1.2, 0.25), Vector3(0, 0.8, 0.25)]
-}
-
-[sub_resource type="Animation" id="Animation_jm00o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.25)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0.25)]
 }
 
 [sub_resource type="Animation" id="Animation_od824"]
@@ -105,17 +105,19 @@ _data = {
 disable_mode = 1
 collision_layer = 16
 collision_mask = 21
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
 script = ExtResource("1_34xhx")
 weapon_name = "Horns"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-layers = 2
 mesh = SubResource("CylinderMesh_34xhx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
-layers = 2
 mesh = SubResource("CylinderMesh_34xhx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

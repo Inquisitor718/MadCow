@@ -115,7 +115,6 @@ func spawn_explode(position: Vector3):
 			anim_player.connect("animation_finished", func(_anim_name):
 				boom.queue_free())
 		else:
-			# Fallback if no animation: free after 1 sec
 			boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:

@@ -638,6 +638,7 @@ albedo_color = Color(0, 0.717647, 0, 1)
 material = SubResource("StandardMaterial3D_flsqn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wot1"]
+size = Vector3(1.25, 1.25, 1.25)
 
 [node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
 collision_mask = 87
@@ -771,12 +772,10 @@ collide_with_bodies = false
 mesh = SubResource("CapsuleMesh_4j2pt")
 
 [node name="Weapon_Pickup" type="Area3D" parent="."]
-visible = false
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon_Pickup"]
-transform = Transform3D(1.25, 0, 0, 0, 0.75, 0, 0, 0, 1.25, 0, -0.51054, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("BoxShape3D_0wot1")
 
 [connection signal="Update_Ammo" from="Head/Camera3D/W_Manager" to="CanvasLayer" method="_on_w_manager_update_ammo"]

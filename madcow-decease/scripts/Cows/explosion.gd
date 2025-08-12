@@ -1,16 +1,17 @@
 extends Node3D
 
-@export var exp_dmg: int
-@export var dmg_rad: int
-@export var exp_dur: int
+@export var exp_dmg: float
+@export var dmg_rad: float
+@export var exp_dur: float
+
 func _ready():
 	print("Boom spawn")
 	var area = Area3D.new()
 	add_child(area)
 	var collision_shape = CollisionShape3D.new()
 	var shape = SphereShape3D.new()
-	shape.radius = dmg_rad  # Adjust explosion radius
 	collision_shape.shape = shape
+	shape.radius = lerp(shape.radius, dmg_rad, 0.1)
 	area.add_child(collision_shape)
 	area.set_collision_layer(0)
 	area.set_collision_mask_value(2, true)

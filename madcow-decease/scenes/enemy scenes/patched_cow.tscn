@@ -36,7 +36,7 @@ revolver_scene = ExtResource("3_2wi0g")
 explosion = ExtResource("4_ni8w7")
 
 [node name="PatchedCow" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 22.25, 0, -0.5)
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 22.25, -1, -0.5)
 material_override = SubResource("StandardMaterial3D_hsi1t")
 mesh = ExtResource("5_16xvs")
 
@@ -44,32 +44,34 @@ mesh = ExtResource("5_16xvs")
 transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, -13.7351, 6.31224, -111.831)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1.74846e-08, -8.74228e-09, 0.2, 0.2, -8.74228e-09, 1.74846e-08, 8.74228e-09, 0.2, 8.74228e-09, -0.0410748, 1.15, 0.607124)
+transform = Transform3D(-1.74846e-08, -1.02445e-08, 0.2, 0.2, -8.74228e-09, 1.74846e-08, 8.74228e-09, 0.2, 1.02445e-08, -0.0410748, 0.15, 0.607124)
 shape = SubResource("CapsuleShape3D_2wi0g")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-8.3819e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.3819e-09, 0.181236, 0.437813, 0.936988)
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 0.181236, -0.562187, 0.936988)
 shape = SubResource("CapsuleShape3D_ni8w7")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(-8.3819e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.3819e-09, -0.201439, 0.437813, 0.933287)
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, -0.201439, -0.562187, 0.933287)
 shape = SubResource("CapsuleShape3D_ni8w7")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
-transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, -0.115486, 0.437813, -0.816638)
+transform = Transform3D(-4.65661e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -4.65661e-09, -0.115486, -0.562187, -0.816638)
 shape = SubResource("CapsuleShape3D_ni8w7")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0.364292, 0.437813, -0.767074)
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 0.364292, -0.562187, -0.767074)
 shape = SubResource("CapsuleShape3D_ni8w7")
 
 [node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_hsi1t")
 
 [node name="ShootArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShootArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -78,6 +80,7 @@ shape = SubResource("SphereShape3D_emkmn")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_ni8w7")

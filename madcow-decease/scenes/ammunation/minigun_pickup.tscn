@@ -70,6 +70,10 @@ _data = {
 disable_mode = 1
 collision_layer = 16
 collision_mask = 21
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
 script = ExtResource("1_83iy2")
 weapon_name = "minigun"
 
