@@ -28,8 +28,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sugp2"]
-vertices = PackedVector3Array(3.5, 1, -14.2163, 4.75, 1, -14.4663, 4.75, 1, -17.4663, -49.5, 1, -17.4663, 4.75, 1, 17.5337, 4.75, 1, 14.2837, 3.5, 1, 14.0337, -49.5, 1, 17.5337, 3.5, 1, 5.2837, 4.75, 1, 5.0337, 4.75, 1, -5.2163, 3.5, 1, -5.4663, 5.75, 1, -14.2163, 49.5, 1, -17.4663, 5.75, 1, 14.0337, 49.5, 1, 17.5337, 5.75, 1, -5.4663, 5.75, 1, 5.2837)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 3), PackedInt32Array(3, 8, 7), PackedInt32Array(3, 0, 11), PackedInt32Array(8, 6, 7), PackedInt32Array(1, 2, 12), PackedInt32Array(12, 2, 13), PackedInt32Array(5, 14, 4), PackedInt32Array(4, 14, 15), PackedInt32Array(10, 16, 9), PackedInt32Array(9, 16, 17), PackedInt32Array(16, 13, 17), PackedInt32Array(17, 13, 15), PackedInt32Array(16, 12, 13), PackedInt32Array(15, 14, 17)]
 
 [node name="Main" type="Node3D"]
 
@@ -57,7 +55,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -2)
 
 [node name="PatchedCow" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -37)
+
+[node name="PatchedCow2" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -33)
+
+[node name="PatchedCow3" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -29)
+
+[node name="PatchedCow4" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -24)
+
+[node name="PatchedCow5" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -42.5)
 
 [node name="Spwaner" parent="." instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 4, -0.5)
@@ -66,10 +76,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 4, -0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.5, 4)
 
 [node name="BlackCow" parent="." instance=ExtResource("11_eb6dy")]
-transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -13.5, 1.5, -13.5)
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -41.5, 3.5, -40)
+
+[node name="BlackCow2" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -37.5, 3.5, -40)
+
+[node name="BlackCow3" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -34, 3.5, -40)
+
+[node name="BlackCow4" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -30.5, 3.5, -40)
+
+[node name="BlackCow5" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -26, 3.5, -40)
 
 [node name="WhiteCow" parent="." instance=ExtResource("12_trceg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -42.5)
+
+[node name="WhiteCow2" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, -42.5)
+
+[node name="WhiteCow3" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -42.5)
+
+[node name="WhiteCow4" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5, -42.5)
+
+[node name="WhiteCow5" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5, -42.5)
 
 [node name="Horns_Pickup" parent="." instance=ExtResource("13_trceg")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -43.5, 1, -12)

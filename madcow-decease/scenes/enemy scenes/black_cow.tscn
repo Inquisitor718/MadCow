@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c83lc7sg4k1h2"]
+[gd_scene load_steps=10 format=3 uid="uid://c83lc7sg4k1h2"]
 
 [ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://scenes/horns_pickup.tscn" id="2_0xvba"]
@@ -17,6 +17,9 @@ radius = 15.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h4022"]
 radius = 4.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_adx45"]
+radius = 500.0
 
 [node name="BlackCow" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 0, 0, 0)
@@ -71,7 +74,13 @@ shape = SubResource("SphereShape3D_h4022")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_adx45")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
 [connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

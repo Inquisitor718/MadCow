@@ -15,6 +15,7 @@ extends CharacterBody3D
 @export var explosion:PackedScene
 
 var player: CharacterBody3D = null
+var group_player: CharacterBody3D = null
 var can_shoot = true
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -115,7 +116,7 @@ func Hit(dmg: int) -> void:
 	patched_cow_health -= dmg
 	print("Enemy Health:", patched_cow_health)
 	if patched_cow_health <= 0:
-		if player.is_in_group("Revolver"):
+		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
 		if randf() < 0.4:
 			var revolver_instance = revolver_scene.instantiate()
@@ -131,3 +132,7 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player = null
+		
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D and body.name == "Player":
+		group_player = body

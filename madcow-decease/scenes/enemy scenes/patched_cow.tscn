@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm6b48v2wj16p"]
+[gd_scene load_steps=13 format=3 uid="uid://cm6b48v2wj16p"]
 
 [ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/Cows/patched_cow.gd" id="1_2wi0g"]
 [ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/ammunation/bullet.tscn" id="2_ni8w7"]
@@ -22,6 +22,9 @@ radius = 20.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_emkmn"]
 radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ni8w7"]
+radius = 500.0
 
 [node name="PatchedCow" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, 0, 0, 0)
@@ -74,5 +77,11 @@ shape = SubResource("SphereShape3D_emkmn")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ni8w7")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

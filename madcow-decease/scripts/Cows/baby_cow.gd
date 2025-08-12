@@ -17,7 +17,7 @@ extends CharacterBody3D
 @export var explosion: PackedScene
 
 var player: CharacterBody3D = null
-var minigun_player: CharacterBody3D = null
+var group_player: CharacterBody3D = null
 var current_target_enemy: CharacterBody3D = null
 var is_friendly: bool = false
 var friendly_timer: float = 0.0
@@ -135,10 +135,9 @@ func _fire_magnum_from_marker(spawn_pos: Node3D) -> void:
 
 func spawn_explode(position: Vector3):
 	if explosion:
-		print("boom")
 		var boom = explosion.instantiate()
+		boom.global_position = global_position
 		get_parent().add_child(boom)
-		boom.global_transform.origin = position
 		
 		var anim_player = boom.get_node_or_null("AnimationPlayer")
 		if anim_player:
@@ -154,10 +153,10 @@ func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
 	if baby_cow_health <= 0:
-		if player.is_in_group("Revolver"):
+		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
 	if baby_cow_health <= 0:
-		if minigun_player.is_in_group("minigun"):
+		if group_player.is_in_group("minigun"):
 			_become_friendly()
 		else:
 			queue_free()
@@ -262,4 +261,4 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.name == "Player":
-		minigun_player = body
+		group_player = body
