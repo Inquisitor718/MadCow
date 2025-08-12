@@ -118,9 +118,9 @@ func Hit(dmg: int) -> void:
 	if patched_cow_health <= 0:
 		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
-		if randf() < 0.4:
+		if randi() % 100 < 1:
 			var revolver_instance = revolver_scene.instantiate()
-			revolver_instance.global_position = global_position + Vector3(0, 1, 0)
+			revolver_instance.global_position = global_position
 			get_tree().current_scene.add_child(revolver_instance)
 		queue_free()
 

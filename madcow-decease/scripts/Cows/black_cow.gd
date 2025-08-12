@@ -106,6 +106,7 @@ func spawn_explode(position: Vector3):
 		var boom = explosion.instantiate()
 		get_parent().add_child(boom)
 		boom.global_transform.origin = position
+		boom.global_position.y = global_position.y - 1
 		
 		var anim_player = boom.get_node_or_null("AnimationPlayer")
 		if anim_player:
@@ -118,16 +119,19 @@ func spawn_explode(position: Vector3):
 			boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:
-	black_cow_health -= dmg
-	print("Enemy Health:", black_cow_health)
-	if black_cow_health <= 0:
-		if group_player.is_in_group("Revolver"):
-			spawn_explode(global_transform.origin)
-		if randf() < 0.4:
-			var horns_instance = horns_scene.instantiate()
-			horns_instance.global_position = global_position + Vector3(0, 1, 0)
-			get_tree().current_scene.add_child(horns_instance)
-		queue_free()
+	if black_cow_health >= 0:
+		black_cow_health -= dmg
+		print("Enemy Health:", black_cow_health)
+		var c = randi() % 100
+		if black_cow_health <= 0:
+			print(c)
+			if group_player.is_in_group("Revolver"):
+				spawn_explode(global_transform.origin)
+			if c < 20:
+				var horns_instance = horns_scene.instantiate()
+				horns_instance.global_position = global_position
+				get_tree().current_scene.add_child(horns_instance)
+			queue_free()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:

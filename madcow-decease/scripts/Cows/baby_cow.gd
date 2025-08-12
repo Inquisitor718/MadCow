@@ -80,6 +80,7 @@ func _face_player(delta):
 
 func _move_toward_player(_delta):
 	var direction = (player.global_transform.origin - global_transform.origin)
+	print("moving")
 	direction.y = 0
 	direction = direction.normalized()
 	velocity.x = direction.x * move_speed

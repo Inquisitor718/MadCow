@@ -28,6 +28,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sugp2"]
+vertices = PackedVector3Array(-49.5, 2.5, -53.4663, -49.5, 2.5, -18.4663, 49.5, 2.5, -18.4663, 49.5, 2.5, -53.4663, 3.5, 1, -14.2163, 4.75, 1, -14.4663, 4.75, 1, -17.4663, -49.5, 1, -17.4663, 4.75, 1, 17.5337, 4.75, 1, 14.2837, 3.5, 1, 14.0337, -49.5, 1, 17.5337, 3.5, 1, 5.2837, 4.75, 1, 5.0337, 4.75, 1, -5.2163, 3.5, 1, -5.4663, 5.75, 1, -14.2163, 49.5, 1, -17.4663, 5.75, 1, 14.0337, 49.5, 1, 17.5337, 5.75, 1, -5.4663, 5.75, 1, 5.2837)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 7), PackedInt32Array(7, 12, 11), PackedInt32Array(7, 4, 15), PackedInt32Array(12, 10, 11), PackedInt32Array(5, 6, 16), PackedInt32Array(16, 6, 17), PackedInt32Array(9, 18, 8), PackedInt32Array(8, 18, 19), PackedInt32Array(14, 20, 13), PackedInt32Array(13, 20, 21), PackedInt32Array(20, 17, 21), PackedInt32Array(21, 17, 19), PackedInt32Array(20, 16, 17), PackedInt32Array(19, 18, 21)]
 
 [node name="Main" type="Node3D"]
 
@@ -64,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -33)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -29)
 
 [node name="PatchedCow4" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -7.5)
 
 [node name="PatchedCow5" parent="." instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 4, -42.5)
