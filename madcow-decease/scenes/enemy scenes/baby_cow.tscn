@@ -37,6 +37,7 @@ radius = 500.0
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_ty27g")
+baby_cow_health = 60
 magnum = ExtResource("2_ye5jj")
 explosion = ExtResource("3_ye5jj")
 

@@ -730,7 +730,7 @@ cull_mask = 1048573
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("Melee_Hitbox")]
 script = ExtResource("2_v7hu7")
 Melee_Hitbox = NodePath("rig/HitBoxMelee")
-Powerup_Duration = 999
+Powerup_Duration = 60
 _weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), ExtResource("7_0wot1"), ExtResource("8_x5t1h")])
 Start_Weapons = Array[String](["Shotgun"])
 
@@ -761,9 +761,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330302, -0.110232, -0.826832)
 
 [node name="HitBoxMelee" type="ShapeCast3D" parent="Head/Camera3D/W_Manager/rig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908469, -0.601775)
+transform = Transform3D(1, 0, 0, 0, 1.56, 0, 0, 0, 2.08, 0, 0.908469, -1.60177)
 shape = SubResource("BoxShape3D_x5t1h")
 collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_4j2pt")
