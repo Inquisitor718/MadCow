@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cqgvk2tvng4ws"]
+[gd_scene load_steps=35 format=3 uid="uid://cqgvk2tvng4ws"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://player.tscn" id="1_2qr42"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_cpuah"]
@@ -27,16 +27,17 @@
 [ext_resource type="PackedScene" uid="uid://do38v4fxed4mo" path="res://Scenes/boulder_b.tscn" id="23_53cmg"]
 [ext_resource type="PackedScene" uid="uid://cvkl23qbpllyf" path="res://Scenes/boulder_c.tscn" id="24_m7jp2"]
 [ext_resource type="PackedScene" uid="uid://0xhn1xnef4wx" path="res://Scenes/grill.tscn" id="25_53cmg"]
+[ext_resource type="PackedScene" uid="uid://c3sxue4pcluf" path="res://Scenes/large_window.tscn" id="28_0uiba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewx32"]
 shader = ExtResource("1_cpuah")
-shader_parameter/color_A = Color(0.348266, 0.072357, 0.56011, 1)
-shader_parameter/color_B = Color(0.601104, 0.744504, 0.22105, 1)
+shader_parameter/color_A = Color(0.0681367, 0.0499034, 0.266847, 1)
+shader_parameter/color_B = Color(0.340987, 0.777169, 0.585393, 1)
 shader_parameter/skyTexture = ExtResource("2_0uiba")
 shader_parameter/time_speed = 0.02
-shader_parameter/swirl_strength = 0.33
-shader_parameter/tex_scale = 0.6
-shader_parameter/invert_color = true
+shader_parameter/swirl_strength = 0.35
+shader_parameter/tex_scale = 0.81
+shader_parameter/invert_color = false
 
 [sub_resource type="Sky" id="Sky_qjq31"]
 sky_material = SubResource("ShaderMaterial_ewx32")
@@ -45,13 +46,21 @@ sky_material = SubResource("ShaderMaterial_ewx32")
 background_mode = 2
 sky = SubResource("Sky_qjq31")
 ambient_light_source = 2
-ambient_light_color = Color(0.242879, 0.395345, 0.204342, 0.776471)
+ambient_light_color = Color(0.35011, 0.322069, 0.47996, 1)
 ambient_light_energy = 0.8
 tonemap_mode = 2
 ssao_enabled = true
 ssao_radius = 3.03
 ssao_intensity = 3.4
 glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.678518, 0.5034, 0.443943, 1)
+fog_density = 2.493
+fog_sky_affect = 0.304
+fog_height = -54.86
+fog_depth_begin = 0.0
+fog_depth_end = 571.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cpuah"]
 size = Vector3(23, 13.423, 1)
@@ -69,13 +78,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.057003, 0.0811024, -0.0797
 environment = SubResource("Environment_1pabj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.407428, 0.652759, 0.638678, -0.881582, 0.0985876, 0.461621, 0.238361, -0.751124, 0.615627, 64.9193, 12.5985, -46.848)
-light_color = Color(0.796281, 0.962464, 0.762185, 1)
+transform = Transform3D(0.407428, 0.465214, 0.785861, -0.881582, -0.0242475, 0.471408, 0.238361, -0.884866, 0.400245, 64.9193, 12.5985, -46.848)
+visible = false
+light_color = Color(0.871996, 0.949786, 0.633935, 1)
 light_energy = 0.8
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_2qr42")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38.7788, 1.37792, 55.5337)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38.7788, 1.37792, 57.7493)
 script = ExtResource("2_1pabj")
 
 [node name="Rock_barrier" type="Node3D" parent="."]
@@ -4773,12 +4783,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5006, 10.2995, -15.3759)
 [node name="wooden_wall602" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.5006, 10.2995, -15.5425)
 
-[node name="wooden_wall603" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 10.2507, -13.4592)
-
-[node name="wooden_wall604" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 10.2995, -13.4592)
-
 [node name="wooden_wall605" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.4994, 10.2995, 28.4575)
 
@@ -6491,6 +6495,294 @@ transform = Transform3D(4, 0, 0, 0, 3.11179, 0, 0, 0, 4, -5.1133, 16.9247, -58.9
 
 [node name="Pillar20" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(4, 0, 0, 0, 3.11179, 0, 0, 0, 4, 22.7788, 16.9247, -58.6302)
+
+[node name="Pillar21" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -1.76827e-07, 1.96, 0, -4.04533, -8.56743e-08, 36.8867, 16.9247, -15.2327)
+
+[node name="Pillar22" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, -1.61466, 1.31402, 0, -4.14354, -0.512052, 36.8867, 23.9247, -15.2327)
+
+[node name="Pillar23" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.51367, 0.733388, 0, -1.51367, -0.733389, 36.8867, 16.9247, -24.7827)
+
+[node name="Pillar24" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, 36.8867, 16.9247, -21.7827)
+
+[node name="Pillar25" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, 36.8867, 22.9247, -31.476)
+
+[node name="Pillar26" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, 36.8867, 22.9247, -47.711)
+
+[node name="Pillar27" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, 36.8867, 22.9247, -42.611)
+
+[node name="Pillar28" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.32489, 1.26387, 0, -2.84124, -0.589354, 36.8867, 28.9247, -33.411)
+
+[node name="Pillar29" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, -2.48389e-07, -5.15229e-08, 0, -1.32489, 1.26387, -1.02809e-07, 2.84124, 0.589354, 36.8867, 28.9247, -57.411)
+
+[node name="Pillar30" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, 2.57729, 0, 0, -1.06515e-14, 1.96, 36.8867, 22.9247, -45.476)
+
+[node name="Pillar31" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.96, 3.53654e-07, 7.48989e-15, 0, -1.76827e-07, 1.96, 1.71349e-07, 4.04533, 8.56743e-08, 36.8867, 16.9247, -75.2827)
+
+[node name="Pillar32" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.372, 3.62239e-07, 4.4765e-08, 0, -1.61466, 1.31402, 1.19944e-07, 4.14354, 0.512052, 36.8867, 23.9247, -75.2827)
+
+[node name="Pillar33" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, 36.8867, 16.9247, -65.7327)
+
+[node name="Pillar34" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, -2.64659e-07, -1.2823e-07, 0, -1.51367, 0.733388, -2.05618e-07, -1.51367, -0.733389, 36.8867, 16.9247, -68.7327)
+
+[node name="Pillar35" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -1.76827e-07, 1.96, 0, -4.04533, -8.56743e-08, 22.8867, 16.9247, -15.2327)
+
+[node name="Pillar36" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, -1.61466, 1.31402, 0, -4.14354, -0.512052, 22.8867, 23.9247, -15.2327)
+
+[node name="Pillar37" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.51367, 0.733388, 0, -1.51367, -0.733389, 22.8867, 16.9247, -24.7827)
+
+[node name="Pillar38" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, 22.8867, 16.9247, -21.7827)
+
+[node name="Pillar39" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, 22.8867, 22.9247, -31.476)
+
+[node name="Pillar40" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, 22.8867, 22.9247, -47.711)
+
+[node name="Pillar41" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, 22.8867, 22.9247, -42.611)
+
+[node name="Pillar42" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.32489, 1.26387, 0, -2.84124, -0.589354, 22.8867, 28.9247, -33.411)
+
+[node name="Pillar43" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, -2.48389e-07, -5.15229e-08, 0, -1.32489, 1.26387, -1.02809e-07, 2.84124, 0.589354, 22.8867, 28.9247, -57.411)
+
+[node name="Pillar44" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, 2.57729, 0, 0, -1.06515e-14, 1.96, 22.8867, 22.9247, -45.476)
+
+[node name="Pillar45" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.96, 3.53654e-07, 7.48989e-15, 0, -1.76827e-07, 1.96, 1.71349e-07, 4.04533, 8.56743e-08, 22.8867, 16.9247, -75.2827)
+
+[node name="Pillar46" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.372, 3.62239e-07, 4.4765e-08, 0, -1.61466, 1.31402, 1.19944e-07, 4.14354, 0.512052, 22.8867, 23.9247, -75.2827)
+
+[node name="Pillar47" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, 22.8867, 16.9247, -65.7327)
+
+[node name="Pillar48" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, -2.64659e-07, -1.2823e-07, 0, -1.51367, 0.733388, -2.05618e-07, -1.51367, -0.733389, 22.8867, 16.9247, -68.7327)
+
+[node name="Pillar49" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -1.76827e-07, 1.96, 0, -4.04533, -8.56743e-08, 8.1867, 16.9247, -15.2327)
+
+[node name="Pillar50" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, -1.61466, 1.31402, 0, -4.14354, -0.512052, 8.1867, 23.9247, -15.2327)
+
+[node name="Pillar51" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.51367, 0.733388, 0, -1.51367, -0.733389, 8.1867, 16.9247, -24.7827)
+
+[node name="Pillar52" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, 8.1867, 16.9247, -21.7827)
+
+[node name="Pillar53" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, 8.1867, 22.9247, -31.476)
+
+[node name="Pillar54" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, 8.1867, 22.9247, -47.711)
+
+[node name="Pillar55" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, 8.1867, 22.9247, -42.611)
+
+[node name="Pillar56" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.32489, 1.26387, 0, -2.84124, -0.589354, 8.1867, 28.9247, -33.411)
+
+[node name="Pillar57" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, -2.48389e-07, -5.15229e-08, 0, -1.32489, 1.26387, -1.02809e-07, 2.84124, 0.589354, 8.1867, 28.9247, -57.411)
+
+[node name="Pillar58" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, 2.57729, 0, 0, -1.06515e-14, 1.96, 8.1867, 22.9247, -45.476)
+
+[node name="Pillar59" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.96, 3.53654e-07, 7.48989e-15, 0, -1.76827e-07, 1.96, 1.71349e-07, 4.04533, 8.56743e-08, 8.1867, 16.9247, -75.2827)
+
+[node name="Pillar60" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.372, 3.62239e-07, 4.4765e-08, 0, -1.61466, 1.31402, 1.19944e-07, 4.14354, 0.512052, 8.1867, 23.9247, -75.2827)
+
+[node name="Pillar61" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, 8.1867, 16.9247, -65.7327)
+
+[node name="Pillar62" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, -2.64659e-07, -1.2823e-07, 0, -1.51367, 0.733388, -2.05618e-07, -1.51367, -0.733389, 8.1867, 16.9247, -68.7327)
+
+[node name="Pillar63" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -1.76827e-07, 1.96, 0, -4.04533, -8.56743e-08, -4.8133, 16.9247, -15.2327)
+
+[node name="Pillar64" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, -1.61466, 1.31402, 0, -4.14354, -0.512052, -4.8133, 23.9247, -15.2327)
+
+[node name="Pillar65" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.51367, 0.733388, 0, -1.51367, -0.733389, -4.8133, 16.9247, -24.7827)
+
+[node name="Pillar66" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, -4.8133, 16.9247, -21.7827)
+
+[node name="Pillar67" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, -4.8133, 22.9247, -31.476)
+
+[node name="Pillar68" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, -4.8133, 22.9247, -47.711)
+
+[node name="Pillar69" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, -4.8133, 22.9247, -42.611)
+
+[node name="Pillar70" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.32489, 1.26387, 0, -2.84124, -0.589354, -4.8133, 28.9247, -33.411)
+
+[node name="Pillar71" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, -2.48389e-07, -5.15229e-08, 0, -1.32489, 1.26387, -1.02809e-07, 2.84124, 0.589354, -4.8133, 28.9247, -57.411)
+
+[node name="Pillar72" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, 2.57729, 0, 0, -1.06515e-14, 1.96, -4.8133, 22.9247, -45.476)
+
+[node name="Pillar73" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.96, 3.53654e-07, 7.48989e-15, 0, -1.76827e-07, 1.96, 1.71349e-07, 4.04533, 8.56743e-08, -4.8133, 16.9247, -75.2827)
+
+[node name="Pillar74" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.372, 3.62239e-07, 4.4765e-08, 0, -1.61466, 1.31402, 1.19944e-07, 4.14354, 0.512052, -4.8133, 23.9247, -75.2827)
+
+[node name="Pillar75" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, -4.8133, 16.9247, -65.7327)
+
+[node name="Pillar76" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, -2.64659e-07, -1.2823e-07, 0, -1.51367, 0.733388, -2.05618e-07, -1.51367, -0.733389, -4.8133, 16.9247, -68.7327)
+
+[node name="Pillar77" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -1.76827e-07, 1.96, 0, -4.04533, -8.56743e-08, -19.1133, 16.9247, -15.2327)
+
+[node name="Pillar78" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, -1.61466, 1.31402, 0, -4.14354, -0.512052, -19.1133, 23.9247, -15.2327)
+
+[node name="Pillar79" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.51367, 0.733388, 0, -1.51367, -0.733389, -19.1133, 16.9247, -24.7827)
+
+[node name="Pillar80" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, -19.1133, 16.9247, -21.7827)
+
+[node name="Pillar81" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, -19.1133, 22.9247, -31.476)
+
+[node name="Pillar82" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, -19.1133, 22.9247, -47.711)
+
+[node name="Pillar83" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, -19.1133, 22.9247, -42.611)
+
+[node name="Pillar84" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.32489, 1.26387, 0, -2.84124, -0.589354, -19.1133, 28.9247, -33.411)
+
+[node name="Pillar85" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, -2.48389e-07, -5.15229e-08, 0, -1.32489, 1.26387, -1.02809e-07, 2.84124, 0.589354, -19.1133, 28.9247, -57.411)
+
+[node name="Pillar86" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, 2.57729, 0, 0, -1.06515e-14, 1.96, -19.1133, 22.9247, -45.476)
+
+[node name="Pillar87" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.96, 3.53654e-07, 7.48989e-15, 0, -1.76827e-07, 1.96, 1.71349e-07, 4.04533, 8.56743e-08, -19.1133, 16.9247, -75.2827)
+
+[node name="Pillar88" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.372, 3.62239e-07, 4.4765e-08, 0, -1.61466, 1.31402, 1.19944e-07, 4.14354, 0.512052, -19.1133, 23.9247, -75.2827)
+
+[node name="Pillar89" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, -19.1133, 16.9247, -65.7327)
+
+[node name="Pillar90" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, -2.64659e-07, -1.2823e-07, 0, -1.51367, 0.733388, -2.05618e-07, -1.51367, -0.733389, -19.1133, 16.9247, -68.7327)
+
+[node name="Pillar91" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.6, 0, 0, 0, 2.4, 0, 0, 0, 2, 10.533, 0.438912, 68.1957)
+
+[node name="Pillar92" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.6, 0, 0, 0, 2.4, 0, 0, 0, 2, 10.533, 10.0389, 68.1957)
+
+[node name="Pillar93" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.51313, 0, 0, 0, 2.57054, 0, 0, 0, 1.64201, 10.8254, 0.438912, 28.5777)
+
+[node name="Pillar94" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.51313, 0, 0, 0, 2.57054, 0, 0, 0, 1.64201, 10.8254, 10.8689, 28.5777)
+
+[node name="Pillar95" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.51313, 0, 0, 0, 2.57054, 0, 0, 0, 1.64201, -5.66827, 0.438912, 28.5777)
+
+[node name="Pillar96" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.51313, 0, 0, 0, 2.57054, 0, 0, 0, 1.64201, -5.66827, 10.8689, 28.5777)
+
+[node name="Pillar97" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -49.2497, 0.438912, -58.9858)
+
+[node name="Pillar98" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -49.2497, 0.438912, -32.2327)
+
+[node name="Pillar99" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(4, 0, 0, 0, 3.11179, 0, 0, 0, 4, -49.2497, 16.9247, -58.9858)
+
+[node name="Pillar100" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(4, 0, 0, 0, 3.11179, 0, 0, 0, 4, -49.2497, 16.9247, -32.2327)
+
+[node name="Pillar101" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -1.76827e-07, 1.96, 0, -4.04533, -8.56743e-08, -49.2497, 16.9247, -15.2327)
+
+[node name="Pillar102" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.51367, 0.733388, 0, -1.51367, -0.733389, -49.2497, 16.9247, -24.7827)
+
+[node name="Pillar103" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, -49.2497, 16.9247, -21.7827)
+
+[node name="Pillar104" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, -49.2497, 22.9247, -31.476)
+
+[node name="Pillar105" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, -49.2497, 22.9247, -47.711)
+
+[node name="Pillar106" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, -49.2497, 22.9247, -42.611)
+
+[node name="Pillar107" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -1.32489, 1.26387, 0, -2.84124, -0.589354, -49.2497, 28.9247, -33.411)
+
+[node name="Pillar108" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, -2.48389e-07, -5.15229e-08, 0, -1.32489, 1.26387, -1.02809e-07, 2.84124, 0.589354, -49.2497, 28.9247, -57.411)
+
+[node name="Pillar109" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.372, 0, 0, 0, 2.57729, 0, 0, -1.06515e-14, 1.96, -49.2497, 22.9247, -45.476)
+
+[node name="Pillar110" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.96, 3.53654e-07, 7.48989e-15, 0, -1.76827e-07, 1.96, 1.71349e-07, 4.04533, 8.56743e-08, -49.2497, 16.9247, -75.2827)
+
+[node name="Pillar111" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.372, 3.62239e-07, 4.4765e-08, 0, -1.61466, 1.31402, 1.19944e-07, 4.14354, 0.512052, -49.2497, 23.9247, -75.2827)
+
+[node name="Pillar112" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.32329e-07, 6.41149e-08, 0, -1.51367, 0.733388, 1.02809e-07, 1.51367, 0.733389, -49.2497, 16.9247, -65.7327)
+
+[node name="Pillar113" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, -2.64659e-07, -1.2823e-07, 0, -1.51367, 0.733388, -2.05618e-07, -1.51367, -0.733389, -49.2497, 16.9247, -68.7327)
+
+[node name="Pillar114" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.96, 0, 0, 0, -3.00606e-07, 1.96, 0, -6.87705, -8.56743e-08, -49.2497, 12.9598, -31.476)
+
+[node name="Pillar115" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(1.176, 0, 0, 0, -2.48919, 1.0964, 0, -2.48919, -1.0964, -49.2497, 12.9598, -47.711)
+
+[node name="Pillar116" parent="Worldbuilding/pillars" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.176, 1.97829e-07, 9.58501e-08, 0, -2.2629, 1.0964, 1.02809e-07, 2.2629, 1.0964, -49.2497, 12.9598, -42.611)
 
 [node name="Roof" type="Node3D" parent="Worldbuilding"]
 
@@ -8990,10 +9282,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, 9.78739, 31.4272, -38.2984)
 
 [node name="Pillar65" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, 18.4849, 31.6551, -39.1488)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, 19.4436, 31.6551, -39.1488)
 
 [node name="Pillar66" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, 18.4849, 28.138, -26.0228)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, 19.4436, 28.138, -26.0228)
 
 [node name="Pillar67" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, 35.2766, 31.4272, -38.2984)
@@ -9002,10 +9294,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, 25.7874, 31.4272, -38.2984)
 
 [node name="Pillar69" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, 34.4849, 31.6551, -39.1488)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, 35.4436, 31.6551, -39.1488)
 
 [node name="Pillar70" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, 34.4849, 28.138, -26.0228)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, 35.4436, 28.138, -26.0228)
 
 [node name="Pillar71" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, 7.27664, 31.4272, -38.2984)
@@ -9014,10 +9306,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, -2.21261, 31.4272, -38.2984)
 
 [node name="Pillar73" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, 6.48487, 31.6551, -39.1488)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, 7.4436, 31.6551, -39.1488)
 
 [node name="Pillar74" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, 6.48487, 28.138, -26.0228)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, 7.4436, 28.138, -26.0228)
 
 [node name="Pillar75" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, -8.72336, 31.4272, -38.2984)
@@ -9026,10 +9318,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, -18.2126, 31.4272, -38.2984)
 
 [node name="Pillar77" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, -9.51513, 31.6551, -39.1488)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, -8.5564, 31.6551, -39.1488)
 
 [node name="Pillar78" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, -9.51513, 28.138, -26.0228)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, -8.5564, 28.138, -26.0228)
 
 [node name="Pillar79" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, -24.7234, 31.4272, -38.2984)
@@ -9038,10 +9330,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, 1.02e-07, -0.75821, 2.52107, -3.8067e-07, 2.82968, 0.675517, -34.2126, 31.4272, -38.2984)
 
 [node name="Pillar81" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, -25.5151, 31.6551, -39.1488)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, -24.5564, 31.6551, -39.1488)
 
 [node name="Pillar82" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, 0.675517, -3.91895e-08, 2.52107, -2.52107, -3.82098e-07, 0.675517, -25.5151, 28.138, -26.0228)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, 0.675517, -4.63462e-08, 2.52107, -2.52107, -4.51876e-07, 0.675517, -24.5564, 28.138, -26.0228)
 
 [node name="Pillar83" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, 19.2766, 29.0019, -60.1281)
@@ -9050,10 +9342,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, 9.78739, 29.0019, -60.1281)
 
 [node name="Pillar85" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, 18.4849, 28.774, -60.9786)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, 19.4436, 28.774, -60.9786)
 
 [node name="Pillar86" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, 18.4849, 32.2911, -47.8525)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, 19.4436, 32.2911, -47.8525)
 
 [node name="Pillar87" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, 35.2766, 29.0019, -60.1281)
@@ -9062,10 +9354,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, 25.7874, 29.0019, -60.1281)
 
 [node name="Pillar89" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, 34.4849, 28.774, -60.9786)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, 35.4436, 28.774, -60.9786)
 
 [node name="Pillar90" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, 34.4849, 32.2911, -47.8525)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, 35.4436, 32.2911, -47.8525)
 
 [node name="Pillar91" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, 7.27664, 29.0019, -60.1281)
@@ -9074,10 +9366,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, -2.21261, 29.0019, -60.1281)
 
 [node name="Pillar93" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, 6.48487, 28.774, -60.9786)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, 7.4436, 28.774, -60.9786)
 
 [node name="Pillar94" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, 6.48487, 32.2911, -47.8525)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, 7.4436, 32.2911, -47.8525)
 
 [node name="Pillar95" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, -8.72336, 29.0019, -60.1281)
@@ -9086,10 +9378,10 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, -18.2126, 29.0019, -60.1281)
 
 [node name="Pillar97" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, -9.51513, 28.774, -60.9786)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, -8.5564, 28.774, -60.9786)
 
 [node name="Pillar98" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, -9.51513, 32.2911, -47.8525)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, -8.5564, 32.2911, -47.8525)
 
 [node name="Pillar99" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, -24.7234, 29.0019, -60.1281)
@@ -9098,10 +9390,85 @@ transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 
 transform = Transform3D(-2.61, -4.31044e-07, -3.75668e-08, -1.02e-07, 0.758211, 2.52107, -3.8067e-07, 2.82968, -0.675518, -34.2126, 29.0019, -60.1281)
 
 [node name="Pillar101" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, -25.5151, 28.774, -60.9786)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, -24.5564, 28.774, -60.9786)
 
 [node name="Pillar102" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
-transform = Transform3D(5.08186e-07, -1.92612, -5.96046e-08, -0.675518, -2.24988e-07, 2.52106, -2.52107, -3.11311e-07, -0.675518, -25.5151, 32.2911, -47.8525)
+transform = Transform3D(5.08186e-07, -2.27786, -5.96046e-08, -0.675518, -2.66075e-07, 2.52106, -2.52107, -3.68162e-07, -0.675518, -24.5564, 32.2911, -47.8525)
+
+[node name="Pillar103" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.40934e-07, 12.6996, -0.405311, -2.24785e-08, 3.40285, 1.51264, 1.305, 1.43011e-06, -1.77167e-08, -49.0866, 7.2125, -3.68975)
+
+[node name="Pillar104" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.40934e-07, 12.6996, -0.405311, -2.24785e-08, 3.40285, 1.51264, 1.305, 1.43011e-06, -1.77167e-08, -49.0866, 7.2125, 13.5362)
+
+[node name="Pillar105" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.40934e-07, 12.6996, -0.405311, -2.24785e-08, 3.40285, 1.51264, 1.305, 1.43011e-06, -1.77167e-08, -49.0866, 7.2125, 20.5832)
+
+[node name="Pillar106" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.40934e-07, 12.6996, -0.405311, -2.24785e-08, 3.40285, 1.51264, 1.305, 1.43011e-06, -1.77167e-08, -49.0866, 7.2125, -10.9978)
+
+[node name="Pillar107" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, 13.4057)
+
+[node name="Pillar108" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, -3.82025)
+
+[node name="Pillar109" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, -10.8673)
+
+[node name="Pillar110" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, 20.7137)
+
+[node name="Pillar111" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, 32.1138)
+
+[node name="Pillar112" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, 41.0138)
+
+[node name="Pillar113" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, 52.4138)
+
+[node name="Pillar114" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(2.68473e-08, -12.6996, 0.405311, -2.24785e-08, 3.40285, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 55.9134, 6.6125, 61.3138)
+
+[node name="Pillar115" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638883, 21.3181, 13.4057)
+
+[node name="Pillar116" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638884, 21.3181, -3.82025)
+
+[node name="Pillar117" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638884, 21.3181, -10.8673)
+
+[node name="Pillar118" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638883, 21.3181, 20.7137)
+
+[node name="Pillar119" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638883, 21.3181, 32.1138)
+
+[node name="Pillar120" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638883, 21.3181, 41.0138)
+
+[node name="Pillar121" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638883, 21.3181, 52.4138)
+
+[node name="Pillar122" parent="Worldbuilding/Roof/vent-frame" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(3.44897e-08, -12.6996, -0.405312, -6.04331e-09, -3.40284, 1.51264, -1.305, -3.1988e-07, -1.77167e-08, 0.638883, 21.3181, 61.3138)
+
+[node name="Pillar17" parent="Worldbuilding/Roof" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-4.265, -6.4148e-07, -1.62981e-14, 9.65028e-08, -1.89913, 4.11967, -3.60153e-07, 7.08766, 1.10386, -49.4478, 33.2829, -43.2673)
+
+[node name="Pillar18" parent="Worldbuilding/Roof" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-4.265, -6.41544e-07, -1.62981e-14, 9.65028e-08, -1.89932, 4.11967, -3.60153e-07, 7.08836, 1.10386, 50.5522, 33.0778, -43.2673)
+
+[node name="Pillar15" parent="Worldbuilding/Roof" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.86429e-07, 7.514, 1.86429e-07, 0, -3.28447e-07, 4.265, 4.265, 3.28447e-07, 8.14907e-15, -10.4209, 25.2878, -14.6407)
+
+[node name="Pillar19" parent="Worldbuilding/Roof" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.86429e-07, 7.514, 1.86429e-07, 0, -3.28447e-07, 4.265, 4.265, 3.28447e-07, 8.14907e-15, 20.5216, 25.2878, -14.6407)
+
+[node name="Pillar20" parent="Worldbuilding/Roof" instance=ExtResource("19_t3qkk")]
+transform = Transform3D(-1.86429e-07, 9.489, 1.86429e-07, 0, -4.14777e-07, 4.265, 4.265, 4.14777e-07, 8.14907e-15, -49.4478, 25.2878, -14.6407)
 
 [node name="Grills" type="Node3D" parent="Worldbuilding"]
 
@@ -9354,38 +9721,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50064, 2.29658, 28.6241)
 [node name="wooden_wall21" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50064, 6.29951, 28.6241)
 
-[node name="wooden_wall22" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50064, 6.29951, 28.6241)
-
-[node name="wooden_wall23" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50064, 2.29658, 28.6241)
-
 [node name="wooden_wall24" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5006, 2.29658, 28.6241)
-
-[node name="wooden_wall25" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499355, 6.29951, 28.6241)
-
-[node name="wooden_wall26" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49936, 2.29658, 28.6241)
-
-[node name="wooden_wall27" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49936, 6.29951, 28.6241)
-
-[node name="wooden_wall28" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49936, 2.29658, 28.6241)
-
-[node name="wooden_wall29" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49936, 6.29951, 28.6241)
 
 [node name="wooden_wall30" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4994, 6.29951, 28.6241)
 
 [node name="wooden_wall31" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4994, 2.29658, 28.6241)
-
-[node name="wooden_wall32" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499355, 2.29658, 28.6241)
 
 [node name="wooden_wall33" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4994, 6.27728, 28.6241)
@@ -9601,18 +9944,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.499
 [node name="wooden_wall162" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.4994, 2.29658, -15.5425)
 
-[node name="wooden_wall163" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4994, 6.29951, 28.4575)
-
-[node name="wooden_wall164" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4994, 2.29658, 28.4575)
-
-[node name="wooden_wall165" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.4994, 6.29951, 28.4575)
-
-[node name="wooden_wall166" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.4994, 2.29658, 28.4575)
-
 [node name="wooden_wall167" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.4994, 6.29951, 28.4575)
 
@@ -9624,12 +9955,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.499
 
 [node name="wooden_wall170" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.4994, 2.29658, 28.4575)
-
-[node name="wooden_wall171" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.499401, 6.29951, 28.4575)
-
-[node name="wooden_wall172" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.499401, 2.29658, 28.4575)
 
 [node name="wooden_wall173" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -15.5006, 6.29951, 28.4575)
@@ -9648,12 +9973,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.500
 
 [node name="wooden_wall178" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5006, 2.29658, 28.4575)
-
-[node name="wooden_wall179" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 6.29951, 28.4575)
-
-[node name="wooden_wall180" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 2.29658, 28.4575)
 
 [node name="wooden_wall181" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.5006, 6.29951, 28.4575)
@@ -10321,185 +10640,95 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.499
 [node name="wooden_wall466" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.4994, 2.29658, 44.4575)
 
-[node name="wooden_wall467" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50064, 2.29658, 44.6241)
-
 [node name="wooden_wall468" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50064, 6.29951, 44.6241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50064, 10.2995, 44.6241)
 
 [node name="wooden_wall469" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5006, 6.29951, 44.6241)
-
-[node name="wooden_wall470" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5006, 2.29658, 44.6241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5006, 10.2995, 44.6241)
 
 [node name="wooden_wall471" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499399, 6.27728, 44.6241)
-
-[node name="wooden_wall472" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499399, 2.29658, 44.6241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499399, 10.2773, 44.6241)
 
 [node name="wooden_wall473" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5006, 6.29951, 44.4575)
-
-[node name="wooden_wall474" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5006, 2.29658, 44.4575)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5006, 10.2995, 44.4575)
 
 [node name="wooden_wall475" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 6.29951, 44.4575)
-
-[node name="wooden_wall476" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 2.29658, 44.4575)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 10.2995, 44.4575)
 
 [node name="wooden_wall477" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.499401, 6.29951, 44.4575)
-
-[node name="wooden_wall478" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.499401, 2.29658, 44.4575)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.499401, 10.2995, 44.4575)
 
 [node name="wooden_wall479" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 6.29951, 66.5408)
-
-[node name="wooden_wall480" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 2.29658, 66.5408)
-
-[node name="wooden_wall481" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 2.29658, 66.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 10.2995, 66.5408)
 
 [node name="wooden_wall482" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 6.29951, 66.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 10.2995, 66.5408)
 
 [node name="wooden_wall483" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 6.29951, 50.5408)
-
-[node name="wooden_wall484" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 2.29658, 50.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 10.2995, 50.5408)
 
 [node name="wooden_wall485" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 6.29951, 54.5408)
-
-[node name="wooden_wall486" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 2.29658, 54.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 10.2995, 54.5408)
 
 [node name="wooden_wall487" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 6.29951, 58.5408)
-
-[node name="wooden_wall488" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 2.29658, 58.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 10.2995, 58.5408)
 
 [node name="wooden_wall489" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 6.29951, 62.5408)
-
-[node name="wooden_wall490" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 2.29658, 62.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 10.2995, 62.5408)
 
 [node name="wooden_wall491" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 6.25065, 46.5408)
-
-[node name="wooden_wall492" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 2.29658, 50.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 10.2507, 46.5408)
 
 [node name="wooden_wall493" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 6.29951, 50.5408)
-
-[node name="wooden_wall494" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 2.24772, 46.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 10.2995, 50.5408)
 
 [node name="wooden_wall495" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 6.29951, 54.5408)
-
-[node name="wooden_wall496" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 2.29658, 58.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 10.2995, 54.5408)
 
 [node name="wooden_wall497" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 6.29951, 58.5408)
-
-[node name="wooden_wall498" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 2.29658, 54.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 10.2995, 58.5408)
 
 [node name="wooden_wall499" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 6.29951, 62.5408)
-
-[node name="wooden_wall500" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 2.29658, 62.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.58388, 10.2995, 62.5408)
 
 [node name="wooden_wall501" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 6.29951, 46.5408)
-
-[node name="wooden_wall502" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 2.29658, 46.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41733, 10.2995, 46.5408)
 
 [node name="wooden_wall503" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 6.29951, 66.5408)
-
-[node name="wooden_wall504" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 2.29658, 66.5408)
-
-[node name="wooden_wall505" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 2.29658, 66.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 10.2995, 66.5408)
 
 [node name="wooden_wall506" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 6.29951, 66.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 10.2995, 66.5408)
 
 [node name="wooden_wall507" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 6.29951, 50.5408)
-
-[node name="wooden_wall508" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 2.29658, 50.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 10.2995, 50.5408)
 
 [node name="wooden_wall509" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 6.29951, 54.5408)
-
-[node name="wooden_wall510" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 2.29658, 54.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 10.2995, 54.5408)
 
 [node name="wooden_wall511" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 6.29951, 58.5408)
-
-[node name="wooden_wall512" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 2.29658, 58.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 10.2995, 58.5408)
 
 [node name="wooden_wall513" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 6.29951, 62.5408)
-
-[node name="wooden_wall514" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 2.29658, 62.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 10.2995, 62.5408)
 
 [node name="wooden_wall515" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 6.25065, 46.5408)
-
-[node name="wooden_wall516" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 2.29658, 50.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 10.2507, 46.5408)
 
 [node name="wooden_wall517" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 6.29951, 50.5408)
-
-[node name="wooden_wall518" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 2.24772, 46.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 10.2995, 50.5408)
 
 [node name="wooden_wall519" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 6.29951, 54.5408)
-
-[node name="wooden_wall520" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 2.29658, 58.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 10.2995, 54.5408)
 
 [node name="wooden_wall521" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 6.29951, 58.5408)
-
-[node name="wooden_wall522" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 2.29658, 54.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 10.2995, 58.5408)
 
 [node name="wooden_wall523" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 6.29951, 62.5408)
-
-[node name="wooden_wall524" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 2.29658, 62.5408)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.41612, 10.2995, 62.5408)
 
 [node name="wooden_wall525" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 6.29951, 46.5408)
-
-[node name="wooden_wall526" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 2.29658, 46.5408)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.58267, 10.2995, 46.5408)
 
 [node name="wooden_wall527" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.5827, 6.29951, 54.5408)
@@ -10561,126 +10790,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.582
 [node name="wooden_wall546" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.5827, 2.29658, 50.5408)
 
-[node name="wooden_wall547" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 14.5408)
-
-[node name="wooden_wall548" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 14.5408)
-
-[node name="wooden_wall549" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 18.5408)
-
-[node name="wooden_wall550" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 18.5408)
-
-[node name="wooden_wall551" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 22.5408)
-
-[node name="wooden_wall552" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 22.5408)
-
-[node name="wooden_wall553" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 26.5408)
-
-[node name="wooden_wall554" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 26.5408)
-
-[node name="wooden_wall555" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.25065, 10.5408)
-
-[node name="wooden_wall556" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 2.29658, 14.5408)
-
-[node name="wooden_wall557" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.29951, 14.5408)
-
-[node name="wooden_wall558" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 2.24772, 10.5408)
-
-[node name="wooden_wall559" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.29951, 18.5408)
-
-[node name="wooden_wall560" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 2.29658, 22.5408)
-
-[node name="wooden_wall561" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 6.29951, 22.5408)
-
-[node name="wooden_wall562" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 2.29658, 18.5408)
-
-[node name="wooden_wall563" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 6.29951, 26.5408)
-
-[node name="wooden_wall564" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 2.29658, 26.5408)
-
-[node name="wooden_wall565" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 10.5408)
-
-[node name="wooden_wall566" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 10.5408)
-
-[node name="wooden_wall567" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, -5.45917)
-
-[node name="wooden_wall568" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, -5.45917)
-
-[node name="wooden_wall569" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, -1.45917)
-
-[node name="wooden_wall570" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, -1.45917)
-
-[node name="wooden_wall571" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 2.54083)
-
-[node name="wooden_wall572" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 2.54083)
-
-[node name="wooden_wall573" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, 6.54083)
-
-[node name="wooden_wall574" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, 6.54083)
-
-[node name="wooden_wall575" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.25065, -9.45917)
-
-[node name="wooden_wall576" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 2.29658, -5.45917)
-
-[node name="wooden_wall577" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.29951, -5.45917)
-
-[node name="wooden_wall578" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 2.24772, -9.45917)
-
-[node name="wooden_wall579" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.29951, -1.45917)
-
-[node name="wooden_wall580" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 2.29658, 2.54083)
-
-[node name="wooden_wall581" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 6.29951, 2.54083)
-
-[node name="wooden_wall582" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 2.29658, -1.45917)
-
-[node name="wooden_wall583" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 6.29951, 6.54083)
-
-[node name="wooden_wall584" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58389, 2.29658, 6.54083)
-
-[node name="wooden_wall585" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, -9.45917)
-
-[node name="wooden_wall586" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 2.29658, -9.45917)
-
 [node name="wooden_wall587" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5006, 6.29951, -15.3759)
 
@@ -10699,12 +10808,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4994, 6.25065, 28.6241)
 [node name="wooden_wall592" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.4994, 6.29951, 28.4575)
 
-[node name="wooden_wall593" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.58388, 6.25065, -13.4592)
-
-[node name="wooden_wall594" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41733, 6.29951, -13.4592)
-
 [node name="wooden_wall595" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 6.29951, -73.3759)
 
@@ -10716,15 +10819,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.499
 
 [node name="wooden_wall598" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.4994, 2.29658, -73.3759)
-
-[node name="wooden_wall107" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 6.29951, 68.6241)
-
-[node name="wooden_wall109" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5006, 6.29951, 68.6241)
-
-[node name="wooden_wall111" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.4994, 6.29951, 68.6241)
 
 [node name="wooden_wall113" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -15.5006, 10.2995, 68.6241)
@@ -10749,15 +10843,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.499
 
 [node name="wooden_wall120" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.4994, 10.2995, 68.6241)
-
-[node name="wooden_wall121" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5006, 10.2995, 68.6241)
-
-[node name="wooden_wall122" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.5006, 10.2995, 68.6241)
-
-[node name="wooden_wall123" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.4994, 10.2995, 68.6241)
 
 [node name="wooden_wall124" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4994, 14.2995, 68.6241)
@@ -11411,7 +11496,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.50
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 18.2995, -33.3759)
 
 [node name="wooden_wall696" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 18.2995, -17.3759)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 0.709929, 0, -1, 0, -4.37114e-08, -49.5006, 17.7296, -17.3759)
 
 [node name="wooden_wall707" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 18.2995, -57.3759)
@@ -11443,11 +11528,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.50
 [node name="wooden_wall744" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 22.2995, -49.3759)
 
-[node name="wooden_wall747" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 22.2995, -29.3759)
-
 [node name="wooden_wall748" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 22.2995, -33.3759)
+transform = Transform3D(-6.55671e-08, 0, 1, 0, 0.633554, 0, -1.5, 0, -4.37114e-08, -49.5006, 21.5972, -32.36)
 
 [node name="wooden_wall750" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.5006, 22.2995, -57.3759)
@@ -11477,7 +11559,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.499
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.4994, 18.2995, -21.3759)
 
 [node name="wooden_wall806" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.4994, 18.2995, -17.3759)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 0.760717, 0, 1, 0, -4.37114e-08, 50.4994, 17.8296, -17.3759)
 
 [node name="wooden_wall807" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.4994, 18.2995, -29.3759)
@@ -11676,6 +11758,42 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.499
 
 [node name="wooden_wall856" parent="Worldbuilding/walls2" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.4994, 14.2995, -15.5623)
+
+[node name="Large windows" type="Node3D" parent="."]
+
+[node name="Large_window" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-5.30129e-08, 0, 0.999884, 0, 1.22836, 0, -1.21279, 0, -4.37063e-08, -5.6, 12.26, -7.86352)
+
+[node name="Large_window2" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-5.08003e-08, 0, 1, 0, 1.2285, 0, -1.16218, 0, -4.37114e-08, -5.6, 12.26, 7.04315)
+
+[node name="Large_window3" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-5.08003e-08, 0, 0.9, 0, 1.2285, 0, -1.16218, 0, -3.93403e-08, -5.6, 12.26, 21.3888)
+
+[node name="Large_window4" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(7.91161e-05, 0.000463057, 0.900011, 0.00029315, 1.22855, -0.000339247, -0.976228, 0.000368959, 7.28376e-05, -9.60059, 12.2578, 62.8208)
+
+[node name="Large_window5" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-4.26723e-08, 0, 0.9, 0, 1.2285, 0, -0.976228, 0, -3.93403e-08, 2.4, 12.26, 62.8208)
+
+[node name="Large_window6" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(7.91161e-05, 0.000463057, 0.900011, 0.00029315, 1.22855, -0.000339247, -0.976228, 0.000368959, 7.28376e-05, -9.59941, 12.2622, 50.5568)
+
+[node name="Large_window7" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-4.26723e-08, 0, 0.9, 0, 1.2285, 0, -0.976228, 0, -3.93403e-08, 2.4, 12.26, 50.5568)
+
+[node name="Large_window8" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-0.976228, 0.000368959, 7.27982e-05, 0.00029315, 1.22855, -0.000339247, -7.90734e-05, -0.000463057, -0.900011, -3.59941, 12.2622, 44.5568)
+
+[node name="Large_window9" parent="Large windows" instance=ExtResource("28_0uiba")]
+transform = Transform3D(-1.2691, 0.000368959, 7.27982e-05, 0.000381096, 1.22855, -0.000339247, -0.000102795, -0.000463057, -0.900011, 2.50059, 12.2622, 28.5568)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.785315, -0.171205, 0.594953, -0.6127, -0.0771483, 0.786541, -0.0887604, -0.98221, -0.165483, 64.9193, 22.9594, -46.8534)
+light_color = Color(0.9587, 0.919082, 0.608164, 1)
+light_energy = 1.601
+light_indirect_energy = 0.0
+shadow_enabled = true
 
 [editable path="Worldbuilding/walls/wooden_wall86"]
 [editable path="Worldbuilding/walls/wooden_wall86/wooden_wall_new"]
