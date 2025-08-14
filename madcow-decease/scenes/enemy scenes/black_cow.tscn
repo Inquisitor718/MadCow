@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c83lc7sg4k1h2"]
+[gd_scene load_steps=9 format=3 uid="uid://c83lc7sg4k1h2"]
 
 [ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://scenes/horns_pickup.tscn" id="2_0xvba"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="3_adx45"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktv6b"]
 albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
@@ -29,7 +28,6 @@ collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_0xvba")
 horns_scene = ExtResource("2_0xvba")
-explosion = ExtResource("3_adx45")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
