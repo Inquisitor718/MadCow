@@ -1,4 +1,4 @@
 extends Node
 
-var kills = 5
+var kills = 0
 var has_powerup = false

@@ -102,30 +102,34 @@ func spawn_explode(position: Vector3):
 		get_parent().add_child(boom)
 		boom.global_transform.origin = position
 		
-		var anim_player = boom.get_node_or_null("AnimationPlayer")
-		if anim_player:
-			anim_player.play("Explosion")
-		if anim_player:
-			anim_player.connect("animation_finished", func(_anim_name):
-				boom.queue_free())
-		else:
-			# Fallback if no animation: free after 1 sec
-			boom.call_deferred("queue_free")
+		#var anim_player = boom.get_node_or_null("AnimationPlayer")
+		#if anim_player:
+			#anim_player.play("Explosion")
+		#if anim_player:
+			#anim_player.connect("animation_finished", func(_anim_name):
+				#boom.queue_free())
+		#else:
+			## Fallback if no animation: free after 1 sec
+			#boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:
-	patched_cow_health -= dmg
-	print("Enemy Health:", patched_cow_health)
-	if patched_cow_health <= 0:
-		Global.kills += 1
-		if group_player.is_in_group("Revolver"):
-			spawn_explode(global_transform.origin)
-		if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
-			if Global.kills > 5:
-				if randi() % 100 < 100:
-					var revolver_instance = revolver_scene.instantiate()
-					revolver_instance.global_position = global_position
-					get_tree().current_scene.add_child(revolver_instance)
-		queue_free()
+	if patched_cow_health > 0:
+		patched_cow_health -= dmg
+		print("Enemy Health:", patched_cow_health)
+		if patched_cow_health <= 0:
+			Global.kills += 1
+			print(Global.kills)
+			if group_player.is_in_group("Revolver"):
+				spawn_explode(global_transform.origin)
+			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+				if Global.kills > 3:
+					var c = randi() % 100
+					print("Random Chod ", c)
+					if c < 30:
+						var revolver_instance = revolver_scene.instantiate()
+						revolver_instance.global_position = global_position
+						get_tree().current_scene.add_child(revolver_instance)
+			queue_free()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
