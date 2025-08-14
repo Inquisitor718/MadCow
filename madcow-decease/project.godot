@@ -13,6 +13,7 @@ config_version=5
 config/name="MadCow-Decease"
 run/main_scene="uid://cqgvk2tvng4ws"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [display]
@@ -61,6 +62,15 @@ Jump={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
-anti_aliasing/quality/msaa_2d=2
-anti_aliasing/quality/msaa_3d=2
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+reflections/sky_reflections/fast_filter_high_quality=true
+global_illumination/voxel_gi/quality=1
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/default_filters/anisotropic_filtering_level=3
+camera/depth_of_field/depth_of_field_use_jitter=true
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
+textures/decals/filter=4
+textures/light_projectors/filter=4
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true

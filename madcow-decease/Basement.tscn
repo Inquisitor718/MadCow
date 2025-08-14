@@ -29,7 +29,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
 shader = ExtResource("1_eqln2")
 shader_parameter/color_A = Color(0.196078, 0, 0.603922, 1)
-shader_parameter/color_B = Color(0.65098, 0.670588, 0, 1)
+shader_parameter/color_B = Color(0, 0.753492, 0.498016, 1)
 shader_parameter/skyTexture = ExtResource("2_244tr")
 shader_parameter/time_speed = 0.02
 shader_parameter/swirl_strength = 0.3
@@ -62,6 +62,8 @@ fog_density = 1.0
 fog_sky_affect = 0.0
 fog_depth_curve = 0.594604
 fog_depth_begin = 2.5
+adjustment_enabled = true
+adjustment_saturation = 1.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ngk6g"]
 size = Vector3(20.0549, 13.423, 1)
