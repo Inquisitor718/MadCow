@@ -119,14 +119,14 @@ func Hit(dmg: int) -> void:
 	print("Enemy Health:", white_cow_health)
 	if white_cow_health <= 0:
 		Global.kills += 1
-		var c= randi() % 100
-		print(c)
 		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
-		if c < 1:
-			var minigun_instance = minigun_scene.instantiate()
-			minigun_instance.global_position = global_position
-			get_tree().current_scene.add_child(minigun_instance)
+		if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+			if Global.kills > 5:
+				if randi() % 100 < 100:
+					var minigun_instance = minigun_scene.instantiate()
+					minigun_instance.global_position = global_position
+					get_tree().current_scene.add_child(minigun_instance)
 		queue_free()
 
 

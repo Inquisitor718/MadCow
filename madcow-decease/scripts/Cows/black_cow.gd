@@ -127,7 +127,7 @@ func Hit(dmg: int) -> void:
 				spawn_explode(global_transform.origin)
 			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
 				if Global.kills > 5:
-					if randi() % 100 < 20:
+					if randi() % 100 < 100:
 						var horns_instance = horns_scene.instantiate()
 						horns_instance.global_position = global_position
 						get_tree().current_scene.add_child(horns_instance)

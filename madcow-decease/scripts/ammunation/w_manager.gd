@@ -35,18 +35,21 @@ func _process(delta: float) -> void:
 	
 func _check_horns():
 	if not Weapon_Stack.find("Horns", 0):
+		Global.kills = 0
 		get_parent().get_parent().get_parent().add_to_group("Horns")
 	else:
 		get_parent().get_parent().get_parent().remove_from_group("Horns")
 
 func _check_revolver():
 	if not Weapon_Stack.find("Revolver", 0):
+		Global.kills = 0
 		get_parent().get_parent().get_parent().add_to_group("Revolver")
 	else:
 		get_parent().get_parent().get_parent().remove_from_group("Revolver")
 
 func _check_minigun():
 	if not Weapon_Stack.find("minigun", 0):
+		Global.kills = 0
 		get_parent().get_parent().get_parent().add_to_group("minigun")
 	else:
 		get_parent().get_parent().get_parent().remove_from_group("minigun")

@@ -119,12 +119,12 @@ func Hit(dmg: int) -> void:
 		Global.kills += 1
 		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
-			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
-				if Global.kills > 5:
-					if randi() % 100 < 20:
-						var revolver_instance = revolver_scene.instantiate()
-						revolver_instance.global_position = global_position
-						get_tree().current_scene.add_child(revolver_instance)
+		if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+			if Global.kills > 5:
+				if randi() % 100 < 100:
+					var revolver_instance = revolver_scene.instantiate()
+					revolver_instance.global_position = global_position
+					get_tree().current_scene.add_child(revolver_instance)
 		queue_free()
 
 

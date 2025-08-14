@@ -1,9 +1,23 @@
-res://scenes/ammunation/minigun_bullet.tscn
-res://assets/weapon_resources/Shotgun.tres
-res://scripts/Cows/black_cow.gd
-res://scripts/Cows/patched_cow.gd
-res://scripts/Cows/white_cow.gd
-res://scripts/Cows/baby_cow.gd
 res://scenes/player_S_.tscn
-res://scripts/GLOBAL.gd
+res://assets/weapon_resources/Shotgun.tres
 res://scripts/ammunation/w_manager.gd
+res://scripts/Cows/white_cow.gd
+res://scripts/Cows/patched_cow.gd
+res://scripts/Cows/black_cow.gd
+res://scripts/Cows/baby_cow.gd
+res://scenes/main.tscn
+res://scenes/level.tscn
+res://scenes/enemy scenes/explosion.tscn
+res://scenes/Projectiles_to_be_loaded/RBprojectile.tscn
+res://scenes/Projectiles_to_be_loaded/shotgun_proj.tscn
+res://scenes/Projectiles_to_be_loaded/Hitscanprojectile.tscn
+res://scenes/ammunation/Ammo_Box.tscn
+res://scenes/ammunation/minigun_bullet.tscn
+res://scripts/GLOBAL.gd
+res://scenes/ammunation/magnum.tscn
+res://scenes/ammunation/bullet.tscn
+res://scenes/ammunation/pellets.tscn
+res://scenes/enemy scenes/black_cow.tscn
+res://scenes/enemy scenes/patched_cow.tscn
+res://scenes/enemy scenes/white_cow.tscn
+res://scripts/Cows/explosion.gd
