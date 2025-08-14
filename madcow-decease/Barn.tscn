@@ -129,7 +129,7 @@ light_volumetric_fog_energy = 4.125
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_2qr42")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38.7788, 1.37792, -58.1862)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38.7788, 1.37792, 60.7793)
 script = ExtResource("2_1pabj")
 
 [node name="Rock_barrier" type="Node3D" parent="."]
