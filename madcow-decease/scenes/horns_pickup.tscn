@@ -9,7 +9,7 @@ height = 0.5
 radial_segments = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_34xhx"]
-size = Vector3(0.252, 0.5, 0.741943)
+size = Vector3(0.3, 0.6, 0.8)
 
 [sub_resource type="Animation" id="Animation_jm00o"]
 length = 0.001

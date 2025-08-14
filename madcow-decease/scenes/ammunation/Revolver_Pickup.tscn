@@ -8,7 +8,7 @@ size = Vector3(0.215, 0.45, 0.25)
 [sub_resource type="CylinderMesh" id="CylinderMesh_vjqms"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt48a"]
-size = Vector3(0.216919, 0.453369, 0.848511)
+size = Vector3(0.3, 0.5, 1)
 
 [sub_resource type="Animation" id="Animation_2cv6q"]
 length = 0.001
@@ -84,13 +84,13 @@ mesh = SubResource("BoxMesh_2m74c")
 skeleton = NodePath("../..")
 
 [node name="Barrel" type="MeshInstance3D" parent="Handle"]
-transform = Transform3D(0.178, 0, 0, 0, -1.32446e-08, -0.179, 0, 0.303, -7.82434e-09, 0.005, 0.132544, 0.419029)
+transform = Transform3D(0.178, 0, 0, 0, -1.32446e-08, -0.179, 0, 0.303, -7.82434e-09, 0, 0.13, 0.419)
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_vjqms")
 skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494385, 0, 0.298913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
 shape = SubResource("BoxShape3D_jt48a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

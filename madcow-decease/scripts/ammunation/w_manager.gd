@@ -349,6 +349,5 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 				timer.queue_free()
 				)
 			timer.start()
-				
-				
+			
 			exit(body.weapon_name)

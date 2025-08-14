@@ -13,10 +13,11 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: CharacterBody3D) -> void:
 	if body.is_in_group("player_S") and body.is_in_group(weapon_name):
+		$AnimationPlayer.play("bounce")
 		print(weapon_name)
 		set_collision_layer_value(5, false)
 		set_collision_mask_value(1, false)
-		$AnimationPlayer.play("bounce")
+		
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	queue_free()
