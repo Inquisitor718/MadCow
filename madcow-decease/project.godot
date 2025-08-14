@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MadCow-Decease"
-run/main_scene="uid://cqgvk2tvng4ws"
+run/main_scene="uid://dwnt5kns4icot"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

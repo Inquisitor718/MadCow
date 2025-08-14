@@ -9,7 +9,7 @@ albedo_texture = ExtResource("2_mdv8j")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mdv8j"]
 height = 1.15918
-radius = 1.73877
+radius = 1.64404
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xhbpr"]
 height = 1.04126
