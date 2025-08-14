@@ -181,115 +181,12 @@ func reload():
 			
 		else:
 			animation_player.play(Current_Weapon.No_ammo_anim)
-#func Get_Cam_Collision():
-	#var camera = get_viewport().get_camera_3d()
-	#var viewport = get_viewport().get_size()
-	#
-	#var Ray_Origin = camera.project_ray_origin(viewport/2)
-	#var Ray_End = Ray_Origin + camera.project_ray_normal(viewport/2)*Current_Weapon.range
-	#
-	#var New_Intersection = PhysicsRayQueryParameters3D.create(Ray_Origin,Ray_End)
-	#var Intersection = get_world_3d().direct_space_state.intersect_ray(New_Intersection)
-	#
-	#if not Intersection.is_empty():
-		#var Col_Point = Intersection.position
-		#return Col_Point
-	#else:
-		#return Ray_End
-		#
-#func Hit_Scan_Collision(Collision_Point):
-	#var Bullet_Direction = (Collision_Point - Bullet_Point.get_global_transform().origin).normalized()
-	#var New_Interection = PhysicsRayQueryParameters3D.create(Bullet_Point.get_global_transform().origin,Collision_Point+Bullet_Direction*2)
-	#
-	#var Bullet_Collision = get_world_3d().direct_space_state.intersect_ray(New_Interection)
-	#
-	#if Bullet_Collision:
-		#Hit_Scan_Damage(Bullet_Collision.collider, Bullet_Direction, Bullet_Collision.position)
-#func Hit_Scan_Damage(Collider, Direction, Position):
-	#if Collider.is_in_group("Enemy") and Collider.has_method("Hit"):
-		#Collider.Hit(Current_Weapon.dmg, Direction, Position)
-		#print("Hit")
-		#
-		#
-#func Launch_Proj(Point: Vector3):
-	#var Direction = (Point - Bullet_Point.get_global_transform().origin).normalized()
-	#var Projectile = Current_Weapon.Projectile_To_Load.instantiate()
-	#
-	#
-	#Projectile.position = Bullet_Point.global_position
-	#Bullet_Point.add_child(Projectile)
-	#Projectile.look_at(Point)
-	#Projectile.dmg = Current_Weapon.dmg
-	#Projectile.set_linear_velocity(Direction*Current_Weapon.Projectile_Velocity)
 	
 
 func _on_weapon_timer_timeout():
 	print("Timer end")
 	Weapon_Stack.clear()
 	Weapon_Stack.push_back("Shotgun")
-	
-
-
-#func _on_weapon_pickup_body_entered(body: Node3D) -> void:
-	#print("object collided")
-	#$"../../../Weapon_Pickup".set_deferred("monitoring", false)
-#
-	#if body.has_method("Add_Ammo"):
-		#print("Ammo adding")
-		#var Temp_ammo = Weapon_List[body.weapon_name].Stored_ammo
-		#Temp_ammo += Ammo_Increase
-		#Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
-		#emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
-		#$"../../../Weapon_Pickup".set_deferred("monitoring", true)
-		#body.queue_free()
-	#else:
-		#var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
-		#if Weapon_In_Stack == -1:
-			#print("weapon Picked up")
-			#
-			## Store the current weapon data (assumed to be Shotgun)
-			#Shotgun_Store = Current_Weapon.duplicate(true)
-			#
-			## Clear and add only the new weapon
-			#Weapon_Stack.clear()
-			#Weapon_Stack.push_back(body.weapon_name)
-			#Weapon_Indicator = 0
-			#emit_signal("Update_Weapon_Stack", Weapon_Stack)
-#
-			## Lock weapon switching
-			#weapon_locked = true
-			#if body.weapon_name == "Horns":
-				 #
-				#original_speed = player.speed_walk
-				#original_hitbox_scale = player.scale
-
-				#var tween = create_tween()
-				#tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
-				#tween.tween_property(player, "scale", player.scale * 1.5, 0.5)
-
-			## Create the timer
-			#var timer := Timer.new()
-			#timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
-			#timer.wait_time = Powerup_Duration  
-			#timer.one_shot = true  
-			#add_child(timer)
-			#
-			#timer.timeout.connect(func():
-				#print("Timer end")
-				#$"../../../Weapon_Pickup".set_deferred("monitoring", true)
-				## Lock to shotgun after animation finishes
-				#Next_Weapon = "Shotgun"
-				#weapon_locked = false  # switching will be allowed again after restore
-				#exit("Shotgun")
-				#player.speed_walk = original_speed
-				#player.scale = original_hitbox_scale
-				#timer.queue_free()
-				#)
-			#timer.start()
-				#
-				#
-			#exit(body.weapon_name)
-			#body.queue_free()
 
 
 func _on_weapon_pickup_area_entered(body: Area3D) -> void:

@@ -118,6 +118,7 @@ func Hit(dmg: int) -> void:
 	white_cow_health -= dmg
 	print("Enemy Health:", white_cow_health)
 	if white_cow_health <= 0:
+		Global.kills += 1
 		var c= randi() % 100
 		print(c)
 		if group_player.is_in_group("Revolver"):

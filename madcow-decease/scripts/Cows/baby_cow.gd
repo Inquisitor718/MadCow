@@ -154,9 +154,9 @@ func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
 	if baby_cow_health <= 0:
+		Global.kills += 1
 		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
-	if baby_cow_health <= 0:
 		if group_player.is_in_group("minigun"):
 			_become_friendly()
 		else:
