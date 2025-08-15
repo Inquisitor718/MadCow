@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3sxue4pcluf"]
+
+[ext_resource type="PackedScene" uid="uid://hvsqlmg0jnm8" path="res://Assets/Large Window.glb" id="1_wrcwj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_70gd8"]
+size = Vector3(1, 2.18262, 0.110901)
+
+[node name="Large_window" type="StaticBody3D"]
+
+[node name="Large Window" parent="." instance=ExtResource("1_wrcwj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Plane_002" parent="Large Window" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0212708)
+shape = SubResource("BoxShape3D_70gd8")
+
+[editable path="Large Window"]
