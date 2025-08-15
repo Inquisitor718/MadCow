@@ -3377,13 +3377,13 @@ transform = Transform3D(-0.0612862, 0, 1.6989, 0, 1.7, 0, -1.6989, 0, -0.0612862
 transform = Transform3D(1.18482, 0, 1.2191, 0, 1.7, 0, -1.2191, 0, 1.18482, 49.9796, 3.3439, -11.5306)
 
 [node name="Crate36" parent="WORLD_BUILDING/small_crates" instance=ExtResource("6_vgf3n")]
-transform = Transform3D(0.365717, 0, -1.6602, 0, 1.7, 0, 1.6602, 0, 0.365717, 33.8669, 1.3439, -39.0848)
+transform = Transform3D(0.365717, 0, -1.6602, 0, 1.7, 0, 1.6602, 0, 0.365717, 33.8133, 1.3439, -38.7685)
 
 [node name="Crate37" parent="WORLD_BUILDING/small_crates" instance=ExtResource("6_vgf3n")]
 transform = Transform3D(-0.00442106, 0, -1.69999, 0, 1.7, 0, 1.69999, 0, -0.00442106, 31.3813, 1.3439, -38.0514)
 
 [node name="Crate38" parent="WORLD_BUILDING/small_crates" instance=ExtResource("6_vgf3n")]
-transform = Transform3D(0.912533, -1.43432, 0, -5.96046e-08, -7.43094e-08, -1.7, 1.43432, 0.912533, 0, 31.1486, 1.37731, -40.8246)
+transform = Transform3D(1.50066, -0.798754, 7.83521e-16, -5.96046e-08, -7.43094e-08, -1.7, 0.798754, 1.50066, 2.97496e-15, 31.8745, 1.37731, -40.5421)
 
 [node name="Crate39" parent="WORLD_BUILDING/small_crates" instance=ExtResource("6_vgf3n")]
 transform = Transform3D(-4.65661e-10, -0.00442105, -1.69999, -1.7, -7.43094e-08, 0, -7.43103e-08, 1.69999, -0.00442106, 22.5489, 1.40698, -41.003)
