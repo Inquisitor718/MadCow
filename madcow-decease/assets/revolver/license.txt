@@ -1,0 +1,11 @@
+Model Information:
+* title:	Revolver Colt Single Action Army LowPoly
+* source:	https://sketchfab.com/3d-models/revolver-colt-single-action-army-lowpoly-3cbeeeca808744759464507450b26a50
+* author:	Dan (https://sketchfab.com/solidmodelsproject)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Revolver Colt Single Action Army LowPoly" (https://sketchfab.com/3d-models/revolver-colt-single-action-army-lowpoly-3cbeeeca808744759464507450b26a50) by Dan (https://sketchfab.com/solidmodelsproject) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

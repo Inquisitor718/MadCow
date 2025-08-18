@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://bumv6bik85j7x"]
+
+[ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://scenes/level.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://d4ngn0yl2kq33" path="res://scenes/enemy.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://scenes/collectible.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/patched_cow.tscn" id="6_tefeu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
+panorama = ExtResource("1_sugp2")
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_o6xl0"]
+sky_material = SubResource("PanoramaSkyMaterial_sugp2")
+
+[sub_resource type="Environment" id="Environment_tipki"]
+background_mode = 2
+sky = SubResource("Sky_o6xl0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sugp2"]
+vertices = PackedVector3Array(3.5, 1, -14.2163, 4.75, 1, -14.4663, 4.75, 1, -17.4663, -49.5, 1, -17.4663, 4.75, 1, 17.5337, 4.75, 1, 14.2837, 3.5, 1, 14.0337, -49.5, 1, 17.5337, 3.5, 1, 5.28369, 4.75, 1, 5.03369, 4.75, 1, -5.21631, 3.5, 1, -5.46631, 5.75, 1, -14.2163, 49.5, 1, -17.4663, 5.75, 1, 14.0337, 49.5, 1, 17.5337, 5.75, 1, -5.46631, 5.75, 1, 5.28369)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 3), PackedInt32Array(3, 8, 7), PackedInt32Array(3, 0, 11), PackedInt32Array(8, 6, 7), PackedInt32Array(1, 2, 12), PackedInt32Array(12, 2, 13), PackedInt32Array(5, 14, 4), PackedInt32Array(4, 14, 15), PackedInt32Array(10, 16, 9), PackedInt32Array(9, 16, 17), PackedInt32Array(16, 13, 17), PackedInt32Array(17, 13, 15), PackedInt32Array(16, 12, 13), PackedInt32Array(15, 14, 17)]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5n0y8"]
+resource_local_to_scene = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_85g3d"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_5n0y8")
+size = Vector2(1.5, 0.2)
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.737012, 0.248238, -0.628642, -0.673885, -0.341298, 0.655282, -0.0518887, 0.906583, 0.418825, 0, 8.17773, 0)
+light_color = Color(0.999831, 0.965693, 0.922176, 1)
+light_energy = 0.8
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tipki")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_sugp2")
+navigation_layers = 17
+
+[node name="level" parent="NavigationRegion3D" instance=ExtResource("2_jyhfs")]
+
+[node name="Marker3D" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, 6.5)
+
+[node name="Marker3D5" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 2, 0)
+
+[node name="Marker3D2" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, -5.5)
+
+[node name="Marker3D3" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 2, 6.5)
+
+[node name="Marker3D4" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 2, -7)
+
+[node name="Player" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("4_jyhfs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43, 1.5, 0)
+collision_layer = 17
+SPEED = 5.0
+patrol_points = [NodePath("../NavigationRegion3D/Marker3D"), NodePath("../NavigationRegion3D/Marker3D2"), NodePath("../NavigationRegion3D/Marker3D3"), NodePath("../NavigationRegion3D/Marker3D4"), NodePath("../NavigationRegion3D/Marker3D5")]
+
+[node name="ProgressBar3D" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10723, 0)
+mesh = SubResource("QuadMesh_85g3d")
+
+[node name="Collectible" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -2)
+
+[node name="PatchedCow" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 0.5, -1)

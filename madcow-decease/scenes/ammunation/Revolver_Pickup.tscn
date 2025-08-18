@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp4rs15jtdxjj"]
+
+[ext_resource type="Script" uid="uid://dmogobeoy77d6" path="res://scripts/ammunation/pickup.gd" id="1_2m74c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2m74c"]
+size = Vector3(0.215, 0.45, 0.25)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vjqms"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt48a"]
+size = Vector3(0.3, 0.5, 1)
+
+[sub_resource type="Animation" id="Animation_2cv6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.005, -0.00107825, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jt48a"]
+resource_name = "bounce"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.005, -0.00107825, 0), Vector3(0, 1.2, 0), Vector3(0, 0.8, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e2mya"]
+resource_name = "vert_oscillation"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.7, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vmbl"]
+_data = {
+&"RESET": SubResource("Animation_2cv6q"),
+&"bounce": SubResource("Animation_jt48a"),
+&"vert_oscillation": SubResource("Animation_e2mya")
+}
+
+[node name="Revolver_Pickup" type="Area3D"]
+disable_mode = 1
+collision_layer = 16
+collision_mask = 21
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
+script = ExtResource("1_2m74c")
+weapon_name = "Revolver"
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.00107825, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_2m74c")
+skeleton = NodePath("../..")
+
+[node name="Barrel" type="MeshInstance3D" parent="Handle"]
+transform = Transform3D(0.178, 0, 0, 0, -1.32446e-08, -0.179, 0, 0.303, -7.82434e-09, 0, 0.13, 0.419)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_vjqms")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+shape = SubResource("BoxShape3D_jt48a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2vmbl")
+}
+autoplay = "vert_oscillation"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
