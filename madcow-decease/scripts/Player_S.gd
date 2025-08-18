@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 
 
 # movement states
-	if Input.is_action_pressed("crouch"):
+	if Input.is_action_pressed("Crouch"):
 		pcap.shape.height -= dcrouch_speed * delta
 		pcap.shape.height = clamp(pcap.shape.height, 0.72 , 2)
 		speed_now = speed_crouch
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 		pcap.shape.height += ucrouch_speed * delta
 		pcap.shape.height = clamp(pcap.shape.height, 0.72, 2)
 		if abs(pcap.shape.height - 2.0) < 0.01:
-			if Input.is_action_pressed("sprint") && is_on_floor():
+			if Input.is_action_pressed("Sprint") && is_on_floor():
 				speed_now = speed_sprint
 			else:
 				speed_now = speed_walk
@@ -109,7 +109,7 @@ func _physics_process(delta: float) -> void:
 			
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "forward", "backward")
+	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
 	direction = lerp(direction , (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() , delta * lerp_speed)
 	
 	if is_on_floor():
@@ -140,9 +140,9 @@ func _physics_process(delta: float) -> void:
 	
 	#checks for state of motion
 	if is_mov:
-		if Input.is_action_pressed("crouch"):
+		if Input.is_action_pressed("Crouch"):
 			bob_timer += delta * cbob_freq
-		elif Input.is_action_pressed("sprint"):
+		elif Input.is_action_pressed("Sprint"):
 			bob_timer += delta * sbob_freq
 		else:
 			bob_timer += delta * wbob_freq
