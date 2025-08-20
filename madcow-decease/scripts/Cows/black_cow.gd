@@ -108,26 +108,29 @@ func spawn_explode(position: Vector3):
 		boom.global_transform.origin = position
 		boom.global_position.y = global_position.y - 1
 		
-		var anim_player = boom.get_node_or_null("AnimationPlayer")
-		if anim_player:
-			anim_player.play("Explosion")
-		if anim_player:
-			anim_player.connect("animation_finished", func(_anim_name):
-				boom.queue_free())
-		else:
-			boom.call_deferred("queue_free")
+		#var anim_player = boom.get_node_or_null("AnimationPlayer")
+		#if anim_player:
+			#anim_player.play("Explosion")
+		#if anim_player:
+			#anim_player.connect("animation_finished", func(_anim_name):
+				#boom.queue_free())
+		#else:
+			#boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:
-	if black_cow_health >= 0:
+	if black_cow_health > 0:
 		black_cow_health -= dmg
 		print("Enemy Health:", black_cow_health)
 		if black_cow_health <= 0:
 			Global.kills += 1
+			print(Global.kills)
 			if group_player.is_in_group("Revolver"):
 				spawn_explode(global_transform.origin)
 			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
-				if Global.kills > 5:
-					if randi() % 100 < 20:
+				if Global.kills > 3:
+					var c = randi() % 100
+					print("Random Chod ", c)
+					if c < 20:
 						var horns_instance = horns_scene.instantiate()
 						horns_instance.global_position = global_position
 						get_tree().current_scene.add_child(horns_instance)

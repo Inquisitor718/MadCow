@@ -123,8 +123,6 @@ _data = {
 
 [node name="Explosion" type="Node3D"]
 script = ExtResource("1_8e54s")
-exp_dmg = 100.0
-exp_dur = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_8e54s")

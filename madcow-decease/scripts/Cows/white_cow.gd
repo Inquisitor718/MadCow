@@ -104,30 +104,34 @@ func spawn_explode(position: Vector3):
 		get_parent().add_child(boom)
 		boom.global_transform.origin = position
 		
-		var anim_player = boom.get_node_or_null("AnimationPlayer")
-		if anim_player:
-			anim_player.play("Explosion")
-		if anim_player:
-			anim_player.connect("animation_finished", func(_anim_name):
-				boom.queue_free())
-		else:
-			# Fallback if no animation: free after 1 sec
-			boom.call_deferred("queue_free")
+		#var anim_player = boom.get_node_or_null("AnimationPlayer")
+		#if anim_player:
+			#anim_player.play("Explosion")
+		#if anim_player:
+			#anim_player.connect("animation_finished", func(_anim_name):
+				#boom.queue_free())
+		#else:
+			## Fallback if no animation: free after 1 sec
+			#boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:
-	white_cow_health -= dmg
-	print("Enemy Health:", white_cow_health)
-	if white_cow_health <= 0:
-		Global.kills += 1
-		var c= randi() % 100
-		print(c)
-		if group_player.is_in_group("Revolver"):
-			spawn_explode(global_transform.origin)
-		if c < 1:
-			var minigun_instance = minigun_scene.instantiate()
-			minigun_instance.global_position = global_position
-			get_tree().current_scene.add_child(minigun_instance)
-		queue_free()
+	if white_cow_health > 0:
+		white_cow_health -= dmg
+		print("Enemy Health:", white_cow_health)
+		if white_cow_health <= 0:
+			Global.kills += 1
+			print(Global.kills)
+			if group_player.is_in_group("Revolver"):
+				spawn_explode(global_transform.origin)
+			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+				if Global.kills > 3:
+					var c = randi() % 100
+					print("Random Chod ", c)
+					if c < 20:
+						var minigun_instance = minigun_scene.instantiate()
+						minigun_instance.global_position = global_position
+						get_tree().current_scene.add_child(minigun_instance)
+			queue_free()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
