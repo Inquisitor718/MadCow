@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://beri3rk1pt6gk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ptbe"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_voyse"]
+left_to_right = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnj2g"]
+
+[node name="shotgun" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.24247, -0.356615, 0, 0.605995, 0.73117, 0, 0, 0, 1, -1.50832, -0.690739, 0)
+layers = 2
+mesh = SubResource("BoxMesh_5ptbe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.781651, -0.623716, 0, 0.623716, 0.781651, 0, 0, 0, 1, -0.658981, -0.0590402, 0)
+layers = 2
+mesh = SubResource("PrismMesh_voyse")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.850077, 0.526659, 0, -0.526659, -0.850077, 0, 0, 0, 1, -0.508689, -0.0493689, 0)
+layers = 2
+mesh = SubResource("PrismMesh_voyse")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.9889, 0, 0, 0, 0.74305, 0, 0, 0, 1, 1.63925, 0.282812, 0)
+layers = 2
+mesh = SubResource("BoxMesh_gnj2g")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://v4v00ahk3fjl"]
+
+[ext_resource type="PackedScene" uid="uid://hsktlgoo5yvt" path="res://Assets/stone_door.glb" id="1_5nswx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7x51"]
+size = Vector3(1.99426, 2.00476, 0.154053)
+
+[node name="Door_stone" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0343647, 0.974505, 1.43051e-06)
+shape = SubResource("BoxShape3D_f7x51")
+
+[node name="stone_door" parent="." instance=ExtResource("1_5nswx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0416555, -1, 2.45344)

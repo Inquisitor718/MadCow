@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjptxukilidkm"]
+
+[ext_resource type="PackedScene" uid="uid://f3c4oq1y4lbi" path="res://Assets/canister.glb" id="1_njiso"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j8e8v"]
+height = 1.96973
+
+[node name="canister" type="StaticBody3D"]
+
+[node name="canister" parent="." instance=ExtResource("1_njiso")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="milk_can" parent="canister" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.410645, 0)
+shape = SubResource("CylinderShape3D_j8e8v")
+
+[editable path="canister"]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://cm6b48v2wj16p"]
+
+[ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/Cows/patched_cow.gd" id="1_2wi0g"]
+[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/ammunation/bullet.tscn" id="2_ni8w7"]
+[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
+[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="4_banjt"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
+[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="5_16xvs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
+albedo_texture = ExtResource("4_banjt")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2wi0g"]
+radius = 1.5
+height = 14.921
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ni8w7"]
+height = 3.72281
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hsi1t"]
+radius = 20.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_emkmn"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ni8w7"]
+radius = 500.0
+
+[node name="PatchedCow" type="CharacterBody3D" groups=["Enemy"]]
+transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, 0, 0, 0)
+collision_layer = 2
+collision_mask = 39
+script = ExtResource("1_2wi0g")
+bullet = ExtResource("2_ni8w7")
+revolver_scene = ExtResource("3_2wi0g")
+explosion = ExtResource("4_ni8w7")
+
+[node name="PatchedCow" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 22.25, -1, -0.5)
+material_override = SubResource("StandardMaterial3D_hsi1t")
+mesh = ExtResource("5_16xvs")
+
+[node name="BulletSpawn" type="Marker3D" parent="PatchedCow"]
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, -13.7351, 6.31224, -111.831)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, -1.02445e-08, 0.2, 0.2, -8.74228e-09, 1.74846e-08, 8.74228e-09, 0.2, 1.02445e-08, -0.0410748, 0.15, 0.607124)
+shape = SubResource("CapsuleShape3D_2wi0g")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 0.181236, -0.562187, 0.936988)
+shape = SubResource("CapsuleShape3D_ni8w7")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, -0.201439, -0.562187, 0.933287)
+shape = SubResource("CapsuleShape3D_ni8w7")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.65661e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -4.65661e-09, -0.115486, -0.562187, -0.816638)
+shape = SubResource("CapsuleShape3D_ni8w7")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 0.364292, -0.562187, -0.767074)
+shape = SubResource("CapsuleShape3D_ni8w7")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_hsi1t")
+
+[node name="ShootArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShootArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_emkmn")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ni8w7")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

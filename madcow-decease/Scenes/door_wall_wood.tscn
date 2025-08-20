@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyywpuvvw4yh0"]
+
+[ext_resource type="PackedScene" uid="uid://ctd8bktejyujk" path="res://Assets/door.glb" id="1_2ivi6"]
+[ext_resource type="PackedScene" uid="uid://cw5iqnidqqtj" path="res://Assets/door_wall_wood.glb" id="1_erjbq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xy62h"]
+size = Vector3(0.999939, 0.340651, 0.0539246)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erjbq"]
+size = Vector3(1.33179, 2.64198, 0.21167)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0itti"]
+size = Vector3(0.571014, 1.19702, 0.0629883)
+
+[node name="door_wall_wood" type="StaticBody3D"]
+
+[node name="door_wall_wood" parent="." instance=ExtResource("1_erjbq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.3349, -2.00655, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0137939, 1.3038, -2.23394)
+shape = SubResource("BoxShape3D_xy62h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32971, -0.70339, -2.23403)
+shape = SubResource("BoxShape3D_erjbq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33649, -0.70339, -2.23403)
+shape = SubResource("BoxShape3D_erjbq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="door" parent="StaticBody3D" instance=ExtResource("1_2ivi6")]
+transform = Transform3D(2.24472, 0, 0, 0, 2.18046, 0, 0, 0, 1, 0.123636, -1.9605, -0.98426)
+
+[node name="Door_1_001" parent="StaticBody3D/door" index="0"]
+transform = Transform3D(0.0473974, 0, 0, 0, 1.69506e-08, -0.0471046, 0, 0.0473974, 1.68459e-08, -0.325494, 0.472516, -1.26137)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2.24472, 0, 0, 0, 2.18046, 0, 0, 0, 1, 0.00319608, -0.705802, -2.21915)
+shape = SubResource("BoxShape3D_0itti")
+
+[editable path="StaticBody3D/door"]

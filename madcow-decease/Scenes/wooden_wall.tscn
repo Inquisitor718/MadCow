@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://u6yl8us6tp13"]
+
+[ext_resource type="PackedScene" uid="uid://b2pbds1ykhr3" path="res://Assets/wooden_wall_new.glb" id="1_h4llj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h4llj"]
+size = Vector3(1, 0.0367126, 1.00073)
+
+[node name="wooden_wall" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0.0157938, 0.0421173, 0)
+shape = SubResource("BoxShape3D_h4llj")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="wooden_wall_new" parent="." instance=ExtResource("1_h4llj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Wood Wall " parent="wooden_wall_new" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[editable path="wooden_wall_new"]

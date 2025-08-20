@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvs1t6fwo8bvh"]
+
+[ext_resource type="Script" uid="uid://dcvanee7drarf" path="res://scripts/Cows/white_cow.gd" id="1_tqxp6"]
+[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://scenes/ammunation/minigun_pickup.tscn" id="2_bnktk"]
+[ext_resource type="PackedScene" uid="uid://d5plhimoiphp" path="res://scenes/ammunation/pellets.tscn" id="3_bnktk"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_h4022"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51lkm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tqxp6"]
+material = SubResource("StandardMaterial3D_51lkm")
+
+[sub_resource type="SphereMesh" id="SphereMesh_yorvp"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yorvp"]
+radius = 0.6
+height = 2.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bnktk"]
+radius = 20.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h4022"]
+radius = 10.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6n2nx"]
+radius = 500.0
+
+[node name="WhiteCow" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 39
+script = ExtResource("1_tqxp6")
+minigun_scene = ExtResource("2_bnktk")
+pellets = ExtResource("3_bnktk")
+explosion = ExtResource("4_h4022")
+
+[node name="PelletsSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50885, 0.549179)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tqxp6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.490957, 0.464603)
+mesh = SubResource("SphereMesh_yorvp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("CapsuleShape3D_yorvp")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_bnktk")
+
+[node name="ShootArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShootArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_h4022")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_6n2nx")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://0kdavsmudtd3"]
+
+[ext_resource type="PackedScene" uid="uid://dabieu5dhps6o" path="res://Assets/stone_doorframe.glb" id="1_knxc0"]
+[ext_resource type="PackedScene" uid="uid://slrxc2bnhsyw" path="res://Assets/vent.glb" id="2_pbkj6"]
+[ext_resource type="PackedScene" uid="uid://ctd8bktejyujk" path="res://Assets/door.glb" id="3_5uig6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbkj6"]
+size = Vector3(0.935333, 2.41138, 0.145825)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5uig6"]
+size = Vector3(0.935463, 2.4126, 0.157654)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dd5vm"]
+size = Vector3(1.77187, 2.82684, 0.145825)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3na5s"]
+size = Vector3(1.16907, 2.34442, 0.112244)
+
+[node name="Doorframe_stone" type="StaticBody3D"]
+
+[node name="stone_doorframe" parent="." instance=ExtResource("1_knxc0")]
+transform = Transform3D(1.41, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 0, 0.00694177, 0)
+
+[node name="Stone Wall_Door" parent="stone_doorframe" index="0"]
+transform = Transform3D(1.41, 0, 0, 0, -6.16331e-08, -1.41, 0, 1.41, -6.16331e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.41, 0, 0, 0, 1.41, 0, 0, 0, 1.41, -1.3366, -0.283079, 0.0766942)
+shape = SubResource("BoxShape3D_pbkj6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.41, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 1.32251, -0.282362, 0.0753479)
+shape = SubResource("BoxShape3D_5uig6")
+debug_fill = false
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-6.16331e-08, 1.41, 0, -1.41, -6.16331e-08, 0, 0, 0, 1.41, -0.00560963, 1.77521, 0.0766942)
+shape = SubResource("BoxShape3D_dd5vm")
+
+[node name="vent" parent="." instance=ExtResource("2_pbkj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0059514, 2.0689, 0)
+
+[node name="Vent" parent="vent" index="0"]
+transform = Transform3D(1.01, 0, 0, 0, 1, 0, 0, 0, 0.467, 0, 0.446414, 0)
+
+[node name="Door" type="StaticBody3D" parent="."]
+
+[node name="door" parent="Door" instance=ExtResource("3_5uig6")]
+transform = Transform3D(0.950099, 0, 0, 0, 0.947874, 0, 0, 0, 1, 0.015002, -0.0763615, 0.118664)
+
+[node name="Door_1_001" parent="Door/door" index="0"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, -0.603951, -0.957991, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013855, -0.807587, 0.136627)
+shape = SubResource("BoxShape3D_3na5s")
+
+[editable path="stone_doorframe"]
+[editable path="vent"]
+[editable path="Door/door"]

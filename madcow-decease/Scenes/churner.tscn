@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b00oq3wltf8xl"]
+
+[ext_resource type="PackedScene" uid="uid://c27l5emwt2bge" path="res://Assets/churner.glb" id="1_70r60"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_70r60"]
+height = 2.00122
+radius = 0.759277
+
+[node name="churner" type="StaticBody3D"]
+
+[node name="churner" parent="." instance=ExtResource("1_70r60")]
+
+[node name="milk_churner" parent="churner" index="0"]
+transform = Transform3D(1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0960693, 0)
+shape = SubResource("CylinderShape3D_70r60")
+
+[editable path="churner"]

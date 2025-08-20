@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0he3lu2vim3c"]
+
+[ext_resource type="PackedScene" uid="uid://oxa8jlr4i43g" path="res://Assets/stone_wall.glb" id="1_ra4wm"]
+[ext_resource type="PackedScene" uid="uid://slrxc2bnhsyw" path="res://Assets/vent.glb" id="2_drm01"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drm01"]
+size = Vector3(2.00104, 2.51285, 0.117798)
+
+[node name="Stone_wall" type="StaticBody3D"]
+
+[node name="stone_wall" parent="." instance=ExtResource("1_ra4wm")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.14445, -1.98204, 2.31359)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0150175, 0.514922, -0.0169678)
+shape = SubResource("BoxShape3D_drm01")
+
+[node name="vent" parent="." instance=ExtResource("2_drm01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0059514, 2.0689, 0)
+
+[node name="Vent" parent="vent" index="0"]
+transform = Transform3D(1.01, 0, 0, 0, 1, 0, 0, 0, 0.467, 0, 0.446414, 0)
+
+[editable path="vent"]

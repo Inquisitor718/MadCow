@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3eja6icmvfws"]
+
+[ext_resource type="PackedScene" uid="uid://1aol2if4df0c" path="res://Assets/open_shelf.glb" id="1_7s68f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b8rhk"]
+size = Vector3(1.36548, 2.51563, 1)
+
+[node name="open_shelf" type="StaticBody3D"]
+
+[node name="open_shelf" parent="." instance=ExtResource("1_7s68f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Open Shelf" parent="open_shelf" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.369629, 0)
+shape = SubResource("BoxShape3D_b8rhk")
+
+[editable path="open_shelf"]
