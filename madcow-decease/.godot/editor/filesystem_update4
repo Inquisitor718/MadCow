@@ -1,4 +1,10 @@
-res://Barn.tscn
+res://Basement.tscn
 res://Shaders/new_noise_texture_2d.tres
 res://Scenes/boulder_b.gdshader
+res://Barn.tscn
+res://Scenes/main.tscn
+res://Scenes/level.tscn
+res://Scenes/Stone_floor.tscn
+res://Scenes/enemy scenes/black_cow.tscn
 res://scripts/Player_S.gd
+res://Main_menu.tscn
