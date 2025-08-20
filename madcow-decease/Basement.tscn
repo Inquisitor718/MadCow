@@ -1,9 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=31 format=3 uid="uid://dwnt5kns4icot"]
 
-[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://player.tscn" id="1_acvfb"]
+[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_244tr"]
-[ext_resource type="Script" uid="uid://dhliyngvould8" path="res://Movement.gd" id="2_j1pjq"]
 [ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://Scenes/bookshelf.tscn" id="3_kay6q"]
 [ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://Scenes/Stone_floor.tscn" id="4_4kw8u"]
 [ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://Scenes/table.tscn" id="5_u0eul"]
@@ -83,7 +82,6 @@ environment = SubResource("Environment_4kw8u")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
 transform = Transform3D(0.854495, 0, -0.51946, 0, 1, 0, 0.51946, 0, 0.854495, -19.8211, 1.42251, 41.8028)
-script = ExtResource("2_j1pjq")
 
 [node name="WORLD_BUILDING" type="Node3D" parent="."]
 

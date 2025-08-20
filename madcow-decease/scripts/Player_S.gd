@@ -103,7 +103,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = JUMP_VELOCITY
 	else:
-		if Input.is_action_just_released("jump") and velocity.y > 0 and not is_on_floor():
+		if Input.is_action_just_released("Jump") and velocity.y > 0 and not is_on_floor():
 			velocity.y *= 0.5
 			print("hop")
 			
