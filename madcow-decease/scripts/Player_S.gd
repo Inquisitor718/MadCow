@@ -60,8 +60,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	default_pos = head.position
 	
-	var mainenv = main_cam.get_environment()
-	gun_cam.set_environment(mainenv)
+
 
 
 func _input(event):
@@ -72,7 +71,7 @@ func _input(event):
 
 
 func _process(_delta):
-	gun_cam.global_transform = main_cam.global_transform
+	pass
 
 
 func _physics_process(delta: float) -> void:

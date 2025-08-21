@@ -9,3 +9,6 @@ res://scripts/Cows/black_cow.gd
 res://scripts/Cows/baby_cow.gd
 res://scripts/Cows/patched_cow.gd
 res://scripts/Cows/white_cow.gd
+res://Scenes/ammunation/shotgun.tscn
+res://Scenes/horns_pickup.tscn
+res://scripts/Player_S.gd

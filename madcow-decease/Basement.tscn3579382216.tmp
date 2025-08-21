@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=37 format=3 uid="uid://dwnt5kns4icot"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://Scenes/enemy scenes/black_cow.tscn" id="25_244tr"]
 [ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="26_0ync5"]
 [ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="27_xwxmh"]
+[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://Scenes/ammunation/Revolver_Pickup.tscn" id="28_vxnlc"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="29_rae03"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
@@ -4390,8 +4391,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2918, 1.86623, 43.2357)
 [node name="Minigun_Pickup" parent="." instance=ExtResource("27_xwxmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1724, 0.965314, 41.9671)
 
+[node name="Revolver_Pickup" parent="." instance=ExtResource("28_vxnlc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0589, 0.974714, 42.2565)
+
 [node name="Horns_Pickup" parent="." instance=ExtResource("29_rae03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7034, 1.00008, 41.8278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1468, 1.00008, 41.8278)
 
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest/Chest"]

@@ -379,7 +379,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.0178347, -1.33485, 0.000116378), Vector3(0.329511, -0.280136, -0.370283)]
+"values": [Vector3(0.0178347, -1.33485, 0.000116378), Vector3(0.15188, -0.124884, -0.154345)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -515,7 +515,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.018, -1.335, 0), Vector3(0.319317, -0.169917, -0.272749)]
+"values": [Vector3(0.018, -1.335, 0), Vector3(0.179788, -0.103231, -0.18174)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -650,25 +650,6 @@ shape = SubResource("CapsuleShape3D_cvnsp")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("8_flsqn")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_top = 0.006
-anchor_right = 1.0
-anchor_bottom = 1.006
-offset_top = 0.112
-offset_bottom = 0.112
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="GunCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.845099, 0)
-cull_mask = 2
-
 [node name="GunCounter" type="VBoxContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -726,7 +707,6 @@ texture = SubResource("CanvasTexture_flsqn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-cull_mask = 1048573
 
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("Melee_Hitbox")]
 script = ExtResource("2_v7hu7")
@@ -738,11 +718,11 @@ Start_Weapons = Array[String](["Shotgun"])
 [node name="rig" type="Node3D" parent="Head/Camera3D/W_Manager"]
 
 [node name="shotgun" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("7_4j2pt")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.018, -1.335, 0)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.018, -1.335, 0)
 visible = false
 
 [node name="Revolver" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("2_aj78o")]
-transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.0178347, -1.33485, 0.000116378)
+transform = Transform3D(-0.33, 0, -8.3661e-07, 0, 0.33, 0, 8.3661e-07, 0, -0.33, 0.0178347, -1.33485, 0.000116378)
 visible = false
 
 [node name="minigun" parent="Head/Camera3D/W_Manager/rig" instance=ExtResource("6_w0gdg")]
@@ -766,7 +746,6 @@ transform = Transform3D(1, 0, 0, 0, 1.56, 0, 0, 0, 2.08, 0, 0.908469, -1.60177)
 shape = SubResource("BoxShape3D_x5t1h")
 collision_mask = 2
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_4j2pt")
