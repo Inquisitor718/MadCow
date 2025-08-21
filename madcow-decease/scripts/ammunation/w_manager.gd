@@ -2,7 +2,6 @@ extends Node3D
 
 @onready var animation_player: AnimationPlayer = $rig/AnimationPlayer
 @onready var Bullet_Point = get_node("%BulletPoint")
-
 @onready var player: CharacterBody3D = $"../../.."
 
 signal Weapon_Change
@@ -25,7 +24,6 @@ var Next_Weapon: String
 var Weapon_List = {}
 @export var _weapon_resources: Array[Weapon_Resource]
 @export var Start_Weapons: Array[String]
-var Ammo_Increase: int = 20
 enum{NULL, HITSCAN, PROJECTILE}
 
 func _process(delta: float) -> void:
@@ -141,6 +139,13 @@ func shoot():
 					#Hit_Scan_Collision(Cam_Collision)
 				#PROJECTILE:
 					#Launch_Proj(Get_Cam_Collision())
+			if Current_Weapon.W_name == "Revolver" && Current_Weapon.Active_ammo == 0:#Checks for Revolver and ammo end tags
+				var timer = get_node_or_null("WeaponTimer_*")
+				for child in get_children():
+					if child is Timer and child.name.begins_with("WeaponTimer_"):
+						child.stop()
+						child.emit_signal("timeout")
+						break
 	else:
 		reload()
 
@@ -199,11 +204,22 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 	if body.has_method("Add_Ammo"):
 		print("Ammo adding")
 		var Temp_ammo = Weapon_List[body.weapon_name].Stored_ammo
-		Temp_ammo += Ammo_Increase
+		Temp_ammo += body.Increase
 		Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
 		emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
 		$"../../../Weapon_Pickup".set_deferred("monitoring", true)
 		body.queue_free()
+
+	if body.has_method("Add_Health"):
+		print("Health adding")
+		var Temp_health = player.health
+		Temp_health += body.increase
+		player.health = Temp_health
+		$"../../../CanvasLayer/HealthBar".value = Temp_health
+		print("Health is now " + str(player.health))
+		
+
+
 	else:
 		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
 		if Weapon_In_Stack == -1:
@@ -232,10 +248,14 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 			# Create the timer
 			var timer := Timer.new()
 			timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
-			timer.wait_time = Powerup_Duration  
+			if body.weapon_name == "Revolver":
+				timer.wait_time = 9999999
+			else:
+				timer.wait_time = Powerup_Duration  
+
 			timer.one_shot = true  
 			add_child(timer)
-			
+
 			timer.timeout.connect(func():
 				print("Timer end")
 				$"../../../Weapon_Pickup".set_deferred("monitoring", true)
