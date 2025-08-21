@@ -1,17 +1,17 @@
 [gd_scene load_steps=37 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
-[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/ammunation/revolver.tscn" id="2_aj78o"]
+[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://Scenes/ammunation/revolver.tscn" id="2_aj78o"]
 [ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scripts/ammunation/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="3_jdn2x"]
-[ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
-[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
-[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/ammunation/minigun.tscn" id="6_w0gdg"]
-[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
-[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
+[ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://Assets/weapon_resources/revolver.tres" id="4_w0gdg"]
+[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://Assets/weapon_resources/Minigun.tres" id="5_qde3d"]
+[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://Scenes/ammunation/minigun.tscn" id="6_w0gdg"]
+[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://Assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
+[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://Scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/ammunation/Gun_Counter.gd" id="8_flsqn"]
-[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
-[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://scenes/horns.tscn" id="12_d62hb"]
+[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://Assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
+[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
@@ -662,7 +662,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="GunCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
