@@ -124,7 +124,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.057003, 0.0811024, -0.0797
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1pabj")
 
-[node name="Player2" parent="." instance=ExtResource("1_2qr42")]
+[node name="Player" parent="." instance=ExtResource("1_2qr42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.933, 1.37792, 59.716)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -12031,7 +12031,7 @@ light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 
 [node name="PatchedCow" parent="." instance=ExtResource("29_ewx32")]
-transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, -35.5965, 2.21301, 39.0312)
+transform = Transform3D(-0.0713407, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713407, -37.5591, 2.68466, 52.0975)
 patched_cow_health = 200
 
 [editable path="Worldbuilding/walls/wooden_wall86"]
