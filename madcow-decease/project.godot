@@ -31,6 +31,13 @@ window/size/mode=3
 [global_group]
 
 player=""
+player_S=""
+Enemies=""
+Friendlies=""
+Shotgun=""
+minigun=""
+Revolver=""
+Horns=""
 
 [input]
 

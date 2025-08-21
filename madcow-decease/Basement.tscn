@@ -49,7 +49,6 @@ ambient_light_source = 2
 ambient_light_color = Color(0.058601, 0.089448, 0.213479, 1)
 ambient_light_energy = 1.62
 tonemap_mode = 2
-ssr_enabled = true
 ssao_enabled = true
 ssao_radius = 3.19
 ssao_intensity = 3.02

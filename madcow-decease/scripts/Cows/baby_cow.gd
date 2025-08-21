@@ -251,7 +251,7 @@ func _fire_magnum_from_marker_at_target(spawn_marker: Node3D, target_enemy):
 	magnum_instance.direction.z = dir.z
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.name == "Player":
+	if body is CharacterBody3D and body.is_in_group("player_S"):
 		player = body
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
@@ -260,5 +260,5 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.name == "Player":
+	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
