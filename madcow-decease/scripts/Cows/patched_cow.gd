@@ -5,9 +5,6 @@ extends CharacterBody3D
 @export var rotation_speed: float = 4.0
 @export var fire_rate: float = 2.0
 
-
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -22,9 +19,6 @@ var group_player: CharacterBody3D = null
 var can_shoot = true
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-func _ready():
-	animation_player.play("Summon")
 
 func _physics_process(delta):
 	_apply_gravity(delta)
@@ -135,13 +129,11 @@ func Hit(dmg: int) -> void:
 						var revolver_instance = revolver_scene.instantiate()
 						revolver_instance.global_position = global_position
 						get_tree().current_scene.add_child(revolver_instance)
-			animation_player.play("Summon")
-			_on_animation_player_animation_finished("Summon")
-			
+			queue_free()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.is_in_group("player_S"):
+	if body is CharacterBody3D and body.name == "Player":
 		player = body
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
@@ -149,9 +141,5 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 		player = null
 		
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.is_in_group("player_S"):
+	if body is CharacterBody3D and body.name == "Player":
 		group_player = body
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	queue_free()

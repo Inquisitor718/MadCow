@@ -4383,7 +4383,7 @@ transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 21.8142, 1
 [node name="PatchedCow" parent="." instance=ExtResource("26_0ync5")]
 transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, 19.3871, 1.42251, 16.3592)
 
-[node name="Player" parent="." instance=ExtResource("1_acvfb")]
+[node name="Player2" parent="." instance=ExtResource("1_acvfb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2918, 1.86623, 43.2357)
 
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]

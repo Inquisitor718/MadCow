@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cm6b48v2wj16p"]
+[gd_scene load_steps=13 format=3 uid="uid://cm6b48v2wj16p"]
 
 [ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/Cows/patched_cow.gd" id="1_2wi0g"]
-[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://Scenes/ammunation/bullet.tscn" id="2_ni8w7"]
-[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://Scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
-[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://Assets/cow/source/textures/cow.jpg" id="4_banjt"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
-[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://Assets/cow/source/cow.obj" id="5_16xvs"]
+[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/ammunation/bullet.tscn" id="2_ni8w7"]
+[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
+[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="4_banjt"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
+[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="5_16xvs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
 albedo_texture = ExtResource("4_banjt")
@@ -26,45 +26,8 @@ radius = 8.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_ni8w7"]
 radius = 500.0
 
-[sub_resource type="Animation" id="Animation_jy1at"]
-resource_name = "Summon"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PatchedCow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(22.25, -5, -0.5), Vector3(22.25, -1, -0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_iijg3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PatchedCow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(22.25, -5, -0.5)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p05iv"]
-_data = {
-&"RESET": SubResource("Animation_iijg3"),
-&"Summon": SubResource("Animation_jy1at")
-}
-
 [node name="PatchedCow" type="CharacterBody3D" groups=["Enemy"]]
-transform = Transform3D(-0.0713407, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713407, 0, 0, 0)
+transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, 0, 0, 0)
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_2wi0g")
@@ -73,7 +36,7 @@ revolver_scene = ExtResource("3_2wi0g")
 explosion = ExtResource("4_ni8w7")
 
 [node name="PatchedCow" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 22.25, -5, -0.5)
+transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 22.25, -1, -0.5)
 material_override = SubResource("StandardMaterial3D_hsi1t")
 mesh = ExtResource("5_16xvs")
 
@@ -122,12 +85,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_ni8w7")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_p05iv")
-}
-
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
