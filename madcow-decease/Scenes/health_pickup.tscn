@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cor5pdhy876pc"]
+[gd_scene load_steps=8 format=3 uid="uid://beo12ds1ym1e1"]
 
-[ext_resource type="Script" uid="uid://h02t208jk4j2" path="res://scripts/ammunation/ammo_box.gd" id="1_2h5hb"]
+[ext_resource type="Script" uid="uid://dy0t7vgw10olm" path="res://Scenes/health_pickup.gd" id="1_gvws8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2n00s"]
 size = Vector3(0.6, 0.15, 0.3)
@@ -64,12 +64,10 @@ _data = {
 &"vert_oscillate": SubResource("Animation_l1cdb")
 }
 
-[node name="Ammo_Box" type="Area3D"]
+[node name="Health_Pickup" type="Area3D"]
 collision_layer = 16
 collision_mask = 21
-script = ExtResource("1_2h5hb")
-weapon_name = "Shotgun"
-increase = 20
+script = ExtResource("1_gvws8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_2n00s")
