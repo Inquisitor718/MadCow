@@ -682,10 +682,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 480.0
-offset_top = 16.0
-offset_right = 1129.0
-offset_bottom = 71.0
+offset_left = 13.0
+offset_top = 1000.0
+offset_right = 662.0
+offset_bottom = 1055.0
 theme_override_styles/background = SubResource("StyleBoxFlat_gkn25")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
 max_value = 1000.0
