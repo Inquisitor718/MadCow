@@ -1,9 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=40 format=3 uid="uid://dwnt5kns4icot"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
 [ext_resource type="Script" uid="uid://buuo8jbohwcxn" path="res://basement.gd" id="1_xwxmh"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_244tr"]
+[ext_resource type="PackedScene" uid="uid://bthq2c4jobtce" path="res://pause_menu.tscn" id="2_vxnlc"]
 [ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://Scenes/bookshelf.tscn" id="3_kay6q"]
 [ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://Scenes/Stone_floor.tscn" id="4_4kw8u"]
 [ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://Scenes/table.tscn" id="5_u0eul"]
@@ -29,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="26_0ync5"]
 [ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="27_xwxmh"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="29_rae03"]
+[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://Scenes/enemy scenes/baby_cow.tscn" id="31_160tv"]
+[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="32_wqo3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
 shader = ExtResource("1_eqln2")
@@ -1313,6 +1316,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8675, 0.35, -49.4485)
 
 [node name="Roof" type="Node3D" parent="WORLD_BUILDING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+visible = false
 
 [node name="Stone_floor" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -21.1325, -2.65, 38.5515)
@@ -4387,13 +4391,31 @@ transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 21.8142, 1
 transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, 19.3871, 1.42251, 16.3592)
 
 [node name="Player2" parent="." instance=ExtResource("1_acvfb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.2918, 1.86623, 45.3799)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.7082, 1.86623, 29.3799)
+
+[node name="Pause_menu" parent="Player2/Head/Camera3D" index="1" instance=ExtResource("2_vxnlc")]
+visible = false
+anchor_left = 0.42
+anchor_top = 0.432
+anchor_right = 0.575
+anchor_bottom = 0.605
+offset_left = -0.400024
+offset_top = 0.440002
+offset_right = -228.88
+offset_bottom = -143.2
+scale = Vector2(4.30716, 4.30716)
 
 [node name="Minigun_Pickup" parent="." instance=ExtResource("27_xwxmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1724, 0.965314, 41.9671)
 
 [node name="Horns_Pickup" parent="." instance=ExtResource("29_rae03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7034, 1.00008, 41.8278)
+
+[node name="baby_cow" parent="." instance=ExtResource("31_160tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
+
+[node name="WhiteCow" parent="." instance=ExtResource("32_wqo3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest/Chest"]
@@ -4421,3 +4443,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7034, 1.00008, 41.8278)
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone6/stone_doorframe"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone6/vent"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone6/Door/door"]
+[editable path="Player2"]

@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var p_damage: int
+@export var f_damage: int
 @export var speed: float = 20.0
 
 @export var lifetime: float = 3.0
@@ -21,9 +23,9 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_body_entered(body: PhysicsBody3D) -> void:
 	if body.is_in_group("player_S"):
 		if body.has_method("dmg"):
-			body.dmg(2)
+			body.dmg(p_damage)
 		queue_free()
 	if body.is_in_group("Enemy"):
 		if body.has_method("Hit"):
-			body.Hit(30)
+			body.Hit(f_damage)
 		queue_free()

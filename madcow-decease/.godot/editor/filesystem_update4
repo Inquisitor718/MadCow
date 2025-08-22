@@ -1,8 +1,0 @@
-res://Barn.tscn
-res://Shaders/new_noise_texture_2d.tres
-res://Scenes/boulder_b.gdshader
-res://Basement.tscn
-res://pause_menu.tscn
-res://basement.gd
-res://Main_menu.tscn
-res://Quit_button.gd

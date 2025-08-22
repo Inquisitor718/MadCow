@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://cerrexjmrwoos"]
 
 [ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/Cows/baby_cow.gd" id="1_ty27g"]
-[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://scenes/ammunation/magnum.tscn" id="2_ye5jj"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="3_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://Scenes/ammunation/magnum.tscn" id="2_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_ye5jj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18obc"]
 albedo_color = Color(0.721569, 0.133333, 0.560784, 1)
@@ -25,10 +25,10 @@ radius = 0.3
 height = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ye5jj"]
-radius = 5.0
+radius = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8hgw2"]
-radius = 25.0
+radius = 30.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ucynp"]
 radius = 500.0
@@ -37,7 +37,8 @@ radius = 500.0
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_ty27g")
-baby_cow_health = 60
+baby_cow_health = 50
+move_speed = 6.5
 magnum = ExtResource("2_ye5jj")
 explosion = ExtResource("3_ye5jj")
 

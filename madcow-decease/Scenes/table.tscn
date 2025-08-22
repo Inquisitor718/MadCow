@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfqxa7e3snj62" path="res://Assets/table.glb" id="1_ix8et"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ppvu"]
-size = Vector3(2.37473, 0.755981, 1)
+size = Vector3(2.37473, 0.755981, 1.97827)
 
 [node name="Table" type="StaticBody3D"]
 
