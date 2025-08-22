@@ -28,7 +28,7 @@ var Weapon_List = {}
 var Ammo_Increase: int = 20
 enum{NULL, HITSCAN, PROJECTILE}
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_check_revolver()
 	_check_minigun()
 	_check_horns()
@@ -157,8 +157,8 @@ func melee():
 				var Target = Melee_Hitbox.get_collider(c)
 				if Target.is_in_group("Enemy") and Target.has_method("Hit"):
 					print("melee hit")
-					var Direction = (Target.global_transform.origin - owner.global_transform.origin).normalized()
-					var Position =  Melee_Hitbox.get_collision_point(c)
+					var _Direction = (Target.global_transform.origin - owner.global_transform.origin).normalized()
+					var _Position =  Melee_Hitbox.get_collision_point(c)
 					Target.Hit(Current_Weapon.Melee_Damage)
 
 

@@ -65,7 +65,7 @@ func Hit_Scan_Collision(Collision: Array,_damage):
 				Hit_Scan_Damage(Bullet_Collision.collider, Bullet_Direction,Bullet_Collision.position,_damage)
 
 
-func Hit_Scan_Damage(Collider, Direction, Position, _damage):
+func Hit_Scan_Damage(Collider, _Direction, _Position, _damage):
 	if Collider.is_in_group("Enemy") and Collider.has_method("Hit"):
 		Hit_Successfull.emit()
 		Collider.Hit(_damage)

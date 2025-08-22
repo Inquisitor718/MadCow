@@ -8,7 +8,7 @@ var vertical_velocity = 0.0
 @export var current_ammo: int
 @export var reserve_ammo: int
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	rotate_y(deg_to_rad(ROT_SPEED))
 
 func _on_body_entered(body: CharacterBody3D) -> void:
@@ -19,5 +19,5 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 		set_collision_mask_value(1, false)
 		
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

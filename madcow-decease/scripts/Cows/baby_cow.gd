@@ -134,7 +134,7 @@ func _fire_magnum_from_marker(spawn_pos: Node3D) -> void:
 	new_magnum.direction.y = randfn(shot_direction.y, 0.02)
 	new_magnum.direction.z = shot_direction.z
 
-func spawn_explode(position: Vector3):
+func spawn_explode(_position: Vector3):
 	if explosion:
 		var boom = explosion.instantiate()
 		boom.global_position = global_position
