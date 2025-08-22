@@ -14,5 +14,5 @@ func _on_area_3d_body_entered(body: CharacterBody3D) -> void:
 		_on_animation_player_animation_finished("Explosion")
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()
