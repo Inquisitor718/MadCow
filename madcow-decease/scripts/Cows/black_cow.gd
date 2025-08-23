@@ -22,6 +22,8 @@ var can_shoot = true
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+signal on_death
+
 func _ready() -> void:
 	randomize()
 
@@ -126,6 +128,7 @@ func Hit(dmg: int) -> void:
 			Global.kills += 1
 			Global.distortion += distortion_add
 			print(Global.kills)
+			emit_signal("on_death")
 			if group_player.is_in_group("Revolver"):
 				spawn_explode(global_transform.origin)
 			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
