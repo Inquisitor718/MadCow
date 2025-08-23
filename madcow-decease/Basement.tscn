@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=44 format=3 uid="uid://dwnt5kns4icot"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="29_rae03"]
 [ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://Scenes/enemy scenes/baby_cow.tscn" id="31_160tv"]
 [ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="32_wqo3g"]
+[ext_resource type="Script" uid="uid://cawwi7kwne0x5" path="res://spawnbox1.gd" id="33_wqo3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
 shader = ExtResource("1_eqln2")
@@ -85,6 +86,15 @@ size = Vector3(2.705, 0.001, 1.065)
 albedo_color = Color(0.533852, 0.587188, 0.181128, 1)
 emission_enabled = true
 emission = Color(0, 0.931239, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_160tv"]
+size = Vector3(1, 4.90039, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqo3g"]
+size = Vector3(1, 4.90039, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kcs00"]
+size = Vector3(0.001, 4, 8)
 
 [node name="level" type="Node3D"]
 script = ExtResource("1_xwxmh")
@@ -1316,7 +1326,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8675, 0.35, -49.4485)
 
 [node name="Roof" type="Node3D" parent="WORLD_BUILDING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-visible = false
 
 [node name="Stone_floor" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -21.1325, -2.65, 38.5515)
@@ -3387,7 +3396,7 @@ transform = Transform3D(-0.83619, 0, 1.48013, 0, 1.7, 0, -1.48013, 0, -0.83619, 
 transform = Transform3D(-0.0612862, 0, 1.6989, 0, 1.7, 0, -1.6989, 0, -0.0612862, 49.7594, 1.3439, -9.15697)
 
 [node name="Crate35" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
-transform = Transform3D(1.18482, 0, 1.2191, 0, 1.7, 0, -1.2191, 0, 1.18482, 49.9796, 3.3439, -11.5306)
+transform = Transform3D(1.18482, 0, 1.2191, 0, 1.7, 0, -1.2191, 0, 1.18482, 49.9796, 3.17348, -11.5306)
 
 [node name="Crate36" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
 transform = Transform3D(0.365717, 0, -1.6602, 0, 1.7, 0, 1.6602, 0, 0.365717, 33.8133, 1.3439, -38.7685)
@@ -4390,10 +4399,10 @@ transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 21.8142, 1
 [node name="PatchedCow" parent="." instance=ExtResource("26_0ync5")]
 transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, 19.3871, 1.42251, 16.3592)
 
-[node name="Player2" parent="." instance=ExtResource("1_acvfb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.7082, 1.86623, 29.3799)
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.2918, 1.86623, 41.3799)
 
-[node name="Pause_menu" parent="Player2/Head/Camera3D" index="1" instance=ExtResource("2_vxnlc")]
+[node name="Pause_menu" parent="Player/Head/Camera3D" index="1" instance=ExtResource("2_vxnlc")]
 visible = false
 anchor_left = 0.42
 anchor_top = 0.432
@@ -4416,6 +4425,107 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
 
 [node name="WhiteCow" parent="." instance=ExtResource("32_wqo3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Progression boxes" type="Node3D" parent="."]
+
+[node name="Spawnbox" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6946, 2.11977, 38.0491)
+script = ExtResource("33_wqo3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732422, 4.35905)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.69726, 8)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1.69726, 0)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1.69726, 4)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -1.69726, 4)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -1.69726, 1)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1.69726, 7)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -1.69726, 5)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1.69726, 7)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -1.69726, 8)
+
+[node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -1.69726, 6)
+
+[node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -1.69726, 1)
+
+[node name="Spawnbox2" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3949, 2.11977, 35.7078)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732422, 4.35905)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="Spawnbox3" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.6759, 2.11977, 17.8244)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732422, 4.35905)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="Spawnbox4" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.72155, 2.11977, 3.8244)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378767, 0.732422, 2.37291)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="Spawnbox5" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2785, 2.11977, -7.1756)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378767, 0.732422, -2.12709)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="Spawnbox6" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 57.2785, 2.11977, -16.1756)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378767, 0.732422, -1.62709)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="Spawnbox7" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 45.2785, 2.11977, -43.1756)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378769, 0.732422, -0.62709)
+shape = SubResource("BoxShape3D_160tv")
+
+[node name="Spawnbox8" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 24.2785, 2.11977, -43.1756)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378769, 0.732422, -3.12709)
+shape = SubResource("BoxShape3D_wqo3g")
+
+[node name="Level_transition" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1.74846e-07, 4.37114e-08, -1, 1, -4.37114e-08, 1.74846e-07, -4.37114e-08, -1, -4.37114e-08, -22.7215, 6.11977, -41.1756)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Level_transition"]
+transform = Transform3D(1, 0, 1.91069e-15, 0, 1, 0, 1.91069e-15, 0, 1, -0.878269, 0.282227, -3.62709)
+shape = SubResource("BoxShape3D_kcs00")
+
+[connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
 
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest/Chest"]
@@ -4443,4 +4553,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone6/stone_doorframe"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone6/vent"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone6/Door/door"]
-[editable path="Player2"]
+[editable path="Player"]

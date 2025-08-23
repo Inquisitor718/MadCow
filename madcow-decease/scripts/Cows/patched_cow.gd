@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var move_speed: float = 2.0
 @export var rotation_speed: float = 4.0
 @export var fire_rate: float = 2.0
+@export var distortion_add: float = 2.5
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
@@ -118,6 +119,7 @@ func Hit(dmg: int) -> void:
 		print("Enemy Health:", patched_cow_health)
 		if patched_cow_health <= 0:
 			Global.kills += 1
+			Global.distortion += distortion_add
 			print(Global.kills)
 			if group_player.is_in_group("Revolver"):
 				spawn_explode(global_transform.origin)

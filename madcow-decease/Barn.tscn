@@ -124,7 +124,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.057003, 0.0811024, -0.0797
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1pabj")
 
-[node name="Player2" parent="." instance=ExtResource("1_2qr42")]
+[node name="Player" parent="." instance=ExtResource("1_2qr42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.933, 1.37792, 59.716)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

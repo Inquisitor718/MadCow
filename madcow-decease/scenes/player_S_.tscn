@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=39 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://Scenes/ammunation/revolver.tscn" id="2_aj78o"]
@@ -14,6 +14,32 @@
 [ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+
+[sub_resource type="Shader" id="Shader_y3bup"]
+code = "shader_type canvas_item;
+
+uniform sampler2D viewport_tex: hint_screen_texture,filter_linear;
+uniform float aberration_strength = 4.0;
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	vec2 uv = UV;
+	float offset = aberration_strength/100.0;
+	float r = texture(viewport_tex,uv+vec2(offset,0.0)).r;
+	float g = texture(viewport_tex,uv).g;
+	float b = texture(viewport_tex,uv-vec2(offset,0.0)).b;
+	COLOR = vec4(r,g,b,1.0);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vmbr"]
+shader = SubResource("Shader_y3bup")
+shader_parameter/aberration_strength = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
 
@@ -652,6 +678,16 @@ JUMP_VELOCITY = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cvnsp")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_2vmbr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("8_flsqn")
 
@@ -718,6 +754,8 @@ texture = SubResource("CanvasTexture_flsqn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="SubViewport" type="SubViewport" parent="Head/Camera3D"]
 
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("Melee_Hitbox")]
 script = ExtResource("2_v7hu7")
