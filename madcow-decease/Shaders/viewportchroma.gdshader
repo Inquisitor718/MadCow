@@ -7,9 +7,9 @@ void fragment() {
 	// Called for every pixel the material is visible on.
 	vec2 uv = UV;
 	float offset = aberration_strength/100.0;
-	float r = texture(viewport_tex,uv+vec2(offset,0.0)).r;
+	float r = texture(viewport_tex,uv+vec2(offset+ ((offset/10.0)*sin(TIME)),0.0)).r;
 	float g = texture(viewport_tex,uv).g;
-	float b = texture(viewport_tex,uv-vec2(offset,0.0)).b;
+	float b = texture(viewport_tex,uv-vec2(offset + ((offset/10.0)*sin(TIME)),0.0)).b;
 	COLOR = vec4(r,g,b,1.0);
 }
 

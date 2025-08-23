@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://caac403h5abfw"]
+[gd_scene load_steps=5 format=3 uid="uid://caac403h5abfw"]
 
+[ext_resource type="Script" uid="uid://did42a33ul4m5" path="res://Scenes/torch.gd" id="1_h1t0l"]
 [ext_resource type="PackedScene" uid="uid://38wgh5l3cx03" path="res://Assets/torch.glb" id="1_pa17o"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wced7"]
@@ -11,6 +12,7 @@ emission = Color(1, 0.453648, 0.325442, 1)
 emission_energy_multiplier = 7.4
 
 [node name="Torch" type="Area3D"]
+script = ExtResource("1_h1t0l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.0374562, 0, 0, 0, 0.0352311, -0.0127173, 0, 0.0127173, 0.0352311, 0, 0, 0)

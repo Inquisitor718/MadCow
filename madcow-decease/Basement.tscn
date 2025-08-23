@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="29_rae03"]
 [ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://Scenes/enemy scenes/baby_cow.tscn" id="31_160tv"]
 [ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="32_wqo3g"]
-[ext_resource type="Script" uid="uid://cawwi7kwne0x5" path="res://spawnbox1.gd" id="33_wqo3g"]
+[ext_resource type="Script" path="res://spawnbox1.gd" id="33_wqo3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
 shader = ExtResource("1_eqln2")
@@ -4401,6 +4401,29 @@ transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.07134
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.2918, 1.86623, 41.3799)
+health = 1000
+speed_walk = 5.0
+speed_sprint = 10.0
+speed_crouch = 2.5
+JUMP_VELOCITY = 10
+
+[node name="HealthBar" parent="Player/CanvasLayer" index="1"]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 480.0
+offset_top = 16.0
+offset_right = 1129.0
+offset_bottom = 71.0
+grow_horizontal = 1
+grow_vertical = 1
+max_value = 1000.0
+value = 1000.0
+
+[node name="Camera3D" parent="Player/Head" index="0"]
+cull_mask = 1048573
 
 [node name="Pause_menu" parent="Player/Head/Camera3D" index="1" instance=ExtResource("2_vxnlc")]
 visible = false
@@ -4413,6 +4436,15 @@ offset_top = 0.440002
 offset_right = -228.88
 offset_bottom = -143.2
 scale = Vector2(4.30716, 4.30716)
+
+[node name="shotgun" parent="Player/Head/Camera3D/W_Manager/rig" index="0"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.018, -1.335, 0)
+
+[node name="Revolver" parent="Player/Head/Camera3D/W_Manager/rig" index="1"]
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.0178347, -1.33485, 0.000116378)
+
+[node name="HitBoxMelee" parent="Player/Head/Camera3D/W_Manager/rig" index="6"]
+collide_with_bodies = false
 
 [node name="Minigun_Pickup" parent="." instance=ExtResource("27_xwxmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1724, 0.965314, 41.9671)
@@ -4525,6 +4557,9 @@ transform = Transform3D(1.74846e-07, 4.37114e-08, -1, 1, -4.37114e-08, 1.74846e-
 transform = Transform3D(1, 0, 1.91069e-15, 0, 1, 0, 1.91069e-15, 0, 1, -0.878269, 0.282227, -3.62709)
 shape = SubResource("BoxShape3D_kcs00")
 
+[connection signal="on_death" from="BlackCow" to="." method="_on_black_cow_on_death"]
+[connection signal="on_death" from="PatchedCow" to="." method="_on_patched_cow_on_death"]
+[connection signal="on_death" from="WhiteCow" to="." method="_on_white_cow_on_death"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
 
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]

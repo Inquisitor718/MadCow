@@ -126,6 +126,11 @@ environment = SubResource("Environment_1pabj")
 
 [node name="Player" parent="." instance=ExtResource("1_2qr42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.933, 1.37792, 59.716)
+health = 1000
+speed_walk = 5.0
+speed_sprint = 10.0
+speed_crouch = 2.5
+JUMP_VELOCITY = 10
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.407428, 0.465214, 0.785861, -0.881582, -0.0242475, 0.471408, 0.238361, -0.884866, 0.400245, 64.9193, 12.5985, -46.848)
