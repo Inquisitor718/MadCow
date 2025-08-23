@@ -1,8 +1,0 @@
-res://Basement.tscn
-res://Shaders/new_noise_texture_2d.tres
-res://Barn.tscn
-res://Scenes/main.tscn
-res://Scenes/level.tscn
-res://Main_menu.tscn
-res://Scenes/player_S_.tscn
-res://scripts/Player_S.gd
