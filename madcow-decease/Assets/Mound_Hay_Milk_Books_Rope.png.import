@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://eni3w2pbwnwl"
-path.s3tc="res://.godot/imported/Mound_Hay_Milk_Books_Rope.png-660cdc44a8b76a83b98a802654733ac7.s3tc.ctex"
+path.s3tc="res://.godot/imported/Mound_Hay_Milk_Books_Rope.png-dcb80aae63b0aaf1070fdbf47ba99267.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Mound_Hay_Milk_Books_Rope.png"
-dest_files=["res://.godot/imported/Mound_Hay_Milk_Books_Rope.png-660cdc44a8b76a83b98a802654733ac7.s3tc.ctex"]
+source_file="res://Assets/Mound_Hay_Milk_Books_Rope.png"
+dest_files=["res://.godot/imported/Mound_Hay_Milk_Books_Rope.png-dcb80aae63b0aaf1070fdbf47ba99267.s3tc.ctex"]
 
 [params]
 

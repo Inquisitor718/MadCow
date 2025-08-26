@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfmigajch0ut0"
-path.s3tc="res://.godot/imported/Haybale_Hay_Milk_Books_Rope.png-9342b97b07a6beb13ed9500f8aad7fc3.s3tc.ctex"
+path.s3tc="res://.godot/imported/Haybale_Hay_Milk_Books_Rope.png-120d18473c39805e98726fe04cedb00b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Haybale_Hay_Milk_Books_Rope.png"
-dest_files=["res://.godot/imported/Haybale_Hay_Milk_Books_Rope.png-9342b97b07a6beb13ed9500f8aad7fc3.s3tc.ctex"]
+source_file="res://Assets/Haybale_Hay_Milk_Books_Rope.png"
+dest_files=["res://.godot/imported/Haybale_Hay_Milk_Books_Rope.png-120d18473c39805e98726fe04cedb00b.s3tc.ctex"]
 
 [params]
 

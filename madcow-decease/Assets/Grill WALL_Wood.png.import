@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3g2xk7cddfim"
-path.s3tc="res://.godot/imported/Grill WALL_Wood.png-d84e12619583baa787d513bc88bc837c.s3tc.ctex"
+path.s3tc="res://.godot/imported/Grill WALL_Wood.png-3ed48d170569a45ea9712afe2b04fc12.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Grill WALL_Wood.png"
-dest_files=["res://.godot/imported/Grill WALL_Wood.png-d84e12619583baa787d513bc88bc837c.s3tc.ctex"]
+source_file="res://Assets/Grill WALL_Wood.png"
+dest_files=["res://.godot/imported/Grill WALL_Wood.png-3ed48d170569a45ea9712afe2b04fc12.s3tc.ctex"]
 
 [params]
 

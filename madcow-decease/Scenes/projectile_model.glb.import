@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bpa2f8eym57pc"
-path="res://.godot/imported/boulder 2.glb-fb8eb94bea315d8b5e6d30ef5dd1f52f.scn"
+uid="uid://d27bf0xwmkeq5"
+path="res://.godot/imported/projectile_model.glb-4d0a3a20a9e3eb450d45d445cba15004.scn"
 
 [deps]
 
-source_file="res://Assets/boulder 2.glb"
-dest_files=["res://.godot/imported/boulder 2.glb-fb8eb94bea315d8b5e6d30ef5dd1f52f.scn"]
+source_file="res://Scenes/projectile_model.glb"
+dest_files=["res://.godot/imported/projectile_model.glb-4d0a3a20a9e3eb450d45d445cba15004.scn"]
 
 [params]
 
@@ -22,7 +22,7 @@ nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=3
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true

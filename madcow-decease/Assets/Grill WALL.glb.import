@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://chx7735s4tnhi"
-path="res://.godot/imported/Grill WALL.glb-edb65e8abddb612487e15cdea5d79f50.scn"
+path="res://.godot/imported/Grill WALL.glb-1866e70b5b9b86037f1e0e84bcd42084.scn"
 
 [deps]
 
-source_file="res://assets/Grill WALL.glb"
-dest_files=["res://.godot/imported/Grill WALL.glb-edb65e8abddb612487e15cdea5d79f50.scn"]
+source_file="res://Assets/Grill WALL.glb"
+dest_files=["res://.godot/imported/Grill WALL.glb-1866e70b5b9b86037f1e0e84bcd42084.scn"]
 
 [params]
 

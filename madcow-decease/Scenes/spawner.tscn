@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=4 uid="uid://i3it8sxpnyua"]
 
-[ext_resource type="Texture2D" uid="uid://budmgc4ks3w0l" path="res://assets/spawner_Metal.png" id="2_mdv8j"]
-[ext_resource type="PackedScene" uid="uid://dfn5aw6jnyxg2" path="res://scenes/enemy scenes/spawner_healthbar.tscn" id="4_4wbs5"]
+[ext_resource type="Texture2D" uid="uid://budmgc4ks3w0l" path="res://Assets/spawner_Metal.png" id="2_mdv8j"]
+[ext_resource type="PackedScene" uid="uid://dfn5aw6jnyxg2" path="res://Scenes/enemy scenes/spawner_healthbar.tscn" id="4_4wbs5"]
 [ext_resource type="Shader" uid="uid://csyxm8lhof1pt" path="res://Shaders/FireShader.tres" id="4_e3f8v"]
 [ext_resource type="Texture2D" uid="uid://dcdsgj8co30hd" path="res://Textures/Voronoi01.png" id="5_3rx28"]
 [ext_resource type="Texture2D" uid="uid://b8jox18rkokfe" path="res://Textures/Flame01.png" id="6_m1kbb"]

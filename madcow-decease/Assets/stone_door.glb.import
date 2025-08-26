@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://hsktlgoo5yvt"
-path="res://.godot/imported/stone_door.glb-db560ab66d093c14e329d14eb0d52240.scn"
+path="res://.godot/imported/stone_door.glb-5b5a580b7d2069361420c4ca2aa078ac.scn"
 
 [deps]
 
-source_file="res://assets/stone_door.glb"
-dest_files=["res://.godot/imported/stone_door.glb-db560ab66d093c14e329d14eb0d52240.scn"]
+source_file="res://Assets/stone_door.glb"
+dest_files=["res://.godot/imported/stone_door.glb-5b5a580b7d2069361420c4ca2aa078ac.scn"]
 
 [params]
 

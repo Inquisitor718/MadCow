@@ -98,6 +98,7 @@ func _shoot():
 	var new_pellet = pellets.instantiate()
 	get_tree().current_scene.add_child(new_pellet)
 	new_pellet.global_transform.origin = pellets_spawn.global_transform.origin
+	
 	if player:
 		var shot_direction = (player.global_transform.origin - pellets_spawn.global_transform.origin).normalized()
 		new_pellet.direction.x = randfn(shot_direction.x, 0.025)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://x1r73b66px0p"
-path="res://.godot/imported/revolver.gltf-8878b2dde5f9af0aefcfee6b7c64a27e.scn"
+path="res://.godot/imported/revolver.gltf-fbf318fabf6e8e78292d345807a69972.scn"
 
 [deps]
 
-source_file="res://assets/revolver/revolver.gltf"
-dest_files=["res://.godot/imported/revolver.gltf-8878b2dde5f9af0aefcfee6b7c64a27e.scn"]
+source_file="res://Assets/revolver/revolver.gltf"
+dest_files=["res://.godot/imported/revolver.gltf-fbf318fabf6e8e78292d345807a69972.scn"]
 
 [params]
 

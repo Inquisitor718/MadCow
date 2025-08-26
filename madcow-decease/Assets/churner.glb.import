@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c27l5emwt2bge"
-path="res://.godot/imported/churner.glb-fee5456205b62716b2075ff03c220fb8.scn"
+path="res://.godot/imported/churner.glb-ad7e273673c976a53d41e10f44047507.scn"
 
 [deps]
 
-source_file="res://assets/churner.glb"
-dest_files=["res://.godot/imported/churner.glb-fee5456205b62716b2075ff03c220fb8.scn"]
+source_file="res://Assets/churner.glb"
+dest_files=["res://.godot/imported/churner.glb-ad7e273673c976a53d41e10f44047507.scn"]
 
 [params]
 
