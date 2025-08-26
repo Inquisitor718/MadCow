@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://t83sow7tgk83"]
+[gd_scene load_steps=3 format=3 uid="uid://t83sow7tgk83"]
+
+[ext_resource type="PackedScene" uid="uid://ce84thfmqts4h" path="res://Assets/revolver/Machinegun.glb" id="1_muqg3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_haywc"]
 
 [node name="minigun" type="Node3D" groups=["Proj"]]
 
+[node name="Machinegun2" parent="." groups=["Proj"] instance=ExtResource("1_muqg3")]
+
+[node name="Machinegun" parent="Machinegun2" index="0" groups=["Proj"]]
+transform = Transform3D(0.275, 0, 0, 0, -1.20206e-08, -0.275, 0, 0.275, -1.20206e-08, 0, 0, -0.5)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Proj"]]
 transform = Transform3D(1, 0, 0, 0, -0.000331565, 1, 0, -1, -0.000331565, 0, 0, 0)
+visible = false
 layers = 2
 mesh = SubResource("CylinderMesh_haywc")
+
+[editable path="Machinegun2"]

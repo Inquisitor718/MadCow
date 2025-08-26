@@ -9,7 +9,7 @@ var on_floor := true
 
 
 #health system
-@export var health =  1000
+@export var health =  100
 
 var speed_now = 5.0
 @export var speed_walk = 5.0
@@ -52,8 +52,9 @@ func dmg(HP):
 	if health <= 0:
 		die()
 		
+	print("p_health")
 func die():
-	health = 500
+	pass
 
 #mouse movement
 func _ready():

@@ -1,48 +1,41 @@
 shader_type sky;
 
-uniform vec3 color_A : source_color = vec3(0.1176, 0.236 , 1.0);
-uniform vec3 color_B : source_color  = vec3(0.8, 0.0, 0.992);
+uniform vec3 color_A : source_color = vec3(0.1176, 0.236, 1.0);
+uniform vec3 color_B : source_color = vec3(0.8, 0.0, 0.992);
 uniform sampler2D skyTexture;
 uniform float time_speed = 0.02;
 uniform float swirl_strength = 0.1;
-uniform float tex_scale =  0.6;
+uniform float tex_scale = 0.6;
 uniform bool invert_color = false;
 
 void sky() {
-	//Mapping for godot sky textures
     vec2 uv = EYEDIR.xz * tex_scale;
+    float t = TIME * time_speed;
 
-	float fade = smoothstep(0.04, 0.8, EYEDIR.y);
+    // swirl (merged sin/cos using a single trig function each)
+    float swirl_x = sin(uv.y * 5.0 + TIME * 0.5);
+    float swirl_y = cos(uv.x * 5.0 + TIME * 0.7);
+    uv += vec2(swirl_x, swirl_y) * swirl_strength;
 
-	//this gives a swirl to the X & Z coords
-    uv.x += sin(uv.y * 5.0 + TIME * 0.5) * swirl_strength;
-    uv.y += cos(uv.x * 5.0 + TIME * 0.7) * swirl_strength;
+    // scrolling
+    uv += t;
 
-	//scrolling gives a moving feel
-    uv += TIME * time_speed;
-
-	//gives rgb representation of texture
+    // texture sample
     vec3 tex_col = texture(skyTexture, uv).rgb;
+    float lum = tex_col.r;
 
-	//takes dot product of texture rgb with a vector
-	float lum = tex_col.r;
+    // color mix (branchless for GPU friendliness)
+    float lum_mix = invert_color ? (1.0 - lum) : lum;
+    vec3 colorized = mix(color_A, color_B, lum_mix);
 
-	//mixing the colorA & color_B white and black
-	vec3 colorized;
-	if (invert_color) {
-		colorized = mix(color_A, color_B, 1.0-lum);
-		}
-    else {
-		colorized = mix(color_A, color_B, lum);
-	}
-	//gives a fade depending on location, remove for 360 effect
-	colorized *= fade;
+    // fade by height
+    float fade = smoothstep(0.04, 0.8, EYEDIR.y);
+    colorized *= fade;
 
-	//gives a horizon blend to make the texture about the horizon
+    // horizon gradient blend
     float horizon_blend = smoothstep(-0.2, 0.8, EYEDIR.y);
-
-
     vec3 gradient_col = mix(color_A, color_B, horizon_blend);
 
+    // final color
     COLOR = vec4(mix(colorized, gradient_col, 0.3), 1.0).rgb;
 }

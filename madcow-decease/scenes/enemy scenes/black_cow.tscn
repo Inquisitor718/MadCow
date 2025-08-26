@@ -1,8 +1,72 @@
-[gd_scene load_steps=10 format=3 uid="uid://c83lc7sg4k1h2"]
+[gd_scene load_steps=28 format=3 uid="uid://c83lc7sg4k1h2"]
 
 [ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="2_0xvba"]
 [ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_adx45"]
+[ext_resource type="PackedScene" uid="uid://twgwjrmie4xg" path="res://Assets/Black Cow Animations.glb" id="4_bs1gp"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bs1gp"]
+animation = &"BC_Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6x0bs"]
+animation = &"BC_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xcucy"]
+animation = &"BC_Shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1uqym"]
+animation = &"BC_Spawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ewbqh"]
+animation = &"BC_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2es4o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyby2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ia8wd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qk2n4"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tn7fh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ew2tw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cco3x"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pachw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_csa1t"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bs1gp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6x0bs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7h2px"]
+states/BC_Death/node = SubResource("AnimationNodeAnimation_bs1gp")
+states/BC_Death/position = Vector2(634.222, 474)
+states/BC_Idle/node = SubResource("AnimationNodeAnimation_6x0bs")
+states/BC_Idle/position = Vector2(436, 201.556)
+states/BC_Shoot/node = SubResource("AnimationNodeAnimation_xcucy")
+states/BC_Shoot/position = Vector2(856, 201.407)
+states/BC_Spawn/node = SubResource("AnimationNodeAnimation_1uqym")
+states/BC_Spawn/position = Vector2(244, 200.667)
+states/BC_Walk/node = SubResource("AnimationNodeAnimation_ewbqh")
+states/BC_Walk/position = Vector2(570.667, 282.593)
+states/End/position = Vector2(991.111, 386.667)
+states/Start/position = Vector2(90.6667, 206.667)
+transitions = ["BC_Walk", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_2es4o"), "BC_Shoot", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_vyby2"), "BC_Shoot", "BC_Death", SubResource("AnimationNodeStateMachineTransition_ia8wd"), "BC_Walk", "BC_Death", SubResource("AnimationNodeStateMachineTransition_qk2n4"), "BC_Idle", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_tn7fh"), "BC_Walk", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_ew2tw"), "BC_Spawn", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_cco3x"), "Start", "BC_Spawn", SubResource("AnimationNodeStateMachineTransition_pachw"), "BC_Death", "End", SubResource("AnimationNodeStateMachineTransition_csa1t"), "BC_Idle", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_bs1gp"), "BC_Idle", "BC_Death", SubResource("AnimationNodeStateMachineTransition_6x0bs")]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktv6b"]
 albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
@@ -11,7 +75,7 @@ albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
 material = SubResource("StandardMaterial3D_ktv6b")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bnktk"]
-radius = 0.6
+radius = 0.481728
 height = 2.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bnktk"]
@@ -32,8 +96,22 @@ black_cow_health = 100
 horns_scene = ExtResource("2_0xvba")
 explosion = ExtResource("3_adx45")
 
+[node name="Black Cow Animations" parent="." instance=ExtResource("4_bs1gp")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="BC_Shotgun" parent="Black Cow Animations/BC_Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.0400564, 4.40138e-09, -0.00343616, -0.00343616, -5.99072e-09, -0.0400564, -4.8973e-09, 0.0402035, -5.59261e-09, -6.66544e-05, 0.157609, 0.625263)
+
+[node name="AnimationPlayer" parent="Black Cow Animations" index="1"]
+autoplay = "BC_Shoot"
+
+[node name="AnimationTree" type="AnimationTree" parent="Black Cow Animations"]
+tree_root = SubResource("AnimationNodeStateMachine_7h2px")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_yorvp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -87,3 +165,5 @@ shape = SubResource("SphereShape3D_adx45")
 [connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
 [connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Black Cow Animations"]

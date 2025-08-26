@@ -32,7 +32,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewx32"]
 shader = ExtResource("1_cpuah")
-shader_parameter/color_A = Color(0.156416, 0.0368346, 0.167748, 1)
+shader_parameter/color_A = Color(0.157636, 0.0400057, 0.227304, 1)
 shader_parameter/color_B = Color(0.926101, 0.531439, 0.637156, 1)
 shader_parameter/skyTexture = ExtResource("2_0uiba")
 shader_parameter/time_speed = 0.02
@@ -126,7 +126,6 @@ environment = SubResource("Environment_1pabj")
 
 [node name="Player" parent="." instance=ExtResource("1_2qr42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.933, 1.37792, 59.716)
-health = 1000
 speed_walk = 5.0
 speed_sprint = 10.0
 speed_crouch = 2.5

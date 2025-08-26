@@ -3,8 +3,12 @@ extends Area3D
 var spawned = false
 
 @export var black_cow_scene = preload("res://Scenes/enemy scenes/black_cow.tscn")
+@export var white_cow_scene = preload("res://Scenes/enemy scenes/white_cow.tscn")
+@export var patched_cow_scene = preload("res://Scenes/enemy scenes/patched_cow.tscn")
+@export var baby_cow_scene = preload("res://Scenes/enemy scenes/baby_cow.tscn")
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
+@onready var level: Node3D = $"../.."
 
 @onready var spawnpoint: Marker3D = $spawnpoint
 @onready var spawnpoint_2: Marker3D = $spawnpoint2
@@ -18,12 +22,20 @@ var spawned = false
 @onready var spawnpoint_10: Marker3D = $spawnpoint10
 @onready var spawnpoint_11: Marker3D = $spawnpoint11
 
+@onready var spawnpoints: Array[Marker3D] = [
+	spawnpoint, spawnpoint_2, spawnpoint_3, spawnpoint_4, spawnpoint_5,
+	spawnpoint_6, spawnpoint_7, spawnpoint_8, spawnpoint_9, spawnpoint_10, spawnpoint_11
+]
+
+var cow_scenes = [black_cow_scene, white_cow_scene, patched_cow_scene, baby_cow_scene]
+
 func _on_body_entered(body: Node3D) -> void:
-		var black_cow = black_cow_scene.instantiate()
-		
-		
-		black_cow.global_transform = spawnpoint.global_transform
-		get_parent().add_child(black_cow)
-		
-		
-	
+
+	for sp in spawnpoints:
+		var scene = cow_scenes.pick_random()
+		var cow = scene.instantiate()
+		cow.global_transform = sp.global_transform
+		get_parent().add_child(cow)
+		cow.connect("on_death",level._on_death)
+		await get_tree().create_timer(0.4).timeout
+	collision_shape_3d.disabled = true

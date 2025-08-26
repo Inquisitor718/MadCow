@@ -3,7 +3,10 @@ extends Node
 var mat: ShaderMaterial 
 var kills = 0
 var has_powerup = false
-var distortion: float = 60.0
+var distortion: float = 60.0:
+	set(value):
+		value = clamp(value, 0, 100)
+		distortion = value
 
 @onready var player_color_rect: ColorRect = null
 
@@ -20,10 +23,10 @@ func _ready() -> void:
 		print("⚠️ Could not find Player/Viewport/ColorRect")
 
 func update_chroma(strength: float) -> void:
-	#if player_color_rect and player_color_rect.material is ShaderMaterial:
-		#print("Shader detected")
-		#player_color_rect.materialset_shader_parameter("aberration_strength", strength)
-	pass
+	if player_color_rect and player_color_rect.material is ShaderMaterial:
+		print("Shader detected")
+		player_color_rect.material.set_shader_parameter("aberration_strength", strength)
+	
 
 func _process(delta: float) -> void:
 	if distortion>=30.0:

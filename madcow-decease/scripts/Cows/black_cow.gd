@@ -7,11 +7,14 @@ extends CharacterBody3D
 @export var damage: float = 20
 @export var spread: float = 0.6 #Change kar lena baad me
 @export var distortion_add: float = 2.5
+@onready var level: Node3D = $"."
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var ray_container = $RayContainer
+@onready var animation_player: AnimationPlayer = $"Black Cow Animations/AnimationPlayer"
+@onready var animation_tree: AnimationTree = $"Black Cow Animations/AnimationTree"
 
 @export var horns_scene: PackedScene
 @export var explosion: PackedScene
@@ -19,12 +22,16 @@ extends CharacterBody3D
 var player: CharacterBody3D = null
 var group_player: CharacterBody3D = null
 var can_shoot = true
+var frame_counter := 0
+var update_interval := 60  # update path every 6 frames (~0.1s at 60fps)
+var cached_next_pos: Vector3
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 signal on_death
 
 func _ready() -> void:
+	
 	randomize()
 
 func _physics_process(delta):
@@ -32,13 +39,17 @@ func _physics_process(delta):
 	if player:
 		_face_player(delta)
 		if not _player_in_shoot_area():
-			nav_agent.target_position = player.global_transform.origin
-			var next_pos = nav_agent.get_next_path_position()
-			var direction = (next_pos - global_transform.origin)
+			if frame_counter % update_interval == 0:
+				nav_agent.target_position = player.global_transform.origin
+				cached_next_pos = nav_agent.get_next_path_position()
+			frame_counter += 1
+			var direction = (cached_next_pos - global_transform.origin)
 			direction.y = 0
 			direction = direction.normalized()
 			velocity.x = direction.x * move_speed
 			velocity.z = direction.z * move_speed
+			
+			
 			move_and_slide()
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
@@ -102,6 +113,7 @@ func _shoot():
 			if r.get_collider().is_in_group("player_S"):
 				if r.get_collider().has_method("dmg"):
 					r.get_collider().dmg(20)
+					
 
 func spawn_explode(position: Vector3):
 	if explosion:
@@ -139,6 +151,8 @@ func Hit(dmg: int) -> void:
 						var horns_instance = horns_scene.instantiate()
 						horns_instance.global_position = global_position
 						get_tree().current_scene.add_child(horns_instance)
+			
+			
 			queue_free()
 
 

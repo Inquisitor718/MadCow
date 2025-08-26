@@ -199,7 +199,7 @@ func _on_weapon_timer_timeout():
 
 func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 	print("object collided")
-	$"../../../Weapon_Pickup".set_deferred("monitoring", false)
+	$"../../../Weapon_Pickup".set_deferred("collision_mask", 0)
 
 	if body.has_method("Add_Ammo"):
 		print("Ammo adding")
@@ -207,7 +207,7 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 		Temp_ammo += body.Increase
 		Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
 		emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
-		$"../../../Weapon_Pickup".set_deferred("monitoring", true)
+		$"../../../Weapon_Pickup".set_deferred("collision_mask", (1 << 4) | (1 << 7))
 		body.queue_free()
 
 	if body.has_method("Add_Health"):
@@ -217,10 +217,11 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 		player.health = Temp_health
 		$"../../../CanvasLayer/HealthBar".value = Temp_health
 		print("Health is now " + str(player.health))
-		
+		body.queue_free()
 
 
 	else:
+		$"../../../Weapon_Pickup".set_deferred("collision_mask", 1 << 7 )
 		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
 		if Weapon_In_Stack == -1:
 			print("weapon Picked up")
@@ -258,7 +259,7 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 
 			timer.timeout.connect(func():
 				print("Timer end")
-				$"../../../Weapon_Pickup".set_deferred("monitoring", true)
+				$"../../../Weapon_Pickup".set_deferred("collision_mask", (1 << 4) | (1 << 7))
 				# Lock to shotgun after animation finishes
 				Next_Weapon = "Shotgun"
 				weapon_locked = false  # switching will be allowed again after restore

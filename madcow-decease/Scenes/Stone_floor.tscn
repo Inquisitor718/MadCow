@@ -1,11 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://yql1rf1kvhri"]
+[gd_scene load_steps=9 format=3 uid="uid://yql1rf1kvhri"]
 
+[ext_resource type="PackedScene" uid="uid://bpp5n8fnj46ry" path="res://Assets/stone_floor_hole.glb" id="1_8u0tn"]
+[ext_resource type="Script" uid="uid://d2m3on23pcp0x" path="res://Scenes/stone_floor.gd" id="1_l44nc"]
 [ext_resource type="PackedScene" uid="uid://1origi7px3nr" path="res://Assets/stone_floor.glb" id="1_ofqvb"]
+[ext_resource type="Shader" uid="uid://ppkos84sr3ao" path="res://Shaders/3dshaer.gdshader" id="2_3fdak"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5np6"]
 size = Vector3(2, 0.0637329, 2.00433)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u0tn"]
+render_priority = 0
+shader = ExtResource("2_3fdak")
+shader_parameter/color_start = Color(0.37563, 0.00179759, 0.716501, 1)
+shader_parameter/color_end = Color(0.86, 0.1032, 0.17888, 1)
+shader_parameter/time_period = 0.15
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l44nc"]
+size = Vector3(0.390564, 0.566284, 4.01395)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mq2d8"]
+size = Vector3(0.625824, 0.566284, 4.01395)
+
 [node name="Stone_floor" type="StaticBody3D"]
+script = ExtResource("1_l44nc")
+
+[node name="stone_floor_hole" parent="." instance=ExtResource("1_8u0tn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Stone_Floor_Hole" parent="stone_floor_hole" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0408127)
 
 [node name="stone_floor" parent="." instance=ExtResource("1_ofqvb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.0799655)
@@ -13,3 +36,30 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.0799655)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00877684, -0.0787964)
 shape = SubResource("BoxShape3D_t5np6")
+
+[node name="stone_floor2" parent="." instance=ExtResource("1_ofqvb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.0799655)
+visible = false
+
+[node name="Stone_Floor" parent="stone_floor2" index="0"]
+material_override = SubResource("ShaderMaterial_8u0tn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56451, -0.216858, 0.0208435)
+shape = SubResource("BoxShape3D_l44nc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66981, -0.216858, -0.0498199)
+shape = SubResource("BoxShape3D_mq2d8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0556996, -0.216858, 1.59083)
+shape = SubResource("BoxShape3D_l44nc")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0149639, -0.216858, -1.7834)
+shape = SubResource("BoxShape3D_l44nc")
+
+[editable path="stone_floor_hole"]
+[editable path="stone_floor"]
+[editable path="stone_floor2"]

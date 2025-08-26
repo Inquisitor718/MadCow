@@ -52,7 +52,6 @@ navigation_layers = 17
 
 [node name="Player" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20854, 1.60383, -0.238947)
-health = 1000
 speed_walk = 5.0
 speed_sprint = 10.0
 speed_crouch = 2.5

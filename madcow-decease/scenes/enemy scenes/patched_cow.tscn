@@ -6,16 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://Assets/cow/source/textures/cow.jpg" id="4_banjt"]
 [ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
 [ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://Assets/cow/source/cow.obj" id="5_16xvs"]
+[ext_resource type="PackedScene" uid="uid://caowma3mxfw7q" path="res://Assets/Patched Cow Animations.glb" id="5_iijg3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
 albedo_texture = ExtResource("4_banjt")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2wi0g"]
-radius = 1.5
-height = 14.921
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ni8w7"]
-height = 3.72281
+radius = 2.0
+height = 10.5104
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hsi1t"]
 radius = 30.0
@@ -38,8 +36,44 @@ bullet = ExtResource("2_ni8w7")
 revolver_scene = ExtResource("3_2wi0g")
 explosion = ExtResource("4_ni8w7")
 
+[node name="Patched Cow Animations" parent="." instance=ExtResource("5_iijg3")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Patched Cow Animations/PC_Rig" index="0"]
+bones/0/position = Vector3(0.0193613, -0.327008, 0)
+bones/4/position = Vector3(-0.236118, 0.328188, -0.0793923)
+bones/4/rotation = Quaternion(-0.0892572, 0.127858, 0.954971, 0.252421)
+bones/5/rotation = Quaternion(0.105971, 0.0730893, -0.0125498, 0.9916)
+bones/6/position = Vector3(0.262169, 0.286547, -0.076264)
+bones/6/rotation = Quaternion(0.118011, -0.23313, -0.899168, 0.351029)
+bones/7/rotation = Quaternion(0.501432, -0.152747, 0.00797451, 0.85157)
+bones/8/position = Vector3(-0.0408252, 0.331125, 0.063482)
+bones/8/rotation = Quaternion(0.0497617, 0.770954, 0.105308, -0.62615)
+bones/10/position = Vector3(0.0193613, -0.327008, -3.77512e-09)
+bones/10/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
+bones/11/rotation = Quaternion(-0.464187, 0.0437601, 0.100737, 0.878902)
+bones/12/rotation = Quaternion(-0.062748, 0.00297213, -0.343622, 0.937005)
+bones/13/position = Vector3(-0.121623, -0.664043, -0.0398742)
+bones/13/rotation = Quaternion(0.536691, -0.426371, -0.502374, 0.527058)
+bones/14/position = Vector3(0.0193613, -0.327008, -2.68556e-09)
+bones/14/rotation = Quaternion(0.615585, 0.347929, 0.615585, -0.347929)
+bones/15/rotation = Quaternion(-0.458623, -0.0938544, -0.180305, 0.86507)
+bones/16/rotation = Quaternion(-0.0948992, -0.00733373, 0.452375, 0.886734)
+bones/17/position = Vector3(0.149998, -0.652214, -0.023133)
+bones/17/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
+
+[node name="PC_Hat" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.333789, 2.18279e-11, 6.65472e-11, -2.18279e-11, 0.333789, 2.16125e-10, -9.69631e-11, -3.14906e-10, 0.229084, 0.0309228, 0.800437, -0.0718221)
+
+[node name="PC_Pistol" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.01325, 0.00143299, 0.00518762, -0.0052978, -0.00104536, -0.0132426, -0.000947725, -0.0141909, 0.00149935, 0.42661, 0.222489, 0.469379)
+
+[node name="AnimationPlayer" parent="Patched Cow Animations" index="1"]
+autoplay = "PC_Shoot"
+
 [node name="PatchedCow" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 22.25, -1, -0.5)
+visible = false
 material_override = SubResource("StandardMaterial3D_hsi1t")
 mesh = ExtResource("5_16xvs")
 
@@ -47,24 +81,8 @@ mesh = ExtResource("5_16xvs")
 transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, -13.7351, 6.31224, -111.831)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1.74846e-08, -1.02445e-08, 0.2, 0.2, -8.74228e-09, 1.74846e-08, 8.74228e-09, 0.2, 1.02445e-08, -0.0410748, 0.15, 0.607124)
+transform = Transform3D(0.0142681, 0.0142318, 0.198982, 1.22509e-09, 0.19949, -0.0142681, -0.19949, 0.0010179, 0.0142318, 0.00170148, 0.15, 0.00904711)
 shape = SubResource("CapsuleShape3D_2wi0g")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 0.181236, -0.562187, 0.936988)
-shape = SubResource("CapsuleShape3D_ni8w7")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, -0.201439, -0.562187, 0.933287)
-shape = SubResource("CapsuleShape3D_ni8w7")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.65661e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -4.65661e-09, -0.115486, -0.562187, -0.816638)
-shape = SubResource("CapsuleShape3D_ni8w7")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
-transform = Transform3D(-6.51926e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -6.51926e-09, 0.364292, -0.562187, -0.767074)
-shape = SubResource("CapsuleShape3D_ni8w7")
 
 [node name="DetectionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -91,3 +109,5 @@ shape = SubResource("SphereShape3D_ni8w7")
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Patched Cow Animations"]
