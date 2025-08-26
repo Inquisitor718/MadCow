@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dabieu5dhps6o"
-path="res://.godot/imported/stone_doorframe.glb-3d0e95c3ef898e5162a75614b3853e13.scn"
+path="res://.godot/imported/stone_doorframe.glb-3c4fdefb20f06568b3fcbd9063f4d808.scn"
 
 [deps]
 
-source_file="res://Assets/stone_doorframe.glb"
-dest_files=["res://.godot/imported/stone_doorframe.glb-3d0e95c3ef898e5162a75614b3853e13.scn"]
+source_file="res://assets/stone_doorframe.glb"
+dest_files=["res://.godot/imported/stone_doorframe.glb-3c4fdefb20f06568b3fcbd9063f4d808.scn"]
 
 [params]
 

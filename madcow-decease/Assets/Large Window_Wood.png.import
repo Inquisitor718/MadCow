@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cr6wwf1ttdrr3"
-path.s3tc="res://.godot/imported/Large Window_Wood.png-ca752ee4fc64657a18cb555894addbd9.s3tc.ctex"
+path.s3tc="res://.godot/imported/Large Window_Wood.png-4b10ba20d5a758c9c556c0106632f369.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Large Window_Wood.png"
-dest_files=["res://.godot/imported/Large Window_Wood.png-ca752ee4fc64657a18cb555894addbd9.s3tc.ctex"]
+source_file="res://assets/Large Window_Wood.png"
+dest_files=["res://.godot/imported/Large Window_Wood.png-4b10ba20d5a758c9c556c0106632f369.s3tc.ctex"]
 
 [params]
 

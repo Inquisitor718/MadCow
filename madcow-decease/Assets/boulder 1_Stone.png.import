@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k5sn2r8i3x7f"
-path.s3tc="res://.godot/imported/boulder 1_Stone.png-c8cc4be2ba9433479e6edeb4efd6f0c4.s3tc.ctex"
+path.s3tc="res://.godot/imported/boulder 1_Stone.png-11f4e64167a5823d94fdd4913932d5f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/boulder 1_Stone.png"
-dest_files=["res://.godot/imported/boulder 1_Stone.png-c8cc4be2ba9433479e6edeb4efd6f0c4.s3tc.ctex"]
+source_file="res://assets/boulder 1_Stone.png"
+dest_files=["res://.godot/imported/boulder 1_Stone.png-11f4e64167a5823d94fdd4913932d5f9.s3tc.ctex"]
 
 [params]
 

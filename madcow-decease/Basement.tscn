@@ -1,37 +1,37 @@
 [gd_scene load_steps=40 format=3 uid="uid://dwnt5kns4icot"]
 
-[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
+[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
 [ext_resource type="Script" uid="uid://buuo8jbohwcxn" path="res://basement.gd" id="1_xwxmh"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_244tr"]
 [ext_resource type="PackedScene" uid="uid://bthq2c4jobtce" path="res://pause_menu.tscn" id="2_vxnlc"]
-[ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://Scenes/bookshelf.tscn" id="3_kay6q"]
-[ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://Scenes/Stone_floor.tscn" id="4_4kw8u"]
-[ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://Scenes/table.tscn" id="5_u0eul"]
-[ext_resource type="PackedScene" uid="uid://bixm54sl50jcl" path="res://Scenes/boulder_a.tscn" id="6_ax0rv"]
-[ext_resource type="PackedScene" uid="uid://b0he3lu2vim3c" path="res://Scenes/stone_wall.tscn" id="6_e3yp8"]
-[ext_resource type="PackedScene" uid="uid://rm2y7ba7r8ur" path="res://Scenes/large_crate.tscn" id="6_kay6q"]
-[ext_resource type="PackedScene" uid="uid://bfbvwvvrutt65" path="res://Scenes/crate.tscn" id="6_vgf3n"]
-[ext_resource type="PackedScene" uid="uid://do38v4fxed4mo" path="res://Scenes/boulder_b.tscn" id="7_2gm2r"]
-[ext_resource type="PackedScene" uid="uid://i3it8sxpnyua" path="res://Scenes/spawner.tscn" id="7_vgf3n"]
-[ext_resource type="PackedScene" uid="uid://b0nt7qofh0e2y" path="res://Scenes/barrell.tscn" id="9_4myss"]
-[ext_resource type="PackedScene" uid="uid://cvkl23qbpllyf" path="res://Scenes/boulder_c.tscn" id="9_ngk6g"]
-[ext_resource type="PackedScene" uid="uid://dhv5euvtuct8b" path="res://Scenes/closed_shelf.tscn" id="10_84k2l"]
-[ext_resource type="PackedScene" uid="uid://d3eja6icmvfws" path="res://Scenes/open_shelf.tscn" id="10_mcrtc"]
-[ext_resource type="PackedScene" uid="uid://dmahvlnoj2n5a" path="res://Scenes/chest.tscn" id="10_v5h6t"]
-[ext_resource type="PackedScene" uid="uid://ciwq0qd8sditg" path="res://Scenes/stairs.tscn" id="11_humyx"]
-[ext_resource type="PackedScene" uid="uid://xvc0ih4da4yr" path="res://Scenes/fence.tscn" id="13_ibnsn"]
-[ext_resource type="PackedScene" uid="uid://bn8pp02qto3hr" path="res://Scenes/haybale.tscn" id="13_jlhtf"]
-[ext_resource type="PackedScene" uid="uid://c11a0jqy80uxi" path="res://Scenes/mound.tscn" id="15_46wd4"]
-[ext_resource type="PackedScene" uid="uid://0kdavsmudtd3" path="res://Scenes/doorframe_stone.tscn" id="21_ba2bl"]
-[ext_resource type="PackedScene" uid="uid://cy23fhf1ysxub" path="res://Scenes/pillar.tscn" id="22_phgjd"]
-[ext_resource type="PackedScene" uid="uid://caac403h5abfw" path="res://Scenes/torch.tscn" id="23_itqoo"]
-[ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://Scenes/enemy scenes/black_cow.tscn" id="25_244tr"]
-[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="26_0ync5"]
-[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="27_xwxmh"]
-[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="29_rae03"]
-[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://Scenes/enemy scenes/baby_cow.tscn" id="31_160tv"]
-[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="32_wqo3g"]
+[ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://scenes/bookshelf.tscn" id="3_kay6q"]
+[ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://scenes/Stone_floor.tscn" id="4_4kw8u"]
+[ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://scenes/table.tscn" id="5_u0eul"]
+[ext_resource type="PackedScene" uid="uid://bixm54sl50jcl" path="res://scenes/boulder_a.tscn" id="6_ax0rv"]
+[ext_resource type="PackedScene" uid="uid://b0he3lu2vim3c" path="res://scenes/stone_wall.tscn" id="6_e3yp8"]
+[ext_resource type="PackedScene" uid="uid://rm2y7ba7r8ur" path="res://scenes/large_crate.tscn" id="6_kay6q"]
+[ext_resource type="PackedScene" uid="uid://bfbvwvvrutt65" path="res://scenes/crate.tscn" id="6_vgf3n"]
+[ext_resource type="PackedScene" uid="uid://do38v4fxed4mo" path="res://scenes/boulder_b.tscn" id="7_2gm2r"]
+[ext_resource type="PackedScene" uid="uid://i3it8sxpnyua" path="res://scenes/spawner.tscn" id="7_vgf3n"]
+[ext_resource type="PackedScene" uid="uid://b0nt7qofh0e2y" path="res://scenes/barrell.tscn" id="9_4myss"]
+[ext_resource type="PackedScene" uid="uid://cvkl23qbpllyf" path="res://scenes/boulder_c.tscn" id="9_ngk6g"]
+[ext_resource type="PackedScene" uid="uid://dhv5euvtuct8b" path="res://scenes/closed_shelf.tscn" id="10_84k2l"]
+[ext_resource type="PackedScene" uid="uid://d3eja6icmvfws" path="res://scenes/open_shelf.tscn" id="10_mcrtc"]
+[ext_resource type="PackedScene" uid="uid://dmahvlnoj2n5a" path="res://scenes/chest.tscn" id="10_v5h6t"]
+[ext_resource type="PackedScene" uid="uid://ciwq0qd8sditg" path="res://scenes/stairs.tscn" id="11_humyx"]
+[ext_resource type="PackedScene" uid="uid://xvc0ih4da4yr" path="res://scenes/fence.tscn" id="13_ibnsn"]
+[ext_resource type="PackedScene" uid="uid://bn8pp02qto3hr" path="res://scenes/haybale.tscn" id="13_jlhtf"]
+[ext_resource type="PackedScene" uid="uid://c11a0jqy80uxi" path="res://scenes/mound.tscn" id="15_46wd4"]
+[ext_resource type="PackedScene" uid="uid://0kdavsmudtd3" path="res://scenes/doorframe_stone.tscn" id="21_ba2bl"]
+[ext_resource type="PackedScene" uid="uid://cy23fhf1ysxub" path="res://scenes/pillar.tscn" id="22_phgjd"]
+[ext_resource type="PackedScene" uid="uid://caac403h5abfw" path="res://scenes/torch.tscn" id="23_itqoo"]
+[ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://scenes/enemy scenes/black_cow.tscn" id="25_244tr"]
+[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/enemy scenes/patched_cow.tscn" id="26_0ync5"]
+[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://scenes/ammunation/minigun_pickup.tscn" id="27_xwxmh"]
+[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://scenes/horns_pickup.tscn" id="29_rae03"]
+[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://scenes/enemy scenes/baby_cow.tscn" id="31_160tv"]
+[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://scenes/enemy scenes/white_cow.tscn" id="32_wqo3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
 shader = ExtResource("1_eqln2")
@@ -4369,13 +4369,13 @@ transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -0.919
 transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, -0.919393, 2.36533, 27.4281)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting stuff"]
-transform = Transform3D(0.866025, 2.18557e-08, -0.5, 0.5, -3.78552e-08, 0.866025, 0, -1, -4.37114e-08, -2, 12.6802, -13.071)
+transform = Transform3D(0.866025, 5.85622e-09, -0.5, 0.5, -2.18557e-08, 0.866025, -5.85622e-09, -1, -2.18557e-08, -2, 12.6802, -13.071)
 light_color = Color(0.486919, 0.768538, 0.667453, 1)
 light_energy = 1.381
 light_volumetric_fog_energy = 1.571
-spot_range = 18.047
+spot_range = 18.008
 spot_attenuation = 0.29
-spot_angle = 68.57
+spot_angle = 37.3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting stuff"]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)

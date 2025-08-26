@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dfw22echsa0uj"
-path="res://.godot/imported/GrillWindow.glb-83cfa7c2489e55b19c438de9ab73f23c.scn"
+path="res://.godot/imported/GrillWindow.glb-24beffbeb13fbaeeaf2c43b7a311411a.scn"
 
 [deps]
 
-source_file="res://Assets/GrillWindow.glb"
-dest_files=["res://.godot/imported/GrillWindow.glb-83cfa7c2489e55b19c438de9ab73f23c.scn"]
+source_file="res://assets/GrillWindow.glb"
+dest_files=["res://.godot/imported/GrillWindow.glb-24beffbeb13fbaeeaf2c43b7a311411a.scn"]
 
 [params]
 
