@@ -741,8 +741,13 @@ position = Vector2(1502, 909)
 scale = Vector2(0.380982, 0.246978)
 texture = ExtResource("17_wycyf")
 
+[node name="25 health" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(187, 895)
+scale = Vector2(0.643981, 0.643981)
+texture = ExtResource("10_64wii")
+
 [node name="50bottle" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(151, 919)
+position = Vector2(152, 921)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("8_grc6c")
 
@@ -752,14 +757,9 @@ scale = Vector2(0.65034, 0.65034)
 texture = ExtResource("9_oi5cr")
 
 [node name="100bottle" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(186, 918)
+position = Vector2(189, 920)
 scale = Vector2(0.638548, 0.638548)
 texture = ExtResource("7_qa8rd")
-
-[node name="Group8" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-texture = ExtResource("10_64wii")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
