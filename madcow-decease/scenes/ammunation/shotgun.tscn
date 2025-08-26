@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://beri3rk1pt6gk"]
+[gd_scene load_steps=5 format=3 uid="uid://beri3rk1pt6gk"]
+
+[ext_resource type="PackedScene" uid="uid://kofsy1qvisvd" path="res://Assets/revolver/Shotgun.glb" id="1_mre17"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ptbe"]
 
@@ -9,22 +11,33 @@ left_to_right = 0.2
 
 [node name="shotgun" type="Node3D"]
 
+[node name="Shotgun2" parent="." instance=ExtResource("1_mre17")]
+
+[node name="Shotgun" parent="Shotgun2" index="0"]
+transform = Transform3D(-2.3167e-08, 0.53, -2.3167e-08, 0, -2.3167e-08, -0.53, -0.53, -2.3167e-08, 1.01266e-15, -1.5, -0.5, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.24247, -0.356615, 0, 0.605995, 0.73117, 0, 0, 0, 1, -1.50832, -0.690739, 0)
+visible = false
 layers = 2
 mesh = SubResource("BoxMesh_5ptbe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.781651, -0.623716, 0, 0.623716, 0.781651, 0, 0, 0, 1, -0.658981, -0.0590402, 0)
+visible = false
 layers = 2
 mesh = SubResource("PrismMesh_voyse")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.850077, 0.526659, 0, -0.526659, -0.850077, 0, 0, 0, 1, -0.508689, -0.0493689, 0)
+visible = false
 layers = 2
 mesh = SubResource("PrismMesh_voyse")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.9889, 0, 0, 0, 0.74305, 0, 0, 0, 1, 1.63925, 0.282812, 0)
+visible = false
 layers = 2
 mesh = SubResource("BoxMesh_gnj2g")
+
+[editable path="Shotgun2"]

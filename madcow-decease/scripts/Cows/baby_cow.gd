@@ -15,7 +15,9 @@ extends CharacterBody3D
 
 @export var magnum: PackedScene
 @export var explosion: PackedScene
-
+var frame_counter := 0
+var update_interval := 60 # update path every 6 frames (~0.1s at 60fps)
+var cached_next_pos: Vector3
 var player: CharacterBody3D = null
 var group_player: CharacterBody3D = null
 var current_target_enemy: CharacterBody3D = null
@@ -42,9 +44,11 @@ func _physics_process(delta):
 			_face_player(delta)
 		
 			if not _player_in_shoot_area():
-				nav_agent.target_position = player.global_transform.origin
-				var next_pos = nav_agent.get_next_path_position()
-				var direction = (next_pos - global_transform.origin)
+				if frame_counter % update_interval == 0:
+					nav_agent.target_position = player.global_transform.origin
+					cached_next_pos = nav_agent.get_next_path_position()
+				frame_counter += 1
+				var direction = (cached_next_pos- global_transform.origin)
 				direction.y = 0
 				direction = direction.normalized()
 				velocity.x = direction.x * move_speed

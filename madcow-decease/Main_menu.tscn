@@ -1,26 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://y8tobwhbqs6e"]
+[gd_scene load_steps=6 format=3 uid="uid://y8tobwhbqs6e"]
 
+[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://Assets/2D_assets/SS.png" id="1_5kukc"]
 [ext_resource type="Script" uid="uid://myy1k375mo10" path="res://Play_button.gd" id="1_b07fi"]
+[ext_resource type="Texture2D" uid="uid://da22jf6flmpd5" path="res://Assets/2D_assets/Vector 17.png" id="1_x2ps0"]
+[ext_resource type="FontFile" uid="uid://dmwo3rtr3ql6f" path="res://Pwficelles-4Kv4.ttf" id="2_rlxw3"]
 [ext_resource type="Script" uid="uid://c48ru4u4n54jx" path="res://Quit_button.gd" id="2_x6lt7"]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture = ExtResource("1_5kukc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -92)
+scale = Vector2(0.205762, 0.237195)
+texture = ExtResource("1_x2ps0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-3, 151)
+scale = Vector2(0.205762, 0.237195)
+texture = ExtResource("1_x2ps0")
+
 [node name="Button" type="Button" parent="."]
-offset_left = -174.0
-offset_top = -194.0
-offset_right = 172.0
-offset_bottom = -104.0
+offset_left = -110.0
+offset_top = -137.0
+offset_right = 592.0
+offset_bottom = 140.0
+scale = Vector2(0.315046, 0.321396)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_rlxw3")
+theme_override_font_sizes/font_size = 256
 text = "PLAY"
+flat = true
+text_overrun_behavior = 3
 script = ExtResource("1_b07fi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Button2" type="Button" parent="."]
-offset_left = -135.0
-offset_top = 32.0
-offset_right = 145.0
-offset_bottom = 121.0
+offset_left = -114.0
+offset_top = 106.0
+offset_right = 538.0
+offset_bottom = 383.0
+scale = Vector2(0.350291, 0.339287)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_rlxw3")
+theme_override_font_sizes/font_size = 256
 text = "QUIT"
+flat = true
 script = ExtResource("2_x6lt7")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

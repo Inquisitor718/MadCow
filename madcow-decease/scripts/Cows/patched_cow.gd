@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var move_speed: float = 2.0
 @export var rotation_speed: float = 4.0
 @export var fire_rate: float = 2.0
+@export var distortion_add: float = 2.5
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
@@ -17,17 +18,23 @@ extends CharacterBody3D
 var player: CharacterBody3D = null
 var group_player: CharacterBody3D = null
 var can_shoot = true
-
+var frame_counter := 0
+var update_interval := 60  # update path every 6 frames (~0.1s at 60fps)
+var cached_next_pos: Vector3
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+signal on_death
 
 func _physics_process(delta):
 	_apply_gravity(delta)
 	if player:
 		_face_player(delta)
 		if not _player_in_shoot_area():
-			nav_agent.target_position = player.global_transform.origin
-			var next_pos = nav_agent.get_next_path_position()
-			var direction = (next_pos - global_transform.origin)
+			if frame_counter % update_interval == 0:
+				nav_agent.target_position = player.global_transform.origin
+				cached_next_pos = nav_agent.get_next_path_position()
+			frame_counter += 1
+			var direction = (cached_next_pos - global_transform.origin)
 			direction.y = 0
 			direction = direction.normalized()
 			velocity.x = direction.x * move_speed
@@ -118,7 +125,9 @@ func Hit(dmg: int) -> void:
 		print("Enemy Health:", patched_cow_health)
 		if patched_cow_health <= 0:
 			Global.kills += 1
+			Global.distortion += distortion_add
 			print(Global.kills)
+			emit_signal("on_death")
 			if group_player.is_in_group("Revolver"):
 				spawn_explode(global_transform.origin)
 			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):

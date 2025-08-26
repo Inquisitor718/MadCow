@@ -1,27 +1,32 @@
-[gd_scene load_steps=37 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=40 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
-[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/ammunation/revolver.tscn" id="2_aj78o"]
+[ext_resource type="Shader" uid="uid://sgw6usnarig3" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
+[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://Scenes/ammunation/revolver.tscn" id="2_aj78o"]
 [ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scripts/ammunation/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="3_jdn2x"]
-[ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
-[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
-[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/ammunation/minigun.tscn" id="6_w0gdg"]
-[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
-[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
+[ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://Assets/weapon_resources/revolver.tres" id="4_w0gdg"]
+[ext_resource type="Texture2D" uid="uid://cplrasiw0qicr" path="res://Assets/2D_assets/Group 13.png" id="4_xo0wp"]
+[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://Assets/weapon_resources/Minigun.tres" id="5_qde3d"]
+[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://Scenes/ammunation/minigun.tscn" id="6_w0gdg"]
+[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://Assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
+[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://Scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/ammunation/Gun_Counter.gd" id="8_flsqn"]
-[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
-[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://scenes/horns.tscn" id="12_d62hb"]
+[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://Assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
+[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
+[ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://Scenes/pause.tscn" id="13_2vmbr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vmbr"]
+shader = ExtResource("2_4lvae")
+shader_parameter/aberration_strength = 0.0
+shader_parameter/frequency = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj78o"]
 bg_color = Color(0.229933, 0.712038, 0.249773, 1)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_flsqn"]
-specular_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_nmoqk"]
 resource_name = "Horns_Act"
@@ -643,7 +648,6 @@ size = Vector3(1.25, 1.25, 1.25)
 [node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
 collision_mask = 87
 script = ExtResource("1_gkn25")
-health = 100
 speed_walk = 6.0
 speed_sprint = 8.5
 speed_crouch = 3.5
@@ -651,6 +655,16 @@ JUMP_VELOCITY = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_2vmbr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("8_flsqn")
@@ -708,16 +722,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.503
 anchor_bottom = 0.505
-offset_right = -0.456055
-offset_bottom = -0.23999
+offset_left = -32.0
+offset_top = -30.0
+offset_right = 641.24
+offset_bottom = 544.6
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_flsqn")
+scale = Vector2(0.117163, 0.117163)
+texture = ExtResource("4_xo0wp")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="SubViewport" type="SubViewport" parent="Head/Camera3D"]
 
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("Melee_Hitbox")]
 script = ExtResource("2_v7hu7")
@@ -758,11 +777,13 @@ shape = SubResource("BoxShape3D_x5t1h")
 collision_mask = 2
 collide_with_areas = true
 
+[node name="Pause" parent="Head/Camera3D" instance=ExtResource("13_2vmbr")]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_4j2pt")
 
 [node name="Weapon_Pickup" type="Area3D" parent="."]
-collision_mask = 16
+collision_mask = 144
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon_Pickup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)

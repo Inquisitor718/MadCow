@@ -9,7 +9,7 @@ var on_floor := true
 
 
 #health system
-@export var health =  1000
+@export var health =  100
 
 var speed_now = 5.0
 @export var speed_walk = 5.0
@@ -40,6 +40,7 @@ var speed_now = 5.0
 @export var lbob_offset = 0.0
 @export var land_v_min = -3.0
 @export var lbob_ampscl = 0.025
+@onready var chroma_shader: ShaderMaterial = $CanvasLayer2/ColorRect.material
 
 #health system function for damage 
 func dmg(HP):
@@ -51,8 +52,9 @@ func dmg(HP):
 	if health <= 0:
 		die()
 		
+	print("p_health")
 func die():
-	health = 500
+	pass
 
 #mouse movement
 func _ready():
@@ -68,7 +70,9 @@ func _input(event):
 		head.rotate_x(deg_to_rad((event.relative.y) * mouse_sens *-1))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
-
+func update_chroma(chroma_strength: float) -> void:
+	chroma_shader.set_shader_parameter("Aberration",chroma_strength)
+	
 func _process(_delta):
 	pass
 
@@ -155,7 +159,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-
+	
 	
 	# Landing detection and land offset {need to fix}
 	var just_landed = not on_floor and is_on_floor() and velocity.y < land_v_min
