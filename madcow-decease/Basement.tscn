@@ -1340,7 +1340,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8675, 0.35, -49.4485)
 
 [node name="Roof" type="Node3D" parent="WORLD_BUILDING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00205898, 7.99933, 0.00520325)
-visible = false
 
 [node name="Stone_floor" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -21.1325, -2.65, 38.5515)

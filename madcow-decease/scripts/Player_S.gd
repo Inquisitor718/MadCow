@@ -48,7 +48,6 @@ func dmg(HP):
 		health -= HP
 	else:
 		health = 0
-	$CanvasLayer/HealthBar.value = health
 	if health <= 0:
 		die()
 		

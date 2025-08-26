@@ -1,32 +1,48 @@
-[gd_scene load_steps=40 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=48 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
-[ext_resource type="Shader" uid="uid://sgw6usnarig3" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
+[ext_resource type="Shader" uid="uid://djyjixatdea4p" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://Scenes/ammunation/revolver.tscn" id="2_aj78o"]
 [ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scripts/ammunation/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="3_jdn2x"]
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://Assets/weapon_resources/revolver.tres" id="4_w0gdg"]
 [ext_resource type="Texture2D" uid="uid://cplrasiw0qicr" path="res://Assets/2D_assets/Group 13.png" id="4_xo0wp"]
+[ext_resource type="Texture2D" uid="uid://b0h22p1mfbns6" path="res://Assets/2D_assets/Group 11.png" id="5_ovxxp"]
 [ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://Assets/weapon_resources/Minigun.tres" id="5_qde3d"]
 [ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://Scenes/ammunation/minigun.tscn" id="6_w0gdg"]
 [ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://Assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
 [ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://Scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
+[ext_resource type="Texture2D" uid="uid://cisrink1cymxh" path="res://Assets/2D_assets/Group 5.png" id="7_qa8rd"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/ammunation/Gun_Counter.gd" id="8_flsqn"]
+[ext_resource type="Texture2D" uid="uid://c7gwikuir7liu" path="res://Assets/2D_assets/Group 6.png" id="8_grc6c"]
 [ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://Assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
+[ext_resource type="Texture2D" uid="uid://cm235a1cuucj1" path="res://Assets/2D_assets/Group 7.png" id="9_oi5cr"]
+[ext_resource type="Texture2D" uid="uid://bvhjcddgj8hjx" path="res://Assets/2D_assets/Group 8.png" id="10_64wii"]
 [ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
 [ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://Scenes/pause.tscn" id="13_2vmbr"]
+[ext_resource type="Texture2D" uid="uid://c7gq12drl37e" path="res://Assets/2D_assets/Vector 7.png" id="17_wycyf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qa8rd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_grc6c"]
+noise = SubResource("FastNoiseLite_qa8rd")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oi5cr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_64wii"]
+noise = SubResource("FastNoiseLite_oi5cr")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2vmbr"]
 shader = ExtResource("2_4lvae")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_grc6c")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_64wii")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.07, -0.03)
+shader_parameter/distortion_strength = 0.05
 shader_parameter/aberration_strength = 0.0
-shader_parameter/frequency = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj78o"]
-bg_color = Color(0.229933, 0.712038, 0.249773, 1)
+shader_parameter/transition = true
 
 [sub_resource type="Animation" id="Animation_nmoqk"]
 resource_name = "Horns_Act"
@@ -700,36 +716,50 @@ layout_mode = 2
 [node name="WeaponStack" type="Label" parent="CanvasLayer/GunCounter/StackInfo"]
 layout_mode = 2
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.007
-anchor_top = 0.926
-anchor_right = 0.345
-anchor_bottom = 0.977
-offset_left = -0.440001
-offset_top = -0.0800781
-offset_right = -0.400024
-offset_bottom = -0.160034
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_gkn25")
-theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
-value = 100.0
-
 [node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.503
 anchor_bottom = 0.505
-offset_left = -32.0
-offset_top = -30.0
-offset_right = 641.24
-offset_bottom = 544.6
+offset_left = -26.9999
+offset_top = -12.9999
+offset_right = 646.24
+offset_bottom = 561.6
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.117163, 0.117163)
+scale = Vector2(0.0684559, 0.0684559)
 texture = ExtResource("4_xo0wp")
+
+[node name="Group11" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(522, 84)
+scale = Vector2(0.311828, 0.227224)
+texture = ExtResource("5_ovxxp")
+
+[node name="Vector7" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1502, 909)
+scale = Vector2(0.380982, 0.246978)
+texture = ExtResource("17_wycyf")
+
+[node name="50bottle" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(151, 919)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_grc6c")
+
+[node name="75bottle" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(167, 922)
+scale = Vector2(0.65034, 0.65034)
+texture = ExtResource("9_oi5cr")
+
+[node name="100bottle" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(186, 918)
+scale = Vector2(0.638548, 0.638548)
+texture = ExtResource("7_qa8rd")
+
+[node name="Group8" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture = ExtResource("10_64wii")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
