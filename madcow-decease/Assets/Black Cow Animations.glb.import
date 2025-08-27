@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://twgwjrmie4xg"
-path="res://.godot/imported/Black Cow Animations.glb-ee2d975160c9106ea9c3378975599288.scn"
+path="res://.godot/imported/Black Cow Animations.glb-90322c3f677686a395d6165fe86ce4f7.scn"
 
 [deps]
 
-source_file="res://Assets/Black Cow Animations.glb"
-dest_files=["res://.godot/imported/Black Cow Animations.glb-ee2d975160c9106ea9c3378975599288.scn"]
+source_file="res://assets/Black Cow Animations.glb"
+dest_files=["res://.godot/imported/Black Cow Animations.glb-90322c3f677686a395d6165fe86ce4f7.scn"]
 
 [params]
 
