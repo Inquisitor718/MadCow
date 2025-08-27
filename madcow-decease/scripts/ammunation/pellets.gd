@@ -4,7 +4,7 @@ extends Node3D
 
 @export var lifetime: float = 3.0
 @export var travelled_distance = 0
-@export var p_dmg: float = 0.5
+
 var direction: Vector3 = Vector3.ZERO
 
 func _ready():
@@ -21,5 +21,5 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_body_entered(body: PhysicsBody3D) -> void:
 	if body.is_in_group("player_S"):
 		if body.has_method("dmg"):
-			body.dmg(p_dmg)
+			body.dmg(2)
 		queue_free()

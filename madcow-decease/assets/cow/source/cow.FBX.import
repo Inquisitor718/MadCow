@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c2fc0ucewo41b"
-path="res://.godot/imported/cow.FBX-48fdc2d6a50c09af134707d3e3d45213.scn"
+path="res://.godot/imported/cow.FBX-33741c0e4ba95ac3c75cbc68cb513970.scn"
 
 [deps]
 
-source_file="res://Assets/cow/source/cow.FBX"
-dest_files=["res://.godot/imported/cow.FBX-48fdc2d6a50c09af134707d3e3d45213.scn"]
+source_file="res://assets/cow/source/cow.FBX"
+dest_files=["res://.godot/imported/cow.FBX-33741c0e4ba95ac3c75cbc68cb513970.scn"]
 
 [params]
 

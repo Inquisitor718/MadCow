@@ -1,43 +1,32 @@
-[gd_scene load_steps=47 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=40 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
-[ext_resource type="Shader" uid="uid://djyjixatdea4p" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
-[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://Scenes/ammunation/revolver.tscn" id="2_aj78o"]
+[ext_resource type="Shader" uid="uid://sgw6usnarig3" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
+[ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://scenes/ammunation/revolver.tscn" id="2_aj78o"]
 [ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scripts/ammunation/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="3_jdn2x"]
-[ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://Assets/weapon_resources/revolver.tres" id="4_w0gdg"]
-[ext_resource type="Texture2D" uid="uid://cplrasiw0qicr" path="res://Assets/2D_assets/Group 13.png" id="4_xo0wp"]
-[ext_resource type="Texture2D" uid="uid://b0h22p1mfbns6" path="res://Assets/2D_assets/Group 11.png" id="5_ovxxp"]
-[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://Assets/weapon_resources/Minigun.tres" id="5_qde3d"]
-[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://Scenes/ammunation/minigun.tscn" id="6_w0gdg"]
-[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://Assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
-[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://Scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
-[ext_resource type="Texture2D" uid="uid://cisrink1cymxh" path="res://Assets/2D_assets/Group 5.png" id="7_qa8rd"]
+[ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://assets/weapon_resources/revolver.tres" id="4_w0gdg"]
+[ext_resource type="Texture2D" uid="uid://cplrasiw0qicr" path="res://assets/2D_assets/Group 13.png" id="4_xo0wp"]
+[ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://assets/weapon_resources/Minigun.tres" id="5_qde3d"]
+[ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://scenes/ammunation/minigun.tscn" id="6_w0gdg"]
+[ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
+[ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/ammunation/Gun_Counter.gd" id="8_flsqn"]
-[ext_resource type="Texture2D" uid="uid://c7gwikuir7liu" path="res://Assets/2D_assets/Group 6.png" id="8_grc6c"]
-[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://Assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
-[ext_resource type="Texture2D" uid="uid://cm235a1cuucj1" path="res://Assets/2D_assets/Group 7.png" id="9_oi5cr"]
-[ext_resource type="Texture2D" uid="uid://bvhjcddgj8hjx" path="res://Assets/2D_assets/Group 8.png" id="10_64wii"]
-[ext_resource type="Texture2D" uid="uid://c38dipbddslwy" path="res://Assets/2D_assets/Group x.png" id="11_grc6c"]
-[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
-[ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://Scenes/pause.tscn" id="13_2vmbr"]
-[ext_resource type="Texture2D" uid="uid://c7gq12drl37e" path="res://Assets/2D_assets/Vector 7.png" id="17_wycyf"]
+[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
+[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://scenes/horns.tscn" id="12_d62hb"]
+[ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://scenes/pause.tscn" id="13_2vmbr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2vmbr"]
 shader = ExtResource("2_4lvae")
 shader_parameter/aberration_strength = 0.0
+shader_parameter/frequency = 2.0
 
-[sub_resource type="Gradient" id="Gradient_grc6c"]
-colors = PackedColorArray(0.201031, 0.00234349, 0.232613, 1, 0.727112, 0.110858, 0.554867, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkn25"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oi5cr"]
-gradient = SubResource("Gradient_grc6c")
-width = 914
-height = 84
-fill_from = Vector2(0.187793, 0.332048)
-fill_to = Vector2(0.888889, 0.0940171)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj78o"]
+bg_color = Color(0.229933, 0.712038, 0.249773, 1)
 
 [sub_resource type="Animation" id="Animation_nmoqk"]
 resource_name = "Horns_Act"
@@ -659,6 +648,9 @@ size = Vector3(1.25, 1.25, 1.25)
 [node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
 collision_mask = 87
 script = ExtResource("1_gkn25")
+speed_walk = 6.0
+speed_sprint = 8.5
+speed_crouch = 3.5
 JUMP_VELOCITY = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -673,24 +665,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("8_flsqn")
 
-[node name="DistortionBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 57.0
-offset_top = 40.0
-offset_right = 971.0
-offset_bottom = 124.0
-value = 100.0
-texture_progress = SubResource("GradientTexture2D_oi5cr")
-
 [node name="GunCounter" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 1201.0
-offset_top = 925.0
-offset_right = 1241.0
-offset_bottom = 1002.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="WeaponInfo" type="HBoxContainer" parent="CanvasLayer/GunCounter"]
 layout_mode = 2
@@ -719,172 +700,36 @@ layout_mode = 2
 [node name="WeaponStack" type="Label" parent="CanvasLayer/GunCounter/StackInfo"]
 layout_mode = 2
 
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.926
+anchor_right = 0.345
+anchor_bottom = 0.977
+offset_left = -0.440001
+offset_top = -0.0800781
+offset_right = -0.400024
+offset_bottom = -0.160034
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gkn25")
+theme_override_styles/fill = SubResource("StyleBoxFlat_aj78o")
+value = 100.0
+
 [node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.503
 anchor_bottom = 0.505
-offset_left = -26.9999
-offset_top = -12.9999
-offset_right = 646.24
-offset_bottom = 561.6
+offset_left = -32.0
+offset_top = -30.0
+offset_right = 641.24
+offset_bottom = 544.6
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.0684559, 0.0684559)
+scale = Vector2(0.117163, 0.117163)
 texture = ExtResource("4_xo0wp")
-
-[node name="Group11" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(522, 80.8108)
-scale = Vector2(0.311828, 0.237784)
-texture = ExtResource("5_ovxxp")
-
-[node name="Vector7" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1502, 909)
-scale = Vector2(0.380982, 0.246978)
-texture = ExtResource("17_wycyf")
-
-[node name="Health_bottles" type="Node2D" parent="CanvasLayer"]
-scale = Vector2(0.410216, 0.410216)
-
-[node name="bottle1" type="Node2D" parent="CanvasLayer/Health_bottles"]
-
-[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
-position = Vector2(185.268, 2342.67)
-scale = Vector2(0.660689, 0.660689)
-texture = ExtResource("11_grc6c")
-
-[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
-position = Vector2(186.665, 2339.73)
-scale = Vector2(0.643981, 0.643981)
-texture = ExtResource("10_64wii")
-
-[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
-position = Vector2(151.665, 2365.73)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_grc6c")
-
-[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
-position = Vector2(166.665, 2366.73)
-scale = Vector2(0.65034, 0.65034)
-texture = ExtResource("9_oi5cr")
-
-[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
-position = Vector2(188.665, 2364.73)
-scale = Vector2(0.638548, 0.638548)
-texture = ExtResource("7_qa8rd")
-
-[node name="bottle2" type="Node2D" parent="CanvasLayer/Health_bottles"]
-position = Vector2(360.786, 0)
-
-[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
-position = Vector2(185.268, 2342.67)
-scale = Vector2(0.660689, 0.660689)
-texture = ExtResource("11_grc6c")
-
-[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
-position = Vector2(186.665, 2339.73)
-scale = Vector2(0.643981, 0.643981)
-texture = ExtResource("10_64wii")
-
-[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
-position = Vector2(151.665, 2365.73)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_grc6c")
-
-[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
-position = Vector2(166.665, 2366.73)
-scale = Vector2(0.65034, 0.65034)
-texture = ExtResource("9_oi5cr")
-
-[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
-position = Vector2(188.665, 2364.73)
-scale = Vector2(0.638548, 0.638548)
-texture = ExtResource("7_qa8rd")
-
-[node name="bottle3" type="Node2D" parent="CanvasLayer/Health_bottles"]
-position = Vector2(733.76, 0)
-
-[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
-position = Vector2(185.268, 2342.67)
-scale = Vector2(0.660689, 0.660689)
-texture = ExtResource("11_grc6c")
-
-[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
-position = Vector2(186.665, 2339.73)
-scale = Vector2(0.643981, 0.643981)
-texture = ExtResource("10_64wii")
-
-[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
-position = Vector2(151.665, 2365.73)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_grc6c")
-
-[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
-position = Vector2(166.665, 2366.73)
-scale = Vector2(0.65034, 0.65034)
-texture = ExtResource("9_oi5cr")
-
-[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
-position = Vector2(188.665, 2364.73)
-scale = Vector2(0.638548, 0.638548)
-texture = ExtResource("7_qa8rd")
-
-[node name="bottle4" type="Node2D" parent="CanvasLayer/Health_bottles"]
-position = Vector2(1087.23, 0)
-
-[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
-position = Vector2(185.268, 2342.67)
-scale = Vector2(0.660689, 0.660689)
-texture = ExtResource("11_grc6c")
-
-[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
-position = Vector2(186.665, 2339.73)
-scale = Vector2(0.643981, 0.643981)
-texture = ExtResource("10_64wii")
-
-[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
-position = Vector2(151.665, 2365.73)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_grc6c")
-
-[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
-position = Vector2(166.665, 2366.73)
-scale = Vector2(0.65034, 0.65034)
-texture = ExtResource("9_oi5cr")
-
-[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
-position = Vector2(188.665, 2364.73)
-scale = Vector2(0.638548, 0.638548)
-texture = ExtResource("7_qa8rd")
-
-[node name="bottle5" type="Node2D" parent="CanvasLayer/Health_bottles"]
-position = Vector2(1448.02, 0)
-
-[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
-position = Vector2(185.268, 2342.67)
-scale = Vector2(0.660689, 0.660689)
-texture = ExtResource("11_grc6c")
-
-[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
-position = Vector2(186.665, 2339.73)
-scale = Vector2(0.643981, 0.643981)
-texture = ExtResource("10_64wii")
-
-[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
-position = Vector2(151.665, 2365.73)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_grc6c")
-
-[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
-position = Vector2(166.665, 2366.73)
-scale = Vector2(0.65034, 0.65034)
-texture = ExtResource("9_oi5cr")
-
-[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
-position = Vector2(188.665, 2364.73)
-scale = Vector2(0.638548, 0.638548)
-texture = ExtResource("7_qa8rd")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
@@ -896,7 +741,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841623, 0)
 [node name="W_Manager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("Melee_Hitbox")]
 script = ExtResource("2_v7hu7")
 Melee_Hitbox = NodePath("rig/HitBoxMelee")
-Powerup_Duration = 20
+Powerup_Duration = 1245
 _weapon_resources = Array[ExtResource("3_jdn2x")]([ExtResource("4_w0gdg"), ExtResource("5_qde3d"), ExtResource("7_0wot1"), ExtResource("8_x5t1h")])
 Start_Weapons = Array[String](["Shotgun"])
 

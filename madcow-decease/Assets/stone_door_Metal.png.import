@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct0ft01jtk0cs"
-path.s3tc="res://.godot/imported/stone_door_Metal.png-c4753391086b20c4c772d589f4b82ccb.s3tc.ctex"
+path.s3tc="res://.godot/imported/stone_door_Metal.png-dcaab0013e46a197e5827e9f4dd483e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/stone_door_Metal.png"
-dest_files=["res://.godot/imported/stone_door_Metal.png-c4753391086b20c4c772d589f4b82ccb.s3tc.ctex"]
+source_file="res://assets/stone_door_Metal.png"
+dest_files=["res://.godot/imported/stone_door_Metal.png-dcaab0013e46a197e5827e9f4dd483e5.s3tc.ctex"]
 
 [params]
 

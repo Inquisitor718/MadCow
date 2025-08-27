@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dovowenyy3wto"
-path.s3tc="res://.godot/imported/bookshelf_Dark Wood.png-9d4e781c11be20bb90eca56c6f484dc5.s3tc.ctex"
+path.s3tc="res://.godot/imported/bookshelf_Dark Wood.png-e4c2fa98bd0515bf88edd08e3b3b58da.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/bookshelf_Dark Wood.png"
-dest_files=["res://.godot/imported/bookshelf_Dark Wood.png-9d4e781c11be20bb90eca56c6f484dc5.s3tc.ctex"]
+source_file="res://assets/bookshelf_Dark Wood.png"
+dest_files=["res://.godot/imported/bookshelf_Dark Wood.png-e4c2fa98bd0515bf88edd08e3b3b58da.s3tc.ctex"]
 
 [params]
 

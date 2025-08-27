@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://betweevi63d53"
-path.s3tc="res://.godot/imported/Chest_Metal.png-3be26189214a4f57431cd5edabc81fba.s3tc.ctex"
+path.s3tc="res://.godot/imported/Chest_Metal.png-97d9e5f4119454b33fff672c1cc9ac68.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Chest_Metal.png"
-dest_files=["res://.godot/imported/Chest_Metal.png-3be26189214a4f57431cd5edabc81fba.s3tc.ctex"]
+source_file="res://assets/Chest_Metal.png"
+dest_files=["res://.godot/imported/Chest_Metal.png-97d9e5f4119454b33fff672c1cc9ac68.s3tc.ctex"]
 
 [params]
 

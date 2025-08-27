@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cm6b48v2wj16p"]
 
 [ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/Cows/patched_cow.gd" id="1_2wi0g"]
-[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://Scenes/ammunation/bullet.tscn" id="2_ni8w7"]
-[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://Scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
-[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://Assets/cow/source/textures/cow.jpg" id="4_banjt"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
-[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://Assets/cow/source/cow.obj" id="5_16xvs"]
-[ext_resource type="PackedScene" uid="uid://caowma3mxfw7q" path="res://Assets/Patched Cow Animations.glb" id="5_iijg3"]
+[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/ammunation/bullet.tscn" id="2_ni8w7"]
+[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
+[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="4_banjt"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
+[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="5_16xvs"]
+[ext_resource type="PackedScene" uid="uid://caowma3mxfw7q" path="res://assets/Patched Cow Animations.glb" id="5_iijg3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
 albedo_texture = ExtResource("4_banjt")
@@ -29,10 +29,9 @@ transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.07134
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_2wi0g")
-patched_cow_health = 100
+patched_cow_health = 80
 rotation_speed = 5.0
 fire_rate = 3.0
-distortion_add = 10.0
 bullet = ExtResource("2_ni8w7")
 revolver_scene = ExtResource("3_2wi0g")
 explosion = ExtResource("4_ni8w7")
@@ -42,14 +41,13 @@ transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Patched Cow Animations/PC_Rig" index="0"]
 bones/0/position = Vector3(0.0193613, -0.327008, 0)
-bones/0/rotation = Quaternion(-0.000432285, 0.000112704, 7.62235e-05, 1)
-bones/4/position = Vector3(-0.238554, 0.327221, -0.0781657)
-bones/4/rotation = Quaternion(-0.074818, 0.220969, 0.943975, 0.233423)
-bones/5/rotation = Quaternion(0.18197, -0.0501801, 0.22851, 0.955067)
-bones/6/position = Vector3(0.283286, 0.275667, -0.0436429)
-bones/6/rotation = Quaternion(0.0979668, -0.35383, -0.8634, 0.346047)
-bones/7/rotation = Quaternion(0.50283, -0.128306, -0.0323309, 0.854198)
-bones/8/position = Vector3(-0.0408475, 0.330166, 0.0633482)
+bones/4/position = Vector3(-0.236118, 0.328188, -0.0793923)
+bones/4/rotation = Quaternion(-0.0892572, 0.127858, 0.954971, 0.252421)
+bones/5/rotation = Quaternion(0.105971, 0.0730893, -0.0125498, 0.9916)
+bones/6/position = Vector3(0.262169, 0.286547, -0.076264)
+bones/6/rotation = Quaternion(0.118011, -0.23313, -0.899168, 0.351029)
+bones/7/rotation = Quaternion(0.501432, -0.152747, 0.00797451, 0.85157)
+bones/8/position = Vector3(-0.0408252, 0.331125, 0.063482)
 bones/8/rotation = Quaternion(0.0497617, 0.770954, 0.105308, -0.62615)
 bones/10/position = Vector3(0.0193613, -0.327008, -3.77512e-09)
 bones/10/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
@@ -65,10 +63,10 @@ bones/17/position = Vector3(0.149998, -0.652214, -0.023133)
 bones/17/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
 
 [node name="PC_Hat" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.333789, -5.09176e-05, 5.16224e-05, 5.08526e-05, 0.333789, 0.000198063, -7.52608e-05, -0.000288578, 0.229084, 0.0307346, 0.800377, -0.0727994)
+transform = Transform3D(0.333789, 2.18279e-11, 6.65472e-11, -2.18279e-11, 0.333789, 2.16125e-10, -9.69631e-11, -3.14906e-10, 0.229084, 0.0309228, 0.800438, -0.0718221)
 
 [node name="PC_Pistol" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.0131092, 0.00329063, 0.00467427, -0.00545962, -0.00374192, -0.0126774, -0.00169397, -0.0134051, 0.00468622, 0.380871, 0.322946, 0.512209)
+transform = Transform3D(-0.01325, 0.001433, 0.00518763, -0.00529781, -0.00104536, -0.0132426, -0.000947725, -0.0141909, 0.00149936, 0.42661, 0.222489, 0.469379)
 
 [node name="AnimationPlayer" parent="Patched Cow Animations" index="1"]
 autoplay = "PC_Shoot"
@@ -80,10 +78,10 @@ material_override = SubResource("StandardMaterial3D_hsi1t")
 mesh = ExtResource("5_16xvs")
 
 [node name="BulletSpawn" type="Marker3D" parent="PatchedCow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1866, 6.31224, -108.472)
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, -13.7351, 6.31224, -111.831)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.0142681, -0.00150755, 0.199485, -1.39698e-09, 0.199994, 0.00151149, -0.19949, -0.000107827, 0.0142678, 0.0541211, 0.15, 0.0127963)
+transform = Transform3D(0.0142681, 0.0142318, 0.198982, 1.22509e-09, 0.19949, -0.0142681, -0.19949, 0.0010179, 0.0142318, 0.00170148, 0.15, 0.00904711)
 shape = SubResource("CapsuleShape3D_2wi0g")
 
 [node name="DetectionArea" type="Area3D" parent="."]

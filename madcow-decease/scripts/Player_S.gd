@@ -8,9 +8,6 @@ var direction = Vector3.ZERO
 var on_floor := true
 
 
-@onready var distortion_bar: TextureProgressBar = $CanvasLayer/DistortionBar
-
-
 #health system
 @export var health =  100
 
@@ -51,57 +48,17 @@ func dmg(HP):
 		health -= HP
 	else:
 		health = 0
-	if health <100:
-		$"CanvasLayer/Health_bottles/bottle5/100bottle".hide()
-	if health <95:
-		$"CanvasLayer/Health_bottles/bottle5/75bottle".hide()
-	if health <90:
-		$"CanvasLayer/Health_bottles/bottle5/50bottle".hide()
-	if health <85:
-		$"CanvasLayer/Health_bottles/bottle5/25bottle".hide()
-	if health <80:
-		$"CanvasLayer/Health_bottles/bottle4/100bottle".hide()
-	if health <75:
-		$"CanvasLayer/Health_bottles/bottle4/75bottle".hide()
-	if health <70:
-		$"CanvasLayer/Health_bottles/bottle4/50bottle".hide()
-	if health <65:
-		$"CanvasLayer/Health_bottles/bottle4/25bottle".hide()
-	if health <60:
-		$"CanvasLayer/Health_bottles/bottle3/100bottle".hide()
-	if health <55:
-		$"CanvasLayer/Health_bottles/bottle3/75bottle".hide()
-	if health <50:
-		$"CanvasLayer/Health_bottles/bottle3/50bottle".hide()
-	if health <45:
-		$"CanvasLayer/Health_bottles/bottle3/25bottle".hide()
-	if health <40:
-		$"CanvasLayer/Health_bottles/bottle2/100bottle".hide()
-	if health <35:
-		$"CanvasLayer/Health_bottles/bottle2/75bottle".hide()
-	if health <30:
-		$"CanvasLayer/Health_bottles/bottle2/50bottle".hide()
-	if health <25:
-		$"CanvasLayer/Health_bottles/bottle2/25bottle".hide()
-	if health <20:
-		$"CanvasLayer/Health_bottles/bottle1/100bottle".hide()
-	if health <15:
-		$"CanvasLayer/Health_bottles/bottle1/75bottle".hide()
-	if health <10:
-		$"CanvasLayer/Health_bottles/bottle1/50bottle".hide()
-	if health < 5:
-		$"CanvasLayer/Health_bottles/bottle1/25bottle".hide()
+	$CanvasLayer/HealthBar.value = health
 	if health <= 0:
 		die()
 		
-	print(health)
+	print("p_health")
 func die():
 	pass
 
 #mouse movement
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
 	default_pos = head.position
 	
 
@@ -214,10 +171,3 @@ func _physics_process(delta: float) -> void:
 	head.position.y += lbob_offset
 	
 	on_floor = is_on_floor()
-	
-func _dist_display(amt: int):
-	distortion_bar.value = amt
-
-
-func _on_killzone_body_entered(body: Node3D) -> void:
-	die()

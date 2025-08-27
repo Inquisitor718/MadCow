@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dmf3m88vra80j"
-path="res://.godot/imported/Haybale.glb-01fea64c1c7a57a9a84ea62aa5eba435.scn"
+path="res://.godot/imported/Haybale.glb-b96d864ba6da00adef9310e0b7cb3e86.scn"
 
 [deps]
 
-source_file="res://Assets/Haybale.glb"
-dest_files=["res://.godot/imported/Haybale.glb-01fea64c1c7a57a9a84ea62aa5eba435.scn"]
+source_file="res://assets/Haybale.glb"
+dest_files=["res://.godot/imported/Haybale.glb-b96d864ba6da00adef9310e0b7cb3e86.scn"]
 
 [params]
 

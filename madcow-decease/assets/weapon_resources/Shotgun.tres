@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://cxgf6hy061pvc"]
 
-[ext_resource type="PackedScene" uid="uid://diewpys8vfkqy" path="res://Scenes/Projectiles_to_be_loaded/shotgun_proj.tscn" id="1_n8ohv"]
+[ext_resource type="PackedScene" uid="uid://diewpys8vfkqy" path="res://scenes/Projectiles_to_be_loaded/shotgun_proj.tscn" id="1_n8ohv"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="2_fy6xn"]
 
 [resource]
@@ -13,13 +13,13 @@ DActivate_anim = "ShotgunDeac"
 No_ammo_anim = ""
 Melee_Anim = ""
 Active_ammo = 7
-Stored_ammo = 56
+Stored_ammo = 100
 Magazine = 7
 Max_ammo = 1000000
 Melee_Damage = 0
 Auto_fire = false
 range = 50000
-dmg = 80
+dmg = 500
 Projectile_To_Load = ExtResource("1_n8ohv")
 Spread_Amount = 0
 metadata/_custom_type_script = "uid://c2imv21vq2msg"

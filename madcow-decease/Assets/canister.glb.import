@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://f3c4oq1y4lbi"
-path="res://.godot/imported/canister.glb-958f9c4ad8a9b748913dfa04ae30cd2f.scn"
+path="res://.godot/imported/canister.glb-664698fbc9a9f7f85f85605620355ef4.scn"
 
 [deps]
 
-source_file="res://Assets/canister.glb"
-dest_files=["res://.godot/imported/canister.glb-958f9c4ad8a9b748913dfa04ae30cd2f.scn"]
+source_file="res://assets/canister.glb"
+dest_files=["res://.godot/imported/canister.glb-664698fbc9a9f7f85f85605620355ef4.scn"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wc87mes5fe14"
-path.s3tc="res://.godot/imported/open_shelf_Hay_Milk_Books_Rope.png-7cc44b4baf3afab8183d82292fffb13b.s3tc.ctex"
+path.s3tc="res://.godot/imported/open_shelf_Hay_Milk_Books_Rope.png-c4ce641f3d2794f8fe68cf6791b732d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/open_shelf_Hay_Milk_Books_Rope.png"
-dest_files=["res://.godot/imported/open_shelf_Hay_Milk_Books_Rope.png-7cc44b4baf3afab8183d82292fffb13b.s3tc.ctex"]
+source_file="res://assets/open_shelf_Hay_Milk_Books_Rope.png"
+dest_files=["res://.godot/imported/open_shelf_Hay_Milk_Books_Rope.png-c4ce641f3d2794f8fe68cf6791b732d0.s3tc.ctex"]
 
 [params]
 
