@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var fire_rate: float = 1
 @export var stagger_time: float = 0.15 
 @export var friendly_lifetime: float = 7.0
+@export var distortion_add: float = 2.5
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
@@ -158,6 +159,7 @@ func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
 	if baby_cow_health <= 0:
+		Global.distortion += distortion_add
 		if group_player.is_in_group("Revolver"):
 			spawn_explode(global_transform.origin)
 		if group_player.is_in_group("minigun"):
@@ -266,3 +268,9 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
+
+func _fall_death():
+	if global_position.y <-1.0 :
+		
+		print("enemy dead")
+		queue_free()

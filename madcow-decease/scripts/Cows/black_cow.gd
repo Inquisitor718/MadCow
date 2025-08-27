@@ -4,10 +4,11 @@ extends CharacterBody3D
 @export var move_speed: float = 1.0
 @export var rotation_speed: float = 2.5
 @export var fire_rate: float = 1.2
-@export var damage: float = 20
+@export var damage: float = 1.0
 @export var spread: float = 0.6 #Change kar lena baad me
 @export var distortion_add: float = 2.5
 @onready var level: Node3D = $"."
+@export var b_dmg: float = 1.0
 
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
@@ -19,6 +20,8 @@ extends CharacterBody3D
 @export var horns_scene: PackedScene
 @export var explosion: PackedScene
 
+@onready var state_machine = animation_tree.get("parameters/playback")
+
 var player: CharacterBody3D = null
 var group_player: CharacterBody3D = null
 var can_shoot = true
@@ -27,6 +30,8 @@ var update_interval := 60  # update path every 6 frames (~0.1s at 60fps)
 var cached_next_pos: Vector3
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+
 
 signal on_death
 
@@ -48,15 +53,20 @@ func _physics_process(delta):
 			direction = direction.normalized()
 			velocity.x = direction.x * move_speed
 			velocity.z = direction.z * move_speed
-			
+			animation_tree.set("parameters/conditions/Walk", true)
 			
 			move_and_slide()
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
 			_stop_moving()
+			animation_tree.set("parameters/conditions/Shoot", true)
 			_try_shoot()
 	else:
+		
 		_stop_moving()
+		
+	
+	
 	move_and_slide()
 
 func _has_line_of_sight() -> bool:
@@ -103,6 +113,7 @@ func _try_shoot():
 		can_shoot = true
 
 func _shoot():
+	
 	if not player:
 		return
 	
@@ -112,8 +123,8 @@ func _shoot():
 		if r.is_colliding():
 			if r.get_collider().is_in_group("player_S"):
 				if r.get_collider().has_method("dmg"):
-					r.get_collider().dmg(20)
-					
+					r.get_collider().dmg(b_dmg)
+					return true
 
 func spawn_explode(position: Vector3):
 	if explosion:
@@ -152,7 +163,7 @@ func Hit(dmg: int) -> void:
 						horns_instance.global_position = global_position
 						get_tree().current_scene.add_child(horns_instance)
 			
-			
+			can_shoot = false
 			queue_free()
 
 
@@ -167,3 +178,9 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
+
+func _fall_death():
+	if global_position.y <-1.0 :
+		
+		print("enemy dead")
+		queue_free()

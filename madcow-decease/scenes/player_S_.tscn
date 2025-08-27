@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c6qqhoiccfc6n"]
+[gd_scene load_steps=47 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
 [ext_resource type="Shader" uid="uid://djyjixatdea4p" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
@@ -18,31 +18,26 @@
 [ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://Assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
 [ext_resource type="Texture2D" uid="uid://cm235a1cuucj1" path="res://Assets/2D_assets/Group 7.png" id="9_oi5cr"]
 [ext_resource type="Texture2D" uid="uid://bvhjcddgj8hjx" path="res://Assets/2D_assets/Group 8.png" id="10_64wii"]
+[ext_resource type="Texture2D" uid="uid://c38dipbddslwy" path="res://Assets/2D_assets/Group x.png" id="11_grc6c"]
 [ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
 [ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://Scenes/pause.tscn" id="13_2vmbr"]
 [ext_resource type="Texture2D" uid="uid://c7gq12drl37e" path="res://Assets/2D_assets/Vector 7.png" id="17_wycyf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qa8rd"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_grc6c"]
-noise = SubResource("FastNoiseLite_qa8rd")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_oi5cr"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_64wii"]
-noise = SubResource("FastNoiseLite_oi5cr")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2vmbr"]
 shader = ExtResource("2_4lvae")
-shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_grc6c")
-shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_64wii")
-shader_parameter/scroll1 = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(0.07, -0.03)
-shader_parameter/distortion_strength = 0.05
 shader_parameter/aberration_strength = 0.0
-shader_parameter/transition = true
+
+[sub_resource type="Gradient" id="Gradient_grc6c"]
+colors = PackedColorArray(0.201031, 0.00234349, 0.232613, 1, 0.727112, 0.110858, 0.554867, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oi5cr"]
+gradient = SubResource("Gradient_grc6c")
+width = 914
+height = 84
+fill_from = Vector2(0.187793, 0.332048)
+fill_to = Vector2(0.888889, 0.0940171)
 
 [sub_resource type="Animation" id="Animation_nmoqk"]
 resource_name = "Horns_Act"
@@ -664,9 +659,6 @@ size = Vector3(1.25, 1.25, 1.25)
 [node name="Player" type="CharacterBody3D" groups=["Proj", "player_S"]]
 collision_mask = 87
 script = ExtResource("1_gkn25")
-speed_walk = 6.0
-speed_sprint = 8.5
-speed_crouch = 3.5
 JUMP_VELOCITY = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -685,9 +677,19 @@ grow_vertical = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("8_flsqn")
 
+[node name="DistortionBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 57.0
+offset_top = 40.0
+offset_right = 971.0
+offset_bottom = 124.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_oi5cr")
+
 [node name="GunCounter" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1201.0
+offset_top = 925.0
+offset_right = 1241.0
+offset_bottom = 1002.0
 
 [node name="WeaponInfo" type="HBoxContainer" parent="CanvasLayer/GunCounter"]
 layout_mode = 2
@@ -732,8 +734,8 @@ scale = Vector2(0.0684559, 0.0684559)
 texture = ExtResource("4_xo0wp")
 
 [node name="Group11" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(522, 84)
-scale = Vector2(0.311828, 0.227224)
+position = Vector2(522, 80.8108)
+scale = Vector2(0.311828, 0.237784)
 texture = ExtResource("5_ovxxp")
 
 [node name="Vector7" type="Sprite2D" parent="CanvasLayer"]
@@ -741,23 +743,145 @@ position = Vector2(1502, 909)
 scale = Vector2(0.380982, 0.246978)
 texture = ExtResource("17_wycyf")
 
-[node name="25 health" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(187, 895)
+[node name="Health_bottles" type="Node2D" parent="CanvasLayer"]
+scale = Vector2(0.410216, 0.410216)
+
+[node name="bottle1" type="Node2D" parent="CanvasLayer/Health_bottles"]
+
+[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
+position = Vector2(185.268, 2342.67)
+scale = Vector2(0.660689, 0.660689)
+texture = ExtResource("11_grc6c")
+
+[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
+position = Vector2(186.665, 2339.73)
 scale = Vector2(0.643981, 0.643981)
 texture = ExtResource("10_64wii")
 
-[node name="50bottle" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(152, 921)
+[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
+position = Vector2(151.665, 2365.73)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("8_grc6c")
 
-[node name="75bottle" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(167, 922)
+[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
+position = Vector2(166.665, 2366.73)
 scale = Vector2(0.65034, 0.65034)
 texture = ExtResource("9_oi5cr")
 
-[node name="100bottle" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(189, 920)
+[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle1"]
+position = Vector2(188.665, 2364.73)
+scale = Vector2(0.638548, 0.638548)
+texture = ExtResource("7_qa8rd")
+
+[node name="bottle2" type="Node2D" parent="CanvasLayer/Health_bottles"]
+position = Vector2(360.786, 0)
+
+[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
+position = Vector2(185.268, 2342.67)
+scale = Vector2(0.660689, 0.660689)
+texture = ExtResource("11_grc6c")
+
+[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
+position = Vector2(186.665, 2339.73)
+scale = Vector2(0.643981, 0.643981)
+texture = ExtResource("10_64wii")
+
+[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
+position = Vector2(151.665, 2365.73)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_grc6c")
+
+[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
+position = Vector2(166.665, 2366.73)
+scale = Vector2(0.65034, 0.65034)
+texture = ExtResource("9_oi5cr")
+
+[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle2"]
+position = Vector2(188.665, 2364.73)
+scale = Vector2(0.638548, 0.638548)
+texture = ExtResource("7_qa8rd")
+
+[node name="bottle3" type="Node2D" parent="CanvasLayer/Health_bottles"]
+position = Vector2(733.76, 0)
+
+[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
+position = Vector2(185.268, 2342.67)
+scale = Vector2(0.660689, 0.660689)
+texture = ExtResource("11_grc6c")
+
+[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
+position = Vector2(186.665, 2339.73)
+scale = Vector2(0.643981, 0.643981)
+texture = ExtResource("10_64wii")
+
+[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
+position = Vector2(151.665, 2365.73)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_grc6c")
+
+[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
+position = Vector2(166.665, 2366.73)
+scale = Vector2(0.65034, 0.65034)
+texture = ExtResource("9_oi5cr")
+
+[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle3"]
+position = Vector2(188.665, 2364.73)
+scale = Vector2(0.638548, 0.638548)
+texture = ExtResource("7_qa8rd")
+
+[node name="bottle4" type="Node2D" parent="CanvasLayer/Health_bottles"]
+position = Vector2(1087.23, 0)
+
+[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
+position = Vector2(185.268, 2342.67)
+scale = Vector2(0.660689, 0.660689)
+texture = ExtResource("11_grc6c")
+
+[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
+position = Vector2(186.665, 2339.73)
+scale = Vector2(0.643981, 0.643981)
+texture = ExtResource("10_64wii")
+
+[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
+position = Vector2(151.665, 2365.73)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_grc6c")
+
+[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
+position = Vector2(166.665, 2366.73)
+scale = Vector2(0.65034, 0.65034)
+texture = ExtResource("9_oi5cr")
+
+[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle4"]
+position = Vector2(188.665, 2364.73)
+scale = Vector2(0.638548, 0.638548)
+texture = ExtResource("7_qa8rd")
+
+[node name="bottle5" type="Node2D" parent="CanvasLayer/Health_bottles"]
+position = Vector2(1448.02, 0)
+
+[node name="0bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
+position = Vector2(185.268, 2342.67)
+scale = Vector2(0.660689, 0.660689)
+texture = ExtResource("11_grc6c")
+
+[node name="25bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
+position = Vector2(186.665, 2339.73)
+scale = Vector2(0.643981, 0.643981)
+texture = ExtResource("10_64wii")
+
+[node name="50bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
+position = Vector2(151.665, 2365.73)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_grc6c")
+
+[node name="75bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
+position = Vector2(166.665, 2366.73)
+scale = Vector2(0.65034, 0.65034)
+texture = ExtResource("9_oi5cr")
+
+[node name="100bottle" type="Sprite2D" parent="CanvasLayer/Health_bottles/bottle5"]
+position = Vector2(188.665, 2364.73)
 scale = Vector2(0.638548, 0.638548)
 texture = ExtResource("7_qa8rd")
 

@@ -6,12 +6,13 @@ extends Node3D
 enum DistortionState { NONE, LOW, MED, HIGH }
 var paused = false
 var state: DistortionState = DistortionState.NONE
-var rate: float = 60.0:
+@export var rate: float = 60.0:
 	set(value):
 		value = clamp(value, 0, 5.0)
 		rate = value
 
 @onready var lights: Node3D = $"Lighting stuff/torch1"
+@onready var player: CharacterBody3D = $Player
 
 func _ready() -> void:
 	Global.distortion = 0.0
@@ -27,6 +28,7 @@ func _process(delta):
 		#pauseMenu()
 		Global.distortion -= delta*rate
 		rate+=delta
+		player._dist_display(Global.distortion)
 		pass
 		
 func increase_distortion(value: float) -> void:
@@ -70,19 +72,19 @@ func update_chroma(strength: float,frequency: float) -> void:
 	#
 	#paused =!paused
 func _on_death() -> void:
-	increase_distortion(7.5)
+	increase_distortion(10.0)
 	pass
 
 func _on_black_cow_on_death() -> void:
-	increase_distortion(30.5)
+	increase_distortion(10.0)
 	pass # Replace with function body.
 
 
 func _on_patched_cow_on_death() -> void:
-	increase_distortion(30.5)
+	increase_distortion(10.0)
 	pass # Replace with function body.
 
 
 func _on_white_cow_on_death() -> void:
-	increase_distortion(30.5)
+	increase_distortion(10.0)
 	pass # Replace with function body.

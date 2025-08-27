@@ -1,9 +1,70 @@
-[gd_scene load_steps=11 format=3 uid="uid://c83lc7sg4k1h2"]
+[gd_scene load_steps=24 format=3 uid="uid://c83lc7sg4k1h2"]
 
 [ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="2_0xvba"]
 [ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_adx45"]
 [ext_resource type="PackedScene" uid="uid://twgwjrmie4xg" path="res://Assets/Black Cow Animations.glb" id="4_bs1gp"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xcucy"]
+animation = &"BC_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bs1gp"]
+animation = &"BC_Shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1uqym"]
+animation = &"BC_Spawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6x0bs"]
+animation = &"BC_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2es4o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcucy"]
+switch_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1uqym"]
+xfade_time = 0.1
+switch_mode = 1
+advance_condition = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewbqh"]
+switch_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bs1gp"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyby2"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ia8wd"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qk2n4"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2epqx"]
+states/BC_Idle/node = SubResource("AnimationNodeAnimation_xcucy")
+states/BC_Idle/position = Vector2(454.667, 278.333)
+states/BC_Shoot/node = SubResource("AnimationNodeAnimation_bs1gp")
+states/BC_Shoot/position = Vector2(880.667, 110)
+states/BC_Spawn/node = SubResource("AnimationNodeAnimation_1uqym")
+states/BC_Spawn/position = Vector2(372, 99.3333)
+states/BC_Walk/node = SubResource("AnimationNodeAnimation_6x0bs")
+states/BC_Walk/position = Vector2(650.667, 280.667)
+states/End/position = Vector2(1306.67, 99.3333)
+transitions = ["Start", "BC_Spawn", SubResource("AnimationNodeStateMachineTransition_2es4o"), "BC_Spawn", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_xcucy"), "BC_Walk", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_1uqym"), "BC_Shoot", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_ewbqh"), "BC_Spawn", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_bs1gp"), "BC_Spawn", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_vyby2"), "BC_Idle", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_ia8wd"), "BC_Walk", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_qk2n4")]
+graph_offset = Vector2(-3, 51)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktv6b"]
 albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
@@ -29,7 +90,11 @@ transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_0xvba")
-black_cow_health = 100
+black_cow_health = 80
+fire_rate = 4.167
+damage = 7.0
+distortion_add = 10.0
+b_dmg = 7.0
 horns_scene = ExtResource("2_0xvba")
 explosion = ExtResource("3_adx45")
 
@@ -37,34 +102,39 @@ explosion = ExtResource("3_adx45")
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Black Cow Animations/BC_Rig" index="0"]
-bones/0/position = Vector3(0, -0.476345, -0.239719)
-bones/0/rotation = Quaternion(-0.683966, -0.0110446, 0.0103755, 0.729356)
 bones/3/position = Vector3(-0.236118, 0.328188, -0.0793923)
-bones/3/rotation = Quaternion(-0.0234704, -0.0350233, 0.825396, 0.562978)
-bones/4/rotation = Quaternion(0.0634686, 0.180355, -0.213852, 0.957972)
-bones/5/position = Vector3(0.24946, 0.264162, 0.0166459)
-bones/5/rotation = Quaternion(0.145833, 0.331829, -0.814725, 0.452598)
-bones/6/rotation = Quaternion(0.122286, -0.292614, 0.0485365, 0.947136)
-bones/7/position = Vector3(0.61477, -0.228994, -0.195387)
-bones/7/rotation = Quaternion(0.708118, 0.232014, -0.628806, 0.222129)
-bones/9/position = Vector3(0.0193613, -0.476345, -0.239719)
-bones/9/rotation = Quaternion(0.697362, -0.664574, -0.20782, 0.169819)
-bones/10/rotation = Quaternion(-0.398965, -0.0928048, -0.131297, 0.90276)
-bones/11/rotation = Quaternion(-0.0217145, -0.0245205, -0.255649, 0.966215)
-bones/12/position = Vector3(-0.164137, -0.647493, 0.0484305)
-bones/12/rotation = Quaternion(0.0956983, -0.645761, -0.130997, 0.746106)
-bones/13/position = Vector3(0.0193613, -0.476345, -0.239719)
-bones/13/rotation = Quaternion(0.676544, 0.685034, 0.214198, 0.164731)
-bones/14/rotation = Quaternion(-0.364115, 0.0947561, 0.13572, 0.916527)
-bones/15/rotation = Quaternion(-0.0125462, 0.0329518, 0.233692, 0.971671)
-bones/16/position = Vector3(0.232527, -0.632226, 0.0480118)
-bones/16/rotation = Quaternion(0.0956983, 0.645761, 0.130997, 0.746106)
+bones/3/rotation = Quaternion(-0.0456948, 0.380726, 0.89858, 0.213339)
+bones/4/rotation = Quaternion(0.442566, 0.124025, 0.0792434, 0.884575)
+bones/5/position = Vector3(0.262169, 0.286547, -0.076264)
+bones/5/rotation = Quaternion(0.118011, -0.23313, -0.899168, 0.351029)
+bones/6/rotation = Quaternion(0.501432, -0.152747, 0.00797451, 0.85157)
+bones/7/position = Vector3(0.423906, 0.418812, 0.222849)
+bones/7/rotation = Quaternion(0.355796, -0.404378, 0.563096, 0.626746)
+bones/9/position = Vector3(3.39144e-23, -0.320738, 4.44089e-16)
+bones/9/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
+bones/10/rotation = Quaternion(-0.499805, 0.0253588, 0.0613227, 0.863592)
+bones/11/rotation = Quaternion(-0.0582963, 0.00958512, -0.262581, 0.9631)
+bones/12/position = Vector3(-0.121623, -0.664043, -0.0398742)
+bones/12/rotation = Quaternion(0.536691, -0.426371, -0.502374, 0.527058)
+bones/13/position = Vector3(-3.39144e-23, -0.320738, 4.44089e-16)
+bones/13/rotation = Quaternion(0.615585, 0.347929, 0.615585, -0.347929)
+bones/14/rotation = Quaternion(-0.439012, -0.0770541, -0.16222, 0.88035)
+bones/15/rotation = Quaternion(-0.0710534, -0.00063886, 0.410409, 0.909129)
+bones/16/position = Vector3(0.149998, -0.652214, -0.023133)
+bones/16/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
 
 [node name="BC_Shotgun" parent="Black Cow Animations/BC_Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.0025787, 0.0244031, -0.0318459, -0.040045, -0.000393718, -0.00354432, -0.00246323, 0.0319477, 0.0242816, 0.699594, -0.675692, 0.143547)
+transform = Transform3D(0.00118943, -0.0399458, -0.00438692, 0.0136496, 0.00452951, -0.0375433, 0.0377968, -0.000378682, 0.0136961, 0.240843, 0.0836648, 0.23724)
 
 [node name="AnimationPlayer" parent="Black Cow Animations" index="1"]
 autoplay = "BC_Shoot"
+
+[node name="AnimationTree" type="AnimationTree" parent="Black Cow Animations"]
+tree_root = SubResource("AnimationNodeStateMachine_2epqx")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/Idle = false
+parameters/conditions/shoot = false
+parameters/conditions/walk = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
