@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=59 format=3 uid="uid://dwnt5kns4icot"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
 [ext_resource type="Script" uid="uid://buuo8jbohwcxn" path="res://basement.gd" id="1_xwxmh"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_244tr"]
+[ext_resource type="Shader" uid="uid://dq5kyfspyhv65" path="res://Shaders/transition.gdshader" id="2_b3khk"]
 [ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://Scenes/bookshelf.tscn" id="3_kay6q"]
 [ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://Scenes/Stone_floor.tscn" id="4_4kw8u"]
 [ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://Scenes/table.tscn" id="5_u0eul"]
@@ -32,9 +33,31 @@
 [ext_resource type="Script" uid="uid://doqw62so03e6j" path="res://scripts/spawnbox_5.gd" id="32_ok6xx"]
 [ext_resource type="Script" uid="uid://cvwssfde48qbs" path="res://scripts/spawnbox_6.gd" id="33_vjbw5"]
 [ext_resource type="Script" uid="uid://cawwi7kwne0x5" path="res://spawnbox1.gd" id="33_wqo3g"]
-[ext_resource type="Script" uid="uid://i6y534wwasd8" path="res://level_transition.gd" id="34_kcs00"]
+[ext_resource type="Script" uid="uid://bspsw8rgjwxl6" path="res://scripts/level_transition.gd" id="34_g7txx"]
 [ext_resource type="Script" uid="uid://b2oswvedox5po" path="res://scripts/spawnbox_7.gd" id="34_q2q8j"]
+[ext_resource type="Script" uid="uid://card1cuviubxt" path="res://killzone.gd" id="35_g7txx"]
 [ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="35_qs01l"]
+[ext_resource type="Shader" uid="uid://bgpnf56liefrk" path="res://portal.gdshader" id="37_s32vs"]
+[ext_resource type="Texture2D" uid="uid://dkowa24u1blqa" path="res://T_VFX_lelu1_tiled.png" id="38_plyyp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b3khk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lrwh7"]
+noise = SubResource("FastNoiseLite_b3khk")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s32vs"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_plyyp"]
+noise = SubResource("FastNoiseLite_s32vs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrwh7"]
+shader = ExtResource("2_b3khk")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_lrwh7")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_plyyp")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.07, -0.03)
+shader_parameter/distortion_strength = 0.5
+shader_parameter/transition_amount = 0.0
 
 [ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://Scenes/enemy scenes/black_cow.tscn" id="25_244tr"]
 [ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="26_0ync5"]
@@ -52,7 +75,7 @@ shader_parameter/color_B = Color(0, 0.753492, 0.498016, 1)
 shader_parameter/skyTexture = ExtResource("2_244tr")
 shader_parameter/time_speed = 0.02
 shader_parameter/swirl_strength = 0.3
-shader_parameter/tex_scale = 1.3
+shader_parameter/tex_scale = 0.6
 shader_parameter/invert_color = true
 
 [sub_resource type="Sky" id="Sky_p5gxk"]
@@ -99,11 +122,14 @@ albedo_color = Color(0.533852, 0.587188, 0.181128, 1)
 emission_enabled = true
 emission = Color(0, 0.931239, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3khk"]
+size = Vector3(5.82489, 1, 15.0297)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7txx"]
 size = Vector3(1, 4.90039, 10.8398)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_160tv"]
-size = Vector3(1, 4.90039, 16)
+size = Vector3(1, 4.90039, 13.3783)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wqo3g"]
 size = Vector3(1, 4.90039, 7)
@@ -111,20 +137,46 @@ size = Vector3(1, 4.90039, 7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kcs00"]
 size = Vector3(0.001, 4, 8)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kcs00"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ok6xx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjbw5"]
+render_priority = 0
+shader = ExtResource("37_s32vs")
+shader_parameter/camo_tex = ExtResource("38_plyyp")
+shader_parameter/color_a = Color(0, 0, 0, 1)
+shader_parameter/color_b = Color(0.640671, 0.325812, 1, 1)
+shader_parameter/glow = 1.0
+shader_parameter/glow_color = Color(0.436508, 0.00124197, 0.621111, 1)
+shader_parameter/glow_strength = 1.5
+shader_parameter/glow_thinnes = 3.085
+shader_parameter/glow_dispersion = 3.145
+shader_parameter/enable_fresnel = true
+shader_parameter/major_radius = 1.0
+shader_parameter/minor_radius = 0.3
+
 [node name="level" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29482, 0, 6.33197)
 script = ExtResource("1_xwxmh")
+rate = 15.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lrwh7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4kw8u")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9226, 1.86623, 42.0084)
-collision_layer = 536870913
-speed_walk = 5.0
-speed_sprint = 10.0
-speed_crouch = 2.5
-JUMP_VELOCITY = 10
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.8818, 1.86623, 45.4212)
+collision_layer = 2684354561
 
 [node name="WORLD_BUILDING" type="Node3D" parent="."]
 
@@ -1350,7 +1402,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8675, 0.35, -49.4485)
 
 [node name="Roof" type="Node3D" parent="WORLD_BUILDING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00205898, 7.99933, 0.00520325)
-visible = false
 
 [node name="Stone_floor" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -21.1325, -2.65, 38.5515)
@@ -2296,6 +2347,27 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 58.867
 
 [node name="Stone_floor430" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 62.8675, -2.65, -49.4485)
+
+[node name="Stone_floor257" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -21.0069, -0.632143, -39.3916)
+
+[node name="Stone_floor265" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(-4.37114e-08, -1, 1.31134e-07, 0, 1.31134e-07, 1, -1, 4.37114e-08, -5.73206e-15, -15.0321, -0.548334, -41.3505)
+
+[node name="Stone_floor266" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, -1, 0, 1, -2.18557e-07, -21.0791, -0.65, -43.3875)
+
+[node name="Stone_floor267" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, -1, 0, 1, -2.18557e-07, -17.0791, -0.65, -43.3875)
+
+[node name="Stone_floor268" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -17.0069, -0.632143, -39.3916)
+
+[node name="Stone_floor254" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -21.1325, 1.35, -41.4485)
+
+[node name="Stone_floor269" parent="WORLD_BUILDING/Roof" instance=ExtResource("4_4kw8u")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -17.1325, 1.35, -41.4485)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="WORLD_BUILDING"]
 
@@ -3515,6 +3587,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39467, -5.44506, -38.5168)
 [node name="Stairs" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs" instance=ExtResource("11_humyx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.716, -3.12016, -29.2755)
 
+[node name="CollisionShape3D" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Stairs" index="1"]
+transform = Transform3D(1, -2.29257e-08, 8.32433e-09, 2.34217e-08, 0.807414, -0.589986, 6.80464e-09, 0.589986, 0.807414, 0.0317192, 0.864632, -2.37266)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Stairs"]
+transform = Transform3D(-5.0516e-08, 0, 1, 0.535827, 0.844328, 0, -0.844328, 0.535827, -1.49012e-08, 0.0317192, 3.24863, -6.32224)
+shape = SubResource("BoxShape3D_b3khk")
+
 [node name="Mound" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs" instance=ExtResource("15_46wd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6268, -5.83108, 14.4325)
 
@@ -4383,7 +4462,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0849116, 0, 0)
 
 [node name="Spawnbox" type="Area3D" parent="Progression boxes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6946, 2.11977, 38.0491)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6946, 2.11977, 38.1829)
 collision_layer = 0
 collision_mask = 536870912
 script = ExtResource("33_wqo3g")
@@ -4393,74 +4472,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732422, 4.22331)
 shape = SubResource("BoxShape3D_g7txx")
 
 [node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45068, 0.215208, 7.13936)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46191, -0.454596, -2.4094)
 
 [node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8088, 0.215208, 3.53596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94241, -0.454596, 2.99986)
 
 [node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30826, 0.215208, 5.56782)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5816, -0.454596, 2.32824)
 
 [node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.215208, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.454596, -0.625027)
 
 [node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3349, 0.215208, 2.06855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3349, -0.454596, -2.55648)
 
 [node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.215208, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -0.454596, 2.37497)
 
 [node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.215208, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -0.454596, 0.374973)
 
 [node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.512, 0.215208, 7.12125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.512, -0.454596, 2.49622)
 
 [node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0.215208, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -0.454596, 3.37497)
 
 [node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0.215208, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -0.454596, 1.37497)
 
 [node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5326, 0.215208, 0.432968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5326, -0.454596, -4.19206)
 
 [node name="Spawnbox2" type="Area3D" parent="Progression boxes"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3949, 2.11977, 35.7078)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.0095, 2.11977, 35.7078)
 collision_layer = 0
 collision_mask = 536870912
 script = ExtResource("29_lrwh7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732422, 4.35905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732422, 0.00230026)
 shape = SubResource("BoxShape3D_160tv")
 
 [node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46394, 0, 8.49301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25045, -0.553604, 10.7386)
 
 [node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15823, 0, -1.19952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94474, -0.553604, 1.04608)
 
 [node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7442, 0, -1.19952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5307, -0.553604, 1.04608)
 
 [node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7442, 0, 8.30985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5307, -0.553604, 10.5555)
 
 [node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6258, 0, 8.30985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4123, -0.553604, 10.5555)
 
 [node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0405, 0, 8.30985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.827, -0.553604, 10.5555)
 
 [node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7732, 0, -0.309939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5597, -0.553604, 1.93567)
 
 [node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.304, 0, 2.80769)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0905, -0.553604, 5.0533)
 
 [node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8314, 0, -0.489107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6179, -0.553604, 1.7565)
 
 [node name="Spawnbox3" type="Area3D" parent="Progression boxes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.0018, 2.98456, 18.0405)
@@ -4754,16 +4833,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4474, 0, 0.433392)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8147e-06, 0, 0)
 
 [node name="Level_transition" type="Area3D" parent="Progression boxes"]
-transform = Transform3D(1.74846e-07, 4.37114e-08, -1, 1, -4.37114e-08, 1.74846e-07, -4.37114e-08, -1, -4.37114e-08, -22.7215, 6.31227, -41.1756)
+transform = Transform3D(-1, 4.37114e-08, -1.31135e-07, 1.31135e-07, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -18.7215, 1.31227, -41.1756)
 collision_layer = 0
 collision_mask = 536870912
-script = ExtResource("34_kcs00")
+script = ExtResource("34_g7txx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Level_transition"]
 transform = Transform3D(1, 0, 1.91069e-15, 0, 1, 0, 1.91069e-15, 0, 1, -0.54906, 0.23542, -4.89853)
 shape = SubResource("BoxShape3D_kcs00")
 
 [node name="Health Pickups" type="Node3D" parent="."]
+
+[node name="Killzone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2147483648
+script = ExtResource("35_g7txx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
+transform = Transform3D(4.42655, 0, 0, 0, 1, 0, 0, 0, 4.83787, 19.8647, -0.860713, -1.42263)
+shape = SubResource("WorldBoundaryShape3D_kcs00")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, 41.1924, -0.53714, -23.2267)
+mesh = SubResource("BoxMesh_ok6xx")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_vjbw5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, -8.80758, -0.53714, -23.2267)
+mesh = SubResource("BoxMesh_ok6xx")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_vjbw5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, 0.192416, -0.53714, 30.7733)
+mesh = SubResource("BoxMesh_ok6xx")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_vjbw5")
 
 [connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox2" to="Progression boxes/Spawnbox2" method="_on_body_entered"]
@@ -4774,9 +4880,13 @@ shape = SubResource("BoxShape3D_kcs00")
 [connection signal="body_entered" from="Progression boxes/Spawnbox7" to="Progression boxes/Spawnbox7" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox8" to="Progression boxes/Spawnbox8" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Level_transition" to="Progression boxes/Level_transition" method="_on_body_entered"]
+[connection signal="body_entered" from="Killzone" to="Player" method="_on_killzone_body_entered"]
+[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
 
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest/Chest"]
+[editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Stairs"]
+[editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Stairs/stairs1"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone/stone_doorframe"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Doors/Doorframe_stone/vent"]

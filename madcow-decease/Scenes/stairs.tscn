@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crjr57wa7o8fg" path="res://Assets/stairs1.glb" id="1_aiuvb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiuvb"]
-size = Vector3(4, 1, 8.77686)
+size = Vector3(4.99329, 1, 15.0297)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbift"]
 size = Vector3(0.327789, 1.07922, 8.177)

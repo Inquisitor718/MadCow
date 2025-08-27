@@ -7,9 +7,10 @@
 [node name="minigun" type="Node3D" groups=["Proj"]]
 
 [node name="Machinegun2" parent="." groups=["Proj"] instance=ExtResource("1_muqg3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.22312)
 
 [node name="Machinegun" parent="Machinegun2" index="0" groups=["Proj"]]
-transform = Transform3D(0.275, 0, 0, 0, -1.20206e-08, -0.275, 0, 0.275, -1.20206e-08, 0, 0, -0.5)
+transform = Transform3D(0.275, 0, 0, 0, -1.20206e-08, -0.275, 0, 0.275, -1.20206e-08, 2.42647e-08, 0, -0.777556)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Proj"]]
 transform = Transform3D(1, 0, 0, 0, -0.000331565, 1, 0, -1, -0.000331565, 0, 0, 0)

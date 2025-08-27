@@ -47,6 +47,8 @@ func _physics_process(delta):
 	else:
 		_stop_moving()
 	move_and_slide()
+	
+	_fall_death()
 
 func _has_line_of_sight() -> bool:
 	var from = global_transform.origin
@@ -98,7 +100,9 @@ func _shoot():
 	var new_pellet = pellets.instantiate()
 	get_tree().current_scene.add_child(new_pellet)
 	new_pellet.global_transform.origin = pellets_spawn.global_transform.origin
-	
+	var direction = (player.global_transform.origin - global_transform.origin)
+	new_pellet.direction.y = 0
+	new_pellet.direction = direction.normalized()
 	if player:
 		var shot_direction = (player.global_transform.origin - pellets_spawn.global_transform.origin).normalized()
 		new_pellet.direction.x = randfn(shot_direction.x, 0.025)
@@ -157,3 +161,9 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
+
+func _fall_death():
+	if global_position.y <-1.0 :
+		
+		print("enemy dead")
+		queue_free()

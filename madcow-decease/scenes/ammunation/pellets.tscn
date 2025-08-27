@@ -17,13 +17,18 @@ height = 0.04
 radius = 0.02
 
 [node name="Pellets" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_4dskg")
-
-[node name="projectile" parent="." instance=ExtResource("2_6ll3h")]
-transform = Transform3D(-0.18, 0, 2.71792e-08, 0, 0.18, 0, -2.71792e-08, 0, -0.18, 0, 0, 0)
+speed = 30.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_33nc3")
+
+[node name="projectile" parent="." instance=ExtResource("2_6ll3h")]
+transform = Transform3D(0.18, 0, -1.14431e-08, 0, 0.18, 0, 1.14431e-08, 0, 0.18, 0, 0, 0)
+
+[node name="Projectile" parent="projectile" index="0"]
+transform = Transform3D(3.49691e-08, -2.5, -6.99382e-08, -0.8, -1.09278e-07, 0, -3.0571e-15, 2.18557e-07, -0.8, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 64
@@ -33,3 +38,5 @@ collision_mask = 5
 shape = SubResource("SphereShape3D_1a5v4")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="projectile"]

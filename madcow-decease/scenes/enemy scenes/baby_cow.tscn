@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cerrexjmrwoos"]
+[gd_scene load_steps=13 format=3 uid="uid://cerrexjmrwoos"]
 
 [ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/Cows/baby_cow.gd" id="1_ty27g"]
 [ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://Scenes/ammunation/magnum.tscn" id="2_ye5jj"]
 [ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://cdecl2s4dx1un" path="res://Assets/Baby Cow Animations.glb" id="4_jsi7h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18obc"]
 albedo_color = Color(0.721569, 0.133333, 0.560784, 1)
@@ -22,7 +23,7 @@ height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18obc"]
 radius = 0.3
-height = 1.0
+height = 1.46103
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ye5jj"]
 radius = 8.0
@@ -38,16 +39,59 @@ collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_ty27g")
 baby_cow_health = 50
-move_speed = 6.5
+move_speed = 2.0
+fire_rate = 3.0
+distortion_add = 10.0
 magnum = ExtResource("2_ye5jj")
 explosion = ExtResource("3_ye5jj")
 
+[node name="Baby Cow Animations" parent="." instance=ExtResource("4_jsi7h")]
+
+[node name="BBY_Rig" parent="Baby Cow Animations" index="0"]
+transform = Transform3D(0.842, 0, 0, 0, 0.842, 0, 0, 0, 0.842, 0, 0.564771, 0)
+
+[node name="Skeleton3D" parent="Baby Cow Animations/BBY_Rig" index="0"]
+bones/0/position = Vector3(0.0193613, -0.327008, 0)
+bones/3/position = Vector3(-0.243546, 0.308379, -0.0793923)
+bones/3/rotation = Quaternion(-0.0840514, 0.131339, 0.944065, 0.290561)
+bones/4/rotation = Quaternion(0.572165, 0.174531, 0.116385, 0.792856)
+bones/5/position = Vector3(-0.0234097, 0.2958, -0.00522637)
+bones/5/rotation = Quaternion(0.110881, -0.802227, 0.0888572, 0.579863)
+bones/7/position = Vector3(0.262169, 0.286547, -0.076264)
+bones/7/rotation = Quaternion(0.118011, -0.23313, -0.899168, 0.351029)
+bones/8/rotation = Quaternion(0.501432, -0.152747, 0.00797451, 0.85157)
+bones/9/position = Vector3(-0.0352878, 0.35323, -0.0170726)
+bones/9/rotation = Quaternion(0.0497621, 0.770954, 0.105309, -0.62615)
+bones/11/position = Vector3(0.0193613, -0.327008, -3.77512e-09)
+bones/11/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
+bones/12/rotation = Quaternion(-0.464186, 0.0437616, 0.10074, 0.878902)
+bones/13/rotation = Quaternion(-0.062749, 0.00297203, -0.343628, 0.937002)
+bones/14/position = Vector3(-0.121623, -0.664043, -0.0398742)
+bones/14/rotation = Quaternion(0.536691, -0.426371, -0.502374, 0.527058)
+bones/15/position = Vector3(0.0193613, -0.327008, -2.68556e-09)
+bones/15/rotation = Quaternion(0.615585, 0.347929, 0.615585, -0.347929)
+bones/16/rotation = Quaternion(-0.458623, -0.0938535, -0.180304, 0.865071)
+bones/17/rotation = Quaternion(-0.0948985, -0.00733377, 0.452372, 0.886736)
+bones/18/position = Vector3(0.149998, -0.652214, -0.023133)
+bones/18/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
+
+[node name="PC_Pistol_002" parent="Baby Cow Animations/BBY_Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.0212935, -0.00088682, -0.00362355, 0.00369917, -0.00230415, -0.021174, 0.000482395, -0.0214764, 0.00242134, -0.395069, 0.24989, 0.515167)
+
+[node name="PC_Pistol_001" parent="Baby Cow Animations/BBY_Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.020576, 0.000642471, 0.00659903, -0.0065217, 0.00191599, -0.0205214, -0.00119476, -0.0215232, -0.00162983, 0.425339, 0.243127, 0.633083)
+
+[node name="AnimationPlayer" parent="Baby Cow Animations" index="1"]
+autoplay = "BBY_Shoot"
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_ty27g")
 
 [node name="handgun2" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.156681, 0.204883, 0.233911)
+visible = false
 mesh = SubResource("CapsuleMesh_ucynp")
 
 [node name="Marker3D" type="Marker3D" parent="MeshInstance3D/handgun2"]
@@ -55,13 +99,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100377, 0)
 
 [node name="handgun1" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.129326, 0.204883, 0.233768)
+visible = false
 mesh = SubResource("CapsuleMesh_ucynp")
 
 [node name="Marker3D" type="Marker3D" parent="MeshInstance3D/handgun1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1003, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708453, 0)
 shape = SubResource("CapsuleShape3D_18obc")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -89,3 +134,5 @@ shape = SubResource("SphereShape3D_ucynp")
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Baby Cow Animations"]
