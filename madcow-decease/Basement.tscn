@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://0kdavsmudtd3" path="res://Scenes/doorframe_stone.tscn" id="21_ba2bl"]
 [ext_resource type="PackedScene" uid="uid://cy23fhf1ysxub" path="res://Scenes/pillar.tscn" id="22_phgjd"]
 [ext_resource type="PackedScene" uid="uid://caac403h5abfw" path="res://Scenes/torch.tscn" id="23_itqoo"]
+
 [ext_resource type="Script" uid="uid://dt4bdjb0ey2tj" path="res://scripts/spawnbox_2.gd" id="29_lrwh7"]
 [ext_resource type="Script" uid="uid://bqoyr0b5r4hpv" path="res://scripts/spawnbox_3.gd" id="30_s32vs"]
 [ext_resource type="Script" uid="uid://cgeg0apr4wcci" path="res://scripts/spawnbox_4.gd" id="31_plyyp"]
@@ -34,6 +35,15 @@
 [ext_resource type="Script" uid="uid://i6y534wwasd8" path="res://level_transition.gd" id="34_kcs00"]
 [ext_resource type="Script" uid="uid://b2oswvedox5po" path="res://scripts/spawnbox_7.gd" id="34_q2q8j"]
 [ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="35_qs01l"]
+
+[ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://Scenes/enemy scenes/black_cow.tscn" id="25_244tr"]
+[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="26_0ync5"]
+[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="27_xwxmh"]
+[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="29_rae03"]
+[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://Scenes/enemy scenes/baby_cow.tscn" id="31_160tv"]
+[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="32_wqo3g"]
+[ext_resource type="Script" uid="uid://cawwi7kwne0x5" path="res://spawnbox1.gd" id="33_wqo3g"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ync5"]
 shader = ExtResource("1_eqln2")

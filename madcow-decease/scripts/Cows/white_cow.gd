@@ -104,6 +104,7 @@ func _shoot():
 		new_pellet.direction.x = randfn(shot_direction.x, 0.025)
 		new_pellet.direction.y = randfn(shot_direction.y, 0.025)
 		new_pellet.direction.z = shot_direction.z
+		
 
 func spawn_explode(position: Vector3):
 	if explosion:
