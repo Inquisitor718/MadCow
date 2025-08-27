@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://t83sow7tgk83"]
 
-[ext_resource type="PackedScene" uid="uid://ce84thfmqts4h" path="res://Assets/revolver/Machinegun.glb" id="1_muqg3"]
+[ext_resource type="PackedScene" uid="uid://ce84thfmqts4h" path="res://assets/revolver/Machinegun.glb" id="1_muqg3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_haywc"]
 

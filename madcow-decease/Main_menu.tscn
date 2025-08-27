@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://y8tobwhbqs6e"]
 
-[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://Assets/2D_assets/SS.png" id="1_5kukc"]
+[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://assets/2D_assets/SS.png" id="1_5kukc"]
 [ext_resource type="Script" uid="uid://myy1k375mo10" path="res://Play_button.gd" id="1_b07fi"]
-[ext_resource type="Texture2D" uid="uid://da22jf6flmpd5" path="res://Assets/2D_assets/Vector 17.png" id="1_x2ps0"]
+[ext_resource type="Texture2D" uid="uid://da22jf6flmpd5" path="res://assets/2D_assets/Vector 17.png" id="1_x2ps0"]
 [ext_resource type="FontFile" uid="uid://dmwo3rtr3ql6f" path="res://Pwficelles-4Kv4.ttf" id="2_rlxw3"]
 [ext_resource type="Script" uid="uid://c48ru4u4n54jx" path="res://Quit_button.gd" id="2_x6lt7"]
 
