@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgiltyj5fak8o"
-path.s3tc="res://.godot/imported/Black Cow Animations_Guns.png-e9e4b6e93c211f59f1b5064cda8cc861.s3tc.ctex"
+path.s3tc="res://.godot/imported/Black Cow Animations_Guns.png-92ec40c259e16bd89fc39d919069b651.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Black Cow Animations_Guns.png"
-dest_files=["res://.godot/imported/Black Cow Animations_Guns.png-e9e4b6e93c211f59f1b5064cda8cc861.s3tc.ctex"]
+source_file="res://Assets/Black Cow Animations_Guns.png"
+dest_files=["res://.godot/imported/Black Cow Animations_Guns.png-92ec40c259e16bd89fc39d919069b651.s3tc.ctex"]
 
 [params]
 

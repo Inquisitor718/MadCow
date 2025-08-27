@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://i86sqegyd8ie"
-path="res://.godot/imported/groundfork.glb-27cf21874c865acb172e8c3aa2d751a1.scn"
+path="res://.godot/imported/groundfork.glb-528869367b813b7ed4aeab80aac450af.scn"
 
 [deps]
 
-source_file="res://assets/groundfork.glb"
-dest_files=["res://.godot/imported/groundfork.glb-27cf21874c865acb172e8c3aa2d751a1.scn"]
+source_file="res://Assets/groundfork.glb"
+dest_files=["res://.godot/imported/groundfork.glb-528869367b813b7ed4aeab80aac450af.scn"]
 
 [params]
 

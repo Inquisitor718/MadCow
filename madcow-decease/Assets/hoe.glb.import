@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c42f700lmju81"
-path="res://.godot/imported/hoe.glb-3c30557cf3eb7e96061c8ab73be65180.scn"
+path="res://.godot/imported/hoe.glb-2df31a5bdbcd74744e0553f3c9bc4778.scn"
 
 [deps]
 
-source_file="res://assets/hoe.glb"
-dest_files=["res://.godot/imported/hoe.glb-3c30557cf3eb7e96061c8ab73be65180.scn"]
+source_file="res://Assets/hoe.glb"
+dest_files=["res://.godot/imported/hoe.glb-2df31a5bdbcd74744e0553f3c9bc4778.scn"]
 
 [params]
 

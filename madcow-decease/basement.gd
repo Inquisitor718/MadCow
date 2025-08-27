@@ -1,8 +1,6 @@
 extends Node3D
 
 
-@onready var pause_menu: Control = $Player/Head/Camera3D/Pause_menu
-
 @onready var shader_mat: ShaderMaterial = $Player/CanvasLayer2/ColorRect.material
 
 enum DistortionState { NONE, LOW, MED, HIGH }
@@ -57,7 +55,6 @@ func update_chroma(strength: float,frequency: float) -> void:
 	shader_mat.set_shader_parameter("aberration_strength",strength)
 	shader_mat.set_shader_parameter("frequency",frequency)
 		
-
 #func pauseMenu():
 	#if paused:
 		#pause_menu.hide()
@@ -77,24 +74,6 @@ func update_chroma(strength: float,frequency: float) -> void:
 func _on_death() -> void:
 	increase_distortion(10.0)
 	pass
-func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		get_tree().paused = false
-		set_process_input(true)
-		print("playing")
-	else:
-		pause_menu.show()
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		get_tree().paused = true
-		set_process_input(false)
-		print("paused")
-		
-	
-	paused =!paused
-
-
 
 func _on_black_cow_on_death() -> void:
 	increase_distortion(10.0)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://caowma3mxfw7q"
-path="res://.godot/imported/Patched Cow Animations.glb-d4f8ee0d18a92e0c9d11b96177b177cb.scn"
+path="res://.godot/imported/Patched Cow Animations.glb-6f5d3711b768f5c0269a355f02bd222e.scn"
 
 [deps]
 
-source_file="res://assets/Patched Cow Animations.glb"
-dest_files=["res://.godot/imported/Patched Cow Animations.glb-d4f8ee0d18a92e0c9d11b96177b177cb.scn"]
+source_file="res://Assets/Patched Cow Animations.glb"
+dest_files=["res://.godot/imported/Patched Cow Animations.glb-6f5d3711b768f5c0269a355f02bd222e.scn"]
 
 [params]
 
