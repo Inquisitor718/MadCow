@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctp04lqa3mlq0"
-path="res://.godot/imported/pitchfork.glb-168b5b4095ba5a7334e27b877ae4ae3e.scn"
+path="res://.godot/imported/pitchfork.glb-f941889d9e5e25dd9dd8c1329fc21329.scn"
 
 [deps]
 
-source_file="res://Assets/pitchfork.glb"
-dest_files=["res://.godot/imported/pitchfork.glb-168b5b4095ba5a7334e27b877ae4ae3e.scn"]
+source_file="res://assets/pitchfork.glb"
+dest_files=["res://.godot/imported/pitchfork.glb-f941889d9e5e25dd9dd8c1329fc21329.scn"]
 
 [params]
 

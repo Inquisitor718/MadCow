@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fwfg588j6ojg"
-path.s3tc="res://.godot/imported/Patched Cow Animations_Guns.png-f7a29c687a19df00e725e912d522220b.s3tc.ctex"
+path.s3tc="res://.godot/imported/Patched Cow Animations_Guns.png-b3741a9e4dc193f72f905656716437ee.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Patched Cow Animations_Guns.png"
-dest_files=["res://.godot/imported/Patched Cow Animations_Guns.png-f7a29c687a19df00e725e912d522220b.s3tc.ctex"]
+source_file="res://assets/Patched Cow Animations_Guns.png"
+dest_files=["res://.godot/imported/Patched Cow Animations_Guns.png-b3741a9e4dc193f72f905656716437ee.s3tc.ctex"]
 
 [params]
 

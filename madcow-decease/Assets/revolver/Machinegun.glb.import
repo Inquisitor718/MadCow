@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ce84thfmqts4h"
-path="res://.godot/imported/Machinegun.glb-04a0e6952902a3976b606dffbe42e7b1.scn"
+path="res://.godot/imported/Machinegun.glb-4861b1c372241fd10e7da95142fb3dd7.scn"
 
 [deps]
 
-source_file="res://Assets/revolver/Machinegun.glb"
-dest_files=["res://.godot/imported/Machinegun.glb-04a0e6952902a3976b606dffbe42e7b1.scn"]
+source_file="res://assets/revolver/Machinegun.glb"
+dest_files=["res://.godot/imported/Machinegun.glb-4861b1c372241fd10e7da95142fb3dd7.scn"]
 
 [params]
 
