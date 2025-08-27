@@ -1,6 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://y8tobwhbqs6e"]
 
 [ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://Assets/2D_assets/SS.png" id="1_5kukc"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://lkwovox7o504" path="res://Assets/2D_assets/buttons/play.png" id="2_p42dv"]
 [ext_resource type="Texture2D" uid="uid://dcexnpvi0nrl" path="res://Assets/2D_assets/buttons/play (1).png" id="3_r1jqq"]
 [ext_resource type="Script" uid="uid://b7l7ub6nacpw" path="res://play_b.gd" id="4_hv5cx"]
@@ -8,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://b8gtroqtnvntm" path="res://Assets/2D_assets/buttons/play (2).png" id="5_hv5cx"]
 [ext_resource type="Texture2D" uid="uid://6aqc4vif42fl" path="res://Assets/2D_assets/buttons/play (3).png" id="6_56ax1"]
 [ext_resource type="Texture2D" uid="uid://bpomd7ajisisn" path="res://Assets/2D_assets/Frame 14.png" id="8_hv5cx"]
+=======
+[ext_resource type="Script" uid="uid://myy1k375mo10" path="res://Play_button.gd" id="1_b07fi"]
+[ext_resource type="Texture2D" uid="uid://da22jf6flmpd5" path="res://Assets/2D_assets/Vector 17.png" id="1_x2ps0"]
+[ext_resource type="FontFile" uid="uid://dmwo3rtr3ql6f" path="res://Pwficelles-4Kv4.ttf" id="2_rlxw3"]
+[ext_resource type="Script" uid="uid://c48ru4u4n54jx" path="res://Quit_button.gd" id="2_x6lt7"]
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 
 [node name="Node2D" type="Node2D"]
 

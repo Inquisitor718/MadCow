@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3sr8y65qrk4w"
-path.s3tc="res://.godot/imported/Machinegun_Guns.png-ebcb3b44a47c3c0f86703a5441500990.s3tc.ctex"
+path.s3tc="res://.godot/imported/Machinegun_Guns.png-12940ec88aace0f87dbf86376d96ed96.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/revolver/Machinegun_Guns.png"
-dest_files=["res://.godot/imported/Machinegun_Guns.png-ebcb3b44a47c3c0f86703a5441500990.s3tc.ctex"]
+source_file="res://Assets/revolver/Machinegun_Guns.png"
+dest_files=["res://.godot/imported/Machinegun_Guns.png-12940ec88aace0f87dbf86376d96ed96.s3tc.ctex"]
 
 [params]
 

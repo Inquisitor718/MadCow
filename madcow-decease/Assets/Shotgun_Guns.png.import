@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://celijax1f4syp"
-path.s3tc="res://.godot/imported/Shotgun_Guns.png-e4ea5680d4f2416717f1d42689752c4a.s3tc.ctex"
+path.s3tc="res://.godot/imported/Shotgun_Guns.png-5257f265d2e26117c4f4199ae9280ea0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Shotgun_Guns.png"
-dest_files=["res://.godot/imported/Shotgun_Guns.png-e4ea5680d4f2416717f1d42689752c4a.s3tc.ctex"]
+source_file="res://Assets/Shotgun_Guns.png"
+dest_files=["res://.godot/imported/Shotgun_Guns.png-5257f265d2e26117c4f4199ae9280ea0.s3tc.ctex"]
 
 [params]
 

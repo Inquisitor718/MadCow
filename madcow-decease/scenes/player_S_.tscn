@@ -1,17 +1,25 @@
 [gd_scene load_steps=47 format=3 uid="uid://c6qqhoiccfc6n"]
 
 [ext_resource type="Script" uid="uid://bia8jgms1aljh" path="res://scripts/Player_S.gd" id="1_gkn25"]
+<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://djyjixatdea4p" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
+=======
+[ext_resource type="Shader" uid="uid://sgw6usnarig3" path="res://Shaders/viewportchroma.gdshader" id="2_4lvae"]
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 [ext_resource type="PackedScene" uid="uid://dsw7khefkfewe" path="res://Scenes/ammunation/revolver.tscn" id="2_aj78o"]
 [ext_resource type="Script" uid="uid://cpxtegv7jr144" path="res://scripts/ammunation/w_manager.gd" id="2_v7hu7"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="3_jdn2x"]
 [ext_resource type="Resource" uid="uid://cx5gjyikfb4nk" path="res://Assets/weapon_resources/revolver.tres" id="4_w0gdg"]
 [ext_resource type="Texture2D" uid="uid://cplrasiw0qicr" path="res://Assets/2D_assets/Group 13.png" id="4_xo0wp"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://b0h22p1mfbns6" path="res://Assets/2D_assets/Group 11.png" id="5_ovxxp"]
+=======
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 [ext_resource type="Resource" uid="uid://d0rj6ma6qyhe0" path="res://Assets/weapon_resources/Minigun.tres" id="5_qde3d"]
 [ext_resource type="PackedScene" uid="uid://t83sow7tgk83" path="res://Scenes/ammunation/minigun.tscn" id="6_w0gdg"]
 [ext_resource type="Resource" uid="uid://cxgf6hy061pvc" path="res://Assets/weapon_resources/Shotgun.tres" id="7_0wot1"]
 [ext_resource type="PackedScene" uid="uid://beri3rk1pt6gk" path="res://Scenes/ammunation/shotgun.tscn" id="7_4j2pt"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cisrink1cymxh" path="res://Assets/2D_assets/Group 5.png" id="7_qa8rd"]
 [ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/ammunation/Gun_Counter.gd" id="8_flsqn"]
 [ext_resource type="Texture2D" uid="uid://c7gwikuir7liu" path="res://Assets/2D_assets/Group 6.png" id="8_grc6c"]
@@ -22,6 +30,12 @@
 [ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
 [ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://Scenes/pause.tscn" id="13_2vmbr"]
 [ext_resource type="Texture2D" uid="uid://c7gq12drl37e" path="res://Assets/2D_assets/Vector 7.png" id="17_wycyf"]
+=======
+[ext_resource type="Script" uid="uid://b8i3lhhm5nex7" path="res://scripts/ammunation/Gun_Counter.gd" id="8_flsqn"]
+[ext_resource type="Resource" uid="uid://ck0ypl6agnvqt" path="res://Assets/weapon_resources/Hornyahh.tres" id="8_x5t1h"]
+[ext_resource type="PackedScene" uid="uid://c3ljb4w20ye2r" path="res://Scenes/horns.tscn" id="12_d62hb"]
+[ext_resource type="PackedScene" uid="uid://b473v72wgi3qf" path="res://Scenes/pause.tscn" id="13_2vmbr"]
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 

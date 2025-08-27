@@ -65,10 +65,17 @@ bones/17/position = Vector3(0.149998, -0.652214, -0.023133)
 bones/17/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
 
 [node name="PC_Hat" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="0"]
+<<<<<<< HEAD
 transform = Transform3D(0.333789, -5.09176e-05, 5.16224e-05, 5.08526e-05, 0.333789, 0.000198063, -7.52608e-05, -0.000288578, 0.229084, 0.0307346, 0.800377, -0.0727994)
 
 [node name="PC_Pistol" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="1"]
 transform = Transform3D(-0.0131092, 0.00329063, 0.00467427, -0.00545962, -0.00374192, -0.0126774, -0.00169397, -0.0134051, 0.00468622, 0.380871, 0.322946, 0.512209)
+=======
+transform = Transform3D(0.333789, 2.18279e-11, 6.65472e-11, -2.18279e-11, 0.333789, 2.16125e-10, -9.69631e-11, -3.14906e-10, 0.229084, 0.0309228, 0.800437, -0.0718221)
+
+[node name="PC_Pistol" parent="Patched Cow Animations/PC_Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.01325, 0.00143299, 0.00518762, -0.0052978, -0.00104536, -0.0132426, -0.000947725, -0.0141909, 0.00149935, 0.42661, 0.222489, 0.469379)
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 
 [node name="AnimationPlayer" parent="Patched Cow Animations" index="1"]
 autoplay = "PC_Shoot"

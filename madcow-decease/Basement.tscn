@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 [gd_scene load_steps=59 format=3 uid="uid://dwnt5kns4icot"]
+=======
+[gd_scene load_steps=46 format=3 uid="uid://dwnt5kns4icot"]
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
 [ext_resource type="Script" uid="uid://buuo8jbohwcxn" path="res://basement.gd" id="1_xwxmh"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_244tr"]
+<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://dq5kyfspyhv65" path="res://Shaders/transition.gdshader" id="2_b3khk"]
+=======
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 [ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://Scenes/bookshelf.tscn" id="3_kay6q"]
 [ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://Scenes/Stone_floor.tscn" id="4_4kw8u"]
 [ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://Scenes/table.tscn" id="5_u0eul"]
@@ -26,7 +33,10 @@
 [ext_resource type="PackedScene" uid="uid://0kdavsmudtd3" path="res://Scenes/doorframe_stone.tscn" id="21_ba2bl"]
 [ext_resource type="PackedScene" uid="uid://cy23fhf1ysxub" path="res://Scenes/pillar.tscn" id="22_phgjd"]
 [ext_resource type="PackedScene" uid="uid://caac403h5abfw" path="res://Scenes/torch.tscn" id="23_itqoo"]
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 [ext_resource type="Script" uid="uid://dt4bdjb0ey2tj" path="res://scripts/spawnbox_2.gd" id="29_lrwh7"]
 [ext_resource type="Script" uid="uid://bqoyr0b5r4hpv" path="res://scripts/spawnbox_3.gd" id="30_s32vs"]
 [ext_resource type="Script" uid="uid://cgeg0apr4wcci" path="res://scripts/spawnbox_4.gd" id="31_plyyp"]
@@ -35,7 +45,10 @@
 [ext_resource type="Script" uid="uid://cawwi7kwne0x5" path="res://spawnbox1.gd" id="33_wqo3g"]
 [ext_resource type="Script" uid="uid://bspsw8rgjwxl6" path="res://scripts/level_transition.gd" id="34_g7txx"]
 [ext_resource type="Script" uid="uid://b2oswvedox5po" path="res://scripts/spawnbox_7.gd" id="34_q2q8j"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://card1cuviubxt" path="res://killzone.gd" id="35_g7txx"]
+=======
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 [ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="35_qs01l"]
 [ext_resource type="Shader" uid="uid://bgpnf56liefrk" path="res://portal.gdshader" id="37_s32vs"]
 [ext_resource type="Texture2D" uid="uid://dkowa24u1blqa" path="res://T_VFX_lelu1_tiled.png" id="38_plyyp"]
@@ -175,8 +188,17 @@ grow_vertical = 2
 environment = SubResource("Environment_4kw8u")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
+<<<<<<< HEAD
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.8818, 1.86623, 45.4212)
 collision_layer = 2684354561
+=======
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9226, 1.86623, 42.0084)
+collision_layer = 536870913
+speed_walk = 5.0
+speed_sprint = 10.0
+speed_crouch = 2.5
+JUMP_VELOCITY = 10
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 
 [node name="WORLD_BUILDING" type="Node3D" parent="."]
 
@@ -4844,6 +4866,7 @@ shape = SubResource("BoxShape3D_kcs00")
 
 [node name="Health Pickups" type="Node3D" parent="."]
 
+<<<<<<< HEAD
 [node name="Killzone" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2147483648
@@ -4871,6 +4894,8 @@ mesh = SubResource("BoxMesh_ok6xx")
 skeleton = NodePath("../../stone_floor")
 surface_material_override/0 = SubResource("ShaderMaterial_vjbw5")
 
+=======
+>>>>>>> parent of aa18c78 (SPAWNER HEALTH AND FIRE)
 [connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox2" to="Progression boxes/Spawnbox2" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox3" to="Progression boxes/Spawnbox3" method="_on_body_entered"]
