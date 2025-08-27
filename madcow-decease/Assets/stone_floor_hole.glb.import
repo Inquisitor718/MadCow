@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bpp5n8fnj46ry"
-path="res://.godot/imported/stone_floor_hole.glb-8c128f526559934eae90b6d974d59cf7.scn"
+path="res://.godot/imported/stone_floor_hole.glb-54bc0c5f02a721507276ef0eb1a01079.scn"
 
 [deps]
 
-source_file="res://assets/stone_floor_hole.glb"
-dest_files=["res://.godot/imported/stone_floor_hole.glb-8c128f526559934eae90b6d974d59cf7.scn"]
+source_file="res://Assets/stone_floor_hole.glb"
+dest_files=["res://.godot/imported/stone_floor_hole.glb-54bc0c5f02a721507276ef0eb1a01079.scn"]
 
 [params]
 
