@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://m0t6yyulpy2m"
-path="res://.godot/imported/MCD Final.glb-0ace7f58bc08182df5e78e9695320d8f.scn"
+path="res://.godot/imported/MCD Final.glb-d495830f0176288b9e50c92c693ee280.scn"
 
 [deps]
 
-source_file="res://assets/MCD Final.glb"
-dest_files=["res://.godot/imported/MCD Final.glb-0ace7f58bc08182df5e78e9695320d8f.scn"]
+source_file="res://Assets/MCD Final.glb"
+dest_files=["res://.godot/imported/MCD Final.glb-d495830f0176288b9e50c92c693ee280.scn"]
 
 [params]
 

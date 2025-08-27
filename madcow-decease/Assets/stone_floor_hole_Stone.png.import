@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqlxijhtxsl15"
-path.s3tc="res://.godot/imported/stone_floor_hole_Stone.png-e556ac4a7f625790bf00c8062d5d365a.s3tc.ctex"
+path.s3tc="res://.godot/imported/stone_floor_hole_Stone.png-deb3ab8aec444771f0674cd61c54deae.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/stone_floor_hole_Stone.png"
-dest_files=["res://.godot/imported/stone_floor_hole_Stone.png-e556ac4a7f625790bf00c8062d5d365a.s3tc.ctex"]
+source_file="res://Assets/stone_floor_hole_Stone.png"
+dest_files=["res://.godot/imported/stone_floor_hole_Stone.png-deb3ab8aec444771f0674cd61c54deae.s3tc.ctex"]
 
 [params]
 
