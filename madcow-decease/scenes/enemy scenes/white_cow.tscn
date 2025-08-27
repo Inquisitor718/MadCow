@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvs1t6fwo8bvh"]
+[gd_scene load_steps=13 format=3 uid="uid://cvs1t6fwo8bvh"]
 
 [ext_resource type="Script" uid="uid://dcvanee7drarf" path="res://scripts/Cows/white_cow.gd" id="1_tqxp6"]
-[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://scenes/ammunation/minigun_pickup.tscn" id="2_bnktk"]
-[ext_resource type="PackedScene" uid="uid://d5plhimoiphp" path="res://scenes/ammunation/pellets.tscn" id="3_bnktk"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_h4022"]
+[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="2_bnktk"]
+[ext_resource type="PackedScene" uid="uid://d5plhimoiphp" path="res://Scenes/ammunation/pellets.tscn" id="3_bnktk"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_h4022"]
+[ext_resource type="PackedScene" uid="uid://cmedxsxn0y1vl" path="res://Assets/White_Cow Animations.glb" id="5_1jo8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51lkm"]
 
@@ -15,8 +16,8 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yorvp"]
-radius = 0.6
-height = 2.1
+radius = 0.455319
+height = 2.27556
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bnktk"]
 radius = 20.0
@@ -32,15 +33,18 @@ collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_tqxp6")
 white_cow_health = 140
-rotation_speed = 1.5
+move_speed = 0.5
+rotation_speed = 1.0
+distortion_add = 10.0
 minigun_scene = ExtResource("2_bnktk")
 pellets = ExtResource("3_bnktk")
 explosion = ExtResource("4_h4022")
 
 [node name="PelletsSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50885, 0.549179)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.153666, 0.0319859, 1.14454)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_tqxp6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
@@ -72,6 +76,48 @@ shape = SubResource("SphereShape3D_h4022")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_6n2nx")
 
+[node name="White_Cow Animations" parent="." instance=ExtResource("5_1jo8w")]
+
+[node name="WC_Rig" parent="White_Cow Animations" index="0"]
+transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, 0, 0, 0)
+
+[node name="Skeleton3D" parent="White_Cow Animations/WC_Rig" index="0"]
+bones/0/position = Vector3(-1.48303e-09, -0.359296, -0.0183525)
+bones/0/rotation = Quaternion(-0.0394931, -0.344724, -0.00723619, 0.937845)
+bones/1/rotation = Quaternion(0.0227594, -0.0501363, 0.0146083, 0.998376)
+bones/2/rotation = Quaternion(0.0477735, 0.385459, -0.0342018, 0.920852)
+bones/4/position = Vector3(-0.250676, 0.316563, 0.000882722)
+bones/4/rotation = Quaternion(-0.0456947, 0.380726, 0.89858, 0.213339)
+bones/5/rotation = Quaternion(0.442566, 0.124025, 0.0792434, 0.884575)
+bones/6/position = Vector3(0.270429, 0.254152, 0.00082633)
+bones/6/rotation = Quaternion(0.265898, -0.568136, -0.725335, 0.283566)
+bones/7/rotation = Quaternion(0.306778, -0.142543, -0.139539, 0.930644)
+bones/8/position = Vector3(-0.254404, 0.455886, 0.44301)
+bones/8/rotation = Quaternion(0.624865, 0.39393, -0.4152, 0.531011)
+bones/10/position = Vector3(-1.40155e-09, -0.359296, -0.0183525)
+bones/10/rotation = Quaternion(0.825021, -0.157071, -0.277903, -0.466303)
+bones/11/rotation = Quaternion(-0.3717, 0.181772, 0.351654, 0.839725)
+bones/12/rotation = Quaternion(-0.111607, 3.33376e-05, -0.637322, 0.762472)
+bones/13/position = Vector3(-0.104494, -0.65162, -0.13389)
+bones/13/rotation = Quaternion(0.700996, -0.61214, -0.221429, 0.291305)
+bones/14/position = Vector3(1.40155e-09, -0.359296, -0.0183525)
+bones/14/rotation = Quaternion(0.277903, 0.466303, 0.825021, -0.157071)
+bones/15/rotation = Quaternion(-0.334096, -0.181697, -0.384368, 0.841206)
+bones/16/rotation = Quaternion(-0.0854472, 0.00810549, 0.660841, 0.745602)
+bones/17/position = Vector3(0.0919147, -0.644053, 0.134222)
+bones/17/rotation = Quaternion(0.434724, 0.321748, 0.592821, 0.596704)
+
+[node name="BézierCircle" parent="White_Cow Animations/WC_Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.170691, -0.0496244, -0.0019296, 0.0494328, 0.170438, -0.0104391, 0.00476411, 0.00948692, 0.177452, -0.00449537, 0.722509, -0.126254)
+
+[node name="WC_Machinegun" parent="White_Cow Animations/WC_Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.0770063, 0.0432466, -0.0051384, -0.00161066, -0.00760285, -0.0881263, -0.043521, 0.0768022, -0.00583047, -0.439752, 0.120763, 0.148773)
+
+[node name="AnimationPlayer" parent="White_Cow Animations" index="1"]
+autoplay = "WC_Shoot"
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="White_Cow Animations"]

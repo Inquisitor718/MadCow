@@ -1,54 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://y8tobwhbqs6e"]
+[gd_scene load_steps=9 format=3 uid="uid://y8tobwhbqs6e"]
 
-[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://assets/2D_assets/SS.png" id="1_5kukc"]
-[ext_resource type="Script" uid="uid://myy1k375mo10" path="res://Play_button.gd" id="1_b07fi"]
-[ext_resource type="Texture2D" uid="uid://da22jf6flmpd5" path="res://assets/2D_assets/Vector 17.png" id="1_x2ps0"]
-[ext_resource type="FontFile" uid="uid://dmwo3rtr3ql6f" path="res://Pwficelles-4Kv4.ttf" id="2_rlxw3"]
-[ext_resource type="Script" uid="uid://c48ru4u4n54jx" path="res://Quit_button.gd" id="2_x6lt7"]
+[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://Assets/2D_assets/SS.png" id="1_5kukc"]
+[ext_resource type="Texture2D" uid="uid://lkwovox7o504" path="res://Assets/2D_assets/buttons/play.png" id="2_p42dv"]
+[ext_resource type="Texture2D" uid="uid://dcexnpvi0nrl" path="res://Assets/2D_assets/buttons/play (1).png" id="3_r1jqq"]
+[ext_resource type="Script" uid="uid://b7l7ub6nacpw" path="res://play_b.gd" id="4_hv5cx"]
+[ext_resource type="Script" uid="uid://dhf18xvyd744w" path="res://quit_b.gd" id="5_56ax1"]
+[ext_resource type="Texture2D" uid="uid://b8gtroqtnvntm" path="res://Assets/2D_assets/buttons/play (2).png" id="5_hv5cx"]
+[ext_resource type="Texture2D" uid="uid://6aqc4vif42fl" path="res://Assets/2D_assets/buttons/play (3).png" id="6_56ax1"]
+[ext_resource type="Texture2D" uid="uid://bpomd7ajisisn" path="res://Assets/2D_assets/Frame 14.png" id="8_hv5cx"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 texture = ExtResource("1_5kukc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, -92)
-scale = Vector2(0.205762, 0.237195)
-texture = ExtResource("1_x2ps0")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-3, 151)
-scale = Vector2(0.205762, 0.237195)
-texture = ExtResource("1_x2ps0")
-
-[node name="Button" type="Button" parent="."]
-offset_left = -110.0
-offset_top = -137.0
-offset_right = 592.0
-offset_bottom = 140.0
-scale = Vector2(0.315046, 0.321396)
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_rlxw3")
-theme_override_font_sizes/font_size = 256
-text = "PLAY"
-flat = true
-text_overrun_behavior = 3
-script = ExtResource("1_b07fi")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Button2" type="Button" parent="."]
-offset_left = -114.0
-offset_top = 106.0
-offset_right = 538.0
-offset_bottom = 383.0
-scale = Vector2(0.350291, 0.339287)
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_rlxw3")
-theme_override_font_sizes/font_size = 256
-text = "QUIT"
-flat = true
-script = ExtResource("2_x6lt7")
+[node name="Play_button" type="TextureButton" parent="."]
+offset_left = -463.0
+offset_top = 123.0
+offset_right = 1415.0
+offset_bottom = 1086.0
+scale = Vector2(0.227407, 0.227407)
+texture_normal = ExtResource("2_p42dv")
+texture_pressed = ExtResource("3_r1jqq")
+script = ExtResource("4_hv5cx")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
+[node name="Quit_button" type="TextureButton" parent="."]
+offset_left = 1.99997
+offset_top = 123.0
+offset_right = 1880.0
+offset_bottom = 1090.0
+scale = Vector2(0.227407, 0.227407)
+texture_normal = ExtResource("5_hv5cx")
+texture_pressed = ExtResource("6_56ax1")
+script = ExtResource("5_56ax1")
+
+[node name="Frame14" type="Sprite2D" parent="."]
+position = Vector2(0, -237)
+scale = Vector2(0.245463, 0.245463)
+texture = ExtResource("8_hv5cx")
+
+[connection signal="pressed" from="Play_button" to="Play_button" method="_on_pressed"]
+[connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

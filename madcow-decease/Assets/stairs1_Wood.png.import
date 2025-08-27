@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnyu5ad0flfba"
-path.s3tc="res://.godot/imported/stairs1_Wood.png-49a25bf303f91c3d457b76d3fafc3980.s3tc.ctex"
+path.s3tc="res://.godot/imported/stairs1_Wood.png-044afc2ac084284f338e7bcba6bee898.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/stairs1_Wood.png"
-dest_files=["res://.godot/imported/stairs1_Wood.png-49a25bf303f91c3d457b76d3fafc3980.s3tc.ctex"]
+source_file="res://Assets/stairs1_Wood.png"
+dest_files=["res://.godot/imported/stairs1_Wood.png-044afc2ac084284f338e7bcba6bee898.s3tc.ctex"]
 
 [params]
 

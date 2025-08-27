@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ton7mc5wankp"
-path.s3tc="res://.godot/imported/small_crate_Dark Wood.png-f12b57c3bc67c4eb65a465d35deb08a8.s3tc.ctex"
+path.s3tc="res://.godot/imported/small_crate_Dark Wood.png-f8a518036fe68c7296f7feee70f21acc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/small_crate_Dark Wood.png"
-dest_files=["res://.godot/imported/small_crate_Dark Wood.png-f12b57c3bc67c4eb65a465d35deb08a8.s3tc.ctex"]
+source_file="res://Assets/small_crate_Dark Wood.png"
+dest_files=["res://.godot/imported/small_crate_Dark Wood.png-f8a518036fe68c7296f7feee70f21acc.s3tc.ctex"]
 
 [params]
 

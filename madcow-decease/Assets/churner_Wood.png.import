@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b86h7is2wfcqb"
-path.s3tc="res://.godot/imported/churner_Wood.png-c08cf6f0dd2a0fa7a1446e7d929568c8.s3tc.ctex"
+path.s3tc="res://.godot/imported/churner_Wood.png-c419b4a05c519cce23890a368ef567e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/churner_Wood.png"
-dest_files=["res://.godot/imported/churner_Wood.png-c08cf6f0dd2a0fa7a1446e7d929568c8.s3tc.ctex"]
+source_file="res://Assets/churner_Wood.png"
+dest_files=["res://.godot/imported/churner_Wood.png-c419b4a05c519cce23890a368ef567e5.s3tc.ctex"]
 
 [params]
 

@@ -42,7 +42,7 @@ func a_hole_appear():
 		stone_floor.hide()
 		stone_floor_hole.hide()
 		stone_floor_flicker.show())
-	transition_tween.tween_interval(1.)
+	transition_tween.tween_interval(2.0)
 	transition_tween.tween_callback(func():
 		stone_floor.hide()
 		stone_floor_flicker.hide()

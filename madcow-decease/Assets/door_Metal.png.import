@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpchrxqmk7ut3"
-path.s3tc="res://.godot/imported/door_Metal.png-f3ccf373e4674584fbd9b4e3e5ea67b6.s3tc.ctex"
+path.s3tc="res://.godot/imported/door_Metal.png-2055d173249d1f3c4759fdc51afb60c6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/door_Metal.png"
-dest_files=["res://.godot/imported/door_Metal.png-f3ccf373e4674584fbd9b4e3e5ea67b6.s3tc.ctex"]
+source_file="res://Assets/door_Metal.png"
+dest_files=["res://.godot/imported/door_Metal.png-2055d173249d1f3c4759fdc51afb60c6.s3tc.ctex"]
 
 [params]
 

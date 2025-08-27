@@ -8,6 +8,7 @@ var spawned = false
 @export var baby_cow_scene = preload("res://Scenes/enemy scenes/baby_cow.tscn")
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
+
 @onready var level: Node3D = $"../.."
 
 @onready var spawnpoint: Marker3D = $spawnpoint
@@ -38,4 +39,5 @@ func _on_body_entered(body: Node3D) -> void:
 		get_parent().add_child(cow)
 		cow.connect("on_death",level._on_death)
 		await get_tree().create_timer(0.4).timeout
+	
 	collision_shape_3d.disabled = true

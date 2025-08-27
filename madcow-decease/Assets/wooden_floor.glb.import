@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cf32vaj11hsab"
-path="res://.godot/imported/wooden_floor.glb-7455ba4ab2245da1fabc983e68fd24ad.scn"
+path="res://.godot/imported/wooden_floor.glb-a86a20f2dadbd82b55d8b886791a862d.scn"
 
 [deps]
 
-source_file="res://assets/wooden_floor.glb"
-dest_files=["res://.godot/imported/wooden_floor.glb-7455ba4ab2245da1fabc983e68fd24ad.scn"]
+source_file="res://Assets/wooden_floor.glb"
+dest_files=["res://.godot/imported/wooden_floor.glb-a86a20f2dadbd82b55d8b886791a862d.scn"]
 
 [params]
 

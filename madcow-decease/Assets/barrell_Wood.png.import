@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b50pm1cg31hx4"
-path.s3tc="res://.godot/imported/barrell_Wood.png-5fde2a33ec31908028b3e9e8d20da652.s3tc.ctex"
+path.s3tc="res://.godot/imported/barrell_Wood.png-f1c28be400a774b37f5d81dce3245d79.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/barrell_Wood.png"
-dest_files=["res://.godot/imported/barrell_Wood.png-5fde2a33ec31908028b3e9e8d20da652.s3tc.ctex"]
+source_file="res://Assets/barrell_Wood.png"
+dest_files=["res://.godot/imported/barrell_Wood.png-f1c28be400a774b37f5d81dce3245d79.s3tc.ctex"]
 
 [params]
 

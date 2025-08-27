@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7ffj5yo1w1sm"
-path.s3tc="res://.godot/imported/door_wall_wood_Stone.png-69c1983ac39773fe098aee5b88bc71f9.s3tc.ctex"
+path.s3tc="res://.godot/imported/door_wall_wood_Stone.png-f70d8a1e8f273f11f6df7cdb1d3a9aee.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/door_wall_wood_Stone.png"
-dest_files=["res://.godot/imported/door_wall_wood_Stone.png-69c1983ac39773fe098aee5b88bc71f9.s3tc.ctex"]
+source_file="res://Assets/door_wall_wood_Stone.png"
+dest_files=["res://.godot/imported/door_wall_wood_Stone.png-f70d8a1e8f273f11f6df7cdb1d3a9aee.s3tc.ctex"]
 
 [params]
 

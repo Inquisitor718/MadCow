@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgib7r2vm4nl4"
-path.s3tc="res://.godot/imported/GrillWindow_Metal.png-adaeed3a46ef949ab150fe1a8cfcc301.s3tc.ctex"
+path.s3tc="res://.godot/imported/GrillWindow_Metal.png-7d51e569e3890456c7e14b9d8131a99c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/GrillWindow_Metal.png"
-dest_files=["res://.godot/imported/GrillWindow_Metal.png-adaeed3a46ef949ab150fe1a8cfcc301.s3tc.ctex"]
+source_file="res://Assets/GrillWindow_Metal.png"
+dest_files=["res://.godot/imported/GrillWindow_Metal.png-7d51e569e3890456c7e14b9d8131a99c.s3tc.ctex"]
 
 [params]
 

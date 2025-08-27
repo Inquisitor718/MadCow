@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddv4b50g38cl4"
-path.s3tc="res://.godot/imported/stone_door_Stone.png-2447e041cf148c79830244e22cbe43f2.s3tc.ctex"
+path.s3tc="res://.godot/imported/stone_door_Stone.png-abfaf7c9587b198b7350ed3de3dcd66b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/stone_door_Stone.png"
-dest_files=["res://.godot/imported/stone_door_Stone.png-2447e041cf148c79830244e22cbe43f2.s3tc.ctex"]
+source_file="res://Assets/stone_door_Stone.png"
+dest_files=["res://.godot/imported/stone_door_Stone.png-abfaf7c9587b198b7350ed3de3dcd66b.s3tc.ctex"]
 
 [params]
 
