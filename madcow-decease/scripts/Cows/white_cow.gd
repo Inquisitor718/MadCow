@@ -10,7 +10,6 @@ extends CharacterBody3D
 @onready var shoot_area = $ShootArea
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var pellets_spawn = $PelletsSpawn
-@export var animation_tree : AnimationTree
 
 @export var minigun_scene: PackedScene
 @export var pellets: PackedScene
@@ -40,22 +39,13 @@ func _physics_process(delta):
 			direction = direction.normalized()
 			velocity.x = direction.x * move_speed
 			velocity.z = direction.z * move_speed
-			animation_tree.set("parameters/conditions/Shoot", false)
-			animation_tree.set("parameters/conditions/Walk", true)
-			animation_tree.set("parameters/conditions/Idle", false)
 			move_and_slide()
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
 			_stop_moving()
-			animation_tree.set("parameters/conditions/Shoot", true)
-			animation_tree.set("parameters/conditions/Walk", false)
-			animation_tree.set("parameters/conditions/Idle", false)
 			_try_shoot()
 	else:
 		_stop_moving()
-		animation_tree.set("parameters/conditions/Shoot", false)
-		animation_tree.set("parameters/conditions/Walk", false)
-		animation_tree.set("parameters/conditions/Idle", true)
 	move_and_slide()
 	
 	_fall_death()
@@ -141,10 +131,8 @@ func Hit(dmg: int) -> void:
 		white_cow_health -= dmg
 		print("Enemy Health:", white_cow_health)
 		if white_cow_health <= 0:
-			can_shoot = false
 			Global.kills += 1
 			Global.distortion += distortion_add
-			animation_tree.set("parameters/conditions/Die", true)
 			print(Global.kills)
 			emit_signal("on_death")
 			if group_player.is_in_group("Revolver"):
@@ -157,7 +145,6 @@ func Hit(dmg: int) -> void:
 						var minigun_instance = minigun_scene.instantiate()
 						minigun_instance.global_position = global_position
 						get_tree().current_scene.add_child(minigun_instance)
-			await get_tree().create_timer(1.5).timeout
 			queue_free()
 
 
@@ -178,5 +165,4 @@ func _fall_death():
 	if global_position.y <-1.0 :
 		
 		print("enemy dead")
-		await get_tree().create_timer(1.5).timeout
 		queue_free()

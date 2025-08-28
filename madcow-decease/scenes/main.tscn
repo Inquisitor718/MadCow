@@ -23,7 +23,6 @@ sky_material = SubResource("PanoramaSkyMaterial_sugp2")
 
 [sub_resource type="Environment" id="Environment_tipki"]
 background_mode = 2
-background_energy_multiplier = 0.0
 sky = SubResource("Sky_o6xl0")
 tonemap_mode = 2
 glow_enabled = true
@@ -36,7 +35,7 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.737012, 0.248238, -0.628642, -0.673885, -0.341298, 0.655282, -0.0518887, 0.906583, 0.418825, 0, 8.17773, 0)
-light_color = Color(0.52, 0.501973, 0.4784, 1)
+light_color = Color(0.999831, 0.965693, 0.922176, 1)
 light_energy = 0.8
 shadow_enabled = true
 

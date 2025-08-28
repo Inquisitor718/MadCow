@@ -12,8 +12,7 @@ func _ready():
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	global_position += direction * speed * delta
-	look_at(global_position - direction * 10)
+	position += direction * speed * delta
 	
 	travelled_distance += speed * delta
 	if travelled_distance > 10:

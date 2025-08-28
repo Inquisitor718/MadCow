@@ -38,11 +38,7 @@
 [ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="35_qs01l"]
 [ext_resource type="Shader" uid="uid://bgpnf56liefrk" path="res://portal.gdshader" id="37_s32vs"]
 [ext_resource type="Texture2D" uid="uid://dkowa24u1blqa" path="res://T_VFX_lelu1_tiled.png" id="38_plyyp"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="39_plyyp"]
-=======
-[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="39_plyyp"]
->>>>>>> Stashed changes
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b3khk"]
 
@@ -170,7 +166,7 @@ grow_vertical = 2
 environment = SubResource("Environment_4kw8u")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.8818, 1.86623, 41.4212)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.8818, 1.86623, 45.4212)
 collision_layer = 2684354561
 
 [node name="WORLD_BUILDING" type="Node3D" parent="."]
@@ -1394,9 +1390,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8675, 0.35, -49.4485)
 
 [node name="Stone_floor430" parent="WORLD_BUILDING/NavigationRegion3D/Floor" instance=ExtResource("4_4kw8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8675, 0.35, -49.4485)
-
-[node name="Stone_floor289" parent="WORLD_BUILDING/NavigationRegion3D/Floor" groups=["a_hole"] instance=ExtResource("4_4kw8u")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 24.8675, 2.35, -5.75505)
 
 [node name="Roof" type="Node3D" parent="WORLD_BUILDING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00205898, 7.99933, 0.00520325)
@@ -3394,6 +3387,9 @@ transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, -10.5991, 1.42251, 37.6
 [node name="Crate3" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
 transform = Transform3D(1.66829, -0.326822, 0, 0, -7.43094e-08, 1.7, -0.326822, -1.66829, -6.70552e-08, 4.96279, 1.37731, 43.3035)
 
+[node name="Crate5" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
+transform = Transform3D(1.45807, 0, -0.874089, 0, 1.7, 0, 0.874089, 0, 1.45807, 5.0708, 1.3439, 45.737)
+
 [node name="Crate6" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
 transform = Transform3D(0.0207689, 0, -1.69987, 1.69987, -7.43094e-08, 0.0207689, -7.43038e-08, -1.7, -9.07839e-10, 23.5457, 1.41857, 31.604)
 
@@ -3504,6 +3500,9 @@ transform = Transform3D(1.96827e-08, -0.435719, 1.64321, -1.7, -7.43094e-08, -2.
 
 [node name="Crate42" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
 transform = Transform3D(1.25817, 0, 1.14324, 0, 1.7, 0, -1.14324, 0, 1.25817, -12.7844, 1.3439, -47.8222)
+
+[node name="Crate43" parent="WORLD_BUILDING/NavigationObstacle3D/small_crates" instance=ExtResource("6_vgf3n")]
+transform = Transform3D(1.67008, 0, 0.317528, 0, 1.7, 0, -0.317528, 0, 1.67008, 5.0708, 3.18843, 44.7347)
 
 [node name="Misc_Obs" type="Node3D" parent="WORLD_BUILDING/NavigationObstacle3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.24712, -12)
@@ -4863,13 +4862,8 @@ mesh = SubResource("BoxMesh_ok6xx")
 skeleton = NodePath("../../stone_floor")
 surface_material_override/0 = SubResource("ShaderMaterial_vjbw5")
 
-<<<<<<< Updated upstream
 [node name="Horns_Pickup" parent="." instance=ExtResource("39_plyyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2948, 1, 38.668)
-=======
-[node name="Minigun_Pickup" parent="." instance=ExtResource("39_plyyp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2948, 1, 37.668)
->>>>>>> Stashed changes
 
 [connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox2" to="Progression boxes/Spawnbox2" method="_on_body_entered"]
@@ -4883,10 +4877,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2948, 1, 37.668)
 [connection signal="body_entered" from="Killzone" to="Player" method="_on_killzone_body_entered"]
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
 
-[editable path="WORLD_BUILDING/NavigationRegion3D/Floor/Stone_floor289"]
-[editable path="WORLD_BUILDING/NavigationRegion3D/Floor/Stone_floor289/stone_floor_hole"]
-[editable path="WORLD_BUILDING/NavigationRegion3D/Floor/Stone_floor289/stone_floor"]
-[editable path="WORLD_BUILDING/NavigationRegion3D/Floor/Stone_floor289/stone_floor2"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Chest/Chest"]
 [editable path="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Stairs"]

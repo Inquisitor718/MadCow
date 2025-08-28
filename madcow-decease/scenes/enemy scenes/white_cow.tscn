@@ -1,81 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvs1t6fwo8bvh"]
+[gd_scene load_steps=13 format=3 uid="uid://cvs1t6fwo8bvh"]
 
 [ext_resource type="Script" uid="uid://dcvanee7drarf" path="res://scripts/Cows/white_cow.gd" id="1_tqxp6"]
 [ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="2_bnktk"]
 [ext_resource type="PackedScene" uid="uid://d5plhimoiphp" path="res://Scenes/ammunation/pellets.tscn" id="3_bnktk"]
 [ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_h4022"]
-[ext_resource type="PackedScene" uid="uid://kt3ywod5r0y7" path="res://Scenes/ammunation/White_Cow Animations.glb" id="5_1jo8w"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1jo8w"]
-animation = &"WC_Death"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3aih4"]
-animation = &"WC_Idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n38ax"]
-animation = &"WC_Shoot"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1mm62"]
-animation = &"WC_Spawn"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dwnfx"]
-animation = &"WC_Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3cb0b"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdjvm"]
-advance_mode = 2
-advance_condition = &"Idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_et3pu"]
-advance_mode = 2
-advance_condition = &"Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uqlle"]
-advance_mode = 2
-advance_condition = &"Shoot"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p0jso"]
-advance_mode = 2
-advance_condition = &"Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m01ml"]
-advance_mode = 2
-advance_condition = &"Idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xsg5v"]
-advance_mode = 2
-advance_condition = &"Shoot"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_01bp2"]
-advance_mode = 2
-advance_condition = &"Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_keyvb"]
-advance_mode = 2
-advance_condition = &"Die"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3a1a4"]
-advance_mode = 2
-advance_condition = &"Die"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ciyr"]
-advance_mode = 2
-advance_condition = &"Die"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fessu"]
-states/WC_Death/node = SubResource("AnimationNodeAnimation_1jo8w")
-states/WC_Death/position = Vector2(809.333, 373.111)
-states/WC_Idle/node = SubResource("AnimationNodeAnimation_3aih4")
-states/WC_Idle/position = Vector2(359.556, 292.667)
-states/WC_Shoot/node = SubResource("AnimationNodeAnimation_n38ax")
-states/WC_Shoot/position = Vector2(760, 207.333)
-states/WC_Spawn/node = SubResource("AnimationNodeAnimation_1mm62")
-states/WC_Spawn/position = Vector2(360, 114)
-states/WC_Walk/node = SubResource("AnimationNodeAnimation_dwnfx")
-states/WC_Walk/position = Vector2(536, 216.667)
-transitions = ["Start", "WC_Spawn", SubResource("AnimationNodeStateMachineTransition_3cb0b"), "WC_Spawn", "WC_Idle", SubResource("AnimationNodeStateMachineTransition_gdjvm"), "WC_Spawn", "WC_Walk", SubResource("AnimationNodeStateMachineTransition_et3pu"), "WC_Spawn", "WC_Shoot", SubResource("AnimationNodeStateMachineTransition_uqlle"), "WC_Idle", "WC_Walk", SubResource("AnimationNodeStateMachineTransition_p0jso"), "WC_Walk", "WC_Idle", SubResource("AnimationNodeStateMachineTransition_m01ml"), "WC_Walk", "WC_Shoot", SubResource("AnimationNodeStateMachineTransition_xsg5v"), "WC_Shoot", "WC_Walk", SubResource("AnimationNodeStateMachineTransition_01bp2"), "WC_Shoot", "WC_Death", SubResource("AnimationNodeStateMachineTransition_keyvb"), "WC_Walk", "WC_Death", SubResource("AnimationNodeStateMachineTransition_3a1a4"), "WC_Idle", "WC_Death", SubResource("AnimationNodeStateMachineTransition_3ciyr")]
+[ext_resource type="PackedScene" uid="uid://cmedxsxn0y1vl" path="res://Assets/White_Cow Animations.glb" id="5_1jo8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51lkm"]
 
@@ -99,7 +28,7 @@ radius = 10.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_6n2nx"]
 radius = 500.0
 
-[node name="WhiteCow" type="CharacterBody3D" node_paths=PackedStringArray("animation_tree") groups=["Enemy"]]
+[node name="WhiteCow" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_tqxp6")
@@ -107,54 +36,12 @@ white_cow_health = 140
 move_speed = 0.5
 rotation_speed = 1.0
 distortion_add = 10.0
-animation_tree = NodePath("White_Cow Animations/AnimationTree")
 minigun_scene = ExtResource("2_bnktk")
 pellets = ExtResource("3_bnktk")
 explosion = ExtResource("4_h4022")
 
-[node name="White_Cow Animations" parent="." instance=ExtResource("5_1jo8w")]
-
-[node name="WC_Rig" parent="White_Cow Animations" index="0"]
-transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, 0, 0, 0)
-
-[node name="Skeleton3D" parent="White_Cow Animations/WC_Rig" index="0"]
-bones/4/position = Vector3(-0.236118, 0.328188, -0.0793923)
-bones/4/rotation = Quaternion(-0.0456948, 0.380726, 0.89858, 0.213339)
-bones/5/rotation = Quaternion(0.442566, 0.124025, 0.0792434, 0.884575)
-bones/6/position = Vector3(0.262169, 0.286547, -0.076264)
-bones/6/rotation = Quaternion(0.118011, -0.23313, -0.899168, 0.351029)
-bones/7/rotation = Quaternion(0.501432, -0.152747, 0.00797451, 0.85157)
-bones/8/position = Vector3(-0.223138, 0.410028, 0.422642)
-bones/8/rotation = Quaternion(0.604986, 0.571299, -0.383853, 0.400332)
-bones/10/position = Vector3(3.39144e-23, -0.320738, 4.44089e-16)
-bones/10/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
-bones/11/rotation = Quaternion(-0.499805, 0.0253591, 0.0613231, 0.863592)
-bones/12/rotation = Quaternion(-0.0582966, 0.00958519, -0.262582, 0.963099)
-bones/13/position = Vector3(-0.121623, -0.664043, -0.0398742)
-bones/13/rotation = Quaternion(0.536691, -0.426371, -0.502374, 0.527058)
-bones/14/position = Vector3(-3.39144e-23, -0.320738, 4.44089e-16)
-bones/14/rotation = Quaternion(0.615585, 0.347929, 0.615585, -0.347929)
-bones/15/rotation = Quaternion(-0.439012, -0.0770537, -0.162219, 0.88035)
-bones/16/rotation = Quaternion(-0.0710531, -0.000638841, 0.410407, 0.90913)
-bones/17/position = Vector3(0.149998, -0.652214, -0.023133)
-bones/17/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
-
-[node name="BézierCircle" parent="White_Cow Animations/WC_Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.170023, -0.0519042, 1.9692e-09, 0.0519042, 0.170023, 4.65435e-10, -2.01929e-09, 1.29805e-10, 0.177769, -0.0175805, 0.758335, -0.0819003)
-
-[node name="WC_Machinegun" parent="White_Cow Animations/WC_Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.00464893, 0.0883439, -0.00062213, 0.0339647, -0.00236235, -0.0816545, -0.0815563, 0.00405202, -0.034041, -0.188384, 0.0879653, 0.417781)
-
-[node name="AnimationTree" type="AnimationTree" parent="White_Cow Animations"]
-tree_root = SubResource("AnimationNodeStateMachine_fessu")
-anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/Die = false
-parameters/conditions/Idle = false
-parameters/conditions/Shoot = false
-parameters/conditions/Walk = false
-
 [node name="PelletsSpawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.593086, 0.13825, 1.02729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.153666, 0.0319859, 1.14454)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -188,6 +75,46 @@ shape = SubResource("SphereShape3D_h4022")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_6n2nx")
+
+[node name="White_Cow Animations" parent="." instance=ExtResource("5_1jo8w")]
+
+[node name="WC_Rig" parent="White_Cow Animations" index="0"]
+transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, 0, 0, 0)
+
+[node name="Skeleton3D" parent="White_Cow Animations/WC_Rig" index="0"]
+bones/0/position = Vector3(-1.48303e-09, -0.359296, -0.0183525)
+bones/0/rotation = Quaternion(-0.0394931, -0.344724, -0.00723619, 0.937845)
+bones/1/rotation = Quaternion(0.0227594, -0.0501363, 0.0146083, 0.998376)
+bones/2/rotation = Quaternion(0.0477735, 0.385459, -0.0342018, 0.920852)
+bones/4/position = Vector3(-0.250676, 0.316563, 0.000882722)
+bones/4/rotation = Quaternion(-0.0456947, 0.380726, 0.89858, 0.213339)
+bones/5/rotation = Quaternion(0.442566, 0.124025, 0.0792434, 0.884575)
+bones/6/position = Vector3(0.270429, 0.254152, 0.00082633)
+bones/6/rotation = Quaternion(0.265898, -0.568136, -0.725335, 0.283566)
+bones/7/rotation = Quaternion(0.306778, -0.142543, -0.139539, 0.930644)
+bones/8/position = Vector3(-0.254404, 0.455886, 0.44301)
+bones/8/rotation = Quaternion(0.624865, 0.39393, -0.4152, 0.531011)
+bones/10/position = Vector3(-1.40155e-09, -0.359296, -0.0183525)
+bones/10/rotation = Quaternion(0.825021, -0.157071, -0.277903, -0.466303)
+bones/11/rotation = Quaternion(-0.3717, 0.181772, 0.351654, 0.839725)
+bones/12/rotation = Quaternion(-0.111607, 3.33376e-05, -0.637322, 0.762472)
+bones/13/position = Vector3(-0.104494, -0.65162, -0.13389)
+bones/13/rotation = Quaternion(0.700996, -0.61214, -0.221429, 0.291305)
+bones/14/position = Vector3(1.40155e-09, -0.359296, -0.0183525)
+bones/14/rotation = Quaternion(0.277903, 0.466303, 0.825021, -0.157071)
+bones/15/rotation = Quaternion(-0.334096, -0.181697, -0.384368, 0.841206)
+bones/16/rotation = Quaternion(-0.0854472, 0.00810549, 0.660841, 0.745602)
+bones/17/position = Vector3(0.0919147, -0.644053, 0.134222)
+bones/17/rotation = Quaternion(0.434724, 0.321748, 0.592821, 0.596704)
+
+[node name="BézierCircle" parent="White_Cow Animations/WC_Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.170691, -0.0496244, -0.0019296, 0.0494328, 0.170438, -0.0104391, 0.00476411, 0.00948692, 0.177452, -0.00449537, 0.722509, -0.126254)
+
+[node name="WC_Machinegun" parent="White_Cow Animations/WC_Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.0770063, 0.0432466, -0.0051384, -0.00161066, -0.00760285, -0.0881263, -0.043521, 0.0768022, -0.00583047, -0.439752, 0.120763, 0.148773)
+
+[node name="AnimationPlayer" parent="White_Cow Animations" index="1"]
+autoplay = "WC_Shoot"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

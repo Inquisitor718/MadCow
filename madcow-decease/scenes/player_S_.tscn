@@ -895,14 +895,8 @@ offset_left = 57.0
 offset_top = 40.0
 offset_right = 971.0
 offset_bottom = 124.0
-scale = Vector2(0.797483, 0.665212)
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_oi5cr")
-
-[node name="Group11" type="Sprite2D" parent="CanvasLayer/DistortionBar"]
-position = Vector2(465, 40.8108)
-scale = Vector2(0.311828, 0.237784)
-texture = ExtResource("5_ovxxp")
 
 [node name="GunCounter" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 1201.0
@@ -952,14 +946,18 @@ grow_vertical = 2
 scale = Vector2(0.0684559, 0.0684559)
 texture = ExtResource("4_xo0wp")
 
+[node name="Group11" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(522, 80.8108)
+scale = Vector2(0.311828, 0.237784)
+texture = ExtResource("5_ovxxp")
+
 [node name="Vector7" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1592, 947)
-scale = Vector2(0.28543, 0.185035)
+position = Vector2(1502, 909)
+scale = Vector2(0.380982, 0.246978)
 texture = ExtResource("17_wycyf")
 
 [node name="Health_bottles" type="Node2D" parent="CanvasLayer"]
-position = Vector2(5, 252)
-scale = Vector2(0.319587, 0.319587)
+scale = Vector2(0.410216, 0.410216)
 
 [node name="bottle1" type="Node2D" parent="CanvasLayer/Health_bottles"]
 

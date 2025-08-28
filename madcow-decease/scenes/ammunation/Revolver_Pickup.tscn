@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp4rs15jtdxjj"]
+[gd_scene load_steps=9 format=3 uid="uid://dp4rs15jtdxjj"]
 
 [ext_resource type="Script" uid="uid://dmogobeoy77d6" path="res://scripts/ammunation/pickup.gd" id="1_2m74c"]
-[ext_resource type="PackedScene" uid="uid://gbkkxnmyhkl5" path="res://Scenes/ammunation/revolver.powerup.glb" id="2_4e4ia"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2m74c"]
 size = Vector3(0.215, 0.45, 0.25)
@@ -9,7 +8,7 @@ size = Vector3(0.215, 0.45, 0.25)
 [sub_resource type="CylinderMesh" id="CylinderMesh_vjqms"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt48a"]
-size = Vector3(0.153491, 0.619995, 1)
+size = Vector3(0.3, 0.5, 1)
 
 [sub_resource type="Animation" id="Animation_2cv6q"]
 length = 0.001
@@ -78,12 +77,8 @@ gravity_direction = Vector3(0, 0, 0)
 script = ExtResource("1_2m74c")
 weapon_name = "Revolver"
 
-[node name="revolver_powerup" parent="." instance=ExtResource("2_4e4ia")]
-transform = Transform3D(-8.96083e-09, 0.205, -8.96083e-09, 0, -8.96083e-09, -0.205, -0.205, -8.96083e-09, 3.91691e-16, 0, 0, 0.278186)
-
 [node name="Handle" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.00107825, 0)
-visible = false
 cast_shadow = 0
 mesh = SubResource("BoxMesh_2m74c")
 skeleton = NodePath("../..")
@@ -95,7 +90,7 @@ mesh = SubResource("CylinderMesh_vjqms")
 skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0296997, -0.00250244, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
 shape = SubResource("BoxShape3D_jt48a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

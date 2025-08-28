@@ -84,8 +84,6 @@ transform = Transform3D(-0.020576, 0.000642471, 0.00659903, -0.0065217, 0.001915
 [node name="AnimationPlayer" parent="Baby Cow Animations" index="1"]
 autoplay = "BBY_Shoot"
 
-[node name="AnimationTree" type="AnimationTree" parent="Baby Cow Animations"]
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false

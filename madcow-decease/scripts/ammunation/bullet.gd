@@ -20,9 +20,7 @@ func _physics_process(delta: float) -> void:
 	if travelled_distance > 10:
 		queue_free()
 
-func _on_area_3d_body_entered(body) -> void:
-	if not body is CharacterBody3D:
-		return
+func _on_area_3d_body_entered(body: CharacterBody3D) -> void:
 	if body.is_in_group("player_S"):
 		if body.has_method("dmg"):
 			body.dmg(p_dmg)

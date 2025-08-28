@@ -220,13 +220,11 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 		player.health = Temp_health
 		player.dmg(0)
 		print("Health is now " + str(player.health))
-		$"../../../Weapon_Pickup".set_deferred("collision_mask", (1 << 4) | (1 << 7))
 		body.queue_free()
 
 
 	else:
-		var weapon_pickup:Area3D = $"../../../Weapon_Pickup"
-		weapon_pickup.collision_mask = 1<<7
+		$"../../../Weapon_Pickup".set_deferred("collision_mask", 1 << 7 )
 		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
 		if Weapon_In_Stack == -1:
 			print("weapon Picked up")
@@ -248,9 +246,9 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 				lines.show()
 
 				var tween = create_tween()
-				tween.set_parallel().tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
+				tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
 				tween.tween_property(player, "scale", player.scale * 1.5, 0.5)
-		
+
 			# Create the timer
 			var timer := Timer.new()
 			timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
@@ -278,4 +276,3 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 			timer.start()
 			
 			exit(body.weapon_name)
-			

@@ -1,12 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c83lc7sg4k1h2"]
+[gd_scene load_steps=24 format=3 uid="uid://c83lc7sg4k1h2"]
 
 [ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="2_0xvba"]
 [ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_adx45"]
 [ext_resource type="PackedScene" uid="uid://twgwjrmie4xg" path="res://Assets/Black Cow Animations.glb" id="4_bs1gp"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ewbqh"]
-animation = &"BC_Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xcucy"]
 animation = &"BC_Idle"
@@ -24,59 +21,50 @@ animation = &"BC_Walk"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcucy"]
-advance_condition = &"Walk"
+switch_mode = 2
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1uqym"]
 xfade_time = 0.1
-advance_mode = 2
-advance_condition = &"Shoot"
+switch_mode = 1
+advance_condition = &"shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewbqh"]
-advance_mode = 2
-advance_condition = &"Walk"
+switch_mode = 2
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bs1gp"]
+switch_mode = 2
 advance_mode = 2
-advance_condition = &"Shoot"
+advance_condition = &"shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyby2"]
+switch_mode = 2
 advance_mode = 2
 advance_condition = &"Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ia8wd"]
+switch_mode = 1
 advance_mode = 2
-advance_condition = &"Walk"
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qk2n4"]
+switch_mode = 2
 advance_mode = 2
 advance_condition = &"Idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tn7fh"]
-advance_mode = 2
-advance_condition = &"Die"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ew2tw"]
-advance_mode = 2
-advance_condition = &"Die"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cco3x"]
-advance_mode = 2
-advance_condition = &"Die"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2epqx"]
-states/BC_Death/node = SubResource("AnimationNodeAnimation_ewbqh")
-states/BC_Death/position = Vector2(957, 369)
 states/BC_Idle/node = SubResource("AnimationNodeAnimation_xcucy")
 states/BC_Idle/position = Vector2(454.667, 278.333)
 states/BC_Shoot/node = SubResource("AnimationNodeAnimation_bs1gp")
-states/BC_Shoot/position = Vector2(872.667, 114.889)
+states/BC_Shoot/position = Vector2(880.667, 110)
 states/BC_Spawn/node = SubResource("AnimationNodeAnimation_1uqym")
 states/BC_Spawn/position = Vector2(372, 99.3333)
 states/BC_Walk/node = SubResource("AnimationNodeAnimation_6x0bs")
-states/BC_Walk/position = Vector2(726.667, 244.667)
+states/BC_Walk/position = Vector2(650.667, 280.667)
 states/End/position = Vector2(1306.67, 99.3333)
-transitions = ["Start", "BC_Spawn", SubResource("AnimationNodeStateMachineTransition_2es4o"), "BC_Spawn", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_xcucy"), "BC_Walk", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_1uqym"), "BC_Shoot", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_ewbqh"), "BC_Spawn", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_bs1gp"), "BC_Spawn", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_vyby2"), "BC_Idle", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_ia8wd"), "BC_Walk", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_qk2n4"), "BC_Shoot", "BC_Death", SubResource("AnimationNodeStateMachineTransition_tn7fh"), "BC_Walk", "BC_Death", SubResource("AnimationNodeStateMachineTransition_ew2tw"), "BC_Idle", "BC_Death", SubResource("AnimationNodeStateMachineTransition_cco3x")]
-graph_offset = Vector2(-172, 49)
+transitions = ["Start", "BC_Spawn", SubResource("AnimationNodeStateMachineTransition_2es4o"), "BC_Spawn", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_xcucy"), "BC_Walk", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_1uqym"), "BC_Shoot", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_ewbqh"), "BC_Spawn", "BC_Shoot", SubResource("AnimationNodeStateMachineTransition_bs1gp"), "BC_Spawn", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_vyby2"), "BC_Idle", "BC_Walk", SubResource("AnimationNodeStateMachineTransition_ia8wd"), "BC_Walk", "BC_Idle", SubResource("AnimationNodeStateMachineTransition_qk2n4")]
+graph_offset = Vector2(-3, 51)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktv6b"]
 albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
@@ -102,6 +90,11 @@ transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_0xvba")
+black_cow_health = 80
+fire_rate = 4.167
+damage = 7.0
+distortion_add = 10.0
+b_dmg = 7.0
 horns_scene = ExtResource("2_0xvba")
 explosion = ExtResource("3_adx45")
 
@@ -139,10 +132,9 @@ autoplay = "BC_Shoot"
 [node name="AnimationTree" type="AnimationTree" parent="Black Cow Animations"]
 tree_root = SubResource("AnimationNodeStateMachine_2epqx")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/Die = false
 parameters/conditions/Idle = false
-parameters/conditions/Shoot = false
-parameters/conditions/Walk = false
+parameters/conditions/shoot = false
+parameters/conditions/walk = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
