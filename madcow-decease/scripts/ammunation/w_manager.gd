@@ -1,8 +1,10 @@
 extends Node3D
 
+@onready var animation_player2: AnimationPlayer = $"../../../CanvasLayer2/AnimationPlayer"
 @onready var animation_player: AnimationPlayer = $rig/AnimationPlayer
 @onready var Bullet_Point = get_node("%BulletPoint")
 @onready var player: CharacterBody3D = $"../../.."
+@onready var lines: ColorRect = $"../../../CanvasLayer2/Lines"
 
 signal Weapon_Change
 signal Update_Ammo
@@ -204,7 +206,7 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 	if body.has_method("Add_Ammo"):
 		print("Ammo adding")
 		var Temp_ammo = Weapon_List[body.weapon_name].Stored_ammo
-		Temp_ammo += body.Increase
+		Temp_ammo += body.increase
 		Weapon_List[body.weapon_name].Stored_ammo = Temp_ammo
 		emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
 		$"../../../Weapon_Pickup".set_deferred("collision_mask", (1 << 4) | (1 << 7))
@@ -214,8 +216,9 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 		print("Health adding")
 		var Temp_health = player.health
 		Temp_health += body.increase
+		animation_player2.play("Heal")
 		player.health = Temp_health
-		$"../../../CanvasLayer/HealthBar".value = Temp_health
+		player.dmg(0)
 		print("Health is now " + str(player.health))
 		body.queue_free()
 
@@ -238,9 +241,9 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 			# Lock weapon switching
 			weapon_locked = true
 			if body.weapon_name == "Horns":
-				 
 				original_speed = player.speed_walk
 				original_hitbox_scale = player.scale
+				lines.show()
 
 				var tween = create_tween()
 				tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
@@ -250,7 +253,7 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 			var timer := Timer.new()
 			timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
 			if body.weapon_name == "Revolver":
-				timer.wait_time = 9999999
+				timer.wait_time = INF
 			else:
 				timer.wait_time = Powerup_Duration  
 
@@ -267,6 +270,7 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 				if Current_Weapon.W_name == "Horns":
 					player.speed_walk = original_speed
 					player.scale = original_hitbox_scale
+					lines.hide()
 				timer.queue_free()
 				)
 			timer.start()

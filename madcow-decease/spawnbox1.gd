@@ -8,6 +8,7 @@ var spawned = false
 @export var baby_cow_scene = preload("res://Scenes/enemy scenes/baby_cow.tscn")
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
+
 @onready var level: Node3D = $"../.."
 
 @onready var spawnpoint: Marker3D = $spawnpoint
@@ -27,7 +28,7 @@ var spawned = false
 	spawnpoint_6, spawnpoint_7, spawnpoint_8, spawnpoint_9, spawnpoint_10, spawnpoint_11
 ]
 
-var cow_scenes = [black_cow_scene, white_cow_scene, patched_cow_scene, baby_cow_scene]
+var cow_scenes = [patched_cow_scene]
 
 func _on_body_entered(body: Node3D) -> void:
 
@@ -36,6 +37,8 @@ func _on_body_entered(body: Node3D) -> void:
 		var cow = scene.instantiate()
 		cow.global_transform = sp.global_transform
 		get_parent().add_child(cow)
-		cow.connect("on_death",level._on_death)
+		if not cow==baby_cow_scene:
+			cow.connect("on_death",level._on_death)
 		await get_tree().create_timer(0.4).timeout
+	
 	collision_shape_3d.disabled = true

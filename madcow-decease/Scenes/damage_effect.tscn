@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://tx0xur4ul12n"]
+
+[ext_resource type="Shader" uid="uid://bq23rwj0uvuwc" path="res://Shaders/effect.gdshader" id="1_icjk4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hj3v"]
+shader = ExtResource("1_icjk4")
+shader_parameter/line_color = Color(1, 0.127986, 0.195762, 1)
+shader_parameter/line_count = 2.0
+shader_parameter/line_density = 1.0
+shader_parameter/line_faloff = 1.0
+shader_parameter/mask_size = 0.481
+shader_parameter/mask_edge = 0.9
+shader_parameter/animation_speed = 1.0
+
+[node name="Damage effect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Glow2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7hj3v")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.8
+anchor_bottom = 16.2

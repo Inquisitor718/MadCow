@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhv5euvtuct8b"]
+
+[ext_resource type="PackedScene" uid="uid://nr5uairn4iyu" path="res://Assets/closed_shelf.glb" id="1_r8qsw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8lkym"]
+size = Vector3(1.49261, 2.55493, 0.809601)
+
+[node name="Closed_shelf" type="StaticBody3D"]
+
+[node name="closed_shelf" parent="." instance=ExtResource("1_r8qsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Closed Shelf" parent="closed_shelf" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00326538, -0.350708, -0.0951996)
+shape = SubResource("BoxShape3D_8lkym")
+
+[editable path="closed_shelf"]

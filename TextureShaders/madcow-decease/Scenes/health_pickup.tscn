@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://beo12ds1ym1e1"]
+
+[ext_resource type="Script" uid="uid://dy0t7vgw10olm" path="res://Scenes/health_pickup.gd" id="1_gvws8"]
+[ext_resource type="PackedScene" uid="uid://f3c4oq1y4lbi" path="res://Assets/canister.glb" id="2_lj2jr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lj2jr"]
+size = Vector3(0.342041, 0.46344, 0.966919)
+
+[node name="Health_Pickup" type="Area3D"]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0, 0, 0)
+collision_layer = 128
+collision_mask = 21
+script = ExtResource("1_gvws8")
+increase = 20
+
+[node name="canister" parent="." instance=ExtResource("2_lj2jr")]
+
+[node name="milk_can" parent="canister" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100067, 0.352112)
+shape = SubResource("BoxShape3D_lj2jr")
+
+[editable path="canister"]

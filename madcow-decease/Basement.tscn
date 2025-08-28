@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=60 format=3 uid="uid://dwnt5kns4icot"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="35_qs01l"]
 [ext_resource type="Shader" uid="uid://bgpnf56liefrk" path="res://portal.gdshader" id="37_s32vs"]
 [ext_resource type="Texture2D" uid="uid://dkowa24u1blqa" path="res://T_VFX_lelu1_tiled.png" id="38_plyyp"]
+[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="39_plyyp"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b3khk"]
 
@@ -4860,6 +4861,9 @@ transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, 0.192416, 
 mesh = SubResource("BoxMesh_ok6xx")
 skeleton = NodePath("../../stone_floor")
 surface_material_override/0 = SubResource("ShaderMaterial_vjbw5")
+
+[node name="Horns_Pickup" parent="." instance=ExtResource("39_plyyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2948, 1, 38.668)
 
 [connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox2" to="Progression boxes/Spawnbox2" method="_on_body_entered"]

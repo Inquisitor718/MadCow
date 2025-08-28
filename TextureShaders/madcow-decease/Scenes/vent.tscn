@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyw2s82j2y5pr"]
+
+[ext_resource type="PackedScene" uid="uid://slrxc2bnhsyw" path="res://Assets/vent.glb" id="1_xistq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xistq"]
+
+[node name="Vent" type="StaticBody3D"]
+
+[node name="vent" parent="." instance=ExtResource("1_xistq")]
+
+[node name="Vent" parent="vent" index="0"]
+transform = Transform3D(0.225297, 0, 0, 0, 0.225297, 0, 0, 0, 0.1049, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xistq")
+
+[editable path="vent"]

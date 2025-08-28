@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtnw1aqoydmql"]
+
+[ext_resource type="Shader" uid="uid://bq23rwj0uvuwc" path="res://Shaders/effect.gdshader" id="1_5jf16"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aaiqj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_va7ch"]
+shader = ExtResource("1_5jf16")
+shader_parameter/noise = SubResource("NoiseTexture2D_aaiqj")
+shader_parameter/line_color = Color(0.681423, 0.999673, 0.654156, 1)
+shader_parameter/line_count = 0.0
+shader_parameter/line_density = 0.5
+shader_parameter/line_faloff = 0.23
+shader_parameter/mask_size = 0.11
+shader_parameter/mask_edge = 0.5
+shader_parameter/animation_speed = 20.0
+
+[node name="Heal effect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Glow" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_va7ch")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.8
+anchor_bottom = 16.2

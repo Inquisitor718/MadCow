@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://ge388ys4fdti"]
+
+[ext_resource type="Shader" uid="uid://nkq08ws0uga0" path="res://Shaders/Simple_shader.tres" id="1_82s24"]
+[ext_resource type="Texture2D" uid="uid://dv8ajpaujfypg" path="res://Textures/T_flare81.png" id="2_5l440"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8s3s"]
+render_priority = 0
+shader = ExtResource("1_82s24")
+shader_parameter/HitTexture = ExtResource("2_5l440")
+
+[sub_resource type="Gradient" id="Gradient_6h3od"]
+colors = PackedColorArray(24.265, 6.25, 0, 1, 1, 0.842149, 0.563773, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p5pep"]
+gradient = SubResource("Gradient_6h3od")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_ik1h8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504823, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7blka"]
+curve = SubResource("Curve_ik1h8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_va7ch"]
+angle_min = 180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_7blka")
+color_ramp = SubResource("GradientTexture1D_p5pep")
+
+[sub_resource type="QuadMesh" id="QuadMesh_benqe"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rxnk7"]
+angle_min = 45.0
+angle_max = 45.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_7blka")
+color_ramp = SubResource("GradientTexture1D_p5pep")
+
+[node name="Muzzle flash" type="Node3D"]
+
+[node name="Muzzle Spark" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42877, 0)
+material_override = SubResource("ShaderMaterial_c8s3s")
+amount = 1
+lifetime = 0.1
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_va7ch")
+draw_pass_1 = SubResource("QuadMesh_benqe")
+
+[node name="Muzzle Spark 2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42877, 0)
+material_override = SubResource("ShaderMaterial_c8s3s")
+amount = 1
+lifetime = 0.1
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_rxnk7")
+draw_pass_1 = SubResource("QuadMesh_benqe")

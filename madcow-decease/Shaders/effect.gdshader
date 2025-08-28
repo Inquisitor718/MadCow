@@ -55,5 +55,5 @@ void fragment(){
 	result = smoothstep(result, result + line_faloff, lines.r);
 
 	COLOR.rgb = vec3(line_color.rgb);
-	COLOR.a = min(line_color.a, result);
+	COLOR.a = min(line_color.a, result) * COLOR.a;
 }

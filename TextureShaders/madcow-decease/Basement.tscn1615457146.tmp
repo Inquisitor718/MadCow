@@ -1,0 +1,1116 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwnt5kns4icot"]
+
+[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://player.tscn" id="1_acvfb"]
+[ext_resource type="Script" uid="uid://cfw8gbcpxtjfg" path="res://Movement.gd" id="2_j1pjq"]
+[ext_resource type="PackedScene" uid="uid://dhgmvpfqbxb6x" path="res://Enemy.tscn" id="3_j8hxg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j1pjq"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_j8hxg"]
+sky_material = SubResource("ProceduralSkyMaterial_j1pjq")
+
+[sub_resource type="Environment" id="Environment_4kw8u"]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_j8hxg")
+ambient_light_color = Color(0.768564, 0.72392, 0.783948, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_mode = 1
+fog_density = 1.0
+
+[node name="level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4kw8u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.127308, 0.898823, -0.419417, 0.72824, 0.371789, 0.575707, 0.673393, -0.232144, -0.701891, 0, 10, 0)
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 0.0
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.4103, 1.25, 38.5434)
+script = ExtResource("2_j1pjq")
+
+[node name="Obstacles" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Large_crate" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.25, 39)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.25, 47)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.25, 39)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22, 2.25, 26)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate5" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22, 2.25, 29)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate6" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 2.25, 7)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate7" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -16, 2.25, 11)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate8" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -12, 2.25, 18)
+size = Vector3(3, 4, 6)
+
+[node name="Small_crate" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -4, 1.25, 45)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.25, 41)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.991125, 0, 0.132931, 0, 1, 0, -0.132931, 0, 0.991125, 5, 1.25, 43.2424)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.933361, 0, -0.358938, 0, 1, 0, 0.358938, 0, 0.933361, 5, 1.25, 45.7716)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate5" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5442, 1.25, 37.6034)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate6" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.95, 1.25, 31.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate7" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.968886, 0, 0.247506, 0, 1, 0, -0.247506, 0, 0.968886, 19.95, 1.25, 22.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate8" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.95, 3.25, 19.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate9" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.954381, 0, -0.298591, 0, 1, 0, 0.298591, 0, 0.954381, 19.95, 1.25, 19.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate10" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -21.05, 1.25, 25.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate11" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -23.05, 1.25, 22.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate12" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -20.05, 1.25, 22.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate13" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 8.94999, 1.25, 23.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate14" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 8.94999, 3.25, 23.5411)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate15" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 6.94999, 1.25, 23.5411)
+size = Vector3(2, 2, 2)
+
+[node name="closed_shelf" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2, 49.4752)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, 11.5312, 2, 19.4752)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, 11.5312, 2, 22.4752)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, 11.5312, 2, 22.4752)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf5" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, 11.5312, 2, 25.4752)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf6" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -24.4688, 2, 16.4752)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf7" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, 9.56957, 2, 3.5254)
+size = Vector3(2, 3.5, 1)
+
+[node name="Small_crate16" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -21.05, 1.25, -1.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate17" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -19.05, 1.25, -1.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate18" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.135508, 0, -0.990776, 0, 1, 0, 0.990776, 0, 0.135508, -21.05, 1.25, -3.63186)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate19" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.224628, 0, -0.974445, 0, 1, 0, 0.974445, 0, -0.224628, -21.05, 3.25, -1.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate20" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, 1.03316e-07, 0, 1, 0, -1.03316e-07, 0, -1, -20.05, 1.25, -24.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate21" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.974749, 0, 0.223301, 0, 1, 0, -0.223301, 0, -0.974749, -20.05, 1.25, -22.1817)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate22" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.74508, 0, -0.666975, 0, 1, 0, 0.666975, 0, -0.74508, -17.5346, 1.25, -24.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate23" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.806455, 0, 0.591296, 0, 1, 0, -0.591296, 0, -0.806455, -20.05, 3.25, -24.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate24" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.984573, 0, 0.174971, 0, 1, 0, -0.174971, 0, 0.984573, 19.95, 1.25, -1.89719)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate25" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.712173, 0, -0.702004, 0, 1, 0, 0.702004, 0, 0.712173, 19.95, 1.25, -4.4254)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate26" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.961904, 0, 0.273388, 0, 1, 0, -0.273388, 0, 0.961904, 17.5576, 1.25, -2.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate27" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, -1.58933e-08, 0, 1, 0, 1.58933e-08, 0, 1, 19.95, 3.25, -2.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate28" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.196973, 0, 0.980409, 0, 1, 0, -0.980409, 0, 0.196973, 20.4331, 1.25, -24.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate29" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.182373, 0, 0.983229, 0, 1, 0, -0.983229, 0, 0.182373, 17.95, 1.25, -24.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate30" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.055229, 0, 0.998474, 0, 1, 0, -0.998474, 0, -0.055229, 19.95, 1.25, -22.2206)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate31" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.391325, 0, 0.920252, 0, 1, 0, -0.920252, 0, -0.391325, 19.95, 3.25, -24.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Bookshelf" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.5792, 2.25, 31.9708)
+size = Vector3(8, 4, 1.5)
+
+[node name="Bookshelf2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.5792, 2.25, 31.9708)
+size = Vector3(8, 4, 1.5)
+
+[node name="Bookshelf3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.57919, 2.25, 31.9708)
+size = Vector3(8, 4, 1.5)
+
+[node name="Bookshelf4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, 3.09086e-08, 0.707107, 0.707107, 1, 0, -4.37114e-08, 9.0163, 2.25, 31.9708)
+size = Vector3(8, 4, 1.5)
+
+[node name="Bookshelf5" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.420811, 2.25, 31.9708)
+size = Vector3(8, 4, 1.5)
+
+[node name="Bookshelf6" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24.1276, 2.25, 12.9708)
+size = Vector3(8, 4, 1.5)
+
+[node name="open_shelf" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62731, 1.25, 36.5977)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.0799, 1.25, 34.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.07987, 1.25, 35.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.65118, 1.25, 35.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf5" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.17514, 1.25, 35.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf6" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.1751, 1.25, 35.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf7" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.535, 1.25, 35.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf8" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.535, 1.25, 33.4839)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf9" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.535, 1.25, 1.48389)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf10" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.535, 1.25, -28.5161)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf11" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.465, 1.25, -28.5161)
+size = Vector3(2.5, 2, 1)
+
+[node name="open_shelf12" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.465, 1.25, 1.48389)
+size = Vector3(2.5, 2, 1)
+
+[node name="Spawner" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -12)
+radius = 7.0
+height = 1.5
+sides = 16
+
+[node name="Spawner2" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -12)
+radius = 4.5
+height = 2.5
+sides = 16
+
+[node name="Spawner3" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5.25, -12)
+radius = 1.0
+sides = 16
+
+[node name="Spawner4" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 1, -39)
+radius = 7.0
+height = 1.5
+sides = 16
+
+[node name="Spawner5" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 3, -39)
+radius = 4.5
+height = 2.5
+sides = 16
+
+[node name="Spawner6" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 5.25, -39)
+radius = 1.0
+sides = 16
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.93426, 0, -0.356591, 0, 1, 0, 0.356591, 0, 0.93426, 18, 0.75, 13)
+size = Vector3(2.5, 1, 2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.000139624, 0, 1, 0, 1, 0, -1, 0, 0.000139624, -15.9134, 0.75, -12.3472)
+size = Vector3(2.5, 1, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.000139624, 0, 1, 0, 1, 0, -1, 0, 0.000139624, -11.9134, 0.75, -18.3472)
+size = Vector3(2.5, 1, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(0.000139624, 0, 1, 0, 1, 0, -1, 0, 0.000139624, -11.9134, 0.75, -7.34718)
+size = Vector3(2.5, 1, 2)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.000139536, 0, -1, 0, 1, 0, 1, 0, -0.000139536, 14.42, 0.75, -13.0138)
+size = Vector3(2.5, 1, 2)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.000139536, 0, -1, 0, 1, 0, 1, 0, -0.000139536, 10.42, 0.75, -7.01385)
+size = Vector3(2.5, 1, 2)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.000139536, 0, -1, 0, 1, 0, 1, 0, -0.000139536, 10.42, 0.75, -18.0138)
+size = Vector3(2.5, 1, 2)
+
+[node name="Small_crate32" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 22.5628, 1.25, -40.902)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate33" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-0.223301, 0, -0.974749, 0, 1, 0, 0.974749, 0, -0.223301, 23.7291, 1.25, -38.3203)
+size = Vector3(2, 2, 2)
+
+[node name="chest2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3532, 0.875, 43.1197)
+size = Vector3(2.25, 1.25, 1.25)
+
+[node name="chest3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3115, 0.874999, 8.48846)
+size = Vector3(2.25, 1.25, 1.25)
+
+[node name="chest4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -20.5083, 0.874999, -30.5599)
+size = Vector3(2.25, 1.25, 1.25)
+
+[node name="obstacles2" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="boulder" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.75, -30)
+radius = 2.0
+
+[node name="boulder2" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.75, -30)
+radius = 2.0
+
+[node name="boulder3" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -30)
+radius = 2.0
+
+[node name="boulder4" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, -30)
+radius = 2.0
+
+[node name="boulder5" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.75, -30)
+radius = 2.0
+
+[node name="boulder6" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -5.6, 4.75, -30)
+radius = 2.0
+
+[node name="boulder7" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.8, 4.75, -30)
+radius = 2.0
+
+[node name="boulder8" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 4.75, -30)
+radius = 2.0
+
+[node name="boulder9" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.8, 4.75, -30)
+radius = 2.0
+
+[node name="boulder10" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 5.6, 4.75, -30)
+radius = 2.0
+
+[node name="closed_shelf6" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, 49.5312, 2, -14.5248)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf7" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, 46.5312, 2, -14.5248)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf8" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, 43.5312, 2, -14.5248)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf9" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, 40.5312, 2, -14.5248)
+size = Vector3(2, 3.5, 1)
+
+[node name="Large_crate6" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 29, 2.25, 4)
+size = Vector3(3, 4, 6)
+
+[node name="Large_crate7" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(0.241753, 0, -0.970338, 0, 1, 0, 0.970338, 0, 0.241753, 33.8027, 2.25, 2.48011)
+size = Vector3(3, 4, 6)
+
+[node name="open_shelf2" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 26.3329, 1.25, -14.34)
+size = Vector3(2.5, 2, 1)
+
+[node name="Large_crate8" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 33.5341, 2.25, -13.5199)
+size = Vector3(3, 4, 6)
+
+[node name="Small_crate28" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(0.196973, 0, 0.980409, 0, 1, 0, -0.980409, 0, 0.196973, 50.4331, 1.25, -11.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate29" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(0.182373, 0, 0.983229, 0, 1, 0, -0.983229, 0, 0.182373, 47.95, 1.25, -11.4589)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate30" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-0.055229, 0, 0.998474, 0, 1, 0, -0.998474, 0, -0.055229, 49.95, 1.25, -9.2206)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate31" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-0.391325, 0, 0.920252, 0, 1, 0, -0.920252, 0, -0.391325, 49.95, 3.25, -11.4589)
+size = Vector3(2, 2, 2)
+
+[node name="open_shelf3" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64.3329, 1.25, -28.34)
+size = Vector3(2.5, 2, 1)
+
+[node name="Large_crate9" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 54.5341, 2.25, -25.5199)
+size = Vector3(3, 4, 6)
+
+[node name="barrell" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5713, 1, 39.6167)
+radius = 0.75
+height = 1.5
+
+[node name="barrell2" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5713, 1, 41.6167)
+radius = 0.75
+height = 1.5
+
+[node name="barrell3" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57129, 1, 42.6167)
+radius = 0.75
+height = 1.5
+
+[node name="barrell4" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57129, 1, 40.6167)
+radius = 0.75
+height = 1.5
+
+[node name="barrell5" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57129, 1, 38.6167)
+radius = 0.75
+height = 1.5
+
+[node name="barrell6" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9844, 1, 36.9801)
+radius = 0.75
+height = 1.5
+
+[node name="barrell7" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9844, 1, 38.9801)
+radius = 0.75
+height = 1.5
+
+[node name="barrell8" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9844, 2.52751, 36.9801)
+radius = 0.75
+height = 1.5
+
+[node name="barrell9" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9844, 1, 13.9801)
+radius = 0.75
+height = 1.5
+
+[node name="barrell10" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9844, 1, 11.9801)
+radius = 0.75
+height = 1.5
+
+[node name="barrell11" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9844, 2.5091, 11.9801)
+radius = 0.75
+height = 1.5
+
+[node name="barrell12" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8742, 1, -13.3758)
+radius = 0.75
+height = 1.5
+
+[node name="barrell13" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.8742, 1, 3.2173)
+radius = 0.75
+height = 1.5
+
+[node name="barrell14" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.8742, 1, 1.62424)
+radius = 0.75
+height = 1.5
+
+[node name="barrell15" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.8742, 1, -0.37576)
+radius = 0.75
+height = 1.5
+
+[node name="barrell16" type="CSGCylinder3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.8742, 2.50322, 0.62424)
+radius = 0.75
+height = 1.5
+
+[node name="Haybale" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 0.997921, -9)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale2" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 0.997921, -6)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale3" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 0.997921, -3)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale4" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 0.997921, -12)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale5" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 0.997921, -15)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale6" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 2.5168, -9.89817)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale7" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 2.5168, -6.89817)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale8" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 2.5168, -3.89817)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale9" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64, 2.5168, -12.8982)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale11" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 0.997921, -8.42061)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale12" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 0.997921, -5.42061)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale13" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 0.997921, -2.42061)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale14" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 0.997921, -11.4206)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale15" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 0.997921, -14.4206)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale16" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 2.5168, -9.31878)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale17" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 2.5168, -6.31878)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale18" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 2.5168, -3.31878)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale19" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.5388, 2.5168, -12.3188)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="closed_shelf10" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, -18.4688, 2, -49.5248)
+size = Vector3(2, 3.5, 1)
+
+[node name="closed_shelf11" type="CSGBox3D" parent="obstacles2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 1.77636e-15, -8.74228e-08, 0, -1, -16.4688, 2, -49.5248)
+size = Vector3(2, 3.5, 1)
+
+[node name="boulder14" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.75, -35)
+radius = 1.5
+
+[node name="boulder15" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.75, -41)
+radius = 1.5
+
+[node name="boulder19" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.75, -36)
+radius = 1.5
+
+[node name="boulder26" type="CSGSphere3D" parent="obstacles2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.6, 2.75, -48)
+radius = 2.0
+
+[node name="Obstacles3" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="fence" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.7419, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence2" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.2214, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence3" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.7241, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence4" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 57.2037, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence5" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.7308, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence6" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64.2104, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="Obstacles3" type="CSGCombiner3D" parent="Obstacles3"]
+use_collision = true
+
+[node name="fence" type="CSGBox3D" parent="Obstacles3/Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.7419, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence2" type="CSGBox3D" parent="Obstacles3/Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.2214, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence3" type="CSGBox3D" parent="Obstacles3/Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.7241, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence4" type="CSGBox3D" parent="Obstacles3/Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 57.2037, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence5" type="CSGBox3D" parent="Obstacles3/Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 62.7308, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence6" type="CSGBox3D" parent="Obstacles3/Obstacles3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 64.2104, 1.24792, -35.7447)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="mound" type="CSGPolygon3D" parent="Obstacles3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 63, 0, -47)
+polygon = PackedVector2Array(0, 0, 4, 0, 2, 2, 0, 3)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="mound2" type="CSGPolygon3D" parent="Obstacles3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 63, 0, -42)
+polygon = PackedVector2Array(0, 0, 3, 0, 2, 1, 0, 2)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="mound3" type="CSGPolygon3D" parent="Obstacles3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 56, 0, -48)
+polygon = PackedVector2Array(0, 0, 3, 0, 2, 1, 0, 2)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="mound4" type="CSGPolygon3D" parent="Obstacles3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 57, 0, 5)
+polygon = PackedVector2Array(0, 0, 4, 0, 2, 2, 0, 3)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="mound5" type="CSGPolygon3D" parent="Obstacles3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 45, 0, 5)
+polygon = PackedVector2Array(0, 0, 4, 0, 2, 2, 0, 3)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="mound6" type="CSGPolygon3D" parent="Obstacles3"]
+transform = Transform3D(1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 51, 0, 5)
+polygon = PackedVector2Array(0, 0, 4, -1, 2, 1, 0, 2)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="plank" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 34.5, 1.53735, 0.222034)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank2" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 33.5341, 1.53735, 0.480853)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank3" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 35.1792, 1.53735, 0.040059)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank4" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 32.8763, 1.53735, 0.657109)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank5" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 34.6945, 1.53735, -0.199668)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank6" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 33.7286, 1.53735, 0.0591507)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank7" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 35.3736, 1.53735, -0.381644)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank8" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 33.0708, 1.53735, 0.235407)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank9" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 34.075, 1.53735, -0.336804)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank10" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 33.1091, 1.53735, -0.0779848)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank11" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 34.7541, 1.53735, -0.518779)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank12" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 32.4513, 1.53735, 0.0982709)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank13" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 34.2922, 4.0147, 0.473705)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank14" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 33.3262, 4.0147, 0.732523)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank15" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 34.9713, 4.0147, 0.291729)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="plank16" type="CSGBox3D" parent="Obstacles3"]
+transform = Transform3D(0.252896, 0.0550524, -0.965926, -0.212706, 0.977116, -8.88178e-16, 0.943822, 0.205458, 0.258819, 32.6685, 4.0147, 0.908779)
+size = Vector3(0.25, 2.5, 0.5)
+
+[node name="obstacles4" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="fence" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence2" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence3" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence4" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence5" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence6" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence7" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.7419, 1.24792, 5.25527)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence8" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence9" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence10" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence11" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence12" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence13" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence14" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.7419, 1.24792, -48.6344)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="fence15" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7419, 1.24792, -49.2044)
+size = Vector3(0.5, 2, 1.5)
+
+[node name="barrell13" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5988, 1, -49.0623)
+radius = 0.75
+height = 1.5
+
+[node name="barrell14" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5988, 1, -49.0623)
+radius = 0.75
+height = 1.5
+
+[node name="Haybale5" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.3349, 0.997921, -40.0883)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale9" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.97687, 0, 0.213832, 0, 1, 0, -0.213832, 0, 0.97687, 46.2192, 2.5168, -38.6347)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale14" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.4094, 0.997921, -38.6272)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale15" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9143, 0.997921, -38.6272)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale19" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.0162, 2.5168, -38.6272)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale6" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.972039, 0, 0.23482, 0, 1, 0, -0.23482, 0, 0.972039, 46.5296, 0.997921, -40.3929)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale16" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.942367, 0, -0.33458, 0, 1, 0, 0.33458, 0, 0.942367, 44.2224, 0.997921, -38.6272)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale7" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.6606, 0.997921, -41.6137)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale20" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.943443, 0, -0.331535, 0, 1, 0, 0.331535, 0, 0.943443, 49.0162, 2.5168, -40.6421)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale8" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.251326, 0, -0.967902, 0, 1, 0, 0.967902, 0, 0.251326, 41.9154, 0.997921, -38.9152)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale10" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.452481, 0, -0.891774, 0, 1, 0, 0.891774, 0, 0.452481, 39.7254, 2.5168, -41.5656)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale17" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.251326, 0, -0.967902, 0, 1, 0, 0.967902, 0, 0.251326, 40.5198, 0.997921, -38.4759)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale18" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.251326, 0, -0.967902, 0, 1, 0, 0.967902, 0, 0.251326, 39.8928, 0.997921, -40.8909)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale21" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.251326, 0, -0.967902, 0, 1, 0, 0.967902, 0, 0.251326, 40.421, 2.5168, -38.8566)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale11" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.471581, 0, -0.881822, 0, 1, 0, 0.881822, 0, 0.471581, 41.5051, 0.997921, -41.707)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale22" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.957269, 0, 0.289199, 0, 1, 0, -0.289199, 0, 0.957269, 39.2162, 0.997921, -43.4964)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="Haybale23" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-0.0837822, 0, -0.996484, 0, 1, 0, 0.996484, 0, -0.0837822, 42.3712, 2.5168, -39.363)
+size = Vector3(2.5, 1.5, 1.5)
+
+[node name="open_shelf3" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27.3329, 1.25, -37.4933)
+size = Vector3(2.5, 2, 1)
+
+[node name="Small_crate28" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.176587, 0, -0.984285, 0, 1, 0, 0.984285, 0, 0.176587, 31.5116, 1.25, -38.2848)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate29" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.191203, 0, -0.98155, 0, 1, 0, 0.98155, 0, 0.191203, 33.8215, 1.25, -39.1961)
+size = Vector3(2, 2, 2)
+
+[node name="Small_crate30" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(0.41782, 0, -0.90853, 0, 1, 0, 0.90853, 0, 0.41782, 31.1396, 1.25, -40.5442)
+size = Vector3(2, 2, 2)
+
+[node name="open_shelf4" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 22.3329, 1.25, -30.4933)
+size = Vector3(2.5, 2, 1)
+
+[node name="barrell15" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8351, 1, -49.0623)
+radius = 0.75
+height = 1.5
+
+[node name="barrell16" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8351, 1, -49.0623)
+radius = 0.75
+height = 1.5
+
+[node name="barrell17" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9297, 1, -49.0623)
+radius = 0.75
+height = 1.5
+
+[node name="barrell18" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9297, 1, -49.0623)
+radius = 0.75
+height = 1.5
+
+[node name="barrell19" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6648, 2.6943, -49.1068)
+radius = 0.75
+height = 1.5
+
+[node name="barrell20" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6648, 2.6943, -49.1068)
+radius = 0.75
+height = 1.5
+
+[node name="open_shelf5" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.6671, 1.25, -49.4933)
+size = Vector3(2.5, 2, 1)
+
+[node name="Stairs" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -22.465, 2.39901, -38.3482)
+size = Vector3(5.02759, 1, 10.3019)
+
+[node name="Stairs2" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.465, 4.91361, -32.1972)
+size = Vector3(5.02759, 1, 4)
+
+[node name="open_shelf6" type="CSGBox3D" parent="obstacles4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3678, 1.25, -31.3778)
+size = Vector3(2.5, 2, 1)
+
+[node name="barrell21" type="CSGCylinder3D" parent="obstacles4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0703, 1, -34.0623)
+radius = 0.75
+height = 1.5
+
+[node name="Enemy" parent="." instance=ExtResource("3_j8hxg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 47)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="Walls" type="CSGCombiner3D" parent="NavigationRegion3D"]
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9589, -3.8147e-06, -21.5606)
+size = Vector3(40, 0.49585, 57)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 3, 0)
+size = Vector3(0.001, 6, 100)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 3, 32)
+size = Vector3(0.001, 6, 36)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 3, -21.5)
+size = Vector3(0.001, 6, 57)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 3, -50)
+size = Vector3(0.001, 6, 90)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45, 3, 7)
+size = Vector3(0.001, 6, 40)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, 50)
+size = Vector3(0.001, 6, 50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+size = Vector3(50, 0.5, 100)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, 36)
+size = Vector3(0.001, 6, 42)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5, 3, 3)
+size = Vector3(0.001, 6, 25)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.5, 3, -30)
+size = Vector3(0.001, 6, 15)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25, 3, -19)
+size = Vector3(0.001, 6, 22)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 3, 27)
+size = Vector3(0.001, 6, 18)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19, 3, 3)
+size = Vector3(0.001, 6, 12)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 38.5, 3, -26.0005)
+size = Vector3(22, 6, 27)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.5, 3, -30)
+size = Vector3(0.001, 6, 15)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25, 3, 4.5)
+size = Vector3(0.001, 6, 19)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.7559, 3, 36)
+size = Vector3(0.001, 6, 4.51184)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 3, 9)
+size = Vector3(0.001, 6, 12)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25, 3, -40)
+size = Vector3(0.001, 6, 6)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25, 3, -48)
+size = Vector3(0.001, 6, 4)

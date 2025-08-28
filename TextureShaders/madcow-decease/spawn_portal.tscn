@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bctslugyr53c8"]
+
+[ext_resource type="Shader" uid="uid://dmlnjrlhmeuo3" path="res://shaders/portal.gdshader" id="1_bud3r"]
+[ext_resource type="Texture2D" uid="uid://dffs3ee7jnvex" path="res://shaders/T_VFX_lelu1_tiled.png" id="2_fns3t"]
+[ext_resource type="Material" uid="uid://bkmjobdngfhqh" path="res://shaders/portal_particles.tres" id="3_axuh5"]
+[ext_resource type="Shader" uid="uid://c0xbnlxolauph" path="res://shaders/glow.gdshader" id="4_ksl71"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5arm"]
+render_priority = 0
+shader = ExtResource("1_bud3r")
+shader_parameter/camo_tex = ExtResource("2_fns3t")
+shader_parameter/color_a = Color(0, 0, 0, 1)
+shader_parameter/color_b = Color(0.55217, 0.243338, 0.954845, 1)
+shader_parameter/glow = 3.0
+shader_parameter/glow_color = Color(0.493365, 0.00312407, 0.998986, 1)
+shader_parameter/glow_strength = 1.5
+shader_parameter/glow_thinnes = 2.0
+shader_parameter/glow_dispersion = 2.0
+shader_parameter/enable_fresnel = true
+shader_parameter/major_radius = 1.0
+shader_parameter/minor_radius = 0.3
+
+[sub_resource type="TorusMesh" id="TorusMesh_wc5p8"]
+material = SubResource("ShaderMaterial_i5arm")
+inner_radius = 0.3
+outer_radius = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jka67"]
+render_priority = 0
+shader = ExtResource("4_ksl71")
+shader_parameter/glow_color = Color(0.0941176, 0.00392157, 0.278431, 1)
+shader_parameter/glow_strength = 4.0
+shader_parameter/glow_thinnes = 0.002
+shader_parameter/glow_dispersion = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_i5arm"]
+material = SubResource("ShaderMaterial_jka67")
+radius = 0.1
+height = 0.2
+
+[node name="spawn_portal" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.4292, 0, 0, 0, -0.564396, 0, 0, 0, -2.4292, 0, 0, 0)
+mesh = SubResource("TorusMesh_wc5p8")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50351, 0.867566, -1.00407)
+visible = false
+emitting = false
+amount = 16
+process_material = ExtResource("3_axuh5")
+draw_pass_1 = SubResource("SphereMesh_i5arm")
