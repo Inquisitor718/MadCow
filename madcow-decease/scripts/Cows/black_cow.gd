@@ -53,19 +53,21 @@ func _physics_process(delta):
 			direction = direction.normalized()
 			velocity.x = direction.x * move_speed
 			velocity.z = direction.z * move_speed
+			animation_tree.set("parameters/conditions/Idle", false)
 			animation_tree.set("parameters/conditions/Walk", true)
+			animation_tree.set("parameters/conditions/Shoot", false)
 			
 			move_and_slide()
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
 			_stop_moving()
 			animation_tree.set("parameters/conditions/Shoot", true)
+			animation_tree.set("parameters/conditions/Walk", false)
 			_try_shoot()
 	else:
-		
 		_stop_moving()
-		
-	
+		animation_tree.set("parameters/conditions/Walk", false)
+		animation_tree.set("parameters/conditions/Idle", true)
 	
 	move_and_slide()
 
@@ -148,6 +150,10 @@ func Hit(dmg: int) -> void:
 		black_cow_health -= dmg
 		print("Enemy Health:", black_cow_health)
 		if black_cow_health <= 0:
+			animation_tree.set("parameters/conditions/Die", true)
+			can_shoot = false
+			
+			
 			Global.kills += 1
 			Global.distortion += distortion_add
 			print(Global.kills)
@@ -163,7 +169,10 @@ func Hit(dmg: int) -> void:
 						horns_instance.global_position = global_position
 						get_tree().current_scene.add_child(horns_instance)
 			
-			can_shoot = false
+			collision_layer = 0
+			#TODO: add particle effect
+			#particles.emitting = true
+			await get_tree().create_timer(1.5).timeout
 			queue_free()
 
 

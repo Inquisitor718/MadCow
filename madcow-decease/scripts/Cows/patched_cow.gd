@@ -14,6 +14,8 @@ extends CharacterBody3D
 @export var bullet: PackedScene
 @export var revolver_scene: PackedScene
 @export var explosion:PackedScene
+@onready var animation_tree: AnimationTree = $"Patched Cow Animations/AnimationTree"
+
 
 var player: CharacterBody3D = null
 var group_player: CharacterBody3D = null
@@ -39,12 +41,22 @@ func _physics_process(delta):
 			direction = direction.normalized()
 			velocity.x = direction.x * move_speed
 			velocity.z = direction.z * move_speed
+			
+			animation_tree.set("parameters/conditions/Shoot", false)
+			animation_tree.set("parameters/conditions/Walk", true)
+			animation_tree.set("parameters/conditions/Idle", false)
 			move_and_slide()
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
 			_stop_moving()
+			animation_tree.set("parameters/conditions/Shoot", true)
+			animation_tree.set("parameters/conditions/Walk", false)
+			animation_tree.set("parameters/conditions/Idle", false)
 			_try_shoot()
 	else:
+		animation_tree.set("parameters/conditions/Shoot", false)
+		animation_tree.set("parameters/conditions/Walk", false)
+		animation_tree.set("parameters/conditions/Idle", true)
 		_stop_moving()
 	move_and_slide()
 
@@ -126,6 +138,7 @@ func Hit(dmg: int) -> void:
 		if patched_cow_health <= 0:
 			Global.kills += 1
 			Global.distortion += distortion_add
+			animation_tree.set("parameters/conditions/Die", true)
 			print(Global.kills)
 			emit_signal("on_death")
 			if group_player.is_in_group("Revolver"):
@@ -138,6 +151,7 @@ func Hit(dmg: int) -> void:
 						var revolver_instance = revolver_scene.instantiate()
 						revolver_instance.global_position = global_position
 						get_tree().current_scene.add_child(revolver_instance)
+			await get_tree().create_timer(1.5).timeout
 			queue_free()
 
 
