@@ -1,10 +1,16 @@
-[gd_scene load_steps=33 format=4 uid="uid://i3it8sxpnyua"]
+[gd_scene load_steps=39 format=4 uid="uid://i3it8sxpnyua"]
 
-[ext_resource type="Texture2D" uid="uid://dwnd15llmlmhy" path="res://Assets/WhatsApp Image 2025-08-25 at 19.49.26_cd605b6e.jpg" id="1_kh5ph"]
-[ext_resource type="Texture2D" uid="uid://budmgc4ks3w0l" path="res://Assets/spawner_Metal.png" id="2_mdv8j"]
-[ext_resource type="PackedScene" uid="uid://dfn5aw6jnyxg2" path="res://Scenes/enemy scenes/spawner_healthbar.tscn" id="4_4wbs5"]
+[ext_resource type="Script" uid="uid://b2rdstoov5ul4" path="res://scripts/spawner_final.gd" id="1_3rx28"]
+[ext_resource type="Script" uid="uid://bu53qn7t0vi1g" path="res://scripts/spawnning_enemies.gd" id="1_8m3pw"]
+[ext_resource type="Texture2D" uid="uid://dwnd15llmlmhy" path="res://assets/WhatsApp Image 2025-08-25 at 19.49.26_cd605b6e.jpg" id="1_kh5ph"]
+[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://scenes/enemy scenes/baby_cow.tscn" id="2_gwwf2"]
+[ext_resource type="Texture2D" uid="uid://budmgc4ks3w0l" path="res://assets/spawner_Metal.png" id="2_mdv8j"]
+[ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://scenes/enemy scenes/black_cow.tscn" id="3_dv6io"]
+[ext_resource type="PackedScene" uid="uid://dfn5aw6jnyxg2" path="res://scenes/enemy scenes/spawner_healthbar.tscn" id="4_4wbs5"]
+[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://scenes/enemy scenes/patched_cow.tscn" id="4_207fe"]
 [ext_resource type="Shader" uid="uid://csyxm8lhof1pt" path="res://Shaders/FireShader.tres" id="4_e3f8v"]
 [ext_resource type="Texture2D" uid="uid://dcdsgj8co30hd" path="res://Textures/Voronoi01.png" id="5_3rx28"]
+[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://scenes/enemy scenes/white_cow.tscn" id="5_hxexq"]
 [ext_resource type="Texture2D" uid="uid://b8jox18rkokfe" path="res://Textures/Flame01.png" id="6_m1kbb"]
 [ext_resource type="Texture2D" uid="uid://dcnvs7xi6qkfj" path="res://Textures/Flame02.png" id="7_q0apd"]
 [ext_resource type="Shader" uid="uid://bxc8w35tpu346" path="res://Shaders/SimpleParticles.tres" id="8_07n7x"]
@@ -88,18 +94,19 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_11cmh")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mdv8j"]
-height = 1.15918
-radius = 1.64404
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xhbpr"]
-height = 1.04126
-radius = 1.19092
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ydn3"]
-height = 1.2
+height = 2.69043
+radius = 4.84863
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p5s3f"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ydn3"]
+height = 2.26758
+radius = 1.86182
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xhbpr"]
+height = 2.36816
+radius = 3.40918
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08o54"]
 render_priority = 0
@@ -186,7 +193,14 @@ turbulence_noise_scale = 4.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_rf8c5"]
 
-[node name="Spawner" type="StaticBody3D"]
+[node name="Spawner" type="StaticBody3D" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 39
+script = ExtResource("1_8m3pw")
+Baby_Cow = ExtResource("2_gwwf2")
+Black_Cow = ExtResource("3_dv6io")
+Patched_Cow = ExtResource("4_207fe")
+White_Cow = ExtResource("5_hxexq")
 
 [node name="spawner" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, 0, 0)
@@ -198,21 +212,27 @@ mesh = SubResource("ArrayMesh_a57p5")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, -3.81948, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.80385, 0)
 shape = SubResource("CylinderShape3D_mdv8j")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, -1.25641, 0)
-shape = SubResource("CylinderShape3D_xhbpr")
+[node name="loda" type="StaticBody3D" parent="." groups=["Enemies", "Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1735, 0)
+collision_layer = 2
+collision_mask = 39
+script = ExtResource("1_3rx28")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, 1.15239, 0)
-shape = SubResource("CylinderShape3D_2ydn3")
-
-[node name="Sprite3D" parent="." instance=ExtResource("4_4wbs5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82539, 0)
+[node name="Healthbar" parent="loda" instance=ExtResource("4_4wbs5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65189, 0)
 sorting_offset = 1.0
 texture = SubResource("ViewportTexture_p5s3f")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="loda"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0211066, 0)
+shape = SubResource("CylinderShape3D_2ydn3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25641, 0)
+shape = SubResource("CylinderShape3D_xhbpr")
 
 [node name="Fire" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.42552, 0)
@@ -220,6 +240,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.42552, 0)
 [node name="StaticFlame" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404311, 0)
 material_override = SubResource("ShaderMaterial_08o54")
+emitting = false
 amount = 1
 lifetime = 5.0
 fixed_fps = 60
@@ -254,3 +275,9 @@ lifetime = 1.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_c8s3s")
 draw_pass_1 = SubResource("QuadMesh_rf8c5")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="no_hp_left" from="loda/Healthbar" to="loda" method="_on_healthbar_no_hp_left"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

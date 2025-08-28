@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cstsl4ygh1nm1"
-path.s3tc="res://.godot/imported/canister_Hay_Milk_Books_Rope.png-3a656057a32ce0523f2b2c7b83b5dc8d.s3tc.ctex"
+path.s3tc="res://.godot/imported/canister_Hay_Milk_Books_Rope.png-127acf2fa6e969814e99d49d286fcaa1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/canister_Hay_Milk_Books_Rope.png"
-dest_files=["res://.godot/imported/canister_Hay_Milk_Books_Rope.png-3a656057a32ce0523f2b2c7b83b5dc8d.s3tc.ctex"]
+source_file="res://assets/canister_Hay_Milk_Books_Rope.png"
+dest_files=["res://.godot/imported/canister_Hay_Milk_Books_Rope.png-127acf2fa6e969814e99d49d286fcaa1.s3tc.ctex"]
 
 [params]
 

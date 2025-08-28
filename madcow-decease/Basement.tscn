@@ -1,31 +1,31 @@
-[gd_scene load_steps=59 format=3 uid="uid://dwnt5kns4icot"]
+[gd_scene load_steps=61 format=3 uid="uid://dwnt5kns4icot"]
 
-[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_acvfb"]
+[ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://scenes/player_S_.tscn" id="1_acvfb"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_eqln2"]
 [ext_resource type="Script" uid="uid://buuo8jbohwcxn" path="res://basement.gd" id="1_xwxmh"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_244tr"]
 [ext_resource type="Shader" uid="uid://dq5kyfspyhv65" path="res://Shaders/transition.gdshader" id="2_b3khk"]
-[ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://Scenes/bookshelf.tscn" id="3_kay6q"]
-[ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://Scenes/Stone_floor.tscn" id="4_4kw8u"]
-[ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://Scenes/table.tscn" id="5_u0eul"]
-[ext_resource type="PackedScene" uid="uid://bixm54sl50jcl" path="res://Scenes/boulder_a.tscn" id="6_ax0rv"]
-[ext_resource type="PackedScene" uid="uid://b0he3lu2vim3c" path="res://Scenes/stone_wall.tscn" id="6_e3yp8"]
-[ext_resource type="PackedScene" uid="uid://rm2y7ba7r8ur" path="res://Scenes/large_crate.tscn" id="6_kay6q"]
-[ext_resource type="PackedScene" uid="uid://bfbvwvvrutt65" path="res://Scenes/crate.tscn" id="6_vgf3n"]
-[ext_resource type="PackedScene" uid="uid://do38v4fxed4mo" path="res://Scenes/boulder_b.tscn" id="7_2gm2r"]
-[ext_resource type="PackedScene" uid="uid://i3it8sxpnyua" path="res://Scenes/spawner.tscn" id="7_vgf3n"]
-[ext_resource type="PackedScene" uid="uid://b0nt7qofh0e2y" path="res://Scenes/barrell.tscn" id="9_4myss"]
-[ext_resource type="PackedScene" uid="uid://cvkl23qbpllyf" path="res://Scenes/boulder_c.tscn" id="9_ngk6g"]
-[ext_resource type="PackedScene" uid="uid://dhv5euvtuct8b" path="res://Scenes/closed_shelf.tscn" id="10_84k2l"]
-[ext_resource type="PackedScene" uid="uid://d3eja6icmvfws" path="res://Scenes/open_shelf.tscn" id="10_mcrtc"]
-[ext_resource type="PackedScene" uid="uid://dmahvlnoj2n5a" path="res://Scenes/chest.tscn" id="10_v5h6t"]
-[ext_resource type="PackedScene" uid="uid://ciwq0qd8sditg" path="res://Scenes/stairs.tscn" id="11_humyx"]
-[ext_resource type="PackedScene" uid="uid://xvc0ih4da4yr" path="res://Scenes/fence.tscn" id="13_ibnsn"]
-[ext_resource type="PackedScene" uid="uid://bn8pp02qto3hr" path="res://Scenes/haybale.tscn" id="13_jlhtf"]
-[ext_resource type="PackedScene" uid="uid://c11a0jqy80uxi" path="res://Scenes/mound.tscn" id="15_46wd4"]
-[ext_resource type="PackedScene" uid="uid://0kdavsmudtd3" path="res://Scenes/doorframe_stone.tscn" id="21_ba2bl"]
-[ext_resource type="PackedScene" uid="uid://cy23fhf1ysxub" path="res://Scenes/pillar.tscn" id="22_phgjd"]
-[ext_resource type="PackedScene" uid="uid://caac403h5abfw" path="res://Scenes/torch.tscn" id="23_itqoo"]
+[ext_resource type="PackedScene" uid="uid://dnml6pf78p8se" path="res://scenes/bookshelf.tscn" id="3_kay6q"]
+[ext_resource type="PackedScene" uid="uid://yql1rf1kvhri" path="res://scenes/Stone_floor.tscn" id="4_4kw8u"]
+[ext_resource type="PackedScene" uid="uid://ho45whr1pukn" path="res://scenes/table.tscn" id="5_u0eul"]
+[ext_resource type="PackedScene" uid="uid://bixm54sl50jcl" path="res://scenes/boulder_a.tscn" id="6_ax0rv"]
+[ext_resource type="PackedScene" uid="uid://b0he3lu2vim3c" path="res://scenes/stone_wall.tscn" id="6_e3yp8"]
+[ext_resource type="PackedScene" uid="uid://rm2y7ba7r8ur" path="res://scenes/large_crate.tscn" id="6_kay6q"]
+[ext_resource type="PackedScene" uid="uid://bfbvwvvrutt65" path="res://scenes/crate.tscn" id="6_vgf3n"]
+[ext_resource type="PackedScene" uid="uid://do38v4fxed4mo" path="res://scenes/boulder_b.tscn" id="7_2gm2r"]
+[ext_resource type="PackedScene" uid="uid://i3it8sxpnyua" path="res://scenes/enemy scenes/spawner.tscn" id="7_vgf3n"]
+[ext_resource type="PackedScene" uid="uid://b0nt7qofh0e2y" path="res://scenes/barrell.tscn" id="9_4myss"]
+[ext_resource type="PackedScene" uid="uid://cvkl23qbpllyf" path="res://scenes/boulder_c.tscn" id="9_ngk6g"]
+[ext_resource type="PackedScene" uid="uid://dhv5euvtuct8b" path="res://scenes/closed_shelf.tscn" id="10_84k2l"]
+[ext_resource type="PackedScene" uid="uid://d3eja6icmvfws" path="res://scenes/open_shelf.tscn" id="10_mcrtc"]
+[ext_resource type="PackedScene" uid="uid://dmahvlnoj2n5a" path="res://scenes/chest.tscn" id="10_v5h6t"]
+[ext_resource type="PackedScene" uid="uid://ciwq0qd8sditg" path="res://scenes/stairs.tscn" id="11_humyx"]
+[ext_resource type="PackedScene" uid="uid://xvc0ih4da4yr" path="res://scenes/fence.tscn" id="13_ibnsn"]
+[ext_resource type="PackedScene" uid="uid://bn8pp02qto3hr" path="res://scenes/haybale.tscn" id="13_jlhtf"]
+[ext_resource type="PackedScene" uid="uid://c11a0jqy80uxi" path="res://scenes/mound.tscn" id="15_46wd4"]
+[ext_resource type="PackedScene" uid="uid://0kdavsmudtd3" path="res://scenes/doorframe_stone.tscn" id="21_ba2bl"]
+[ext_resource type="PackedScene" uid="uid://cy23fhf1ysxub" path="res://scenes/pillar.tscn" id="22_phgjd"]
+[ext_resource type="PackedScene" uid="uid://caac403h5abfw" path="res://scenes/torch.tscn" id="23_itqoo"]
 [ext_resource type="Script" uid="uid://dt4bdjb0ey2tj" path="res://scripts/spawnbox_2.gd" id="29_lrwh7"]
 [ext_resource type="Script" uid="uid://bqoyr0b5r4hpv" path="res://scripts/spawnbox_3.gd" id="30_s32vs"]
 [ext_resource type="Script" uid="uid://cgeg0apr4wcci" path="res://scripts/spawnbox_4.gd" id="31_plyyp"]
@@ -104,6 +104,13 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [sub_resource type="BoxShape3D" id="BoxShape3D_ngk6g"]
 size = Vector3(20.0549, 13.423, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s32vs"]
+size = Vector3(1, 1, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plyyp"]
+resource_local_to_scene = true
+size = Vector3(26, 1, 26)
+
 [sub_resource type="BoxMesh" id="BoxMesh_humyx"]
 size = Vector3(2.705, 0.001, 1.065)
 
@@ -165,7 +172,7 @@ grow_vertical = 2
 environment = SubResource("Environment_4kw8u")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_acvfb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.8818, 1.86623, 45.4212)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.1182, 7.86623, -10.5788)
 collision_layer = 2684354561
 
 [node name="WORLD_BUILDING" type="Node3D" parent="."]
@@ -3295,7 +3302,7 @@ transform = Transform3D(0.738889, 0.483513, 0.469317, -0.556698, 0.0456212, 0.82
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.588865)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WORLD_BUILDING/NavigationObstacle3D/Rock_barrier/Static Rocks/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.370728, -3.13582, -4.4427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.370728, -3.13582, -3.4427)
 shape = SubResource("BoxShape3D_ngk6g")
 
 [node name="BoulderC9" parent="WORLD_BUILDING/NavigationObstacle3D/Rock_barrier/Static Rocks" instance=ExtResource("9_ngk6g")]
@@ -3508,9 +3515,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.24712, -12)
 
 [node name="Spawner" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs" instance=ExtResource("7_vgf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.672071, 0)
+x = 30.0
+z = 20.0
+r = 6.0
+
+[node name="Area3D" type="Area3D" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Spawner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Spawner/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_s32vs")
 
 [node name="Spawner2" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs" instance=ExtResource("7_vgf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.672071, -29)
+x = 30.0
+z = 20.0
+r = 6.0
+
+[node name="Area3D" type="Area3D" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Spawner2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs/Spawner2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08057, -4.60929, -1.34839)
+shape = SubResource("BoxShape3D_plyyp")
+debug_color = Color(0.949339, 0.227647, 1.92523e-07, 1)
 
 [node name="Bookshelf7" parent="WORLD_BUILDING/NavigationObstacle3D/Misc_Obs" instance=ExtResource("3_kay6q")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, -3.24712, 44)

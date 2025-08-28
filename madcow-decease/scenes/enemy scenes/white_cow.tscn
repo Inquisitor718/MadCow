@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://cvs1t6fwo8bvh"]
 
 [ext_resource type="Script" uid="uid://dcvanee7drarf" path="res://scripts/Cows/white_cow.gd" id="1_tqxp6"]
-[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://Scenes/ammunation/minigun_pickup.tscn" id="2_bnktk"]
-[ext_resource type="PackedScene" uid="uid://d5plhimoiphp" path="res://Scenes/ammunation/pellets.tscn" id="3_bnktk"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_h4022"]
-[ext_resource type="PackedScene" uid="uid://cmedxsxn0y1vl" path="res://Assets/White_Cow Animations.glb" id="5_1jo8w"]
+[ext_resource type="PackedScene" uid="uid://cgv5uw6m1i5xx" path="res://scenes/ammunation/minigun_pickup.tscn" id="2_bnktk"]
+[ext_resource type="PackedScene" uid="uid://d5plhimoiphp" path="res://scenes/ammunation/pellets.tscn" id="3_bnktk"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_h4022"]
+[ext_resource type="PackedScene" uid="uid://cmedxsxn0y1vl" path="res://assets/White_Cow Animations.glb" id="5_1jo8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51lkm"]
 

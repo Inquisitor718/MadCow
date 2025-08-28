@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://c83lc7sg4k1h2"]
 
 [ext_resource type="Script" uid="uid://eyegf8evfbgx" path="res://scripts/Cows/black_cow.gd" id="1_0xvba"]
-[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="2_0xvba"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_adx45"]
-[ext_resource type="PackedScene" uid="uid://twgwjrmie4xg" path="res://Assets/Black Cow Animations.glb" id="4_bs1gp"]
+[ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://scenes/horns_pickup.tscn" id="2_0xvba"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="3_adx45"]
+[ext_resource type="PackedScene" uid="uid://twgwjrmie4xg" path="res://assets/Black Cow Animations.glb" id="4_bs1gp"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xcucy"]
 animation = &"BC_Idle"
@@ -102,29 +102,32 @@ explosion = ExtResource("3_adx45")
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Black Cow Animations/BC_Rig" index="0"]
-bones/3/position = Vector3(-0.236118, 0.328188, -0.0793923)
-bones/3/rotation = Quaternion(-0.0456948, 0.380726, 0.89858, 0.213339)
-bones/4/rotation = Quaternion(0.442566, 0.124025, 0.0792434, 0.884575)
-bones/5/position = Vector3(0.262169, 0.286547, -0.076264)
-bones/5/rotation = Quaternion(0.118011, -0.23313, -0.899168, 0.351029)
-bones/6/rotation = Quaternion(0.501432, -0.152747, 0.00797451, 0.85157)
-bones/7/position = Vector3(0.423906, 0.418812, 0.222849)
-bones/7/rotation = Quaternion(0.355796, -0.404378, 0.563096, 0.626746)
-bones/9/position = Vector3(3.39144e-23, -0.320738, 4.44089e-16)
+bones/0/position = Vector3(3.55103e-05, -0.320749, -0.000176566)
+bones/0/rotation = Quaternion(0, 0, 0.00125832, 0.999999)
+bones/2/rotation = Quaternion(0.07128, -0.00135451, 0.0119636, 0.997384)
+bones/3/position = Vector3(-0.236084, 0.328164, -0.0793923)
+bones/3/rotation = Quaternion(-0.0892572, 0.127858, 0.954971, 0.252421)
+bones/4/rotation = Quaternion(0.590889, 0.208703, 0.145967, 0.765498)
+bones/5/position = Vector3(0.262127, 0.286529, -0.076264)
+bones/5/rotation = Quaternion(0.118079, -0.23293, -0.899203, 0.351048)
+bones/6/rotation = Quaternion(0.501432, -0.152747, 0.0079745, 0.85157)
+bones/7/position = Vector3(0.390449, 0.465765, 0.351825)
+bones/7/rotation = Quaternion(0.419859, -0.52544, 0.568287, 0.474005)
+bones/9/position = Vector3(3.55107e-05, -0.320749, -0.000176566)
 bones/9/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
 bones/10/rotation = Quaternion(-0.499805, 0.0253588, 0.0613227, 0.863592)
 bones/11/rotation = Quaternion(-0.0582963, 0.00958512, -0.262581, 0.9631)
 bones/12/position = Vector3(-0.121623, -0.664043, -0.0398742)
 bones/12/rotation = Quaternion(0.536691, -0.426371, -0.502374, 0.527058)
-bones/13/position = Vector3(-3.39144e-23, -0.320738, 4.44089e-16)
+bones/13/position = Vector3(3.55092e-05, -0.320749, -0.000176566)
 bones/13/rotation = Quaternion(0.615585, 0.347929, 0.615585, -0.347929)
 bones/14/rotation = Quaternion(-0.439012, -0.0770541, -0.16222, 0.88035)
-bones/15/rotation = Quaternion(-0.0710534, -0.00063886, 0.410409, 0.909129)
+bones/15/rotation = Quaternion(-0.0711451, -0.000661827, 0.410626, 0.909024)
 bones/16/position = Vector3(0.149998, -0.652214, -0.023133)
 bones/16/rotation = Quaternion(0.536691, 0.426371, 0.502374, 0.527058)
 
 [node name="BC_Shotgun" parent="Black Cow Animations/BC_Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.00118943, -0.0399458, -0.00438692, 0.0136496, 0.00452951, -0.0375433, 0.0377968, -0.000378682, 0.0136961, 0.240843, 0.0836648, 0.23724)
+transform = Transform3D(-0.00800726, -0.039398, -5.62766e-05, 0.000466393, -3.73649e-05, -0.0402008, 0.0393953, -0.00800737, 0.000464492, 0.212095, 0.107536, 0.319371)
 
 [node name="AnimationPlayer" parent="Black Cow Animations" index="1"]
 autoplay = "BC_Shoot"

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtx5xs0p7jbok"
-path.s3tc="res://.godot/imported/Black Cow Animations_Cow.png-5bef1da34460ac9769870186628c01cc.s3tc.ctex"
+path.s3tc="res://.godot/imported/Black Cow Animations_Cow.png-e7879546c4a32b4e207de13282cd5606.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Black Cow Animations_Cow.png"
-dest_files=["res://.godot/imported/Black Cow Animations_Cow.png-5bef1da34460ac9769870186628c01cc.s3tc.ctex"]
+source_file="res://assets/Black Cow Animations_Cow.png"
+dest_files=["res://.godot/imported/Black Cow Animations_Cow.png-e7879546c4a32b4e207de13282cd5606.s3tc.ctex"]
 
 [params]
 

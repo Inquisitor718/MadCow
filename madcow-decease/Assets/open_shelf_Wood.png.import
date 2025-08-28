@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://quk6bfgp3uny"
-path.s3tc="res://.godot/imported/open_shelf_Wood.png-996f5fa388f7f0bdd86ef4dee3008efc.s3tc.ctex"
+path.s3tc="res://.godot/imported/open_shelf_Wood.png-1275e14f7601b29a7202417f69a8dd1d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/open_shelf_Wood.png"
-dest_files=["res://.godot/imported/open_shelf_Wood.png-996f5fa388f7f0bdd86ef4dee3008efc.s3tc.ctex"]
+source_file="res://assets/open_shelf_Wood.png"
+dest_files=["res://.godot/imported/open_shelf_Wood.png-1275e14f7601b29a7202417f69a8dd1d.s3tc.ctex"]
 
 [params]
 

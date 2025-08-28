@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://glxmxccfwhp0"
-path.s3tc="res://.godot/imported/Patched_Cow Animations_Cow.png-f7f39b70c07c8b6f260f1e65157edb68.s3tc.ctex"
+path.s3tc="res://.godot/imported/Patched_Cow Animations_Cow.png-4eb153764c5ae3057d0012c0e35debc2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Patched_Cow Animations_Cow.png"
-dest_files=["res://.godot/imported/Patched_Cow Animations_Cow.png-f7f39b70c07c8b6f260f1e65157edb68.s3tc.ctex"]
+source_file="res://assets/Patched_Cow Animations_Cow.png"
+dest_files=["res://.godot/imported/Patched_Cow Animations_Cow.png-4eb153764c5ae3057d0012c0e35debc2.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl33h0wr7pkbm"
-path.s3tc="res://.godot/imported/fence_Wood.png-4f3001d62857680557241b4f8052e2b0.s3tc.ctex"
+uid="uid://b66ybw200guxo"
+path.s3tc="res://.godot/imported/fence_Wood.png-531c67aae9807600cbd652456f061a1b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "d847d0ac0b6e7bb82183035118fd6d16"
-}
 
 [deps]
 
-source_file="res://Assets/fence_Wood.png"
-dest_files=["res://.godot/imported/fence_Wood.png-4f3001d62857680557241b4f8052e2b0.s3tc.ctex"]
+source_file="res://assets/fence_Wood.png"
+dest_files=["res://.godot/imported/fence_Wood.png-531c67aae9807600cbd652456f061a1b.s3tc.ctex"]
 
 [params]
 

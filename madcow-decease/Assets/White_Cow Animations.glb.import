@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cmedxsxn0y1vl"
-path="res://.godot/imported/White_Cow Animations.glb-b6fe8ce8d02665cf09fec42ca43c45d5.scn"
+path="res://.godot/imported/White_Cow Animations.glb-c735c553ad7279593e06602b0f31b837.scn"
 
 [deps]
 
-source_file="res://Assets/White_Cow Animations.glb"
-dest_files=["res://.godot/imported/White_Cow Animations.glb-b6fe8ce8d02665cf09fec42ca43c45d5.scn"]
+source_file="res://assets/White_Cow Animations.glb"
+dest_files=["res://.godot/imported/White_Cow Animations.glb-c735c553ad7279593e06602b0f31b837.scn"]
 
 [params]
 

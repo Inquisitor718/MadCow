@@ -1,7 +1,11 @@
-#extends StaticBody3D
-#
-#var can_take_damage := true
-#
-#func _physics_process(delta: float) -> void:
-	#if can_take_damage:
-		#for
+extends StaticBody3D
+
+#@onready var collision_shape_3d_4: CollisionShape3D = 
+
+func Hit(dmg: int) -> void:
+	$Healthbar.take_damage(dmg)
+
+func _on_healthbar_no_hp_left() -> void:
+	$"../Fire/Flames".emitting = false
+	$"../Fire/Smoke".emitting = false
+	$"../Fire/ParticlesFloating".emitting = false

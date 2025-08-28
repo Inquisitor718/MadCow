@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://slrxc2bnhsyw"
-path="res://.godot/imported/vent.glb-5f2990e246beed722f5361c05eea3c01.scn"
+path="res://.godot/imported/vent.glb-6552deee2e4b00a55c8f1e4421118b60.scn"
 
 [deps]
 
-source_file="res://Assets/vent.glb"
-dest_files=["res://.godot/imported/vent.glb-5f2990e246beed722f5361c05eea3c01.scn"]
+source_file="res://assets/vent.glb"
+dest_files=["res://.godot/imported/vent.glb-6552deee2e4b00a55c8f1e4421118b60.scn"]
 
 [params]
 

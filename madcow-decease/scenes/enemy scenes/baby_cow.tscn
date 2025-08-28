@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://cerrexjmrwoos"]
 
 [ext_resource type="Script" uid="uid://b3ur1uie42hgv" path="res://scripts/Cows/baby_cow.gd" id="1_ty27g"]
-[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://Scenes/ammunation/magnum.tscn" id="2_ye5jj"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="3_ye5jj"]
-[ext_resource type="PackedScene" uid="uid://cdecl2s4dx1un" path="res://Assets/Baby Cow Animations.glb" id="4_jsi7h"]
+[ext_resource type="PackedScene" uid="uid://b3l8oxumt82pb" path="res://scenes/ammunation/magnum.tscn" id="2_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="3_ye5jj"]
+[ext_resource type="PackedScene" uid="uid://cdecl2s4dx1un" path="res://assets/Baby Cow Animations.glb" id="4_jsi7h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18obc"]
 albedo_color = Color(0.721569, 0.133333, 0.560784, 1)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdecl2s4dx1un"
-path="res://.godot/imported/Baby Cow Animations.glb-1be2986ef856919a23580d8891d03d9a.scn"
+path="res://.godot/imported/Baby Cow Animations.glb-e8d7816766d438da6643a212845287a0.scn"
 
 [deps]
 
-source_file="res://Assets/Baby Cow Animations.glb"
-dest_files=["res://.godot/imported/Baby Cow Animations.glb-1be2986ef856919a23580d8891d03d9a.scn"]
+source_file="res://assets/Baby Cow Animations.glb"
+dest_files=["res://.godot/imported/Baby Cow Animations.glb-e8d7816766d438da6643a212845287a0.scn"]
 
 [params]
 

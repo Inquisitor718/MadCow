@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3o2ojjnxm0le"
-path.s3tc="res://.godot/imported/White_Cow Animations_Guns.png-31b4a09e5cff3acc6c5816dc7d1ca382.s3tc.ctex"
+path.s3tc="res://.godot/imported/White_Cow Animations_Guns.png-5489f09e80992347053bbea716d3c085.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/White_Cow Animations_Guns.png"
-dest_files=["res://.godot/imported/White_Cow Animations_Guns.png-31b4a09e5cff3acc6c5816dc7d1ca382.s3tc.ctex"]
+source_file="res://assets/White_Cow Animations_Guns.png"
+dest_files=["res://.godot/imported/White_Cow Animations_Guns.png-5489f09e80992347053bbea716d3c085.s3tc.ctex"]
 
 [params]
 

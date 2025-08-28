@@ -44,3 +44,6 @@ func b_hole() -> void:
 
 func enable_flicker()-> void:
 	pass
+	
+#Spawner ke liye bool
+var spawner_enemies : bool 

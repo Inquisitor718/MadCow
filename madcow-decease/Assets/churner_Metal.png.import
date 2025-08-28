@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dverpjgtjlny0"
-path.s3tc="res://.godot/imported/churner_Metal.png-9da3d6e8ee5e126497d905eb8e34e9e3.s3tc.ctex"
+path.s3tc="res://.godot/imported/churner_Metal.png-e7564a0c7fb6d4beaec2b3df657bb237.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/churner_Metal.png"
-dest_files=["res://.godot/imported/churner_Metal.png-9da3d6e8ee5e126497d905eb8e34e9e3.s3tc.ctex"]
+source_file="res://assets/churner_Metal.png"
+dest_files=["res://.godot/imported/churner_Metal.png-e7564a0c7fb6d4beaec2b3df657bb237.s3tc.ctex"]
 
 [params]
 

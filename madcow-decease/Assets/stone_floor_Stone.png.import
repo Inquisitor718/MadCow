@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnes7kq5bx455"
-path.s3tc="res://.godot/imported/stone_floor_Stone.png-dbc4d02391167a70aa2ee8146a387951.s3tc.ctex"
+path.s3tc="res://.godot/imported/stone_floor_Stone.png-2cf6de5209acc574512c9ed6c5061371.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/stone_floor_Stone.png"
-dest_files=["res://.godot/imported/stone_floor_Stone.png-dbc4d02391167a70aa2ee8146a387951.s3tc.ctex"]
+source_file="res://assets/stone_floor_Stone.png"
+dest_files=["res://.godot/imported/stone_floor_Stone.png-2cf6de5209acc574512c9ed6c5061371.s3tc.ctex"]
 
 [params]
 

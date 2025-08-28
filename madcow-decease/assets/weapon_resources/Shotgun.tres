@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://cxgf6hy061pvc"]
 
-[ext_resource type="PackedScene" uid="uid://diewpys8vfkqy" path="res://Scenes/Projectiles_to_be_loaded/shotgun_proj.tscn" id="1_n8ohv"]
+[ext_resource type="PackedScene" uid="uid://diewpys8vfkqy" path="res://scenes/Projectiles_to_be_loaded/shotgun_proj.tscn" id="1_n8ohv"]
 [ext_resource type="Script" uid="uid://c2imv21vq2msg" path="res://scripts/ammunation/Weapon_resource.gd" id="2_fy6xn"]
 
 [resource]

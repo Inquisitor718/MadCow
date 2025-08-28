@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mc6wyks26n54"
-path.s3tc="res://.godot/imported/Baby Cow Animations_Guns.png-962253e478e8092a03ae5841ea0599e1.s3tc.ctex"
+path.s3tc="res://.godot/imported/Baby Cow Animations_Guns.png-c764648004f25e30807cd89690f9a528.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Baby Cow Animations_Guns.png"
-dest_files=["res://.godot/imported/Baby Cow Animations_Guns.png-962253e478e8092a03ae5841ea0599e1.s3tc.ctex"]
+source_file="res://assets/Baby Cow Animations_Guns.png"
+dest_files=["res://.godot/imported/Baby Cow Animations_Guns.png-c764648004f25e30807cd89690f9a528.s3tc.ctex"]
 
 [params]
 

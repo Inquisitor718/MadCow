@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jmfpw15io4ge"
-path.s3tc="res://.godot/imported/Baby Cow Animations_Cow.png-6ea7cfc7693d56637bd21df38fad481f.s3tc.ctex"
+path.s3tc="res://.godot/imported/Baby Cow Animations_Cow.png-d60ae2c42f0defae82cef7b6902c403f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Baby Cow Animations_Cow.png"
-dest_files=["res://.godot/imported/Baby Cow Animations_Cow.png-6ea7cfc7693d56637bd21df38fad481f.s3tc.ctex"]
+source_file="res://assets/Baby Cow Animations_Cow.png"
+dest_files=["res://.godot/imported/Baby Cow Animations_Cow.png-d60ae2c42f0defae82cef7b6902c403f.s3tc.ctex"]
 
 [params]
 

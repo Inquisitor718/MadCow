@@ -28,12 +28,12 @@ var spawned = false
 
 var cow_scenes = [black_cow_scene, white_cow_scene, patched_cow_scene, baby_cow_scene]
 
-func _on_body_entered(body: Node3D) -> void:
-
-	for sp in spawnpoints:
-		var scene = cow_scenes.pick_random()
-		var cow = scene.instantiate()
-		cow.global_transform = sp.global_transform
-		get_parent().add_child(cow)
-		await get_tree().create_timer(0.4).timeout
-	collision_shape_3d.disabled = true
+#func _on_body_entered(body: Node3D) -> void:
+#
+	#for sp in spawnpoints:
+		#var scene = cow_scenes.pick_random()
+		#var cow = scene.instantiate()
+		#cow.global_transform = sp.global_transform
+		#get_parent().add_child(cow)
+		#await get_tree().create_timer(0.4).timeout
+	#collision_shape_3d.disabled = true

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cwxpgqms716vr"
-path="res://.godot/imported/stone_wall_hole.glb-dc31cf43912e21ef7af250a9dea41033.scn"
+path="res://.godot/imported/stone_wall_hole.glb-f95b322c2a4c16f888b558f6358efdfc.scn"
 
 [deps]
 
-source_file="res://Assets/stone_wall_hole.glb"
-dest_files=["res://.godot/imported/stone_wall_hole.glb-dc31cf43912e21ef7af250a9dea41033.scn"]
+source_file="res://assets/stone_wall_hole.glb"
+dest_files=["res://.godot/imported/stone_wall_hole.glb-f95b322c2a4c16f888b558f6358efdfc.scn"]
 
 [params]
 

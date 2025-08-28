@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://omtt8ucyhyio"
-path.s3tc="res://.godot/imported/torch_Wood.png-90bf5133835a774ea8e6ce98266867b2.s3tc.ctex"
+path.s3tc="res://.godot/imported/torch_Wood.png-8930932c9ae84dacbef09bc7eaf47593.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/torch_Wood.png"
-dest_files=["res://.godot/imported/torch_Wood.png-90bf5133835a774ea8e6ce98266867b2.s3tc.ctex"]
+source_file="res://assets/torch_Wood.png"
+dest_files=["res://.godot/imported/torch_Wood.png-8930932c9ae84dacbef09bc7eaf47593.s3tc.ctex"]
 
 [params]
 

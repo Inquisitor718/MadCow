@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cm6b48v2wj16p"]
 
 [ext_resource type="Script" uid="uid://bwjequ2curw2r" path="res://scripts/Cows/patched_cow.gd" id="1_2wi0g"]
-[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://Scenes/ammunation/bullet.tscn" id="2_ni8w7"]
-[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://Scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
-[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://Assets/cow/source/textures/cow.jpg" id="4_banjt"]
-[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://Scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
-[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://Assets/cow/source/cow.obj" id="5_16xvs"]
-[ext_resource type="PackedScene" uid="uid://caowma3mxfw7q" path="res://Assets/Patched Cow Animations.glb" id="5_iijg3"]
+[ext_resource type="PackedScene" uid="uid://blqrfe60ybpeh" path="res://scenes/ammunation/bullet.tscn" id="2_ni8w7"]
+[ext_resource type="PackedScene" uid="uid://dp4rs15jtdxjj" path="res://scenes/ammunation/Revolver_Pickup.tscn" id="3_2wi0g"]
+[ext_resource type="Texture2D" uid="uid://hog6m1vad8ey" path="res://assets/cow/source/textures/cow.jpg" id="4_banjt"]
+[ext_resource type="PackedScene" uid="uid://ckm3flyyegfs1" path="res://scenes/enemy scenes/explosion.tscn" id="4_ni8w7"]
+[ext_resource type="ArrayMesh" uid="uid://ctktsgsigtcdf" path="res://assets/cow/source/cow.obj" id="5_16xvs"]
+[ext_resource type="PackedScene" uid="uid://caowma3mxfw7q" path="res://assets/Patched Cow Animations.glb" id="5_iijg3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsi1t"]
 albedo_texture = ExtResource("4_banjt")
