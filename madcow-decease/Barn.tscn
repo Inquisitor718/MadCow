@@ -1,7 +1,9 @@
-[gd_scene load_steps=40 format=4 uid="uid://cqgvk2tvng4ws"]
+[gd_scene load_steps=70 format=4 uid="uid://cqgvk2tvng4ws"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_2qr42"]
+[ext_resource type="Script" uid="uid://b1qd1xtvnpofq" path="res://barn.gd" id="1_aj31e"]
 [ext_resource type="Shader" uid="uid://ceden5bkiifwi" path="res://Shaders/skyshader.gdshader" id="1_cpuah"]
+[ext_resource type="Shader" uid="uid://dq5kyfspyhv65" path="res://Shaders/transition.gdshader" id="1_qjq31"]
 [ext_resource type="PackedScene" uid="uid://u6yl8us6tp13" path="res://Scenes/wooden_wall.tscn" id="1_rmsam"]
 [ext_resource type="Texture2D" uid="uid://c6atr45sqar08" path="res://Shaders/new_noise_texture_2d.tres" id="2_0uiba"]
 [ext_resource type="PackedScene" uid="uid://dh1v7q64djeac" path="res://Scenes/wooden_floor.tscn" id="3_dqktt"]
@@ -29,6 +31,28 @@
 [ext_resource type="PackedScene" uid="uid://0xhn1xnef4wx" path="res://Scenes/grill.tscn" id="25_53cmg"]
 [ext_resource type="PackedScene" uid="uid://c3sxue4pcluf" path="res://Scenes/large_window.tscn" id="28_0uiba"]
 [ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="29_ewx32"]
+[ext_resource type="AudioStream" uid="uid://b7mpje0765f3w" path="res://Movies/level_2.wav" id="32_6v7gh"]
+[ext_resource type="Script" uid="uid://card1cuviubxt" path="res://killzone.gd" id="33_gbpsn"]
+[ext_resource type="Shader" uid="uid://bgpnf56liefrk" path="res://portal.gdshader" id="34_xuotu"]
+[ext_resource type="Texture2D" uid="uid://dkowa24u1blqa" path="res://T_VFX_lelu1_tiled.png" id="35_8nym8"]
+[ext_resource type="Script" uid="uid://gvikw8eidlvh" path="res://scripts/barn_spawner.gd" id="36_biedb"]
+[ext_resource type="Script" uid="uid://dt4bdjb0ey2tj" path="res://scripts/spawnbox_2.gd" id="37_a68uo"]
+[ext_resource type="Script" uid="uid://bqoyr0b5r4hpv" path="res://scripts/spawnbox_3.gd" id="38_5b56r"]
+[ext_resource type="Script" uid="uid://cgeg0apr4wcci" path="res://scripts/spawnbox_4.gd" id="39_notsy"]
+[ext_resource type="Script" uid="uid://doqw62so03e6j" path="res://scripts/spawnbox_5.gd" id="40_40340"]
+[ext_resource type="Script" uid="uid://cvwssfde48qbs" path="res://scripts/spawnbox_6.gd" id="41_3gwlb"]
+[ext_resource type="Script" uid="uid://b2oswvedox5po" path="res://scripts/spawnbox_7.gd" id="42_hpjm8"]
+[ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="43_43d2o"]
+[ext_resource type="PackedScene" uid="uid://beo12ds1ym1e1" path="res://Scenes/health_pickup.tscn" id="45_ve78l"]
+[ext_resource type="Script" uid="uid://5xeu2a4dxn2x" path="res://scripts/level_transition2.gd" id="46_biedb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aj31e"]
+shader = ExtResource("1_qjq31")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.07, -0.03)
+shader_parameter/distortion_strength = 0.05
+shader_parameter/aberration_strength = 0.0
+shader_parameter/transition_amount = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewx32"]
 shader = ExtResource("1_cpuah")
@@ -118,15 +142,79 @@ shadow_mesh = SubResource("ArrayMesh_ikgb0")
 [sub_resource type="BoxShape3D" id="BoxShape3D_t3qkk"]
 size = Vector3(1, 0.0367126, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aj31e"]
+size = Vector3(4.99329, 1, 12.0467)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0vdyo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0wmc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyvjg"]
+render_priority = 0
+shader = ExtResource("34_xuotu")
+shader_parameter/camo_tex = ExtResource("35_8nym8")
+shader_parameter/color_a = Color(0, 0, 0, 1)
+shader_parameter/color_b = Color(0.640671, 0.325812, 1, 1)
+shader_parameter/glow = 1.0
+shader_parameter/glow_color = Color(0.436508, 0.00124197, 0.621111, 1)
+shader_parameter/glow_strength = 1.5
+shader_parameter/glow_thinnes = 3.085
+shader_parameter/glow_dispersion = 3.145
+shader_parameter/enable_fresnel = true
+shader_parameter/major_radius = 1.0
+shader_parameter/minor_radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fatni"]
+size = Vector3(1, 4.90039, 10.8398)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_biedb"]
+size = Vector3(1, 4.90039, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxo25"]
+size = Vector3(1, 4.90039, 5.82504)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gmqd"]
+size = Vector3(1, 4.90039, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqijc"]
+size = Vector3(1, 4.90039, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5i0j"]
+size = Vector3(1, 4.90039, 11.4033)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_suhut"]
+size = Vector3(1, 4.90039, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4t45d"]
+size = Vector3(1, 4.90039, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5b56r"]
+size = Vector3(1, 19, 35)
+
 [node name="level" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.057003, 0.0811024, -0.0797539)
+script = ExtResource("1_aj31e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_aj31e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1pabj")
 
 [node name="Player" parent="." instance=ExtResource("1_2qr42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.933, 1.37792, 59.716)
-JUMP_VELOCITY = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.6884, 2.30234, 62.0879)
+collision_layer = 536870913
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.407428, 0.465214, 0.785861, -0.881582, -0.0242475, 0.471408, 0.238361, -0.884866, 0.400245, 64.9193, 12.5985, -46.848)
@@ -3141,6 +3229,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4347, 0.338803, 26.5466)
 [node name="wooden_floor856" parent="Worldbuilding/NavigationRegion3D/floor" instance=ExtResource("3_dqktt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.4347, 0.338803, 26.5466)
 
+[node name="wooden_floor857" parent="Worldbuilding/NavigationRegion3D/floor" instance=ExtResource("3_dqktt")]
+transform = Transform3D(1, 0, 0, 0, 0.882365, 0.470565, 0, -0.470565, 0.882365, -47.3102, 0.618451, 69.2962)
+
 [node name="walls" type="Node3D" parent="Worldbuilding"]
 
 [node name="wooden_wall133" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
@@ -3415,6 +3506,26 @@ skeleton = NodePath("")
 
 [node name="Wood Wall 3" type="MeshInstance3D" parent="Worldbuilding/walls/wooden_wall86/wooden_wall_new" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0.0417747)
+mesh = SubResource("ArrayMesh_8h8ww")
+skeleton = NodePath("")
+
+[node name="Wood Wall 4" type="MeshInstance3D" parent="Worldbuilding/walls/wooden_wall86/wooden_wall_new" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.00001, -2, 2.26386)
+mesh = SubResource("ArrayMesh_8h8ww")
+skeleton = NodePath("")
+
+[node name="Wood Wall 5" type="MeshInstance3D" parent="Worldbuilding/walls/wooden_wall86/wooden_wall_new" index="4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2, 2.26386)
+mesh = SubResource("ArrayMesh_8h8ww")
+skeleton = NodePath("")
+
+[node name="Wood Wall 6" type="MeshInstance3D" parent="Worldbuilding/walls/wooden_wall86/wooden_wall_new" index="5"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -4, 2.26386)
+mesh = SubResource("ArrayMesh_8h8ww")
+skeleton = NodePath("")
+
+[node name="Wood Wall 7" type="MeshInstance3D" parent="Worldbuilding/walls/wooden_wall86/wooden_wall_new" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0.0417747)
 mesh = SubResource("ArrayMesh_8h8ww")
 skeleton = NodePath("")
 
@@ -4817,6 +4928,72 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.50
 [node name="wooden_wall605" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.4994, 10.2995, 28.4575)
 
+[node name="wooden_wall71" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -39.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall74" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -43.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall79" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall82" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall84" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall92" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall96" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall100" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -15.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall104" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall108" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.5006, -1.6686, 68.6241)
+
+[node name="wooden_wall112" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall116" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall120" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall124" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall128" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall132" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall198" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 24.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall203" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall206" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 36.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall211" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 44.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall214" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40.4994, -1.6686, 68.6241)
+
+[node name="wooden_wall218" parent="Worldbuilding/walls" instance=ExtResource("1_rmsam")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 48.4994, -1.6686, 68.6241)
+
 [node name="churners" type="Node3D" parent="Worldbuilding"]
 
 [node name="churner" parent="Worldbuilding/churners" instance=ExtResource("4_p7h2o")]
@@ -5083,6 +5260,18 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.33444, -2.00655, -0.106293
 
 [node name="StaticBody3D" parent="Worldbuilding/gate_wall/door_wall_wood8" index="4"]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0.949598, 0, -4.00166)
+
+[node name="door_wall_wood6" parent="Worldbuilding/gate_wall" instance=ExtResource("5_lqe5s")]
+transform = Transform3D(-0.999991, 0, -0.00427592, 0, 1, 0, 0.00427592, 0, -0.999991, -47.3607, -2.3474, 65.4186)
+
+[node name="StaticBody3D" parent="Worldbuilding/gate_wall/door_wall_wood6" index="4"]
+transform = Transform3D(0.410035, 0, 0.91207, 0, 1, 0, -0.91207, 0, 0.410035, 1.69935, 0, -1.92778)
+
+[node name="door" parent="Worldbuilding/gate_wall/door_wall_wood6/StaticBody3D" index="0"]
+transform = Transform3D(0.951783, 0, -0.905658, 0, 2.18046, 0, 2.03295, 0, 0.42401, -1.51202, -1.9605, -1.03887)
+
+[node name="CollisionShape3D" parent="Worldbuilding/gate_wall/door_wall_wood6/StaticBody3D" index="1"]
+transform = Transform3D(0.819046, 0, -0.931056, 0, 2.18046, 0, 2.08996, 0, 0.364877, -0.321342, -0.705802, -1.73583)
 
 [node name="bookshelves" type="Node3D" parent="Worldbuilding"]
 
@@ -6233,7 +6422,7 @@ transform = Transform3D(-0.999991, 0, -0.0043109, 0, 1, 0, 0.0043109, 0, -0.9999
 transform = Transform3D(-0.999991, 0, -0.0043109, 0, 1, 0, 0.0043109, 0, -0.999991, 20.2657, 2.00536, 67.989)
 
 [node name="open_shelf5" parent="Worldbuilding/open_shelf" instance=ExtResource("9_uon57")]
-transform = Transform3D(-0.999991, 0, -0.0043109, 0, 1, 0, 0.0043109, 0, -0.999991, -2.8758, 2.00536, 27.0354)
+transform = Transform3D(-0.820012, 0, 0.572347, 0, 1, 0, -0.572347, 0, -0.820012, -4.13805, 2.00536, 27.0354)
 
 [node name="open_shelf6" parent="Worldbuilding/open_shelf" instance=ExtResource("9_uon57")]
 transform = Transform3D(0.00431095, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.00431095, 49.8196, 2.00536, 5.64959)
@@ -6576,6 +6765,10 @@ transform = Transform3D(1.3, 0, 0, 0, 1.171, 0, 0, 0, 1.3, 33.5758, 6.32793, 55.
 
 [node name="Stairs2" parent="Worldbuilding/spawner" instance=ExtResource("15_cs67b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4421, -1.64429, 64.1089)
+
+[node name="CollisionShape3D" parent="Worldbuilding/spawner/Stairs2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.840112, -0.542412, 0, 0.542412, 0.840112, 0, -1.65338, 1.22491)
+shape = SubResource("BoxShape3D_aj31e")
 
 [node name="mounds" type="Node3D" parent="Worldbuilding"]
 
@@ -12035,6 +12228,541 @@ shadow_enabled = true
 transform = Transform3D(-0.0713408, 0, 0.997452, 0, 1, 0, -0.997452, 0, -0.0713408, -35.5965, 2.21301, 39.0312)
 patched_cow_health = 200
 
+[node name="Killzone" type="Area3D" parent="."]
+transform = Transform3D(1.24573, 0, 0, 0, 1, 0, 0, 0, 1, -27.1356, -6.23833, -25.3337)
+collision_layer = 0
+collision_mask = 2147483648
+script = ExtResource("33_gbpsn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
+transform = Transform3D(4.42655, 0, 0, 0, 1, 0, 0, 0, 4.83787, 19.8647, -0.860713, -1.42263)
+shape = SubResource("WorldBoundaryShape3D_0vdyo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, 41.1924, -0.53714, -23.2267)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(39.8963, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, -3.88158, -0.53714, -23.2267)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, 41.1924, -0.53714, 30.8455)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(39.8963, 0, 0, 0, 0.318435, 0, 0, 0, 53.8518, -3.88158, -0.53714, 30.8455)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(49.9462, 0, 0, 0, 0.318435, 0, 0, 0, 44.5827, 41.1924, -0.53714, 79.9599)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(39.8963, 0, 0, 0, 0.318435, 0, 0, 0, 43.0814, -3.88158, -0.53714, 79.322)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Killzone"]
+transform = Transform3D(699.323, 0, 0, 0, 0.318435, 0, 0, 0, 754.007, 83.1039, -0.53714, -23.2267)
+mesh = SubResource("BoxMesh_d0wmc")
+skeleton = NodePath("../../stone_floor")
+surface_material_override/0 = SubResource("ShaderMaterial_jyvjg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("32_6v7gh")
+volume_db = 15.701
+autoplay = true
+
+[node name="Progression boxes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9396, 0.268287, 20.2404)
+
+[node name="Spawnbox" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6946, 1.3258, 38.0675)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("36_biedb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(0.0198257, 0, 0.999803, 0, 1, 0, -0.999803, 0, 0.0198257, 1.04613, 0.732421, 2.41722)
+shape = SubResource("BoxShape3D_fatni")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25939, -0.454596, -3.70098)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94241, -0.454596, -11.0001)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5816, -0.454596, -21.6718)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.454596, -8.62503)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3349, -0.454596, -14.5565)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -0.454596, -14.625)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.454596, -24.625)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.512, -0.454596, -6.50378)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -0.454596, -20.625)
+
+[node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 443, -506.455, 1.37497)
+
+[node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5326, -0.454596, -11.1921)
+
+[node name="Spawnbox2" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.0095, 2.11977, 35.7078)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("37_a68uo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(0.0481699, 0, -0.998839, 0, 1, 0, 0.998839, 0, 0.0481699, 17.7679, 0.732422, 4.34811)
+shape = SubResource("BoxShape3D_biedb")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2505, -0.553604, 8.7386)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9447, -0.553604, 14.0461)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5307, -0.553604, 17.0461)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5307, -0.553604, 21.5555)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4123, -0.553604, 34.5555)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.827, -0.553604, 22.5555)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5597, -0.553604, 32.9357)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0905, -0.553604, 34.0533)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6179, -0.553604, 42.7565)
+
+[node name="Spawnbox3" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.0018, 2.98456, 12.028)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("38_5b56r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(-0.00848213, 0, 0.999964, 0, 1, 0, -0.999964, 0, -0.00848213, -40.487, 0.732422, 4.20994)
+shape = SubResource("BoxShape3D_fxo25")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0582, -1.93889, 11.1043)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2318, -1.93889, 8.29642)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9661, -1.93889, 22.8143)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7264, -1.93889, 17.4959)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5542, -1.93889, 26.4959)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.5542, -1.93889, 17.5773)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9302, -1.93889, 29.161)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9302, -1.93889, 37.4314)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2098, -1.93889, 24.2211)
+
+[node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0302, -1.93889, 45.0199)
+
+[node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.6537, -1.93889, 42.0324)
+
+[node name="spawnpoint12" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3283, -1.93889, 40.0324)
+
+[node name="spawnpoint13" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9168, -1.93889, 14.0324)
+
+[node name="spawnpoint14" type="Marker3D" parent="Progression boxes/Spawnbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.6723, -1.93889, 23.7586)
+
+[node name="Spawnbox4" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.72155, 2.11977, -3.27352)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("39_notsy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.1929, 0.732422, -28.631)
+shape = SubResource("BoxShape3D_7gmqd")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8187, 0, -2.714)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015173, 0, -13.714)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6287, 0, -15.714)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3063, 0, -22.714)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6937, 0, -25.7317)
+
+[node name="Spawnbox5" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2785, 2.11977, -12.6701)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("40_40340")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.665, 0.732422, 23.8301)
+shape = SubResource("BoxShape3D_eqijc")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.169, 0, 35.4827)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9608, 0, 39.5072)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1096, 0, 51.4692)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5586, 0, 53.1981)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9662, 0, 60.7715)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30481, 0, 38.1568)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54691, 0, 74.6024)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.533402, 0, 55.86)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1101, 0, 38.3191)
+
+[node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6513, 0, 73.6024)
+
+[node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1171, 0, 49.6159)
+
+[node name="spawnpoint12" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8305, 0, 44.9161)
+
+[node name="spawnpoint13" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8853, 0, 35.0257)
+
+[node name="spawnpoint14" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3511, 0, 74.4827)
+
+[node name="spawnpoint15" type="Marker3D" parent="Progression boxes/Spawnbox5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25211, 0, 64.0493)
+
+[node name="Spawnbox6" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 52.2191, 2.11977, -16.1756)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("41_3gwlb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.3788, 0.732422, 13.0201)
+shape = SubResource("BoxShape3D_x5i0j")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0134, 0, 8.47312)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9417, 0, -7.4687)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.776, 0, -8.21448)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5029, 0, -18.3646)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7862, 0, -2.20098)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9004, 0, -16.5302)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.325, 0, 6.79227)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.9599, 0, 4.3433)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2242, 0, -1.87171)
+
+[node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.7854, 0, 7.32434)
+
+[node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1302, 0, -5.85146)
+
+[node name="spawnpoint12" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9409, 0, -3.6432)
+
+[node name="spawnpoint13" type="Marker3D" parent="Progression boxes/Spawnbox6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1011, 0, -10.9914)
+
+[node name="Spawnbox7" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 45.2785, 2.11977, -48.617)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("42_hpjm8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4782, 0.732422, -17.1029)
+shape = SubResource("BoxShape3D_suhut")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1345, 0, -25.4916)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2846, 0, -14.8723)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3407, 0, -12.664)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0966, 0, -3.09064)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8099, 0, -32.8499)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7382, 0, -35.0885)
+
+[node name="spawnpoint7" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4022, 0, -22.0751)
+
+[node name="spawnpoint8" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5713, 0, -26.2319)
+
+[node name="spawnpoint9" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4962, 0, -10.7525)
+
+[node name="spawnpoint10" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5902, 0, -14.4435)
+
+[node name="spawnpoint11" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3461, 0, -31.1311)
+
+[node name="spawnpoint12" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0426, 0, -1.86341)
+
+[node name="spawnpoint13" type="Marker3D" parent="Progression boxes/Spawnbox7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3765, 0, -37.2218)
+
+[node name="Spawnbox8" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 24.2785, 2.11977, -48.7208)
+collision_layer = 0
+collision_mask = 536870912
+script = ExtResource("43_43d2o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6212, 0.732422, -40.7494)
+shape = SubResource("BoxShape3D_4t45d")
+
+[node name="spawnpoint" type="Marker3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1298, 0, -42.2643)
+
+[node name="spawnpoint2" type="Marker3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4098, 0, -25.6214)
+
+[node name="spawnpoint3" type="Marker3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7803, 0, -36.9081)
+
+[node name="spawnpoint4" type="Marker3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2226, 0, -27.7302)
+
+[node name="spawnpoint5" type="Marker3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2537, 0, -23.981)
+
+[node name="spawnpoint6" type="Marker3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9982, 0, -41.6943)
+
+[node name="spawn_container" type="Node3D" parent="Progression boxes/Spawnbox8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8147e-06, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="Progression boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -83)
+collision_layer = 0
+collision_mask = 2684354560
+script = ExtResource("46_biedb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Progression boxes/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 9, 17)
+shape = SubResource("BoxShape3D_5b56r")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Health_Pickup" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -30.943, 1.67345, 57.0798)
+
+[node name="Health_Pickup2" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -32.0797, 1.67345, 55.0657)
+
+[node name="Health_Pickup3" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -35.9108, 1.76458, 32.6355)
+
+[node name="Health_Pickup4" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 9.604, 2.13649, 29.6581)
+
+[node name="Health_Pickup5" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 7.49977, 1.22495, 52.7386)
+
+[node name="Health_Pickup6" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 7.89637, 1.22495, 53.21)
+
+[node name="Health_Pickup7" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 6.41334, 1.22495, 56.2072)
+
+[node name="Health_Pickup8" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 22.3583, 1.76939, 67.8512)
+
+[node name="Health_Pickup9" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 19.8431, 1.76939, 67.8512)
+
+[node name="Health_Pickup10" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 49.2096, 1.76939, 65.791)
+
+[node name="Health_Pickup11" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 41.2744, 1.76939, 34.5391)
+
+[node name="Health_Pickup12" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 41.8808, 1.76939, 43.5568)
+
+[node name="Health_Pickup13" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 11.0921, 1.94547, 24.0971)
+
+[node name="Health_Pickup14" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -3.7459, 1.75651, 27.126)
+
+[node name="Health_Pickup15" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 37.5521, 1.75651, -14.5997)
+
+[node name="Health_Pickup16" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 49.9255, 1.75651, 5.50075)
+
+[node name="Health_Pickup17" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 21.4317, 1.75651, -1.5925)
+
+[node name="Health_Pickup18" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 20.263, 1.75651, -14.1928)
+
+[node name="Health_Pickup19" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -6.77477, 1.75651, 12.6622)
+
+[node name="Health_Pickup20" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -6.71929, 1.75651, 25.4987)
+
+[node name="Health_Pickup21" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -11.8652, 1.75651, 27.6166)
+
+[node name="Health_Pickup22" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -37.0083, 1.75651, 24.4109)
+
+[node name="Health_Pickup23" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -45.8633, 1.75651, 9.52128)
+
+[node name="Health_Pickup24" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -45.6956, 1.75651, 8.99923)
+
+[node name="Health_Pickup25" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -46.104, 1.75651, 7.11078)
+
+[node name="Health_Pickup26" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -44.1021, 1.75651, 3.60738)
+
+[node name="Health_Pickup27" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -48.7004, 1.75651, -8.37343)
+
+[node name="Health_Pickup28" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -44.8348, 1.2189, -25.3251)
+
+[node name="Health_Pickup29" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -45.9397, 1.76466, -50.0226)
+
+[node name="Health_Pickup30" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -39.5132, 1.76466, -58.786)
+
+[node name="Health_Pickup31" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -42.9446, 1.76466, -74.1752)
+
+[node name="Health_Pickup32" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -11.1021, 1.76466, -74.1752)
+
+[node name="Health_Pickup33" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 20.2482, 1.76466, -73.9869)
+
+[node name="Health_Pickup34" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 40.0843, 1.76466, -73.9869)
+
+[node name="Health_Pickup35" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 38.7841, 1.76466, -16.5667)
+
+[node name="Health_Pickup36" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -7.772, 1.76466, -17.1779)
+
+[node name="Health_Pickup37" parent="Node3D" instance=ExtResource("45_ve78l")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -49.0548, 1.73595, -26.075)
+
+[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox2" to="Progression boxes/Spawnbox2" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox3" to="Progression boxes/Spawnbox3" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox4" to="Progression boxes/Spawnbox4" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox5" to="Progression boxes/Spawnbox5" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox6" to="Progression boxes/Spawnbox6" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox7" to="Progression boxes/Spawnbox7" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Spawnbox8" to="Progression boxes/Spawnbox8" method="_on_body_entered"]
+[connection signal="body_entered" from="Progression boxes/Area3D" to="Progression boxes/Area3D" method="_on_body_entered"]
+
 [editable path="Worldbuilding/walls/wooden_wall86"]
 [editable path="Worldbuilding/walls/wooden_wall86/wooden_wall_new"]
 [editable path="Worldbuilding/walls/wooden_wall88"]
@@ -12047,5 +12775,9 @@ patched_cow_health = 200
 [editable path="Worldbuilding/gate_wall/door_wall_wood5/StaticBody3D/door"]
 [editable path="Worldbuilding/gate_wall/door_wall_wood8"]
 [editable path="Worldbuilding/gate_wall/door_wall_wood8/StaticBody3D/door"]
+[editable path="Worldbuilding/gate_wall/door_wall_wood6"]
+[editable path="Worldbuilding/gate_wall/door_wall_wood6/StaticBody3D/door"]
+[editable path="Worldbuilding/spawner/Stairs2"]
+[editable path="Worldbuilding/spawner/Stairs2/stairs1"]
 [editable path="Worldbuilding/walls2/wooden_wall88"]
 [editable path="Worldbuilding/walls2/wooden_wall88/wooden_wall_new"]

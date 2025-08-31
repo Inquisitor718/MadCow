@@ -4,7 +4,7 @@ extends Node3D
 
 @export var lifetime: float = 3.0
 @export var travelled_distance = 0
-@export var p_dmg: float = 0.5
+@export var p_dmg: float = 1
 var direction: Vector3 = Vector3.ZERO
 
 func _ready():

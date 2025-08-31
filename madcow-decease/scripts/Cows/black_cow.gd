@@ -30,7 +30,7 @@ var update_interval := 120  # update path every 6 frames (~0.1s at 60fps)
 var cached_next_pos: Vector3
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var dead := false
 
 
 signal on_death
@@ -57,7 +57,9 @@ func _physics_process(delta):
 			animation_tree.set("parameters/conditions/Walk", true)
 			animation_tree.set("parameters/conditions/Shoot", false)
 			
+			
 			move_and_slide()
+			
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
 			_stop_moving()
@@ -65,11 +67,14 @@ func _physics_process(delta):
 			animation_tree.set("parameters/conditions/Walk", false)
 			_try_shoot()
 	else:
+		
 		_stop_moving()
 		animation_tree.set("parameters/conditions/Walk", false)
 		animation_tree.set("parameters/conditions/Idle", true)
+		
 	
 	move_and_slide()
+	
 
 func _has_line_of_sight() -> bool:
 	var from = global_transform.origin
@@ -107,7 +112,7 @@ func _player_in_shoot_area() -> bool:
 	return shoot_area.get_overlapping_bodies().has(player)
 
 func _try_shoot():
-	if can_shoot:
+	if can_shoot and not dead:
 		randomize()
 		_shoot()
 		can_shoot = false
@@ -145,29 +150,47 @@ func spawn_explode(position: Vector3):
 		#else:
 			#boom.call_deferred("queue_free")
 
-func Hit(dmg: int) -> void:
+var hit_effect_tween : Tween
+func hit_effect():
+	if hit_effect_tween:
+		hit_effect_tween.kill()
+	
+	var shake = func(n:int):
+		var mesh = $"Black Cow Animations"
+		mesh.position = Vector3(randf_range(-.05, .05), randf_range(.1, 0.3), randf_range(-.05, .05))
+	
+	hit_effect_tween = create_tween()
+	hit_effect_tween.tween_method(shake, 0, 1, 0.1)
+	hit_effect_tween.tween_callback(func():
+		var mesh = $"Black Cow Animations"
+		mesh.position = Vector3.ZERO)
+	
+
+func Hit(dmg) -> void:
 	if black_cow_health > 0:
 		black_cow_health -= dmg
+		hit_effect()
 		print("Enemy Health:", black_cow_health)
 		if black_cow_health <= 0:
 			animation_tree.set("parameters/conditions/Die", true)
 			can_shoot = false
 			
-			
+			dead = true
 			Global.kills += 1
 			Global.distortion += distortion_add
 			print(Global.kills)
 			emit_signal("on_death")
-			if group_player.is_in_group("Revolver"):
-				spawn_explode(global_transform.origin)
-			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
-				if Global.kills > 3:
-					var c = randi() % 100
-					print("Random Chod ", c)
-					if c < 20:
-						var horns_instance = horns_scene.instantiate()
-						horns_instance.global_position = global_position
-						get_tree().current_scene.add_child(horns_instance)
+			if group_player:
+				if group_player.is_in_group("Revolver"):
+					spawn_explode(global_transform.origin)
+				if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+					if Global.kills > 3:
+						var c = randi() % 100
+						print("Random Chod ", c)
+						if c < 35:
+							var horns_instance = horns_scene.instantiate()
+							horns_instance.global_position = global_position
+							get_tree().current_scene.add_child(horns_instance)
 			
 			collision_layer = 0
 			#TODO: add particle effect
@@ -179,17 +202,16 @@ func Hit(dmg: int) -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		player = body
+		group_player = body
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player = null
-		
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
 
 func _fall_death():
 	if global_position.y <-1.0 :
 		
 		print("enemy dead")
+		dead = true
 		queue_free()

@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://bumv6bik85j7x"]
+[gd_scene load_steps=17 format=3 uid="uid://bumv6bik85j7x"]
 
-[ext_resource type="Texture2D" uid="uid://brivwk7k870tw" path="res://Assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ccb1x31rk1xrh" path="res://Scenes/level.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dt4nmvssar0vx" path="res://Scenes/collectible.tscn" id="5_tbgi4"]
@@ -14,17 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="12_trceg"]
 [ext_resource type="PackedScene" uid="uid://vovuedqbpxd6" path="res://Scenes/horns_pickup.tscn" id="13_trceg"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sugp2"]
-panorama = ExtResource("1_sugp2")
-energy_multiplier = 0.8
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6iyac"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_o6xl0"]
-sky_material = SubResource("PanoramaSkyMaterial_sugp2")
+[sub_resource type="Sky" id="Sky_fdnlq"]
+sky_material = SubResource("ProceduralSkyMaterial_6iyac")
 
-[sub_resource type="Environment" id="Environment_tipki"]
+[sub_resource type="Environment" id="Environment_jkdf5"]
 background_mode = 2
-background_energy_multiplier = 0.0
-sky = SubResource("Sky_o6xl0")
+sky = SubResource("Sky_fdnlq")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -34,14 +32,13 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 
 [node name="Main" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jkdf5")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.737012, 0.248238, -0.628642, -0.673885, -0.341298, 0.655282, -0.0518887, 0.906583, 0.418825, 0, 8.17773, 0)
-light_color = Color(0.52, 0.501973, 0.4784, 1)
 light_energy = 0.8
 shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_tipki")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_sugp2")
@@ -53,7 +50,6 @@ navigation_layers = 17
 
 [node name="Player" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.2939, 1.60383, -0.238947)
-JUMP_VELOCITY = 10
 
 [node name="Collectible" parent="." instance=ExtResource("5_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -2)
@@ -121,3 +117,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -7)
 
 [node name="Revolver_Pickup" parent="." instance=ExtResource("7_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 1, -0.5)
+
+[node name="baby_cow2" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33033, 0.5, 37.5064)
+
+[node name="BlackCow6" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -41.5, 3.5, -13.344)
+
+[node name="BlackCow7" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -37.5, 3.5, -13.344)
+
+[node name="BlackCow8" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -34, 3.5, -13.344)
+
+[node name="BlackCow9" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -30.5, 3.5, -13.344)
+
+[node name="BlackCow10" parent="." instance=ExtResource("11_eb6dy")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -11.1443, 1.8994, -16.6059)
+
+[node name="WhiteCow6" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -15.844)
+
+[node name="WhiteCow7" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, -15.844)
+
+[node name="WhiteCow8" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.156, 3.03741, 18.2249)
+
+[node name="WhiteCow9" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5, -15.844)
+
+[node name="WhiteCow10" parent="." instance=ExtResource("12_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5, -15.844)

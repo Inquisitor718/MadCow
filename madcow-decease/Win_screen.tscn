@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://djyesycqxdb3t"]
+
+[ext_resource type="AudioStream" uid="uid://0eo2mqst0c0p" path="res://Movies/menu.wav" id="1_yjgbd"]
+[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://Assets/2D_assets/SS.png" id="2_e5y83"]
+[ext_resource type="Texture2D" uid="uid://dx3bkheog2pwe" path="res://Assets/2D_assets/Poster.png" id="3_5wckx"]
+[ext_resource type="Texture2D" uid="uid://bpomd7ajisisn" path="res://Assets/2D_assets/Frame 14.png" id="4_hejda"]
+[ext_resource type="Texture2D" uid="uid://lkwovox7o504" path="res://Assets/2D_assets/buttons/play.png" id="5_2xxjp"]
+[ext_resource type="Texture2D" uid="uid://dcexnpvi0nrl" path="res://Assets/2D_assets/buttons/play (1).png" id="6_ilgll"]
+[ext_resource type="Script" uid="uid://b7l7ub6nacpw" path="res://play_b.gd" id="7_ahbua"]
+[ext_resource type="Texture2D" uid="uid://b8gtroqtnvntm" path="res://Assets/2D_assets/buttons/play (2).png" id="8_23fn6"]
+[ext_resource type="Texture2D" uid="uid://6aqc4vif42fl" path="res://Assets/2D_assets/buttons/play (3).png" id="9_lh7os"]
+[ext_resource type="Script" uid="uid://dhf18xvyd744w" path="res://quit_b.gd" id="10_m7r71"]
+[ext_resource type="Texture2D" uid="uid://cob8cij3xvkbx" path="res://Assets/2D_assets/buttons/You Win.png" id="11_e5y83"]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.565244, 0.565244)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("1_yjgbd")
+autoplay = true
+
+[node name="Poster" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-10.6149, -189.299)
+scale = Vector2(1.09736, 1.09736)
+texture = ExtResource("3_5wckx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2.00049, 2.00049)
+texture = ExtResource("2_e5y83")
+
+[node name="Frame14" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -367)
+scale = Vector2(0.470853, 0.470853)
+texture = ExtResource("4_hejda")
+
+[node name="Play_button" type="TextureButton" parent="."]
+offset_left = 2632.49
+offset_top = -403.366
+offset_right = 4511.49
+offset_bottom = 563.634
+scale = Vector2(0.503863, 0.503863)
+texture_normal = ExtResource("5_2xxjp")
+texture_pressed = ExtResource("6_ilgll")
+script = ExtResource("7_ahbua")
+
+[node name="YouWin" type="Sprite2D" parent="."]
+position = Vector2(141.532, -352.06)
+scale = Vector2(0.491094, 0.491094)
+texture = ExtResource("11_e5y83")
+
+[node name="Quit_button" type="TextureButton" parent="."]
+offset_left = 2446.73
+offset_top = 544.897
+offset_right = 4325.73
+offset_bottom = 1511.9
+scale = Vector2(0.503863, 0.503863)
+texture_normal = ExtResource("8_23fn6")
+texture_pressed = ExtResource("9_lh7os")
+script = ExtResource("10_m7r71")
+
+[connection signal="pressed" from="Play_button" to="Play_button" method="_on_pressed"]
+[connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

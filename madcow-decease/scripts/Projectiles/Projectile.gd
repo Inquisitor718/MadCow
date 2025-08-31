@@ -7,7 +7,8 @@ signal Hit_Successfull
 @export var Projectile_Velocity: int
 @export var Expirey_Time: int = 10
 @export var Rigid_Body_Projectile: PackedScene
-
+@onready var blood = preload("res://Scenes/blood_splatter.tscn")
+@export var spark = preload("res://Scenes/object_hit.tscn")
 
 var Damage: float = 0
 var Projectiles_Spawned = []
@@ -41,7 +42,7 @@ func Camera_Ray_Cast(_spread: Vector2 = Vector2.ZERO, _range: float = 1000):
 	New_Intersection.set_collision_mask(0b11101111)
 	
 	var Intersection = get_world_3d().direct_space_state.intersect_ray(New_Intersection)
-	
+
 	if not Intersection.is_empty():
 		var Collision = [Intersection.collider,Intersection.position]
 		return Collision
@@ -53,7 +54,7 @@ func Hit_Scan_Collision(Collision: Array,_damage):
 	var Bullet_Point = get_parent()
 	
 	if Collision[0]:
-		if Collision[0].is_in_group("Enemy"):
+		if Collision[0].is_in_group("Enemy") or Collision[0].is_in_group("wall"):
 			var Bullet = get_world_3d().direct_space_state
 
 			var Bullet_Direction = (Point - Bullet_Point.global_transform.origin).normalized()
@@ -69,6 +70,16 @@ func Hit_Scan_Damage(Collider, Direction, Position, _damage):
 	if Collider.is_in_group("Enemy") and Collider.has_method("Hit"):
 		Hit_Successfull.emit()
 		Collider.Hit(_damage)
+		var splat = blood.instantiate()
+		get_tree().current_scene.add_child(splat)
+		splat.global_transform.origin = Position
+		splat.look_at(Position + Direction, Vector3.UP)
+		queue_free()
+	else:
+		var spark_instance = spark.instantiate()
+		get_tree().current_scene.add_child(spark_instance)
+		spark_instance.global_transform.origin = Position
+		spark_instance.look_at(Position + Direction, Vector3.UP)
 		queue_free()
 
 func Launch_Rigid_Body_Projectile(_Point, _projectile):

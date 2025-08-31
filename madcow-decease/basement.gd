@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@onready var shader_mat: ShaderMaterial = $Player/CanvasLayer2/ColorRect.material
+@onready var shader_mat: ShaderMaterial = $CanvasLayer/ColorRect.material
 
 enum DistortionState { NONE, LOW, MED, HIGH }
 var paused = false
@@ -16,11 +16,14 @@ var state: DistortionState = DistortionState.NONE
 
 func _ready() -> void:
 	Global.distortion = 0.0
+	Global.mat = shader_mat
+	shader_mat.set_shader_parameter("aberration_strength",0.0)
+	set_flicker_enabled(true)
 
 func set_flicker_enabled(enable: bool) -> void:
 	for torch in lights.get_children():
 		if torch.has_method("enable_flicker"):
-			torch.enable_flicker(true)
+			torch.enable_flicker(enable)
 
 
 func _process(delta):
@@ -29,27 +32,21 @@ func _process(delta):
 		Global.distortion -= delta*rate
 		rate+=delta
 		player._dist_display(Global.distortion)
+		if Global.distortion < 30.0:
+			set_flicker_enabled(false)
+		elif Global.distortion < 50.0:
+			set_flicker_enabled(true)		
+			update_chroma(0.0,2.0)
+		elif Global.distortion < 70.0:
+				update_chroma(0.5,2.0)
+		else:
+				update_chroma(1.0,3.0)
 		pass
 		
 func increase_distortion(value: float) -> void:
 	Global.distortion += value
 	rate=0
-	match state:
-		DistortionState.NONE:
-			if Global.distortion > 30.0:
-				print("Global.distortion gone to 30")
-				state = DistortionState.LOW
-				set_flicker_enabled(true)
-		DistortionState.LOW:
-			if Global.distortion > 50.0:
-				print("Global.distortion gone high")
-				state = DistortionState.MED
-				update_chroma(0.5,2.0)
-				
-		DistortionState.MED:
-			if Global.distortion > 70.0:
-				print("distortion is high")
-				state = DistortionState.HIGH
+	
 		
 func update_chroma(strength: float,frequency: float) -> void:
 	shader_mat.set_shader_parameter("aberration_strength",strength)

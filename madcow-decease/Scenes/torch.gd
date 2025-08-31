@@ -9,7 +9,7 @@ var time := 0.0
 @export var color_b: Color = Color(1.0, 0.2, 0.05) # deeper red fire
 
 # Speed of flicker
-var flicker_speed: float = 5.0
+@export var flicker_speed: float = 5.0
 
 func _process(delta: float) -> void:
 	if !flicker_enabled:

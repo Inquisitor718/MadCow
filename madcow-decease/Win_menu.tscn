@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcfbq0bwaumga"]
+
+[ext_resource type="Texture2D" uid="uid://d2ydvhjf5lpsv" path="res://Movies/WhatsApp Image 2025-08-27 at 08.14.46_beabdd70.jpg" id="1_0kba0"]
+[ext_resource type="Texture2D" uid="uid://cob8cij3xvkbx" path="res://Assets/2D_assets/buttons/You Win.png" id="2_drqde"]
+[ext_resource type="Texture2D" uid="uid://b8gtroqtnvntm" path="res://Assets/2D_assets/buttons/play (2).png" id="3_0efms"]
+[ext_resource type="Texture2D" uid="uid://6aqc4vif42fl" path="res://Assets/2D_assets/buttons/play (3).png" id="4_c0wqw"]
+[ext_resource type="Script" uid="uid://dhf18xvyd744w" path="res://quit_b.gd" id="5_j75d1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="WhatsAppImage2025-08-27At08_14_46Beabdd70" type="Sprite2D" parent="."]
+position = Vector2(11, 8)
+scale = Vector2(4.55671, 4.55671)
+texture = ExtResource("1_0kba0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="YouWin" type="Sprite2D" parent="."]
+position = Vector2(228, -80)
+scale = Vector2(0.625001, 0.625001)
+texture = ExtResource("2_drqde")
+
+[node name="Quit_button" type="TextureButton" parent="."]
+offset_left = -406.0
+offset_top = 571.0
+offset_right = 1473.0
+offset_bottom = 1538.0
+scale = Vector2(0.434656, 0.434656)
+texture_normal = ExtResource("3_0efms")
+texture_pressed = ExtResource("4_c0wqw")
+script = ExtResource("5_j75d1")
+
+[connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

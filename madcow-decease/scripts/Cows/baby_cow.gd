@@ -8,11 +8,14 @@ extends CharacterBody3D
 @export var friendly_lifetime: float = 7.0
 @export var distortion_add: float = 2.5
 
+@onready var mesh_instance : MeshInstance3D = $"Baby Cow Animations/BBY_Rig/Skeleton3D/PC_Mesh_002"
 @onready var detection_area = $DetectionArea
 @onready var shoot_area = $ShootArea
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var magnum_spawn_1 = $MeshInstance3D/handgun1/Marker3D
 @onready var magnum_spawn_2 = $MeshInstance3D/handgun2/Marker3D
+
+@onready var animation_tree: AnimationTree = $"Baby Cow Animations/AnimationTree"
 
 @export var magnum: PackedScene
 @export var explosion: PackedScene
@@ -27,9 +30,19 @@ var friendly_timer: float = 0.0
 var mat: StandardMaterial3D
 var can_shoot = true
 var use_first_gun = true
-
+var cow_mat: ShaderMaterial
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 signal on_death
+
+func _ready() -> void:
+	var base_mat: Material = mesh_instance.get_surface_override_material(0)
+	if base_mat == null and mesh_instance.mesh:
+		base_mat = mesh_instance.mesh.surface_get_material(0)
+
+	if base_mat is ShaderMaterial:
+		cow_mat = base_mat.duplicate() as ShaderMaterial
+		mesh_instance.set_surface_override_material(0, cow_mat)
+
 
 func _physics_process(delta):
 	_apply_gravity(delta)
@@ -55,13 +68,23 @@ func _physics_process(delta):
 				direction = direction.normalized()
 				velocity.x = direction.x * move_speed
 				velocity.z = direction.z * move_speed
+				animation_tree.set("parameters/conditions/Shoot", false)
+				animation_tree.set("parameters/conditions/Walk", true)
+				animation_tree.set("parameters/conditions/Idle", false)
 				move_and_slide()
 			
 			if _player_in_shoot_area() and _has_line_of_sight():
 				_stop_moving()
+				animation_tree.set("parameters/conditions/Shoot", true)
+				animation_tree.set("parameters/conditions/Walk", false)
+				animation_tree.set("parameters/conditions/Idle", false)
 				_try_shoot()
 		else:
+			
 			_stop_moving()
+			animation_tree.set("parameters/conditions/Shoot", false)
+			animation_tree.set("parameters/conditions/Walk", false)
+			animation_tree.set("parameters/conditions/Idle", true)
 		move_and_slide()
 	
 func _has_line_of_sight() -> bool:
@@ -109,7 +132,6 @@ func _try_shoot():
 func _shoot():
 	if not player:
 		return
-	
 	_fire_magnum_from_marker(magnum_spawn_1)
 	
 	await get_tree().create_timer(stagger_time).timeout
@@ -146,27 +168,29 @@ func spawn_explode(position: Vector3):
 		boom.global_position = global_position
 		get_parent().add_child(boom)
 		
-		#var anim_player = boom.get_node_or_null("AnimationPlayer")
-		#if anim_player:
-			#anim_player.play("Explosion")
-		#if anim_player:
-			#anim_player.connect("animation_finished", func(_anim_name):
-				#boom.queue_free())
-		#else:
-			## Fallback if no animation: free after 1 sec
-			#boom.call_deferred("queue_free")
+		var anim_player = boom.get_node_or_null("AnimationPlayer")
+		if anim_player:
+			anim_player.play("Explosion")
+		if anim_player:
+			anim_player.connect("animation_finished", func(_anim_name):
+				boom.queue_free())
+		else:
+			# Fallback if no animation: free after 1 sec
+			boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:
 	baby_cow_health -= dmg
 	print("Enemy Health:", baby_cow_health)
 	if baby_cow_health <= 0:
 		Global.distortion += distortion_add
-		if group_player.is_in_group("Revolver"):
-			spawn_explode(global_transform.origin)
-		if group_player.is_in_group("minigun"):
-			_become_friendly()
-		else:
-			queue_free()
+		if group_player:
+			if group_player.is_in_group("Revolver"):
+				spawn_explode(global_transform.origin)
+			if group_player.is_in_group("minigun"):
+				_become_friendly()
+			else:
+				await get_tree().create_timer(1.5).timeout
+				queue_free()
 		#if randf() < 0.4 and coin_scene:
 			#var coin_instance = coin_scene.instantiate()
 			#coin_instance.global_position = global_position + Vector3(0, 1, 0)
@@ -174,21 +198,16 @@ func Hit(dmg: int) -> void:
 			
 func _become_friendly():
 	is_friendly = true
-	baby_cow_health = 99999
+	baby_cow_health = INF
 	friendly_timer = 0.0
-	if $MeshInstance3D.material_override:
-		mat = $MeshInstance3D.material_override.duplicate()
-	else:
-		var surf_mat = $MeshInstance3D.mesh.surface_get_material(0)
-		if surf_mat:
-			mat = surf_mat.duplicate()
-		else:
-			mat = StandardMaterial3D.new()
-	mat.albedo_color = lerp(mat.albedo_color, Color(0,128,0,255), 0.1)
-	$MeshInstance3D.material_override = mat
+
+	if cow_mat:
+		cow_mat.set_shader_parameter("glow_color", Color("#7cbf46"))
+
 	player = null
 	add_to_group("Friendlies")
 	remove_from_group("Enemy")
+
 
 func _friendly_ai_logic(delta):
 	if not current_target_enemy or not is_instance_valid(current_target_enemy):
@@ -213,7 +232,7 @@ func _friendly_ai_logic(delta):
 	else:
 		_stop_moving()
 
-func _find_nearest_enemy() -> CharacterBody3D:
+func _find_nearest_enemy() -> CharacterBody3D :
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	var nearest = null
 	var min_dist = 99999
@@ -223,7 +242,10 @@ func _find_nearest_enemy() -> CharacterBody3D:
 		if dist < min_dist:
 			min_dist = dist
 			nearest = e
-	return nearest
+	if nearest == CharacterBody3D:
+		return nearest
+	else:
+		return null
 
 func _face_target(target, delta):
 	var to_target = (target.global_transform.origin - global_transform.origin).normalized()
@@ -260,15 +282,12 @@ func _fire_magnum_from_marker_at_target(spawn_marker: Node3D, target_enemy):
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		player = body
+		group_player = body
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body == player:
-		player = null
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
+		player = null
 
 func _fall_death():
 	if global_position.y <-1.0 :

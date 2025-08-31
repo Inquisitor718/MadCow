@@ -19,7 +19,7 @@ contact_monitor = true
 max_contacts_reported = 10
 
 [node name="projectile" parent="." instance=ExtResource("1_hou2x")]
-transform = Transform3D(-4.25632e-08, 0.554995, 0.00244103, -0.554995, 1.06937e-05, -0.00244101, -0.00244103, -0.00244101, 0.554989, 0, 0, 0)
+transform = Transform3D(-1.91553e-08, 0.249998, 0.00109956, -0.249998, 4.817e-06, -0.00109955, -0.00109956, -0.00109955, 0.249995, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

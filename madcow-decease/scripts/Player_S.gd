@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var head: Node3D = $Head
 @onready var main_cam: Camera3D = $Head/Camera3D
@@ -6,9 +7,10 @@ extends CharacterBody3D
 @onready var distortion_bar: TextureProgressBar = $CanvasLayer/DistortionBar
 @onready var chroma_shader: ShaderMaterial = $CanvasLayer2/ColorRect.material
 @onready var pcap: CollisionShape3D = $CollisionShape3D
+@onready var run_sound: AudioStreamPlayer = $AudioStreamPlayer
 
 # Health system
-@export var health: int = 100
+@export var health = 100
 var max_health := 100
 
 # Movement
@@ -20,7 +22,7 @@ var speed_now = 5.0
 @export var speed_crouch := 2.5
 @export var air_control := 2.0
 @export var JUMP_VELOCITY := 10.0
-@export var mouse_sens := 0.4
+@export var mouse_sens := 0.1
 @export var lerp_speed := 10.0
 
 # Crouch
@@ -65,7 +67,8 @@ const BOTTLE_PATHS = {
 }
 
 # -- HEALTH FUNCTIONS ------------------------------------------------
-func dmg(HP: int) -> void:
+func dmg(HP) -> void:
+	SfXmanager.play_sound("take_dmg")
 	health -= HP
 	if not HP == 0:
 		animation_player.play("Dmg")
@@ -87,6 +90,8 @@ func _update_health_bottles() -> void:
 
 func die() -> void:
 	print("Player died")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	get_tree().change_scene_to_file("res://Lose.tscn")
 	# TODO: Respawn / game over logic
 
 # -- INPUT -----------------------------------------------------------
@@ -163,6 +168,27 @@ func _move_player(delta: float) -> void:
 		velocity.x = horiz_vel.x
 		velocity.z = horiz_vel.y
 
+	if abs(velocity.x) + abs(velocity.z) > 1:
+		if not run_sound.playing:
+			run_sound.play()
+	else:
+		run_sound.stop()
+
+var camera_tween : Tween
+func camera_shake():
+	if camera_tween:
+		camera_tween.kill()
+	
+	var camera_shake = func(n:int):
+		main_cam.h_offset = randf_range(-0.1, 0.1)
+		main_cam.v_offset = randf_range(-0.1, 0.1)
+	
+	camera_tween = create_tween()
+	camera_tween.tween_method(camera_shake, 0, 1, 0.2)
+	camera_tween.tween_callback(func():
+		main_cam.h_offset = 0
+		main_cam.v_offset = 0)
+
 func _head_bob(delta: float) -> void:
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
 	var is_mov = input_dir.length() > 0.01 and is_on_floor()
@@ -195,4 +221,8 @@ func _dist_display(amt: int):
 	distortion_bar.value = amt
 
 func _on_killzone_body_entered(body: Node3D) -> void:
+	die()
+
+
+func _on_killzone_dying() -> void:
 	die()

@@ -43,7 +43,11 @@ func _physics_process(delta):
 			animation_tree.set("parameters/conditions/Shoot", false)
 			animation_tree.set("parameters/conditions/Walk", true)
 			animation_tree.set("parameters/conditions/Idle", false)
+			
 			move_and_slide()
+			
+			#await get_tree().create_timer(15.0).timeout
+			#queue_free()
 			
 		if _player_in_shoot_area() and _has_line_of_sight():
 			_stop_moving()
@@ -56,7 +60,11 @@ func _physics_process(delta):
 		animation_tree.set("parameters/conditions/Shoot", false)
 		animation_tree.set("parameters/conditions/Walk", false)
 		animation_tree.set("parameters/conditions/Idle", true)
+		#await get_tree().create_timer(15.0).timeout
+		#queue_free()
+		
 	move_and_slide()
+	
 	
 	_fall_death()
 
@@ -126,15 +134,15 @@ func spawn_explode(position: Vector3):
 		get_parent().add_child(boom)
 		boom.global_transform.origin = position
 		
-		#var anim_player = boom.get_node_or_null("AnimationPlayer")
-		#if anim_player:
-			#anim_player.play("Explosion")
-		#if anim_player:
-			#anim_player.connect("animation_finished", func(_anim_name):
-				#boom.queue_free())
-		#else:
-			## Fallback if no animation: free after 1 sec
-			#boom.call_deferred("queue_free")
+		var anim_player = boom.get_node_or_null("AnimationPlayer")
+		if anim_player:
+			anim_player.play("Explosion")
+		if anim_player:
+			anim_player.connect("animation_finished", func(_anim_name):
+				boom.queue_free())
+		else:
+			# Fallback if no animation: free after 1 sec
+			boom.call_deferred("queue_free")
 
 func Hit(dmg: int) -> void:
 	if white_cow_health > 0:
@@ -147,16 +155,17 @@ func Hit(dmg: int) -> void:
 			animation_tree.set("parameters/conditions/Die", true)
 			print(Global.kills)
 			emit_signal("on_death")
-			if group_player.is_in_group("Revolver"):
-				spawn_explode(global_transform.origin)
-			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
-				if Global.kills > 3:
-					var c = randi() % 100
-					print("Random Chod ", c)
-					if c < 20:
-						var minigun_instance = minigun_scene.instantiate()
-						minigun_instance.global_position = global_position
-						get_tree().current_scene.add_child(minigun_instance)
+			if group_player:
+				if group_player.is_in_group("Revolver"):
+					spawn_explode(global_transform.origin)
+				if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+					if Global.kills > 3:
+						var c = randi() % 100
+						print("Random Chod ", c)
+						if c < 40:
+							var minigun_instance = minigun_scene.instantiate()
+							minigun_instance.global_position = global_position
+							get_tree().current_scene.add_child(minigun_instance)
 			await get_tree().create_timer(1.5).timeout
 			queue_free()
 
@@ -164,14 +173,11 @@ func Hit(dmg: int) -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		player = body
+		group_player = body
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player = null
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
 
 func _fall_death():

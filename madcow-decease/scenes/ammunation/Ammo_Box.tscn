@@ -1,84 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://cor5pdhy876pc"]
+[gd_scene load_steps=6 format=3 uid="uid://cor5pdhy876pc"]
 
 [ext_resource type="Script" uid="uid://h02t208jk4j2" path="res://scripts/ammunation/ammo_box.gd" id="1_2h5hb"]
+[ext_resource type="Texture2D" uid="uid://dwnd15llmlmhy" path="res://Assets/WhatsApp Image 2025-08-25 at 19.49.26_cd605b6e.jpg" id="2_dp8f7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2n00s"]
 size = Vector3(0.6, 0.15, 0.3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l1cdb"]
-size = Vector3(0.7, 0.2, 0.4)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4kw4"]
+albedo_texture = ExtResource("2_dp8f7")
+emission_enabled = true
+emission = Color(2.52686e-06, 0.592464, 0.0832275, 1)
+emission_energy_multiplier = 7.75
 
-[sub_resource type="Animation" id="Animation_hgyhx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_oefja"]
-resource_name = "bounce"
-length = 0.3
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.2, 0), Vector3(0, 0.8, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_l1cdb"]
-resource_name = "vert_oscillate"
-loop_mode = 1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 2.98023e-08, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oefja"]
-_data = {
-&"RESET": SubResource("Animation_hgyhx"),
-&"bounce": SubResource("Animation_oefja"),
-&"vert_oscillate": SubResource("Animation_l1cdb")
-}
+[sub_resource type="SphereShape3D" id="SphereShape3D_dp8f7"]
+radius = 3.0
 
 [node name="Ammo_Box" type="Area3D"]
-collision_layer = 16
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+collision_layer = 144
 collision_mask = 21
 script = ExtResource("1_2h5hb")
 weapon_name = "Shotgun"
 increase = 20
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0366107, 0)
 mesh = SubResource("BoxMesh_2n00s")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4kw4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_l1cdb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_oefja")
-}
-autoplay = "vert_oscillate"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00546874)
+shape = SubResource("SphereShape3D_dp8f7")

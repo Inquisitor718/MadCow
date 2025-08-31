@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4llj"]
 size = Vector3(1, 0.0367126, 1.00073)
 
-[node name="wooden_wall" type="StaticBody3D"]
+[node name="wooden_wall" type="StaticBody3D" groups=["wall"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0.0157938, 0.0421173, 0)

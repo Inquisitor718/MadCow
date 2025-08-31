@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cewk6gkc3oasl"]
+
+[ext_resource type="Script" uid="uid://yqyjnld8lpoi" path="res://last_scene.gd" id="1_vffoa"]
+[ext_resource type="VideoStream" uid="uid://bqn8oym623bpn" path="res://Movies/0001-0452.ogv" id="2_57eif"]
+[ext_resource type="AudioStream" uid="uid://bprtu3isu7pyq" path="res://Movies/credits.mp3" id="3_wuwvr"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vffoa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+offset_left = -2022.0
+offset_top = -1067.0
+offset_right = -1982.0
+offset_bottom = -1027.0
+scale = Vector2(107.108, 54.6185)
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Camera2D"]
+offset_left = -1883.0
+offset_top = -1061.0
+offset_right = 36.9999
+offset_bottom = 19.0
+scale = Vector2(1.96107, 1.96107)
+stream = ExtResource("2_57eif")
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("3_wuwvr")
+volume_db = 9.661
+autoplay = true
+bus = &"Music"
+
+[connection signal="finished" from="Camera2D/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

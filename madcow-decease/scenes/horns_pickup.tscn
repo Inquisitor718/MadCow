@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://vovuedqbpxd6"]
+[gd_scene load_steps=9 format=3 uid="uid://vovuedqbpxd6"]
 
 [ext_resource type="Script" uid="uid://dmogobeoy77d6" path="res://scripts/ammunation/pickup.gd" id="1_34xhx"]
+[ext_resource type="PackedScene" uid="uid://n2a5tp8mm2g6" path="res://scripts/ammunation/horns.glow.glb" id="2_lsw5s"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_34xhx"]
 top_radius = 0.0
@@ -112,12 +113,17 @@ gravity_direction = Vector3(0, 0, 0)
 script = ExtResource("1_34xhx")
 weapon_name = "Horns"
 
+[node name="horns_glow" parent="." instance=ExtResource("2_lsw5s")]
+transform = Transform3D(2.48389e-16, -0.13, 5.68248e-09, -5.68248e-09, -5.68248e-09, -0.13, 0.13, 0, -5.68248e-09, 0.0550613, -0.267263, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+visible = false
 mesh = SubResource("CylinderMesh_34xhx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+visible = false
 mesh = SubResource("CylinderMesh_34xhx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

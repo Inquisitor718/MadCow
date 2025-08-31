@@ -15,6 +15,7 @@ emission_energy_multiplier = 7.4
 script = ExtResource("1_h1t0l")
 color_a = Color(0.901961, 0.717647, 0, 1)
 color_b = Color(1.73271e-06, 0.625727, 0.714503, 1)
+flicker_speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.0374562, 0, 0, 0, 0.0352311, -0.0127173, 0, 0.0127173, 0.0352311, 0, 0, 0)

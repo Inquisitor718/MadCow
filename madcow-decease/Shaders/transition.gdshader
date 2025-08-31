@@ -19,7 +19,7 @@ void fragment() {
         vec4 noise_col = texture(noise_tex1, UV + TIME * scroll1) *
                          texture(noise_tex2, UV + TIME * scroll2);
         // distortion strength scaled by transition_amount
-        uv += distortion_strength * transition_amount * (noise_col.rg - 0.5);
+        uv += distortion_strength * (noise_col.rg - 0.5);
     }
 
     // Chromatic aberration sampling with distorted UV

@@ -1,14 +1,20 @@
-[gd_scene load_steps=33 format=4 uid="uid://i3it8sxpnyua"]
+[gd_scene load_steps=42 format=4 uid="uid://i3it8sxpnyua"]
 
 [ext_resource type="Texture2D" uid="uid://dwnd15llmlmhy" path="res://Assets/WhatsApp Image 2025-08-25 at 19.49.26_cd605b6e.jpg" id="1_kh5ph"]
+[ext_resource type="Script" uid="uid://bd5xo2q612wd3" path="res://scripts/spawnning_enemies_1.gd" id="1_lg3sn"]
 [ext_resource type="Texture2D" uid="uid://budmgc4ks3w0l" path="res://Assets/spawner_Metal.png" id="2_mdv8j"]
-[ext_resource type="PackedScene" uid="uid://dfn5aw6jnyxg2" path="res://Scenes/enemy scenes/spawner_healthbar.tscn" id="4_4wbs5"]
+[ext_resource type="PackedScene" uid="uid://cerrexjmrwoos" path="res://Scenes/enemy scenes/baby_cow.tscn" id="2_sb3hk"]
+[ext_resource type="PackedScene" uid="uid://c83lc7sg4k1h2" path="res://Scenes/enemy scenes/black_cow.tscn" id="3_kypai"]
+[ext_resource type="Script" uid="uid://bklftss43lj80" path="res://scripts/destroyable.gd" id="3_xbrvg"]
+[ext_resource type="PackedScene" uid="uid://cm6b48v2wj16p" path="res://Scenes/enemy scenes/patched_cow.tscn" id="4_1w87b"]
 [ext_resource type="Shader" uid="uid://csyxm8lhof1pt" path="res://Shaders/FireShader.tres" id="4_e3f8v"]
+[ext_resource type="PackedScene" uid="uid://cvs1t6fwo8bvh" path="res://Scenes/enemy scenes/white_cow.tscn" id="5_0ug5v"]
 [ext_resource type="Texture2D" uid="uid://dcdsgj8co30hd" path="res://Textures/Voronoi01.png" id="5_3rx28"]
 [ext_resource type="Texture2D" uid="uid://b8jox18rkokfe" path="res://Textures/Flame01.png" id="6_m1kbb"]
 [ext_resource type="Texture2D" uid="uid://dcnvs7xi6qkfj" path="res://Textures/Flame02.png" id="7_q0apd"]
 [ext_resource type="Shader" uid="uid://bxc8w35tpu346" path="res://Shaders/SimpleParticles.tres" id="8_07n7x"]
 [ext_resource type="Texture2D" uid="uid://xo6ydxtjkrbl" path="res://Textures/Flare00.PNG" id="9_cy7tl"]
+[ext_resource type="Script" uid="uid://civ4usgc1guc1" path="res://scripts/spawner_healthbar.gd" id="9_lg3sn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbrvg"]
 albedo_texture = ExtResource("1_kh5ph")
@@ -99,7 +105,35 @@ radius = 1.19092
 height = 1.2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p5s3f"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("Destroyable/Healthbar/SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mwoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik2nu"]
+bg_color = Color(0.676972, 0, 0.0823138, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0383972, 0.0383972, 0.0383971, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx2ig"]
+bg_color = Color(0.236863, 0.536831, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.10748, 0.10748, 0.10748, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08o54"]
 render_priority = 0
@@ -186,7 +220,17 @@ turbulence_noise_scale = 4.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_rf8c5"]
 
-[node name="Spawner" type="StaticBody3D"]
+[node name="Spawner" type="StaticBody3D" groups=["Enemies", "Enemy"]]
+collision_layer = 2
+collision_mask = 39
+script = ExtResource("1_lg3sn")
+x = 8.0
+z = 8.0
+r = 5.0
+Baby_Cow = ExtResource("2_sb3hk")
+Black_Cow = ExtResource("3_kypai")
+Patched_Cow = ExtResource("4_1w87b")
+White_Cow = ExtResource("5_0ug5v")
 
 [node name="spawner" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, 0, 0)
@@ -205,14 +249,52 @@ shape = SubResource("CylinderShape3D_mdv8j")
 transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, -1.25641, 0)
 shape = SubResource("CylinderShape3D_xhbpr")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+[node name="Destroyable" type="StaticBody3D" parent="." groups=["Enemies", "Enemy"]]
+collision_layer = 2
+collision_mask = 39
+script = ExtResource("3_xbrvg")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Destroyable"]
 transform = Transform3D(3, 0, 0, 0, 2.3, 0, 0, 0, 3, 0, 1.15239, 0)
 shape = SubResource("CylinderShape3D_2ydn3")
 
-[node name="Sprite3D" parent="." instance=ExtResource("4_4wbs5")]
+[node name="Healthbar" type="Sprite3D" parent="Destroyable"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82539, 0)
 sorting_offset = 1.0
+billboard = 1
 texture = SubResource("ViewportTexture_p5s3f")
+script = ExtResource("9_lg3sn")
+
+[node name="SubViewport" type="SubViewport" parent="Destroyable/Healthbar"]
+transparent_bg = true
+size = Vector2i(256, 48)
+
+[node name="Panel" type="Panel" parent="Destroyable/Healthbar/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4mwoa")
+
+[node name="ProgressBar" type="ProgressBar" parent="Destroyable/Healthbar/SubViewport/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.5
+anchor_right = 0.969
+anchor_bottom = 0.51
+offset_left = 0.0639997
+offset_top = -12.0
+offset_right = -0.0640106
+offset_bottom = 12.52
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ik2nu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tx2ig")
+value = 100.0
 
 [node name="Fire" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.42552, 0)
@@ -254,3 +336,10 @@ lifetime = 1.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_c8s3s")
 draw_pass_1 = SubResource("QuadMesh_rf8c5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="no_hp_left" from="Destroyable/Healthbar" to="Destroyable" method="_on_healthbar_no_hp_left"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

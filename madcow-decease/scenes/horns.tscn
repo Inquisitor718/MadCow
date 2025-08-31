@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3ljb4w20ye2r"]
+[gd_scene load_steps=3 format=3 uid="uid://c3ljb4w20ye2r"]
+
+[ext_resource type="PackedScene" uid="uid://cw00c5ybwqh3e" path="res://scripts/ammunation/horns.new.glb" id="1_yxd0d"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0wot1"]
 top_radius = 0.0
@@ -6,14 +8,18 @@ radial_segments = 32
 
 [node name="Horns" type="Node3D"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-visible = false
+
+[node name="horns_new" parent="." instance=ExtResource("1_yxd0d")]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0.0372507, 0.276627)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0.217459, 0.164701, 0.185769)
+visible = false
 layers = 2
 mesh = SubResource("CylinderMesh_0wot1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, -0.217, 0.165, 0.186)
+visible = false
 layers = 2
 mesh = SubResource("CylinderMesh_0wot1")

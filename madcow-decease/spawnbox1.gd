@@ -28,10 +28,15 @@ var spawned = false
 	spawnpoint_6, spawnpoint_7, spawnpoint_8, spawnpoint_9, spawnpoint_10, spawnpoint_11
 ]
 
-var cow_scenes = [patched_cow_scene]
+var cow_scenes = [patched_cow_scene,white_cow_scene,black_cow_scene,baby_cow_scene]
+
 
 func _on_body_entered(body: Node3D) -> void:
-
+	print("ligma balls")
+	if spawned:
+		return 
+	spawned=true
+	collision_shape_3d.disabled = true
 	for sp in spawnpoints:
 		var scene = cow_scenes.pick_random()
 		var cow = scene.instantiate()
@@ -41,4 +46,4 @@ func _on_body_entered(body: Node3D) -> void:
 			cow.connect("on_death",level._on_death)
 		await get_tree().create_timer(0.4).timeout
 	
-	collision_shape_3d.disabled = true
+	

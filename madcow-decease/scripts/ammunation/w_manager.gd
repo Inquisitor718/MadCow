@@ -1,10 +1,17 @@
 extends Node3D
+class_name WeaponManager
 
-@onready var animation_player2: AnimationPlayer = $"../../../CanvasLayer2/AnimationPlayer"
 @onready var animation_player: AnimationPlayer = $rig/AnimationPlayer
 @onready var Bullet_Point = get_node("%BulletPoint")
 @onready var player: CharacterBody3D = $"../../.."
-@onready var lines: ColorRect = $"../../../CanvasLayer2/Lines"
+@export var muzzle_flash: Node3D 
+@onready var shotgun_sprite: Sprite2D = $"../../../CanvasLayer/Shotgun_sprite"
+@onready var revolver_sprite: Sprite2D = $"../../../CanvasLayer/Revolver_Sprite"
+@onready var hornyahhh_sprite: Sprite2D = $"../../../CanvasLayer/Hornyahhh_Sprite"
+@onready var minigun_sprite: Sprite2D = $"../../../CanvasLayer/Minigun_sprite"
+@onready var lines_2: ColorRect = $"../../../CanvasLayer2/Lines2"
+
+@onready var sound_box: AudioStreamPlayer3D = $sound_box
 
 signal Weapon_Change
 signal Update_Ammo
@@ -32,30 +39,45 @@ func _process(delta: float) -> void:
 	_check_revolver()
 	_check_minigun()
 	_check_horns()
-	
+	_check_shotgun()
+
 func _check_horns():
 	if not Weapon_Stack.find("Horns", 0):
 		Global.kills = 0
 		get_parent().get_parent().get_parent().add_to_group("Horns")
+		hornyahhh_sprite.visible =  true
+		lines_2.visible = true
 	else:
 		get_parent().get_parent().get_parent().remove_from_group("Horns")
+		hornyahhh_sprite.visible = false
+		lines_2.visible = false
 
 func _check_revolver():
 	if not Weapon_Stack.find("Revolver", 0):
 		Global.kills = 0
 		get_parent().get_parent().get_parent().add_to_group("Revolver")
+		revolver_sprite.visible = true
 	else:
 		get_parent().get_parent().get_parent().remove_from_group("Revolver")
-
+		revolver_sprite.visible = false
 func _check_minigun():
 	if not Weapon_Stack.find("minigun", 0):
 		Global.kills = 0
 		get_parent().get_parent().get_parent().add_to_group("minigun")
+		minigun_sprite.visible = true
 	else:
 		get_parent().get_parent().get_parent().remove_from_group("minigun")
+		minigun_sprite.visible = false
+
+func _check_shotgun():
+	if not Weapon_Stack.find("Shotgun", 0):
+		shotgun_sprite.visible = true
+	else:
+		shotgun_sprite.visible = false
 
 func _ready():
 	Initialize(Start_Weapons)
+	
 
 func _input(event):
 	if event.is_action_pressed("Weapon_Up") and not weapon_locked: 
@@ -73,8 +95,10 @@ func _input(event):
 			melee()
 		else:
 			shoot()
-	if event.is_action_pressed("Reload"):
+	if event.is_action_pressed("Reload") && not Current_Weapon.W_name == "Revolver":
 		reload()
+
+
 func Initialize(_start_weapons: Array):
 	for weapon in _weapon_resources:
 		Weapon_List[weapon.W_name] = weapon
@@ -134,20 +158,32 @@ func shoot():
 			emit_signal("Update_Ammo", [Current_Weapon.Active_ammo, Current_Weapon.Stored_ammo])
 			var Spread = Vector2.ZERO
 			Load_Projectile(Spread)
+			if Current_Weapon.W_name == "Shotgun":
+				SfXmanager.play_sound("shotgun_shoot")
+			if Current_Weapon.W_name == "minigun":
+				SfXmanager.play_sound("minigun_shoot",0.,1.,false, 0., 0.2)
+			if Current_Weapon.W_name == "Revolver":
+				SfXmanager.play_sound("revolver_shoot")
 			#match Current_Weapon.Type:
 				#NULL:
 					#print("Invalid")
 				#HITSCAN:
 					#Hit_Scan_Collision(Cam_Collision)
-				#PROJECTILE:
+				#PROJECTILE4
 					#Launch_Proj(Get_Cam_Collision())
 			if Current_Weapon.W_name == "Revolver" && Current_Weapon.Active_ammo == 0:#Checks for Revolver and ammo end tags
+				
 				var timer = get_node_or_null("WeaponTimer_*")
 				for child in get_children():
 					if child is Timer and child.name.begins_with("WeaponTimer_"):
+						
 						child.stop()
 						child.emit_signal("timeout")
 						break
+
+			for child in muzzle_flash.get_children():
+				if child is GPUParticles3D:
+					child.restart()
 	else:
 		reload()
 
@@ -170,6 +206,7 @@ func melee():
 
 
 func Load_Projectile(_spread):
+	player.camera_shake()
 	var _projectile:Projectile = Current_Weapon.Projectile_To_Load.instantiate()
 	Bullet_Point.add_child(_projectile)
 	Add_Signal_To_HUD.emit(_projectile)
@@ -216,17 +253,15 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 		print("Health adding")
 		var Temp_health = player.health
 		Temp_health += body.increase
-		animation_player2.play("Heal")
 		player.health = Temp_health
-		player.dmg(0)
-		print("Health is now " + str(player.health))
 		$"../../../Weapon_Pickup".set_deferred("collision_mask", (1 << 4) | (1 << 7))
+		SfXmanager.play_sound("health_pickup")
+		print("Health is now " + str(player.health))
 		body.queue_free()
 
 
 	else:
-		var weapon_pickup:Area3D = $"../../../Weapon_Pickup"
-		weapon_pickup.collision_mask = 1<<7
+		$"../../../Weapon_Pickup".set_deferred("collision_mask", 1 << 7 )
 		var Weapon_In_Stack = Weapon_Stack.find(body.weapon_name, 0)
 		if Weapon_In_Stack == -1:
 			print("weapon Picked up")
@@ -242,15 +277,19 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 
 			# Lock weapon switching
 			weapon_locked = true
+			if body.weapon_name == "minigun":
+				SfXmanager.play_sound("minigun_pickup")
+			if body.weapon_name == "Revolver":
+				SfXmanager.play_sound("revolver_pickup")
 			if body.weapon_name == "Horns":
+				SfXmanager.play_sound("horns_pickup")
 				original_speed = player.speed_walk
 				original_hitbox_scale = player.scale
-				lines.show()
 
 				var tween = create_tween()
-				tween.set_parallel().tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
+				tween.tween_property(player, "speed_walk", player.speed_walk * 3, 0.5)
 				tween.tween_property(player, "scale", player.scale * 1.5, 0.5)
-		
+
 			# Create the timer
 			var timer := Timer.new()
 			timer.name = "WeaponTimer_%s" % str(Time.get_ticks_msec())
@@ -269,13 +308,14 @@ func _on_weapon_pickup_area_entered(body: Area3D) -> void:
 				Next_Weapon = "Shotgun"
 				weapon_locked = false  # switching will be allowed again after restore
 				exit("Shotgun")
+				SfXmanager.play_sound("shotgun_pickup")
 				if Current_Weapon.W_name == "Horns":
+					hornyahhh_sprite.visible = false
+					lines_2.visible = false
 					player.speed_walk = original_speed
 					player.scale = original_hitbox_scale
-					lines.hide()
 				timer.queue_free()
 				)
 			timer.start()
 			
 			exit(body.weapon_name)
-			

@@ -141,16 +141,17 @@ func Hit(dmg: int) -> void:
 			animation_tree.set("parameters/conditions/Die", true)
 			print(Global.kills)
 			emit_signal("on_death")
-			if group_player.is_in_group("Revolver"):
-				spawn_explode(global_transform.origin)
-			if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
-				if Global.kills > 3:
-					var c = randi() % 100
-					print("Random Chod ", c)
-					if c < 30:
-						var revolver_instance = revolver_scene.instantiate()
-						revolver_instance.global_position = global_position
-						get_tree().current_scene.add_child(revolver_instance)
+			if group_player:
+				if group_player.is_in_group("Revolver"):
+					spawn_explode(global_transform.origin)
+				if not group_player.is_in_group("Revolver") or not group_player.is_in_group("Horns") or not group_player.is_in_group("minigun"):
+					if Global.kills > 3:
+						var c = randi() % 100
+						print("Random Chod ", c)
+						if c < 40:
+							var revolver_instance = revolver_scene.instantiate()
+							revolver_instance.global_position = global_position
+							get_tree().current_scene.add_child(revolver_instance)
 			await get_tree().create_timer(1.5).timeout
 			queue_free()
 
@@ -158,13 +159,11 @@ func Hit(dmg: int) -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and body.is_in_group("player_S"):
 		player = body
+		group_player = body
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player = null
-		
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and body.is_in_group("player_S"):
 		group_player = body
 
 func _fall_death():

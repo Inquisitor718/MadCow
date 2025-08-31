@@ -13,7 +13,7 @@ metallic = 1.0
 roughness = 0.5
 ao_enabled = true
 
-[node name="Stone_wall" type="StaticBody3D"]
+[node name="Stone_wall" type="StaticBody3D" groups=["wall"]]
 
 [node name="stone_wall" parent="." instance=ExtResource("1_ra4wm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.14445, -1.98204, 2.31359)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7gl0ish6r0x2"]
+
+[ext_resource type="Texture2D" uid="uid://hhlwygtvd4na" path="res://Assets/2D_assets/SS.png" id="1_eyyj0"]
+[ext_resource type="Texture2D" uid="uid://1s7q8akw6tmd" path="res://Assets/2D_assets/buttons/Try_again.png" id="2_eyyj0"]
+[ext_resource type="Texture2D" uid="uid://bndpij5nag37t" path="res://Assets/2D_assets/buttons/Try_again_2.png" id="3_q1fwl"]
+[ext_resource type="Script" uid="uid://b7l7ub6nacpw" path="res://play_b.gd" id="4_sedng"]
+[ext_resource type="Texture2D" uid="uid://b8gtroqtnvntm" path="res://Assets/2D_assets/buttons/play (2).png" id="5_8uext"]
+[ext_resource type="Texture2D" uid="uid://6aqc4vif42fl" path="res://Assets/2D_assets/buttons/play (3).png" id="6_mr4a1"]
+[ext_resource type="Script" uid="uid://dhf18xvyd744w" path="res://quit_b.gd" id="7_svqsr"]
+[ext_resource type="Texture2D" uid="uid://c5vtuodyrhtlj" path="res://Assets/2D_assets/buttons/You Died.png" id="8_q1fwl"]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.565244, 0.565244)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+scale = Vector2(3.83601, 3.83601)
+texture = ExtResource("1_eyyj0")
+
+[node name="Play_button" type="TextureButton" parent="."]
+offset_left = -2015.06
+offset_top = 318.447
+offset_right = -136.059
+offset_bottom = 1285.45
+scale = Vector2(0.966176, 0.966176)
+texture_normal = ExtResource("2_eyyj0")
+texture_pressed = ExtResource("3_q1fwl")
+script = ExtResource("4_sedng")
+
+[node name="Quit_button" type="TextureButton" parent="."]
+offset_left = 254.757
+offset_top = 337.907
+offset_right = 2133.76
+offset_bottom = 1304.91
+scale = Vector2(0.966176, 0.966176)
+texture_normal = ExtResource("5_8uext")
+texture_pressed = ExtResource("6_mr4a1")
+script = ExtResource("7_svqsr")
+
+[node name="YouDied" type="Sprite2D" parent="."]
+position = Vector2(54.8436, -629.817)
+scale = Vector2(0.902776, 0.902776)
+texture = ExtResource("8_q1fwl")
+
+[connection signal="pressed" from="Play_button" to="Play_button" method="_on_pressed"]
+[connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

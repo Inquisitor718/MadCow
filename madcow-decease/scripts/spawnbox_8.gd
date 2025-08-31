@@ -15,25 +15,22 @@ var spawned = false
 @onready var spawnpoint_4: Marker3D = $spawnpoint4
 @onready var spawnpoint_5: Marker3D = $spawnpoint5
 @onready var spawnpoint_6: Marker3D = $spawnpoint6
-@onready var spawnpoint_7: Marker3D = $spawnpoint7
-@onready var spawnpoint_8: Marker3D = $spawnpoint8
-@onready var spawnpoint_9: Marker3D = $spawnpoint9
-@onready var spawnpoint_10: Marker3D = $spawnpoint10
-@onready var spawnpoint_11: Marker3D = $spawnpoint11
 
 @onready var spawnpoints: Array[Marker3D] = [
 	spawnpoint, spawnpoint_2, spawnpoint_3, spawnpoint_4, spawnpoint_5,
-	spawnpoint_6, spawnpoint_7, spawnpoint_8, spawnpoint_9, spawnpoint_10, spawnpoint_11
+	spawnpoint_6
 ]
 
 var cow_scenes = [black_cow_scene, white_cow_scene, patched_cow_scene, baby_cow_scene]
 
-#func _on_body_entered(body: Node3D) -> void:
-#
-	#for sp in spawnpoints:
-		#var scene = cow_scenes.pick_random()
-		#var cow = scene.instantiate()
-		#cow.global_transform = sp.global_transform
-		#get_parent().add_child(cow)
-		#await get_tree().create_timer(0.4).timeout
-	#collision_shape_3d.disabled = true
+func _on_body_entered(body: Node3D) -> void:
+	if spawned:
+		return 
+	spawned=true
+	collision_shape_3d.disabled = true
+	for sp in spawnpoints:
+		var scene = cow_scenes.pick_random()
+		var cow = scene.instantiate()
+		get_parent().add_child(cow)
+		cow.global_transform = sp.global_transform
+		await get_tree().create_timer(1.0).timeout
