@@ -189,6 +189,7 @@ func Hit(dmg: int) -> void:
 			if group_player.is_in_group("minigun"):
 				_become_friendly()
 			else:
+				animation_tree.set("parameters/conditions/Die", true)
 				await get_tree().create_timer(1.5).timeout
 				queue_free()
 		#if randf() < 0.4 and coin_scene:

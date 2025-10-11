@@ -904,11 +904,11 @@ libraries = {
 script = ExtResource("8_flsqn")
 
 [node name="DistortionBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 83.0
-offset_top = 61.0
-offset_right = 997.0
-offset_bottom = 145.0
-scale = Vector2(1.61696, 1.34877)
+offset_left = 49.0
+offset_top = 41.0
+offset_right = 963.0
+offset_bottom = 125.0
+scale = Vector2(0.792536, 0.661085)
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_oi5cr")
 
@@ -955,25 +955,25 @@ layout_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1784.0
-offset_top = 948.0
-offset_right = 303.0
-offset_bottom = 696.0
+offset_left = 889.0
+offset_top = 489.0
+offset_right = -352.0
+offset_bottom = 237.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.109526, 0.109526)
+scale = Vector2(0.133437, 0.100648)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_xo0wp")
 
 [node name="Vector7" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(3252.5, 1846.54)
-scale = Vector2(0.503511, 0.445543)
+position = Vector2(1629.39, 928.517)
+scale = Vector2(0.235989, 0.208821)
 texture = ExtResource("8_ctcwe")
 
 [node name="Health_bottles" type="Node2D" parent="CanvasLayer"]
-position = Vector2(32, 822)
-scale = Vector2(0.516315, 0.516315)
+position = Vector2(15, 343)
+scale = Vector2(0.278561, 0.278561)
 
 [node name="bottle1" type="Node2D" parent="CanvasLayer/Health_bottles"]
 
@@ -1115,40 +1115,41 @@ scale = Vector2(0.638548, 0.638548)
 texture = ExtResource("7_qa8rd")
 
 [node name="Group2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(3520.22, 1864.17)
-scale = Vector2(0.242454, 0.242454)
+position = Vector2(1776, 945)
+scale = Vector2(0.113635, 0.113635)
 texture = ExtResource("14_v2u6k")
 
 [node name="Shotgun_sprite3" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 visibility_layer = 0
-position = Vector2(3519.22, 1862.17)
+position = Vector2(1787.48, 934.889)
 rotation = 0.261799
-scale = Vector2(0.361589, 0.361589)
+scale = Vector2(0.169472, 0.169472)
 texture = ExtResource("14_ghpvc")
 
 [node name="Revolver_Sprite" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(3495, 1877)
-scale = Vector2(0.446328, 0.446328)
+position = Vector2(1763.26, 949.719)
+scale = Vector2(0.209188, 0.209188)
 texture = ExtResource("15_uafgl")
 
 [node name="Hornyahhh_Sprite" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(3519, 1866)
-scale = Vector2(0.117499, 0.117499)
+position = Vector2(1787.26, 938.719)
+scale = Vector2(0.0550703, 0.0550703)
 texture = ExtResource("16_0rxgl")
 
 [node name="Minigun_sprite" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(3529, 1876)
+position = Vector2(1797.26, 948.719)
 rotation = 0.261799
-scale = Vector2(0.328234, 0.328234)
+scale = Vector2(0.153839, 0.153839)
 texture = ExtResource("17_uacen")
 
 [node name="Shotgun_sprite" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(3512.22, 1880.17)
+position = Vector2(1780.48, 952.889)
 rotation = 0.261799
-scale = Vector2(0.35538, 0.35538)
+scale = Vector2(0.166562, 0.166562)
 texture = ExtResource("14_ghpvc")
 
 [node name="Head" type="Node3D" parent="."]

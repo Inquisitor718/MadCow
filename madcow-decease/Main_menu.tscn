@@ -13,40 +13,40 @@
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.565244, 0.565244)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_r1jqq")
 autoplay = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-scale = Vector2(3.64061, 3.64061)
+scale = Vector2(1.76382, 1.76382)
 texture = ExtResource("1_5kukc")
 
 [node name="Frame14" type="Sprite2D" parent="."]
-position = Vector2(0, -721.812)
-scale = Vector2(0.856885, 0.856885)
+position = Vector2(0, -343.215)
+scale = Vector2(0.415148, 0.415148)
 texture = ExtResource("8_hv5cx")
 
 [node name="Play_button" type="TextureButton" parent="."]
-offset_left = -1953.14
-offset_top = 261.834
-offset_right = -74.1384
-offset_bottom = 1228.83
-scale = Vector2(0.916959, 0.916959)
+offset_left = -958.878
+offset_top = 109.687
+offset_right = 920.124
+offset_bottom = 1076.68
+scale = Vector2(0.444253, 0.444253)
 texture_normal = ExtResource("2_p42dv")
 texture_pressed = ExtResource("3_r1jqq")
 script = ExtResource("4_hv5cx")
 
 [node name="Quit_button" type="TextureButton" parent="."]
-offset_left = 127.379
-offset_top = 260.065
-offset_right = 2006.38
-offset_bottom = 1227.06
-scale = Vector2(0.916959, 0.916959)
+offset_left = 97.3031
+offset_top = 123.84
+offset_right = 1976.3
+offset_bottom = 1090.84
+scale = Vector2(0.444253, 0.444253)
 texture_normal = ExtResource("5_hv5cx")
 texture_pressed = ExtResource("6_56ax1")
 script = ExtResource("5_56ax1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="pressed" from="Play_button" to="Play_button" method="_on_pressed"]
 [connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

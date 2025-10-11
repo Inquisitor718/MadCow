@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://cqgvk2tvng4ws"]
+[gd_scene load_steps=71 format=4 uid="uid://cqgvk2tvng4ws"]
 
 [ext_resource type="PackedScene" uid="uid://c6qqhoiccfc6n" path="res://Scenes/player_S_.tscn" id="1_2qr42"]
 [ext_resource type="Script" uid="uid://b1qd1xtvnpofq" path="res://barn.gd" id="1_aj31e"]
@@ -44,6 +44,7 @@
 [ext_resource type="Script" uid="uid://b2oswvedox5po" path="res://scripts/spawnbox_7.gd" id="42_hpjm8"]
 [ext_resource type="Script" uid="uid://c8xq1n34y157" path="res://scripts/spawnbox_8.gd" id="43_43d2o"]
 [ext_resource type="PackedScene" uid="uid://beo12ds1ym1e1" path="res://Scenes/health_pickup.tscn" id="45_ve78l"]
+[ext_resource type="PackedScene" uid="uid://cor5pdhy876pc" path="res://Scenes/ammunation/Ammo_Box.tscn" id="46_a68uo"]
 [ext_resource type="Script" uid="uid://5xeu2a4dxn2x" path="res://scripts/level_transition2.gd" id="46_biedb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aj31e"]
@@ -12751,6 +12752,117 @@ transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -7.772, 1.76466, -17
 
 [node name="Health_Pickup37" parent="Node3D" instance=ExtResource("45_ve78l")]
 transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -49.0548, 1.73595, -26.075)
+
+[node name="Ammo_Box" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -40.0668, 1.17927, 33.8155)
+
+[node name="Ammo_Box2" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -44.6992, 1.17927, 32.4199)
+
+[node name="Ammo_Box3" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26.7609, 1.63934, 59.2405)
+
+[node name="Ammo_Box4" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -11.0261, 1.63934, 58.3415)
+
+[node name="Ammo_Box5" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.53649, 2.10878, 30.0973)
+
+[node name="Ammo_Box6" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.234391, 0, -0.187246, 0, 0.3, 0, 0.187246, 0, 0.234391, 9.53649, 2.10878, 30.2491)
+
+[node name="Ammo_Box7" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.285621, 0, -0.0917634, 0, 0.3, 0, 0.0917634, 0, 0.285621, 9.74262, 2.10878, 30.2436)
+
+[node name="Ammo_Box8" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 11.1831, 1.59972, 62.6579)
+
+[node name="Ammo_Box9" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.234391, 0, -0.187246, 0, 0.3, 0, 0.187246, 0, 0.234391, 10.6697, 1.59972, 62.4998)
+
+[node name="Ammo_Box10" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.285621, 0, -0.0917634, 0, 0.3, 0, 0.0917634, 0, 0.285621, 10.3009, 1.59972, 64.1248)
+
+[node name="Ammo_Box11" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.285621, 0, -0.0917634, 0, 0.3, 0, 0.0917634, 0, 0.285621, 40.4183, 1.61787, 33.1244)
+
+[node name="Ammo_Box12" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.285621, 0, -0.0917634, 0, 0.3, 0, 0.0917634, 0, 0.285621, 42.1825, 1.6838, 43.6698)
+
+[node name="Ammo_Box13" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.285621, 0, -0.0917634, 0, 0.3, 0, 0.0917634, 0, 0.285621, 49.2979, 1.45637, 64.8365)
+
+[node name="Ammo_Box14" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.285621, 0, -0.0917634, 0, 0.3, 0, 0.0917634, 0, 0.285621, 36.4411, 1.81431, 67.8983)
+
+[node name="Ammo_Box15" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 34.7367, 1.81431, 67.8983)
+
+[node name="Ammo_Box16" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 27.0896, 1.81431, 67.8983)
+
+[node name="Ammo_Box17" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 26.5665, 1.81431, 14.0723)
+
+[node name="Ammo_Box18" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 32.0461, 1.81431, 5.8722)
+
+[node name="Ammo_Box19" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 49.5683, 1.71461, 5.99026)
+
+[node name="Ammo_Box20" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 14.506, 1.71461, 2.0212)
+
+[node name="Ammo_Box21" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, 4.77743, 1.7146, -5.56224)
+
+[node name="Ammo_Box22" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, -7.19842, 1.7146, 12.4247)
+
+[node name="Ammo_Box23" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, -19.1081, 1.64134, 20.6541)
+
+[node name="Ammo_Box24" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.0461699, 0, -0.296426, 0, 0.3, 0, 0.296426, 0, 0.0461699, -34.2567, 1.64134, 23.1197)
+
+[node name="Ammo_Box25" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.286521, 0, -0.0889125, 0, 0.3, 0, 0.0889125, 0, 0.286521, -40.0135, 1.64134, 25.8105)
+
+[node name="Ammo_Box26" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.286521, 0, -0.0889125, 0, 0.3, 0, 0.0889125, 0, 0.286521, -46.2346, 1.19169, 10.3128)
+
+[node name="Ammo_Box27" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -46.2346, 1.19169, 3.47643)
+
+[node name="Ammo_Box28" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -48.8487, 1.19169, -24.2867)
+
+[node name="Ammo_Box29" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -48.8487, 1.70137, -26.3486)
+
+[node name="Ammo_Box30" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -46.5168, 1.70137, -49.908)
+
+[node name="Ammo_Box31" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -42.076, 1.70137, -60.9438)
+
+[node name="Ammo_Box32" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -43.8297, 1.49008, -74.085)
+
+[node name="Ammo_Box33" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -15.1643, 2.09816, -61.2736)
+
+[node name="Ammo_Box34" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -6.83326, 1.59332, -43.7459)
+
+[node name="Ammo_Box35" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, -0.12723, 1.99697, -19.2884)
+
+[node name="Ammo_Box36" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, 21.2762, 2.0659, -20.5948)
+
+[node name="Ammo_Box37" parent="." instance=ExtResource("46_a68uo")]
+transform = Transform3D(0.290764, 0, 0.0738662, 0, 0.3, 0, -0.0738662, 0, 0.290764, 43.768, 1.86174, -18.1322)
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
 [connection signal="body_entered" from="Progression boxes/Spawnbox" to="Progression boxes/Spawnbox" method="_on_body_entered"]

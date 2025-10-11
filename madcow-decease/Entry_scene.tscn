@@ -10,19 +10,19 @@ script = ExtResource("1_2vth0")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
-offset_left = -2022.0
-offset_top = -1067.0
-offset_right = -1982.0
-offset_bottom = -1027.0
-scale = Vector2(107.108, 54.6185)
+offset_left = -1080.0
+offset_top = -535.0
+offset_right = -1040.0
+offset_bottom = -495.0
+scale = Vector2(53.6642, 27.3655)
 color = Color(0, 0, 0, 1)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Camera2D"]
-offset_left = -1883.0
-offset_top = -1061.0
-offset_right = 36.9999
-offset_bottom = 19.0
-scale = Vector2(1.96107, 1.96107)
+offset_left = -941.0
+offset_top = -529.0
+offset_right = 979.0
+offset_bottom = 551.0
+scale = Vector2(0.982553, 0.982553)
 stream = ExtResource("1_884k7")
 autoplay = true
 

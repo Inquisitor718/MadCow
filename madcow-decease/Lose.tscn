@@ -12,36 +12,36 @@
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.565244, 0.565244)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-scale = Vector2(3.83601, 3.83601)
+scale = Vector2(1.77993, 1.77993)
 texture = ExtResource("1_eyyj0")
 
 [node name="Play_button" type="TextureButton" parent="."]
-offset_left = -2015.06
-offset_top = 318.447
-offset_right = -136.059
-offset_bottom = 1285.45
-scale = Vector2(0.966176, 0.966176)
+offset_left = -946.494
+offset_top = 139.763
+offset_right = 932.507
+offset_bottom = 1106.77
+scale = Vector2(0.448311, 0.448311)
 texture_normal = ExtResource("2_eyyj0")
 texture_pressed = ExtResource("3_q1fwl")
 script = ExtResource("4_sedng")
 
 [node name="Quit_button" type="TextureButton" parent="."]
-offset_left = 254.757
-offset_top = 337.907
-offset_right = 2133.76
-offset_bottom = 1304.91
-scale = Vector2(0.966176, 0.966176)
+offset_left = 79.6116
+offset_top = 159.223
+offset_right = 1958.61
+offset_bottom = 1126.23
+scale = Vector2(0.448311, 0.448311)
 texture_normal = ExtResource("5_8uext")
 texture_pressed = ExtResource("6_mr4a1")
 script = ExtResource("7_svqsr")
 
 [node name="YouDied" type="Sprite2D" parent="."]
-position = Vector2(54.8436, -629.817)
-scale = Vector2(0.902776, 0.902776)
+position = Vector2(60.151, -350.291)
+scale = Vector2(0.418893, 0.418893)
 texture = ExtResource("8_q1fwl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="pressed" from="Play_button" to="Play_button" method="_on_pressed"]
 [connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

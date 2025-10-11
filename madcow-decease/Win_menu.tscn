@@ -9,23 +9,23 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="WhatsAppImage2025-08-27At08_14_46Beabdd70" type="Sprite2D" parent="."]
-position = Vector2(11, 8)
-scale = Vector2(4.55671, 4.55671)
+position = Vector2(2, 8)
+scale = Vector2(2.00758, 2.00758)
 texture = ExtResource("1_0kba0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="YouWin" type="Sprite2D" parent="."]
-position = Vector2(228, -80)
-scale = Vector2(0.625001, 0.625001)
+position = Vector2(86, -80)
+scale = Vector2(0.270533, 0.270533)
 texture = ExtResource("2_drqde")
 
 [node name="Quit_button" type="TextureButton" parent="."]
-offset_left = -406.0
-offset_top = 571.0
-offset_right = 1473.0
-offset_bottom = 1538.0
-scale = Vector2(0.434656, 0.434656)
+offset_left = -180.0
+offset_top = 216.0
+offset_right = 1699.0
+offset_bottom = 1183.0
+scale = Vector2(0.188142, 0.188142)
 texture_normal = ExtResource("3_0efms")
 texture_pressed = ExtResource("4_c0wqw")
 script = ExtResource("5_j75d1")

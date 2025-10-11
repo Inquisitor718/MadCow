@@ -299,18 +299,18 @@ transform = Transform3D(0.842, 0, 0, 0, 0.842, 0, 0, 0, 0.842, 0, 0.564771, 0)
 
 [node name="Skeleton3D" parent="Baby Cow Animations/BBY_Rig" index="0"]
 bones/0/position = Vector3(0.0183593, -0.326684, 4.5965e-17)
-bones/0/rotation = Quaternion(-0.000359814, 9.38095e-05, 6.34449e-05, 1)
-bones/2/rotation = Quaternion(-0.000859701, 0.0112999, 0.0615631, 0.998039)
-bones/3/position = Vector3(-0.251722, 0.319849, -0.064156)
-bones/3/rotation = Quaternion(-0.0273958, 0.457988, 0.860001, 0.223372)
-bones/4/rotation = Quaternion(0.422738, -0.060877, 0.277094, 0.8607)
-bones/5/position = Vector3(-0.0271007, 0.265324, 0.023388)
-bones/5/rotation = Quaternion(0.13546, -0.797555, 0.0567666, 0.585093)
-bones/7/position = Vector3(0.287097, 0.272788, -0.0287016)
-bones/7/rotation = Quaternion(0.0983428, -0.390684, -0.841723, 0.359439)
-bones/8/rotation = Quaternion(0.479858, -0.0633545, -0.128546, 0.865563)
-bones/9/position = Vector3(-2.26498e-06, 0.310469, 0.0285645)
-bones/9/rotation = Quaternion(0.0869025, 0.797599, 0.140768, -0.580059)
+bones/0/rotation = Quaternion(-0.00444624, 0.00115921, 0.00078399, 0.999989)
+bones/2/rotation = Quaternion(-1.75107e-05, 0.000229942, 0.00125275, 0.999999)
+bones/3/position = Vector3(-0.240779, 0.30917, -0.0752836)
+bones/3/rotation = Quaternion(-0.0799708, 0.125088, 0.938106, 0.312915)
+bones/4/rotation = Quaternion(0.546781, 0.161423, 0.114115, 0.813604)
+bones/5/position = Vector3(-0.0225702, 0.257605, 0.0199486)
+bones/5/rotation = Quaternion(0.13607, -0.771963, 0.045825, 0.61924)
+bones/7/position = Vector3(0.259417, 0.28705, -0.0714598)
+bones/7/rotation = Quaternion(0.111266, -0.224701, -0.893523, 0.372488)
+bones/8/rotation = Quaternion(0.525293, -0.167439, 0.0439603, 0.833126)
+bones/9/position = Vector3(-0.0160022, 0.299628, 0.0141051)
+bones/9/rotation = Quaternion(-0.0128999, 0.794012, 0.181959, -0.579887)
 bones/11/position = Vector3(0.0183593, -0.326684, -3.57975e-09)
 bones/11/rotation = Quaternion(0.615585, -0.347929, -0.615585, -0.347929)
 bones/12/rotation = Quaternion(-0.463398, 0.0471276, 0.106295, 0.878489)
@@ -325,10 +325,10 @@ bones/18/position = Vector3(0.150082, -0.653491, -0.0220102)
 bones/18/rotation = Quaternion(0.536692, 0.426371, 0.502375, 0.527057)
 
 [node name="PC_Pistol_002" parent="Baby Cow Animations/BBY_Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.0153881, -0.0146027, -0.004159, 0.00911558, -0.00414956, -0.0191577, 0.0121426, -0.0153907, 0.00911128, 0.00199665, 0.392631, 0.494126)
+transform = Transform3D(-0.021412, -0.000598507, -0.00291536, 0.00297138, -0.00309953, -0.0211871, 0.000168583, -0.0213861, 0.00315228, -0.398692, 0.271389, 0.472019)
 
 [node name="PC_Pistol_001" parent="Baby Cow Animations/BBY_Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.0184485, 0.00927376, 0.00640156, -0.00650316, 0.00126747, -0.0205775, -0.00920279, -0.0194865, 0.00170812, 0.188142, 0.328259, 0.628389)
+transform = Transform3D(-0.0207322, 0.00188422, 0.00582739, -0.00608288, -0.00394299, -0.0203662, -0.000712238, -0.0211715, 0.00431163, 0.395673, 0.361238, 0.534079)
 
 [node name="PC_Mesh_002" type="MeshInstance3D" parent="Baby Cow Animations/BBY_Rig/Skeleton3D" index="3"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)

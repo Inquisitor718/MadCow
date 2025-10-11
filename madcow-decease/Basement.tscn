@@ -76,7 +76,7 @@ shader_parameter/swirl_strength = 0.3
 shader_parameter/tex_scale = 0.6
 shader_parameter/invert_color = true
 
-[sub_resource type="Sky" id="Sky_p5gxk"]
+[sub_resource type="Sky" id="Sky_axx6s"]
 sky_material = SubResource("ShaderMaterial_0ync5")
 process_mode = 3
 
@@ -84,7 +84,7 @@ process_mode = 3
 background_mode = 2
 background_color = Color(0.0710307, 0.00706832, 0.122594, 1)
 background_energy_multiplier = 0.3
-sky = SubResource("Sky_p5gxk")
+sky = SubResource("Sky_axx6s")
 ambient_light_source = 2
 ambient_light_color = Color(0.058601, 0.089448, 0.213479, 1)
 ambient_light_energy = 1.62
